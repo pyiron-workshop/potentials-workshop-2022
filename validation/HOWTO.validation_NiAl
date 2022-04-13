@@ -1,0 +1,11 @@
+
+Additional instructions from Sudarshan regarding the test NiAl validation notebook.
+I already added 'pyiron_gpl' to the env.yml file so one shouldn't need this anymore.
+
+
+In addition to the packages in the environment file that that Sarath sent us, you will also need to install pyiron_gpl to access the module that calculates elastic constants. 
+
+To do this either add 'pyiron_gpl' to the list of packages to install (in the env.yml file) or if you have already installed the packages, type:
+
+conda install -c conda-forge pyiron_gpl
+

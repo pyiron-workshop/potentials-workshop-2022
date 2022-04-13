@@ -1,0 +1,18 @@
+
+Instructions from Sarath how to setup pyiron environment:
+
+
+Dear All,
+
+I have attached an environment file based on the binder setup for pyiron_atomistics as Sudarsan suggested. 
+I also added calphy, so everything should work. 
+
+You can use the following commands:
+
+conda env create -f env.yml
+
+conda activate workshop
+
+python -m ipykernel install --user --name workshop
+
+Now the workshop should appear as a kernel in the jupyterlab. Hopefully everything works well.
