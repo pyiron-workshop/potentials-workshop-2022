@@ -1,0 +1,4 @@
+*.pyc
+pyiron.log
+.idea/
+.ipynb_checkpoints/
