@@ -2,3 +2,6 @@
 pyiron.log
 .idea/
 .ipynb_checkpoints/
+potentials/01-EAM/*.h5
+potentials/01-EAM/*_hdf5
+potentials/01-EAM/AlFit
