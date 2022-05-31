@@ -1,0 +1,5 @@
+,id,status,chemicalformula,job,subjob,project,timestart,timestop,totalcputime,computer,hamilton,hamversion,parentid,masterid
+0,0,finished,,offstoichiometry,/offstoichiometry,training/initial,2022-05-20 07:40:54.302418,,,zora@cmti001#1,TrainingContainer,0.4,,
+1,1,finished,,activelearning,/activelearning,training/initial,2022-05-28 16:15:40.324613,,,zora@cmti001#1,TrainingContainer,0.4,,
+2,2,finished,,initial,/initial,training/initial,2022-05-31 17:51:21.146898,,,zora@cmti001#1,TrainingContainer,0.4,,
+3,3,finished,,full,/full,training/initial,2022-05-31 18:00:11.223627,,,zora@cmti001#1,TrainingContainer,0.4,,
