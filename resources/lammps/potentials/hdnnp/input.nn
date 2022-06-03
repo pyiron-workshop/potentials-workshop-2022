@@ -1,0 +1,105 @@
+### This input file for RuNNer was generated with ASE.
+runner_mode                    3
+symfunction_short              Li 2 Li      0.00000000       0.00000000      12.00000000
+symfunction_short              Li 2 Li      0.00467506       0.00000000      12.00000000
+symfunction_short              Li 2 Li      0.01084342       0.00000000      12.00000000
+symfunction_short              Li 2 Li      0.01939424       0.00000000      12.00000000
+symfunction_short              Li 2 Li      0.03192972       0.00000000      12.00000000
+symfunction_short              Li 2 Li      0.05159917       0.00000000      12.00000000
+symfunction_short              Li 2 Al      0.00000000       0.00000000      12.00000000
+symfunction_short              Li 2 Al      0.00382096       0.00000000      12.00000000
+symfunction_short              Li 2 Al      0.00860506       0.00000000      12.00000000
+symfunction_short              Li 2 Al      0.01480011       0.00000000      12.00000000
+symfunction_short              Li 2 Al      0.02312122       0.00000000      12.00000000
+symfunction_short              Li 2 Al      0.03477448       0.00000000      12.00000000
+symfunction_short              Li 3 Li Li      0.00000000      -1.00000000       1.00000000      12.00000000
+symfunction_short              Li 3 Li Li      0.00000000      -1.00000000       2.00000000      12.00000000
+symfunction_short              Li 3 Li Li      0.00000000      -1.00000000       4.00000000      12.00000000
+symfunction_short              Li 3 Li Li      0.00000000      -1.00000000       8.00000000      12.00000000
+symfunction_short              Li 3 Li Li      0.00000000       1.00000000       1.00000000      12.00000000
+symfunction_short              Li 3 Li Li      0.00000000       1.00000000       2.00000000      12.00000000
+symfunction_short              Li 3 Li Li      0.00000000       1.00000000       4.00000000      12.00000000
+symfunction_short              Li 3 Li Li      0.00000000       1.00000000       8.00000000      12.00000000
+symfunction_short              Li 3 Li Al      0.00000000      -1.00000000       1.00000000      12.00000000
+symfunction_short              Li 3 Li Al      0.00000000      -1.00000000       2.00000000      12.00000000
+symfunction_short              Li 3 Li Al      0.00000000      -1.00000000       4.00000000      12.00000000
+symfunction_short              Li 3 Li Al      0.00000000      -1.00000000       8.00000000      12.00000000
+symfunction_short              Li 3 Li Al      0.00000000       1.00000000       1.00000000      12.00000000
+symfunction_short              Li 3 Li Al      0.00000000       1.00000000       2.00000000      12.00000000
+symfunction_short              Li 3 Li Al      0.00000000       1.00000000       4.00000000      12.00000000
+symfunction_short              Li 3 Li Al      0.00000000       1.00000000       8.00000000      12.00000000
+symfunction_short              Li 3 Al Al      0.00000000      -1.00000000       1.00000000      12.00000000
+symfunction_short              Li 3 Al Al      0.00000000      -1.00000000       2.00000000      12.00000000
+symfunction_short              Li 3 Al Al      0.00000000      -1.00000000       4.00000000      12.00000000
+symfunction_short              Li 3 Al Al      0.00000000      -1.00000000       8.00000000      12.00000000
+symfunction_short              Li 3 Al Al      0.00000000       1.00000000       1.00000000      12.00000000
+symfunction_short              Li 3 Al Al      0.00000000       1.00000000       2.00000000      12.00000000
+symfunction_short              Li 3 Al Al      0.00000000       1.00000000       4.00000000      12.00000000
+symfunction_short              Li 3 Al Al      0.00000000       1.00000000       8.00000000      12.00000000
+symfunction_short              Al 3 Li Li      0.00000000      -1.00000000       1.00000000      12.00000000
+symfunction_short              Al 3 Li Li      0.00000000      -1.00000000       2.00000000      12.00000000
+symfunction_short              Al 3 Li Li      0.00000000      -1.00000000       4.00000000      12.00000000
+symfunction_short              Al 3 Li Li      0.00000000      -1.00000000       8.00000000      12.00000000
+symfunction_short              Al 3 Li Li      0.00000000       1.00000000       1.00000000      12.00000000
+symfunction_short              Al 3 Li Li      0.00000000       1.00000000       2.00000000      12.00000000
+symfunction_short              Al 3 Li Li      0.00000000       1.00000000       4.00000000      12.00000000
+symfunction_short              Al 3 Li Li      0.00000000       1.00000000       8.00000000      12.00000000
+symfunction_short              Al 3 Li Al      0.00000000      -1.00000000       1.00000000      12.00000000
+symfunction_short              Al 3 Li Al      0.00000000      -1.00000000       2.00000000      12.00000000
+symfunction_short              Al 3 Li Al      0.00000000      -1.00000000       4.00000000      12.00000000
+symfunction_short              Al 3 Li Al      0.00000000      -1.00000000       8.00000000      12.00000000
+symfunction_short              Al 3 Li Al      0.00000000       1.00000000       1.00000000      12.00000000
+symfunction_short              Al 3 Li Al      0.00000000       1.00000000       2.00000000      12.00000000
+symfunction_short              Al 3 Li Al      0.00000000       1.00000000       4.00000000      12.00000000
+symfunction_short              Al 3 Li Al      0.00000000       1.00000000       8.00000000      12.00000000
+symfunction_short              Al 3 Al Al      0.00000000      -1.00000000       1.00000000      12.00000000
+symfunction_short              Al 3 Al Al      0.00000000      -1.00000000       2.00000000      12.00000000
+symfunction_short              Al 3 Al Al      0.00000000      -1.00000000       4.00000000      12.00000000
+symfunction_short              Al 3 Al Al      0.00000000      -1.00000000       8.00000000      12.00000000
+symfunction_short              Al 3 Al Al      0.00000000       1.00000000       1.00000000      12.00000000
+symfunction_short              Al 3 Al Al      0.00000000       1.00000000       2.00000000      12.00000000
+symfunction_short              Al 3 Al Al      0.00000000       1.00000000       4.00000000      12.00000000
+symfunction_short              Al 3 Al Al      0.00000000       1.00000000       8.00000000      12.00000000
+symfunction_short              Al 2 Li      0.00000000       0.00000000      12.00000000
+symfunction_short              Al 2 Li      0.00382096       0.00000000      12.00000000
+symfunction_short              Al 2 Li      0.00860506       0.00000000      12.00000000
+symfunction_short              Al 2 Li      0.01480011       0.00000000      12.00000000
+symfunction_short              Al 2 Li      0.02312122       0.00000000      12.00000000
+symfunction_short              Al 2 Li      0.03477448       0.00000000      12.00000000
+symfunction_short              Al 2 Al      0.00000000       0.00000000      12.00000000
+symfunction_short              Al 2 Al      0.00355567       0.00000000      12.00000000
+symfunction_short              Al 2 Al      0.00793623       0.00000000      12.00000000
+symfunction_short              Al 2 Al      0.01349381       0.00000000      12.00000000
+symfunction_short              Al 2 Al      0.02077076       0.00000000      12.00000000
+symfunction_short              Al 2 Al      0.03064224       0.00000000      12.00000000
+elements                       Li Al
+number_of_elements             2
+bond_threshold                 0.50000000
+nn_type_short                  1
+use_short_nn                  
+optmode_charge                 1
+optmode_short_energy           1
+optmode_short_force            1
+points_in_memory               1000
+scale_symmetry_functions      
+cutoff_type                    1
+test_fraction                  0.10000000
+use_short_forces              
+epochs                         15
+kalman_lambda_short            0.98000000
+kalman_nue_short               0.99870000
+mix_all_points                
+nguyen_widrow_weights_short   
+repeated_energy_update        
+short_energy_error_threshold   0.10000000
+short_energy_fraction          1.00000000
+short_force_error_threshold    1.00000000
+short_force_fraction           0.10000000
+write_weights_epoch            5
+center_symmetry_functions     
+precondition_weights          
+global_activation_short        t t l
+global_hidden_layers_short     2
+global_nodes_short             15 15
+calculate_forces              
+random_seed                    743

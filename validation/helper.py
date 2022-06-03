@@ -18,16 +18,28 @@ pot_eam = pd.DataFrame({
     'Config': [['pair_style eam/fs\n', 'pair_coeff * * AlLi.eam.fs Li Al\n']]
 })
 
+pot_hdnnp = pd.DataFrame({
+    'Name': ['RuNNer-AlLi'],
+    'Filename': [['/home/jovyan/workshop_preparation/resources/lammps/potentials/hdnnp/input.nn',
+                  '/home/jovyan/workshop_preparation/resources/lammps/potentials/hdnnp/scaling.data',
+                  '/home/jovyan/workshop_preparation/resources/lammps/potentials/hdnnp/weights.013.data',
+                  '/home/jovyan/workshop_preparation/resources/lammps/potentials/hdnnp/weights.003.data']],
+    'Model': ['RuNNer'],
+    'Species': [['Al', 'Li']],
+    'Config': [['pair_style hdnnp 6.350126526766093 dir "./" showew yes showewsum 0 resetew no maxew 100 cflength 1.8897261328 cfenergy 0.0367493254\n',
+                   'pair_coeff * * Al Li\n']]
+})
+
 pot_ace = pd.DataFrame({
     'Name': ['LiAl_yace'],
-    'Filename': [[os.path.abspath("../potentials/AlLi.yace")]],
+    'Filename': [[os.path.abspath("../potentials/03-ACE/AlLi.yace")]],
     'Model': ["ACE"],
     'Species': [['Al', 'Li']],
     'Config': [['pair_style pace\n', 'pair_coeff * * AlLi.yace Li Al\n']]
 })
 
 
-potentials_list = [pot_eam,pot_ace]
+potentials_list = [pot_eam,pot_hdnnp, pot_ace]
 
 
 def get_clean_project_name(pot):    
