@@ -20,10 +20,10 @@ pot_eam = pd.DataFrame({
 
 pot_ace = pd.DataFrame({
     'Name': ['LiAl_yace'],
-    'Filename': [[os.path.abspath("../potentials/AlLi.yace")]],
+    'Filename': [[os.path.abspath("../potentials/03-ACE/AlLi-6gen-18May.yace")]],
     'Model': ["ACE"],
     'Species': [['Al', 'Li']],
-    'Config': [['pair_style pace\n', 'pair_coeff * * AlLi.yace Li Al\n']]
+    'Config': [['pair_style pace\n', 'pair_coeff * * AlLi-6gen-18May.yace Al Li\n']]
 })
 
 
