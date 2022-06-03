@@ -27,19 +27,19 @@ pot_hdnnp = pd.DataFrame({
     'Model': ['RuNNer'],
     'Species': [['Al', 'Li']],
     'Config': [['pair_style hdnnp 6.350126526766093 dir "./" showew yes showewsum 0 resetew no maxew 100 cflength 1.8897261328 cfenergy 0.0367493254\n',
-                   'pair_coeff * * Al Li\n']]
+                'pair_coeff * * Al Li\n']]
 })
 
 pot_ace = pd.DataFrame({
     'Name': ['LiAl_yace'],
-    'Filename': [[os.path.abspath("../potentials/03-ACE/AlLi.yace")]],
+    'Filename': [[os.path.abspath("../potentials/03-ACE/AlLi-6gen-18May.yace")]],
     'Model': ["ACE"],
     'Species': [['Al', 'Li']],
-    'Config': [['pair_style pace\n', 'pair_coeff * * AlLi.yace Li Al\n']]
+    'Config': [['pair_style pace\n', 'pair_coeff * * AlLi-6gen-18May.yace Al Li\n']]
 })
 
 
-potentials_list = [pot_eam,pot_hdnnp, pot_ace]
+potentials_list = [pot_eam, pot_hdnnp, pot_ace]
 
 
 def get_clean_project_name(pot):    
