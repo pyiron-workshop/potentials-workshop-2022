@@ -4,63 +4,28 @@ import numpy as np
 from calphy.integrators import kb
 from scipy.optimize import fsolve
 
-file_location = "../potentials/AlLi.eam.fs"
-pot_al = pd.DataFrame({
-    'Name': ['Al_eam'],
-    'Filename': [[os.path.abspath(file_location)]],
-    'Model': ["EAM"],
-    'Species': [['Al']],
-    'Config': [['pair_style eam/fs\n', 'pair_coeff * * AlLi.eam.fs Al\n']]
-})
-pot_li = pd.DataFrame({
-    'Name': ['Li_eam'],
-    'Filename': [[os.path.abspath(file_location)]],
-    'Model': ["EAM"],
-    'Species': [['Li']],
-    'Config': [['pair_style eam/fs\n', 'pair_coeff * * AlLi.eam.fs Li\n']]
-})
-pot_alli = pd.DataFrame({
-    'Name': ['AlLi_eam'],
-    'Filename': [[os.path.abspath(file_location)]],
-    'Model': ["EAM"],
-    'Species': [['Al', 'Li']],
-    'Config': [['pair_style eam/fs\n', 'pair_coeff * * AlLi.eam.fs Al Li\n']]
-})
-pot_lial = pd.DataFrame({
-    'Name': ['LiAl_eam'],
-    'Filename': [[os.path.abspath(file_location)]],
-    'Model': ["EAM"],
-    'Species': [['Li', 'Al']],
-    'Config': [['pair_style eam/fs\n', 'pair_coeff * * AlLi.eam.fs Li Al\n']]
-})
-potential_list = [pot_al, pot_li, pot_alli, pot_lial]
-
-
-def create_structures(comp, repetitions=4):
+def create_structures(pr, comp, repetitions=4):
     """
     Create off stoichiometric structures
     
     Parameters
     ----------
+    pr: pyiron project
+        
     comp: required composition, float
     
     repetitions: int
         required super cell size
         
-    Notes
-    -----
-    Here, the structure creation is reversed, this is fix a bug with ASE/calphy
-    
-    ASE writes out species in alphabetical order; mass are taken lowest first; Therefore Al Li is not compatible with mass order. This function fixes it.
     """
-    structure_fcc = pr.create.structure.ase.bulk('Li', crystalstructure="fcc", cubic=True, a=4.123).repeat(repetitions)
+    structure_fcc = pr.create.structure.ase.bulk('Al', cubic=True, a=4.135).repeat(repetitions)
     n_li = int(comp*len(structure_fcc))
-    structure_fcc[np.random.permutation(len(structure_fcc))[:n_li]] = 'Al'
+    structure_fcc[np.random.permutation(len(structure_fcc))[:n_li]] = 'Li'
     
-    structure_b32 = pr.create.structure.ase.read('LiAl_poscar', format='vasp')
+    structure_b32 = pr.create.structure.ase.read('AlLi_poscar', format='vasp')
     n_li = int((0.5-comp)*len(structure_b32))
     rinds = len(structure_b32)//2 + np.random.choice(range(len(structure_b32)//2), n_li, replace=False)
-    structure_b32[rinds] = 'Li'
+    structure_b32[rinds] = 'Al'
     return structure_fcc, structure_b32
     
     
