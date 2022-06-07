@@ -1,5 +1,4 @@
 [DEFAULT]
 TOP_LEVEL_DIRs = ~
 PROJECT_PATHS = ~
-DATABASE_FILE = ~/resources/pyiron.db
 RESOURCE_PATHS = ~/pyiron/resources:~/potentials/resources 
