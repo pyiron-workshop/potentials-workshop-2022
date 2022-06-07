@@ -1,5 +1,9 @@
 ,Config,Filename,Model,Name,Species,Citations
-0,"['pair_style eam/fs\n', 'pair_coeff * * AlLi.eam.fs Al Li\n']",['atomicrex/AlLi.eam.fs'],Atomicrex,AlLi-atomicrex,"['Al', 'Li']",{}
-1,"['pair_style eam/fs\n', 'pair_coeff * * AlLi-atomicrex2.eam.fs Al Li\n']",['atomicrex/AlLi-atomicrex2.eam.fs'],Atomicrex,AlLi-atomicrex2,"['Al', 'Li']",{}
-2,"['pair_style hdnnp 6.350126526766093 dir ./ showew yes showewsum 0 resetew no maxew 100 cflength 1.8897261328 cfenergy 0.0367493254\n', 'pair_coeff * * Al Li\n']","['hdnnp/input.nn', 'hdnnp/scaling.data', 'hdnnp/weights.013.data', 'hdnnp/weights.003.data']",HDNNP,RuNNer-AlLi,"['Al', 'Li']",{}
-3,"['pair_style pace\n', 'pair_coeff * * AlLi-6gen-18May.yace\n']",['ace/AlLi-6gen-18May.yace'],ACE,AlLi-ACE,"['Al', 'Li']",{}
+0,"['pair_style eam/fs\n', 'pair_coeff * * AlLi.eam.fs Al\n']",['atomicrex/AlLi.eam.fs'],Atomicrex,Al-atomicrex,"['Al']",{}
+1,"['pair_style eam/fs\n', 'pair_coeff * * AlLi.eam.fs Li\n']",['atomicrex/AlLi.eam.fs'],Atomicrex,Li-atomicrex,"['Li']",{}
+2,"['pair_style eam/fs\n', 'pair_coeff * * AlLi.eam.fs Al Li\n']",['atomicrex/AlLi.eam.fs'],Atomicrex,AlLi-atomicrex,"['Al', 'Li']",{}
+3,"['pair_style eam/fs\n', 'pair_coeff * * AlLi-atomicrex2.eam.fs Al Li\n']",['atomicrex/AlLi-atomicrex2.eam.fs'],Atomicrex,AlLi-atomicrex2,"['Al', 'Li']",{}
+4,"['pair_style hdnnp 6.350126526766093 dir ./ showew yes showewsum 0 resetew no maxew 100 cflength 1.8897261328 cfenergy 0.0367493254\n', 'pair_coeff * * Al Li\n']","['hdnnp/input.nn', 'hdnnp/scaling.data', 'hdnnp/weights.013.data', 'hdnnp/weights.003.data']",HDNNP,RuNNer-AlLi,"['Al', 'Li']",{}
+5,"['pair_style pace\n', 'pair_coeff * * AlLi-6gen-18May.yace\n']",['ace/AlLi-6gen-18May.yace'],ACE,AlLi-ACE,"['Al', 'Li']",{}
+6,"['pair_style pace\n', 'pair_coeff * * AlLi-6gen-18May.yace\n']",['ace/AlLi-6gen-18May.yace'],ACE,Al-ACE,"['Al']",{}
+7,"['pair_style pace\n', 'pair_coeff * * AlLi-6gen-18May.yace\n']",['ace/AlLi-6gen-18May.yace'],ACE,Li-ACE,"[Li']",{}
