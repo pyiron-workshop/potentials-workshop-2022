@@ -35,6 +35,35 @@ pot_lial = pd.DataFrame({
 })
 potential_list = [pot_al, pot_li, pot_alli, pot_lial]
 
+
+def create_structures(comp, repetitions=4):
+    """
+    Create off stoichiometric structures
+    
+    Parameters
+    ----------
+    comp: required composition, float
+    
+    repetitions: int
+        required super cell size
+        
+    Notes
+    -----
+    Here, the structure creation is reversed, this is fix a bug with ASE/calphy
+    
+    ASE writes out species in alphabetical order; mass are taken lowest first; Therefore Al Li is not compatible with mass order. This function fixes it.
+    """
+    structure_fcc = pr.create.structure.ase.bulk('Li', crystalstructure="fcc", cubic=True, a=4.123).repeat(repetitions)
+    n_li = int(comp*len(structure_fcc))
+    structure_fcc[np.random.permutation(len(structure_fcc))[:n_li]] = 'Al'
+    
+    structure_b32 = pr.create.structure.ase.read('LiAl_poscar', format='vasp')
+    n_li = int((0.5-comp)*len(structure_b32))
+    rinds = len(structure_b32)//2 + np.random.choice(range(len(structure_b32)//2), n_li, replace=False)
+    structure_b32[rinds] = 'Li'
+    return structure_fcc, structure_b32
+    
+    
 def fe_at(p, temp, threshold=1E-1):
     """
     Get the free energy at a given temperature
