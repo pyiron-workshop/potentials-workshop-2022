@@ -1,0 +1,27 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+  - file: introduction/Intro.md
+    sections:
+    - file: introduction/ex_01_introduction_to_pyiron.ipynb
+    - file: introduction/ex_02_creating_structure_databases.ipynb
+    - file: introduction/ex_03_visualizing_training_data.ipynb
+  - file: potentials/Intro.md
+    sections:
+    - file: potentials/01-EAM/IntroductionPotentialFitting.ipynb
+    - file: potentials/01-EAM/HandsOnPotenitalFitting.ipynb
+    - file: potentials/02-HDNNP/handson.ipynb
+    - file: potentials/03-ACE/pacemaker_example.ipynb
+  - file: validation/Intro.md
+    sections:
+    - file: validation/validation_LiAl.ipynb
+    - file: validation/validation_NiAl.ipynb
+  - file: phase_diagram/Intro.md
+    sections:
+    - file: phase_diagram/tutorial_1.ipynb
+    - file: phase_diagram/tutorial_2.ipynb
+    - file: phase_diagram/exercise_1.ipynb
+    - file: phase_diagram/exercise_2.ipynb
