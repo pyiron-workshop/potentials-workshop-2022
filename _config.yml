@@ -1,0 +1,30 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: "Workshop: From Electrons to Phase Diagrams"
+#author: The Jupyter Book Community
+logo: potentials_logo.png
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: "off"
+
+only_build_toc_files: true
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Information about where the book exists on the web
+repository:
+  url: https://git.noc.ruhr-uni-bochum.de/potentials-workshop-2022/workshop_preparation
+  path_to_book: book
+  branch: master
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: false
+  use_repository_button: true
