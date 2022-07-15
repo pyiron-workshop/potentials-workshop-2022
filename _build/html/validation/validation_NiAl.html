@@ -1,0 +1,2972 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Workshop: From electrons to phase diagrams &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Day 3: Phase Diagrams" href="../phase_diagram/Intro.html" />
+    <link rel="prev" title="Workshop: From electrons to phase diagrams" href="validation_LiAl.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/potentials_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Workshop: From Electrons to Phase Diagrams</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../introduction/Intro.html">
+   Day 1: Introduction to Pyiron
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/ex_01_introduction_to_pyiron.html">
+     Exercise 1: Introduction to atomistic simulations with pyiron
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/ex_02_creating_structure_databases.html">
+     Exercise 2: Creating and working with structure databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/ex_03_visualizing_training_data.html">
+     Exercise 3: Visualizing Training Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../potentials/Intro.html">
+   Day 2: Fitting Potentials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/01-EAM/IntroductionPotentialFitting.html">
+     Interatomic potentials
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/01-EAM/HandsOnPotenitalFitting.html">
+     Training data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/02-HDNNP/handson.html">
+     Constructing a HDNNP using RuNNer and pyiron
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/03-ACE/pacemaker_example.html">
+     Import and load
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Intro.html">
+   Day 2: Validation
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation_LiAl.html">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../phase_diagram/Intro.html">
+   Day 3: Phase Diagrams
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/tutorial_1.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Phase diagrams and how to calculate them
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/tutorial_2.html">
+     Pure Al
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/exercise_1.html">
+     Task 1: Calculate free energy of FCC Al at 500 K, 10000 bar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/exercise_2.html">
+     Calculate the melting temperature of the B32 structure
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://git.noc.ruhr-uni-bochum.de/potentials-workshop-2022/workshop_preparation"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/validation/validation_NiAl.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <strong>
+    Workshop: From electrons to phase diagrams
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#day-2-validation-of-the-potentials-draft">
+   Day 2: Validation of the potentials (draft)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-the-fitted-potentials-for-li-al-from-prevoius-excercise">
+     Import the fitted potentials for Li-Al ( from prevoius excercise)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generate-list-of-potentials-after-fitting">
+     Generate list of potentials (after fitting)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iterate-over-all-potentials-and-all-possible-phases">
+     Iterate over all potentials and all possible phases
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ground-state-e-v-curves">
+       Ground state: E-V curves
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#elastic-constants-and-phonons">
+     Elastic constants and Phonons
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visualization-of-the-results">
+       Visualization of the results
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Workshop: From electrons to phase diagrams</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <strong>
+    Workshop: From electrons to phase diagrams
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#day-2-validation-of-the-potentials-draft">
+   Day 2: Validation of the potentials (draft)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-the-fitted-potentials-for-li-al-from-prevoius-excercise">
+     Import the fitted potentials for Li-Al ( from prevoius excercise)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generate-list-of-potentials-after-fitting">
+     Generate list of potentials (after fitting)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iterate-over-all-potentials-and-all-possible-phases">
+     Iterate over all potentials and all possible phases
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ground-state-e-v-curves">
+       Ground state: E-V curves
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#elastic-constants-and-phonons">
+     Elastic constants and Phonons
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visualization-of-the-results">
+       Visualization of the results
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="workshop-from-electrons-to-phase-diagrams">
+<h1><strong>Workshop: From electrons to phase diagrams</strong><a class="headerlink" href="#workshop-from-electrons-to-phase-diagrams" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="day-2-validation-of-the-potentials-draft">
+<h1>Day 2: Validation of the potentials (draft)<a class="headerlink" href="#day-2-validation-of-the-potentials-draft" title="Permalink to this headline">#</a></h1>
+<section id="import-the-fitted-potentials-for-li-al-from-prevoius-excercise">
+<h2>Import the fitted potentials for Li-Al ( from prevoius excercise)<a class="headerlink" href="#import-the-fitted-potentials-for-li-al-from-prevoius-excercise" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_start</span> <span class="o">=</span>  <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+
+<span class="n">time_start</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.426196225
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyiron_atomistics</span> <span class="kn">import</span> <span class="n">Project</span>
+<span class="kn">import</span> <span class="nn">pyiron_gpl</span>
+<span class="kn">from</span> <span class="nn">ase.lattice.compounds</span> <span class="kn">import</span> <span class="n">B2</span>
+<span class="kn">from</span> <span class="nn">pyiron_atomistics</span> <span class="kn">import</span> <span class="n">ase_to_pyiron</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from structdbrest import StructDBLightRester</span>
+<span class="c1"># rest = StructDBLightRester(token=&quot;workshop2021&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Rectangle</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span><span class="p">,</span> <span class="n">PowerNorm</span>
+
+<span class="n">linewidth</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">axis_width</span> <span class="o">=</span> <span class="n">linewidth</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="c1"># Figure parameters</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.titlesize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">38</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.subplot.wspace&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.6</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.subplot.hspace&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.6</span>
+
+<span class="c1"># Line parameters</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">linewidth</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.markeredgewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">linewidth</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.markersize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">linewidth</span>
+
+<span class="c1"># Font parameters</span>
+<span class="c1">#mpl.rcParams[&#39;font.family&#39;] = &#39;Times New Roman&#39;</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Times New Roman&#39;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="c1"># Latex params</span>
+<span class="c1">#mpl.rcParams[&#39;text.usetex&#39;] = True</span>
+
+<span class="c1"># Axes parameters</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">axis_width</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.titlesize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="c1"># Tick parameters</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;xtick.top&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;xtick.major.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">linewidth</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;xtick.minor.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">linewidth</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;xtick.major.width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">axis_width</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;xtick.labelsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;xtick.direction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;in&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;ytick.right&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;ytick.major.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">linewidth</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;ytick.minor.size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">linewidth</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;ytick.major.width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">axis_width</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;ytick.labelsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;ytick.direction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;in&quot;</span>
+
+<span class="c1"># Grid parameters</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;grid.linewidth&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">axis_width</span>       <span class="c1">## in points</span>
+
+<span class="c1"># Legend parameters</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;legend.framealpha&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;legend.edgecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;legend.fancybox&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;legend.fontsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="c1"># Mathtext parameters parameters</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;mathtext.fontset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;stix&quot;</span>
+
+<span class="c1">#del mpl.font_manager.weight_dict[&#39;roman&#39;]</span>
+<span class="c1">#mpl.font_manager._rebuild()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s2">&quot;validation_test&quot;</span><span class="p">)</span>
+<span class="c1">####pr.remove_jobs(silently=True, recursive=True)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##########! rm -rf validation_test</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generate-list-of-potentials-after-fitting">
+<h2>Generate list of potentials (after fitting)<a class="headerlink" href="#generate-list-of-potentials-after-fitting" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Lammps</span><span class="p">(</span><span class="s2">&quot;dummy&quot;</span><span class="p">)</span>
+<span class="n">dummy</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_ase_bulk</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dummy</span><span class="o">.</span><span class="n">structure</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Ni&quot;</span>
+<span class="n">potential_list</span> <span class="o">=</span> <span class="n">dummy</span><span class="o">.</span><span class="n">list_potentials</span><span class="p">()[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">potential_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1995--Angelo-J-E--Ni-Al-H--LAMMPS--ipr1&#39;,
+ &#39;2002--Mishin-Y--Ni-Al--LAMMPS--ipr1&#39;,
+ &#39;2004--Mishin-Y--Ni-Al--LAMMPS--ipr1&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iterate-over-all-potentials-and-all-possible-phases">
+<h2>Iterate over all potentials and all possible phases<a class="headerlink" href="#iterate-over-all-potentials-and-all-possible-phases" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">struct_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Al&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Al&quot;</span><span class="p">][</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;fcc&quot;</span><span class="p">,</span> <span class="s2">&quot;bcc&quot;</span><span class="p">,</span> <span class="s2">&quot;sc&quot;</span><span class="p">]</span>
+<span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Al&quot;</span><span class="p">][</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.04</span>
+
+<span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Ni&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Ni&quot;</span><span class="p">][</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;fcc&quot;</span><span class="p">,</span> <span class="s2">&quot;bcc&quot;</span><span class="p">,</span> <span class="s2">&quot;sc&quot;</span><span class="p">]</span>
+<span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Ni&quot;</span><span class="p">][</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.5</span>
+
+
+<span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;NiAl&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;NiAl&quot;</span><span class="p">][</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;B2&quot;</span><span class="p">]</span>
+<span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;NiAl&quot;</span><span class="p">][</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.7</span>
+
+
+
+<span class="n">struct_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Al&#39;: {&#39;s_murn&#39;: [&#39;fcc&#39;, &#39;bcc&#39;, &#39;sc&#39;], &#39;a&#39;: 4.04},
+ &#39;Ni&#39;: {&#39;s_murn&#39;: [&#39;fcc&#39;, &#39;bcc&#39;, &#39;sc&#39;], &#39;a&#39;: 3.5},
+ &#39;NiAl&#39;: {&#39;s_murn&#39;: [&#39;B2&#39;], &#39;a&#39;: 3.7}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_project_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="ground-state-e-v-curves">
+<h3>Ground state: E-V curves<a class="headerlink" href="#ground-state-e-v-curves" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pot</span> <span class="ow">in</span> <span class="n">potential_list</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">pr</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">clean_project_name</span><span class="p">(</span><span class="n">pot</span><span class="p">))</span> <span class="k">as</span> <span class="n">pr_pot</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">compound</span><span class="p">,</span> <span class="n">compound_dict</span> <span class="ow">in</span> <span class="n">struct_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">crys_structure</span> <span class="ow">in</span> <span class="n">compound_dict</span><span class="p">[</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]:</span>
+                
+                <span class="c1"># Relax structure</span>
+                <span class="k">if</span> <span class="n">crys_structure</span> <span class="o">==</span> <span class="s2">&quot;B2&quot;</span><span class="p">:</span>
+                    <span class="n">basis</span> <span class="o">=</span> <span class="n">ase_to_pyiron</span><span class="p">(</span><span class="n">B2</span><span class="p">([</span><span class="s2">&quot;Ni&quot;</span><span class="p">,</span> <span class="s2">&quot;Al&quot;</span><span class="p">],</span> <span class="n">latticeconstant</span><span class="o">=</span><span class="n">compound_dict</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">basis</span> <span class="o">=</span> <span class="n">pr_pot</span><span class="o">.</span><span class="n">create_ase_bulk</span><span class="p">(</span><span class="n">compound</span><span class="p">,</span> <span class="n">crys_structure</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">compound_dict</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span>
+                <span class="n">job_relax</span> <span class="o">=</span> <span class="n">pr_pot</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">pr_pot</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">Lammps</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">compound</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">crys_structure</span><span class="si">}</span><span class="s2">_relax&quot;</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+                <span class="n">job_relax</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">basis</span>
+                <span class="n">job_relax</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">pot</span>
+                <span class="n">job_relax</span><span class="o">.</span><span class="n">calc_minimize</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">job_relax</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+                
+                <span class="c1"># Murnaghan</span>
+                <span class="n">job_ref</span> <span class="o">=</span> <span class="n">pr_pot</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">pr_pot</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">Lammps</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;ref_job_</span><span class="si">{</span><span class="n">compound</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">crys_structure</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">job_ref</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">job_relax</span><span class="o">.</span><span class="n">get_structure</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">job_ref</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">pot</span>
+                <span class="n">job_ref</span><span class="o">.</span><span class="n">calc_minimize</span><span class="p">()</span>
+                <span class="n">murn_job</span> <span class="o">=</span> <span class="n">job_ref</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">pr_pot</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">Murnaghan</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;murn_job_</span><span class="si">{</span><span class="n">compound</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">crys_structure</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">murn_job</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;vol_range&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span>
+                <span class="n">murn_job</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al_fcc_relax was saved and received the ID: 16677135
+The job murn_job_Al_fcc was saved and received the ID: 16677136
+The job murn_job_Al_fcc_0_9 was saved and received the ID: 16677137
+The job murn_job_Al_fcc_0_92 was saved and received the ID: 16677138
+The job murn_job_Al_fcc_0_94 was saved and received the ID: 16677139
+The job murn_job_Al_fcc_0_96 was saved and received the ID: 16677140
+The job murn_job_Al_fcc_0_98 was saved and received the ID: 16677141
+The job murn_job_Al_fcc_1_0 was saved and received the ID: 16677142
+The job murn_job_Al_fcc_1_02 was saved and received the ID: 16677143
+The job murn_job_Al_fcc_1_04 was saved and received the ID: 16677144
+The job murn_job_Al_fcc_1_06 was saved and received the ID: 16677145
+The job murn_job_Al_fcc_1_08 was saved and received the ID: 16677146
+The job murn_job_Al_fcc_1_1 was saved and received the ID: 16677147
+The job Al_bcc_relax was saved and received the ID: 16677148
+The job murn_job_Al_bcc was saved and received the ID: 16677149
+The job murn_job_Al_bcc_0_9 was saved and received the ID: 16677150
+The job murn_job_Al_bcc_0_92 was saved and received the ID: 16677151
+The job murn_job_Al_bcc_0_94 was saved and received the ID: 16677152
+The job murn_job_Al_bcc_0_96 was saved and received the ID: 16677153
+The job murn_job_Al_bcc_0_98 was saved and received the ID: 16677154
+The job murn_job_Al_bcc_1_0 was saved and received the ID: 16677155
+The job murn_job_Al_bcc_1_02 was saved and received the ID: 16677156
+The job murn_job_Al_bcc_1_04 was saved and received the ID: 16677157
+The job murn_job_Al_bcc_1_06 was saved and received the ID: 16677158
+The job murn_job_Al_bcc_1_08 was saved and received the ID: 16677159
+The job murn_job_Al_bcc_1_1 was saved and received the ID: 16677160
+The job Al_sc_relax was saved and received the ID: 16677161
+The job murn_job_Al_sc was saved and received the ID: 16677162
+The job murn_job_Al_sc_0_9 was saved and received the ID: 16677163
+The job murn_job_Al_sc_0_92 was saved and received the ID: 16677164
+The job murn_job_Al_sc_0_94 was saved and received the ID: 16677165
+The job murn_job_Al_sc_0_96 was saved and received the ID: 16677166
+The job murn_job_Al_sc_0_98 was saved and received the ID: 16677167
+The job murn_job_Al_sc_1_0 was saved and received the ID: 16677168
+The job murn_job_Al_sc_1_02 was saved and received the ID: 16677169
+The job murn_job_Al_sc_1_04 was saved and received the ID: 16677170
+The job murn_job_Al_sc_1_06 was saved and received the ID: 16677171
+The job murn_job_Al_sc_1_08 was saved and received the ID: 16677172
+The job murn_job_Al_sc_1_1 was saved and received the ID: 16677173
+The job Ni_fcc_relax was saved and received the ID: 16677174
+The job murn_job_Ni_fcc was saved and received the ID: 16677175
+The job murn_job_Ni_fcc_0_9 was saved and received the ID: 16677176
+The job murn_job_Ni_fcc_0_92 was saved and received the ID: 16677177
+The job murn_job_Ni_fcc_0_94 was saved and received the ID: 16677178
+The job murn_job_Ni_fcc_0_96 was saved and received the ID: 16677179
+The job murn_job_Ni_fcc_0_98 was saved and received the ID: 16677180
+The job murn_job_Ni_fcc_1_0 was saved and received the ID: 16677181
+The job murn_job_Ni_fcc_1_02 was saved and received the ID: 16677182
+The job murn_job_Ni_fcc_1_04 was saved and received the ID: 16677183
+The job murn_job_Ni_fcc_1_06 was saved and received the ID: 16677184
+The job murn_job_Ni_fcc_1_08 was saved and received the ID: 16677185
+The job murn_job_Ni_fcc_1_1 was saved and received the ID: 16677186
+The job Ni_bcc_relax was saved and received the ID: 16677187
+The job murn_job_Ni_bcc was saved and received the ID: 16677188
+The job murn_job_Ni_bcc_0_9 was saved and received the ID: 16677189
+The job murn_job_Ni_bcc_0_92 was saved and received the ID: 16677190
+The job murn_job_Ni_bcc_0_94 was saved and received the ID: 16677191
+The job murn_job_Ni_bcc_0_96 was saved and received the ID: 16677192
+The job murn_job_Ni_bcc_0_98 was saved and received the ID: 16677193
+The job murn_job_Ni_bcc_1_0 was saved and received the ID: 16677194
+The job murn_job_Ni_bcc_1_02 was saved and received the ID: 16677195
+The job murn_job_Ni_bcc_1_04 was saved and received the ID: 16677196
+The job murn_job_Ni_bcc_1_06 was saved and received the ID: 16677197
+The job murn_job_Ni_bcc_1_08 was saved and received the ID: 16677198
+The job murn_job_Ni_bcc_1_1 was saved and received the ID: 16677200
+The job Ni_sc_relax was saved and received the ID: 16677201
+The job murn_job_Ni_sc was saved and received the ID: 16677202
+The job murn_job_Ni_sc_0_9 was saved and received the ID: 16677203
+The job murn_job_Ni_sc_0_92 was saved and received the ID: 16677204
+The job murn_job_Ni_sc_0_94 was saved and received the ID: 16677205
+The job murn_job_Ni_sc_0_96 was saved and received the ID: 16677207
+The job murn_job_Ni_sc_0_98 was saved and received the ID: 16677208
+The job murn_job_Ni_sc_1_0 was saved and received the ID: 16677209
+The job murn_job_Ni_sc_1_02 was saved and received the ID: 16677210
+The job murn_job_Ni_sc_1_04 was saved and received the ID: 16677211
+The job murn_job_Ni_sc_1_06 was saved and received the ID: 16677212
+The job murn_job_Ni_sc_1_08 was saved and received the ID: 16677213
+The job murn_job_Ni_sc_1_1 was saved and received the ID: 16677214
+The job NiAl_B2_relax was saved and received the ID: 16677215
+The job murn_job_NiAl_B2 was saved and received the ID: 16677216
+The job murn_job_NiAl_B2_0_9 was saved and received the ID: 16677217
+The job murn_job_NiAl_B2_0_92 was saved and received the ID: 16677218
+The job murn_job_NiAl_B2_0_94 was saved and received the ID: 16677219
+The job murn_job_NiAl_B2_0_96 was saved and received the ID: 16677220
+The job murn_job_NiAl_B2_0_98 was saved and received the ID: 16677221
+The job murn_job_NiAl_B2_1_0 was saved and received the ID: 16677222
+The job murn_job_NiAl_B2_1_02 was saved and received the ID: 16677223
+The job murn_job_NiAl_B2_1_04 was saved and received the ID: 16677224
+The job murn_job_NiAl_B2_1_06 was saved and received the ID: 16677225
+The job murn_job_NiAl_B2_1_08 was saved and received the ID: 16677226
+The job murn_job_NiAl_B2_1_1 was saved and received the ID: 16677227
+The job Al_fcc_relax was saved and received the ID: 16677228
+The job murn_job_Al_fcc was saved and received the ID: 16677229
+The job murn_job_Al_fcc_0_9 was saved and received the ID: 16677230
+The job murn_job_Al_fcc_0_92 was saved and received the ID: 16677231
+The job murn_job_Al_fcc_0_94 was saved and received the ID: 16677232
+The job murn_job_Al_fcc_0_96 was saved and received the ID: 16677233
+The job murn_job_Al_fcc_0_98 was saved and received the ID: 16677234
+The job murn_job_Al_fcc_1_0 was saved and received the ID: 16677235
+The job murn_job_Al_fcc_1_02 was saved and received the ID: 16677236
+The job murn_job_Al_fcc_1_04 was saved and received the ID: 16677237
+The job murn_job_Al_fcc_1_06 was saved and received the ID: 16677238
+The job murn_job_Al_fcc_1_08 was saved and received the ID: 16677239
+The job murn_job_Al_fcc_1_1 was saved and received the ID: 16677240
+The job Al_bcc_relax was saved and received the ID: 16677241
+The job murn_job_Al_bcc was saved and received the ID: 16677242
+The job murn_job_Al_bcc_0_9 was saved and received the ID: 16677243
+The job murn_job_Al_bcc_0_92 was saved and received the ID: 16677244
+The job murn_job_Al_bcc_0_94 was saved and received the ID: 16677245
+The job murn_job_Al_bcc_0_96 was saved and received the ID: 16677246
+The job murn_job_Al_bcc_0_98 was saved and received the ID: 16677247
+The job murn_job_Al_bcc_1_0 was saved and received the ID: 16677248
+The job murn_job_Al_bcc_1_02 was saved and received the ID: 16677249
+The job murn_job_Al_bcc_1_04 was saved and received the ID: 16677250
+The job murn_job_Al_bcc_1_06 was saved and received the ID: 16677251
+The job murn_job_Al_bcc_1_08 was saved and received the ID: 16677252
+The job murn_job_Al_bcc_1_1 was saved and received the ID: 16677253
+The job Al_sc_relax was saved and received the ID: 16677254
+The job murn_job_Al_sc was saved and received the ID: 16677255
+The job murn_job_Al_sc_0_9 was saved and received the ID: 16677256
+The job murn_job_Al_sc_0_92 was saved and received the ID: 16677257
+The job murn_job_Al_sc_0_94 was saved and received the ID: 16677258
+The job murn_job_Al_sc_0_96 was saved and received the ID: 16677259
+The job murn_job_Al_sc_0_98 was saved and received the ID: 16677260
+The job murn_job_Al_sc_1_0 was saved and received the ID: 16677261
+The job murn_job_Al_sc_1_02 was saved and received the ID: 16677262
+The job murn_job_Al_sc_1_04 was saved and received the ID: 16677263
+The job murn_job_Al_sc_1_06 was saved and received the ID: 16677264
+The job murn_job_Al_sc_1_08 was saved and received the ID: 16677265
+The job murn_job_Al_sc_1_1 was saved and received the ID: 16677266
+The job Ni_fcc_relax was saved and received the ID: 16677267
+The job murn_job_Ni_fcc was saved and received the ID: 16677268
+The job murn_job_Ni_fcc_0_9 was saved and received the ID: 16677269
+The job murn_job_Ni_fcc_0_92 was saved and received the ID: 16677270
+The job murn_job_Ni_fcc_0_94 was saved and received the ID: 16677271
+The job murn_job_Ni_fcc_0_96 was saved and received the ID: 16677272
+The job murn_job_Ni_fcc_0_98 was saved and received the ID: 16677273
+The job murn_job_Ni_fcc_1_0 was saved and received the ID: 16677274
+The job murn_job_Ni_fcc_1_02 was saved and received the ID: 16677275
+The job murn_job_Ni_fcc_1_04 was saved and received the ID: 16677276
+The job murn_job_Ni_fcc_1_06 was saved and received the ID: 16677277
+The job murn_job_Ni_fcc_1_08 was saved and received the ID: 16677278
+The job murn_job_Ni_fcc_1_1 was saved and received the ID: 16677279
+The job Ni_bcc_relax was saved and received the ID: 16677280
+The job murn_job_Ni_bcc was saved and received the ID: 16677281
+The job murn_job_Ni_bcc_0_9 was saved and received the ID: 16677282
+The job murn_job_Ni_bcc_0_92 was saved and received the ID: 16677284
+The job murn_job_Ni_bcc_0_94 was saved and received the ID: 16677285
+The job murn_job_Ni_bcc_0_96 was saved and received the ID: 16677287
+The job murn_job_Ni_bcc_0_98 was saved and received the ID: 16677288
+The job murn_job_Ni_bcc_1_0 was saved and received the ID: 16677289
+The job murn_job_Ni_bcc_1_02 was saved and received the ID: 16677290
+The job murn_job_Ni_bcc_1_04 was saved and received the ID: 16677291
+The job murn_job_Ni_bcc_1_06 was saved and received the ID: 16677292
+The job murn_job_Ni_bcc_1_08 was saved and received the ID: 16677293
+The job murn_job_Ni_bcc_1_1 was saved and received the ID: 16677294
+The job Ni_sc_relax was saved and received the ID: 16677295
+The job murn_job_Ni_sc was saved and received the ID: 16677296
+The job murn_job_Ni_sc_0_9 was saved and received the ID: 16677297
+The job murn_job_Ni_sc_0_92 was saved and received the ID: 16677298
+The job murn_job_Ni_sc_0_94 was saved and received the ID: 16677299
+The job murn_job_Ni_sc_0_96 was saved and received the ID: 16677300
+The job murn_job_Ni_sc_0_98 was saved and received the ID: 16677301
+The job murn_job_Ni_sc_1_0 was saved and received the ID: 16677302
+The job murn_job_Ni_sc_1_02 was saved and received the ID: 16677303
+The job murn_job_Ni_sc_1_04 was saved and received the ID: 16677304
+The job murn_job_Ni_sc_1_06 was saved and received the ID: 16677305
+The job murn_job_Ni_sc_1_08 was saved and received the ID: 16677306
+The job murn_job_Ni_sc_1_1 was saved and received the ID: 16677307
+The job NiAl_B2_relax was saved and received the ID: 16677308
+The job murn_job_NiAl_B2 was saved and received the ID: 16677309
+The job murn_job_NiAl_B2_0_9 was saved and received the ID: 16677310
+The job murn_job_NiAl_B2_0_92 was saved and received the ID: 16677311
+The job murn_job_NiAl_B2_0_94 was saved and received the ID: 16677312
+The job murn_job_NiAl_B2_0_96 was saved and received the ID: 16677313
+The job murn_job_NiAl_B2_0_98 was saved and received the ID: 16677314
+The job murn_job_NiAl_B2_1_0 was saved and received the ID: 16677315
+The job murn_job_NiAl_B2_1_02 was saved and received the ID: 16677316
+The job murn_job_NiAl_B2_1_04 was saved and received the ID: 16677317
+The job murn_job_NiAl_B2_1_06 was saved and received the ID: 16677318
+The job murn_job_NiAl_B2_1_08 was saved and received the ID: 16677319
+The job murn_job_NiAl_B2_1_1 was saved and received the ID: 16677320
+The job Al_fcc_relax was saved and received the ID: 16677321
+The job murn_job_Al_fcc was saved and received the ID: 16677322
+The job murn_job_Al_fcc_0_9 was saved and received the ID: 16677323
+The job murn_job_Al_fcc_0_92 was saved and received the ID: 16677324
+The job murn_job_Al_fcc_0_94 was saved and received the ID: 16677325
+The job murn_job_Al_fcc_0_96 was saved and received the ID: 16677326
+The job murn_job_Al_fcc_0_98 was saved and received the ID: 16677327
+The job murn_job_Al_fcc_1_0 was saved and received the ID: 16677328
+The job murn_job_Al_fcc_1_02 was saved and received the ID: 16677329
+The job murn_job_Al_fcc_1_04 was saved and received the ID: 16677330
+The job murn_job_Al_fcc_1_06 was saved and received the ID: 16677331
+The job murn_job_Al_fcc_1_08 was saved and received the ID: 16677332
+The job murn_job_Al_fcc_1_1 was saved and received the ID: 16677333
+The job Al_bcc_relax was saved and received the ID: 16677334
+The job murn_job_Al_bcc was saved and received the ID: 16677335
+The job murn_job_Al_bcc_0_9 was saved and received the ID: 16677336
+The job murn_job_Al_bcc_0_92 was saved and received the ID: 16677337
+The job murn_job_Al_bcc_0_94 was saved and received the ID: 16677338
+The job murn_job_Al_bcc_0_96 was saved and received the ID: 16677339
+The job murn_job_Al_bcc_0_98 was saved and received the ID: 16677340
+The job murn_job_Al_bcc_1_0 was saved and received the ID: 16677341
+The job murn_job_Al_bcc_1_02 was saved and received the ID: 16677342
+The job murn_job_Al_bcc_1_04 was saved and received the ID: 16677343
+The job murn_job_Al_bcc_1_06 was saved and received the ID: 16677344
+The job murn_job_Al_bcc_1_08 was saved and received the ID: 16677345
+The job murn_job_Al_bcc_1_1 was saved and received the ID: 16677346
+The job Al_sc_relax was saved and received the ID: 16677347
+The job murn_job_Al_sc was saved and received the ID: 16677348
+The job murn_job_Al_sc_0_9 was saved and received the ID: 16677349
+The job murn_job_Al_sc_0_92 was saved and received the ID: 16677350
+The job murn_job_Al_sc_0_94 was saved and received the ID: 16677351
+The job murn_job_Al_sc_0_96 was saved and received the ID: 16677352
+The job murn_job_Al_sc_0_98 was saved and received the ID: 16677353
+The job murn_job_Al_sc_1_0 was saved and received the ID: 16677354
+The job murn_job_Al_sc_1_02 was saved and received the ID: 16677355
+The job murn_job_Al_sc_1_04 was saved and received the ID: 16677356
+The job murn_job_Al_sc_1_06 was saved and received the ID: 16677357
+The job murn_job_Al_sc_1_08 was saved and received the ID: 16677358
+The job murn_job_Al_sc_1_1 was saved and received the ID: 16677359
+The job Ni_fcc_relax was saved and received the ID: 16677360
+The job murn_job_Ni_fcc was saved and received the ID: 16677361
+The job murn_job_Ni_fcc_0_9 was saved and received the ID: 16677362
+The job murn_job_Ni_fcc_0_92 was saved and received the ID: 16677363
+The job murn_job_Ni_fcc_0_94 was saved and received the ID: 16677364
+The job murn_job_Ni_fcc_0_96 was saved and received the ID: 16677365
+The job murn_job_Ni_fcc_0_98 was saved and received the ID: 16677366
+The job murn_job_Ni_fcc_1_0 was saved and received the ID: 16677367
+The job murn_job_Ni_fcc_1_02 was saved and received the ID: 16677368
+The job murn_job_Ni_fcc_1_04 was saved and received the ID: 16677369
+The job murn_job_Ni_fcc_1_06 was saved and received the ID: 16677370
+The job murn_job_Ni_fcc_1_08 was saved and received the ID: 16677371
+The job murn_job_Ni_fcc_1_1 was saved and received the ID: 16677372
+The job Ni_bcc_relax was saved and received the ID: 16677373
+The job murn_job_Ni_bcc was saved and received the ID: 16677374
+The job murn_job_Ni_bcc_0_9 was saved and received the ID: 16677375
+The job murn_job_Ni_bcc_0_92 was saved and received the ID: 16677376
+The job murn_job_Ni_bcc_0_94 was saved and received the ID: 16677377
+The job murn_job_Ni_bcc_0_96 was saved and received the ID: 16677378
+The job murn_job_Ni_bcc_0_98 was saved and received the ID: 16677379
+The job murn_job_Ni_bcc_1_0 was saved and received the ID: 16677380
+The job murn_job_Ni_bcc_1_02 was saved and received the ID: 16677381
+The job murn_job_Ni_bcc_1_04 was saved and received the ID: 16677382
+The job murn_job_Ni_bcc_1_06 was saved and received the ID: 16677383
+The job murn_job_Ni_bcc_1_08 was saved and received the ID: 16677384
+The job murn_job_Ni_bcc_1_1 was saved and received the ID: 16677385
+The job Ni_sc_relax was saved and received the ID: 16677386
+The job murn_job_Ni_sc was saved and received the ID: 16677387
+The job murn_job_Ni_sc_0_9 was saved and received the ID: 16677388
+The job murn_job_Ni_sc_0_92 was saved and received the ID: 16677389
+The job murn_job_Ni_sc_0_94 was saved and received the ID: 16677390
+The job murn_job_Ni_sc_0_96 was saved and received the ID: 16677391
+The job murn_job_Ni_sc_0_98 was saved and received the ID: 16677392
+The job murn_job_Ni_sc_1_0 was saved and received the ID: 16677393
+The job murn_job_Ni_sc_1_02 was saved and received the ID: 16677394
+The job murn_job_Ni_sc_1_04 was saved and received the ID: 16677395
+The job murn_job_Ni_sc_1_06 was saved and received the ID: 16677396
+The job murn_job_Ni_sc_1_08 was saved and received the ID: 16677397
+The job murn_job_Ni_sc_1_1 was saved and received the ID: 16677398
+The job NiAl_B2_relax was saved and received the ID: 16677399
+The job murn_job_NiAl_B2 was saved and received the ID: 16677401
+The job murn_job_NiAl_B2_0_9 was saved and received the ID: 16677402
+The job murn_job_NiAl_B2_0_92 was saved and received the ID: 16677404
+The job murn_job_NiAl_B2_0_94 was saved and received the ID: 16677405
+The job murn_job_NiAl_B2_0_96 was saved and received the ID: 16677406
+The job murn_job_NiAl_B2_0_98 was saved and received the ID: 16677407
+The job murn_job_NiAl_B2_1_0 was saved and received the ID: 16677408
+The job murn_job_NiAl_B2_1_02 was saved and received the ID: 16677409
+The job murn_job_NiAl_B2_1_04 was saved and received the ID: 16677411
+The job murn_job_NiAl_B2_1_06 was saved and received the ID: 16677413
+The job murn_job_NiAl_B2_1_08 was saved and received the ID: 16677414
+The job murn_job_NiAl_B2_1_1 was saved and received the ID: 16677415
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##pr.remove_jobs(recursive=True)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define functions to get data</span>
+
+<span class="c1"># Only work with Murnaghan jobs</span>
+<span class="k">def</span> <span class="nf">get_only_murn</span><span class="p">(</span><span class="n">job_table</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">job_table</span><span class="o">.</span><span class="n">hamilton</span> <span class="o">==</span> <span class="s2">&quot;Murnaghan&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">job_table</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;finished&quot;</span><span class="p">)</span> 
+
+<span class="k">def</span> <span class="nf">get_eq_vol</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;output/equilibrium_volume&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_eq_lp</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;output/structure/cell/cell&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_eq_bm</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;output/equilibrium_bulk_modulus&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_potential</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_eq_energy</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;output/equilibrium_energy&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_n_atoms</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;output/structure/positions&quot;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">get_potential</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_crystal_structure</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="o">.</span><span class="n">job_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_compound</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="o">.</span><span class="n">job_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile data using pyiron tables</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span><span class="s2">&quot;table_murn&quot;</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">table</span><span class="o">.</span><span class="n">convert_to_object</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">table</span><span class="o">.</span><span class="n">db_filter_function</span> <span class="o">=</span> <span class="n">get_only_murn</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;potential&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_potential</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_compound</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;crystal_structure&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_crystal_structure</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_eq_lp</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;eq_vol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_eq_vol</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;eq_bm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_eq_bm</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;eq_energy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_eq_energy</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;n_atoms&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_n_atoms</span>
+<span class="n">table</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">data_murn</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job table_murn was saved and received the ID: 16677416
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "8c9a7c2999ed473ca9237e9dc69af3dd", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "13803a24627045be85eb7b7309aae513", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span><span class="o">.</span><span class="n">job_table</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;finished&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="elastic-constants-and-phonons">
+<h2>Elastic constants and Phonons<a class="headerlink" href="#elastic-constants-and-phonons" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pot</span> <span class="ow">in</span> <span class="n">potential_list</span><span class="p">:</span>
+    <span class="n">group_name</span> <span class="o">=</span> <span class="n">clean_project_name</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span>
+    <span class="n">pr_pot</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="n">group_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data_murn</span><span class="p">[</span><span class="n">data_murn</span><span class="o">.</span><span class="n">potential</span><span class="o">==</span><span class="n">group_name</span><span class="p">]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">job_id</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">job_id</span>
+        
+        <span class="n">job_ref</span> <span class="o">=</span> <span class="n">pr_pot</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">pr_pot</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">Lammps</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;ref_job_</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">compound</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">crystal_structure</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">ref</span> <span class="o">=</span> <span class="n">pr_pot</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">job_id</span><span class="p">)</span>
+        <span class="n">job_ref</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">ref</span><span class="o">.</span><span class="n">structure</span>
+        <span class="n">job_ref</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">pot</span>
+        <span class="n">job_ref</span><span class="o">.</span><span class="n">calc_minimize</span><span class="p">()</span>
+        <span class="n">elastic_job</span> <span class="o">=</span> <span class="n">job_ref</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">pr_pot</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">ElasticMatrixJob</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;elastic_job_</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">compound</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">crystal_structure</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">elastic_job</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;eps_range&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.05</span>
+        <span class="n">elastic_job</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        
+        
+        <span class="n">phonopy_job</span> <span class="o">=</span> <span class="n">job_ref</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">pr_pot</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">PhonopyJob</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;phonopy_job_</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">compound</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">crystal_structure</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">job_ref</span><span class="o">.</span><span class="n">calc_static</span><span class="p">()</span>
+        <span class="n">phonopy_job</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1995--Angelo-J-E--Ni-Al-H--LAMMPS--ipr1
+The job elastic_job_Al_fcc was saved and received the ID: 16677419
+The job s_e_0 was saved and received the ID: 16677420
+The job s_01_e_m0_05000 was saved and received the ID: 16677421
+The job s_01_e_m0_02500 was saved and received the ID: 16677422
+The job s_01_e_0_02500 was saved and received the ID: 16677423
+The job s_01_e_0_05000 was saved and received the ID: 16677424
+The job s_08_e_m0_05000 was saved and received the ID: 16677425
+The job s_08_e_m0_02500 was saved and received the ID: 16677426
+The job s_08_e_0_02500 was saved and received the ID: 16677427
+The job s_08_e_0_05000 was saved and received the ID: 16677428
+The job s_23_e_m0_05000 was saved and received the ID: 16677429
+The job s_23_e_m0_02500 was saved and received the ID: 16677430
+The job s_23_e_0_02500 was saved and received the ID: 16677431
+The job s_23_e_0_05000 was saved and received the ID: 16677432
+The job phonopy_job_Al_fcc was saved and received the ID: 16677433
+The job ref_job_Al_fcc_0 was saved and received the ID: 16677434
+The job elastic_job_Al_bcc was saved and received the ID: 16677435
+The job s_e_0 was saved and received the ID: 16677436
+The job s_01_e_m0_05000 was saved and received the ID: 16677437
+The job s_01_e_m0_02500 was saved and received the ID: 16677438
+The job s_01_e_0_02500 was saved and received the ID: 16677439
+The job s_01_e_0_05000 was saved and received the ID: 16677440
+The job s_08_e_m0_05000 was saved and received the ID: 16677441
+The job s_08_e_m0_02500 was saved and received the ID: 16677442
+The job s_08_e_0_02500 was saved and received the ID: 16677443
+The job s_08_e_0_05000 was saved and received the ID: 16677444
+The job s_23_e_m0_05000 was saved and received the ID: 16677445
+The job s_23_e_m0_02500 was saved and received the ID: 16677446
+The job s_23_e_0_02500 was saved and received the ID: 16677447
+The job s_23_e_0_05000 was saved and received the ID: 16677448
+The job phonopy_job_Al_bcc was saved and received the ID: 16677449
+The job ref_job_Al_bcc_0 was saved and received the ID: 16677450
+The job elastic_job_Al_sc was saved and received the ID: 16677451
+The job s_e_0 was saved and received the ID: 16677452
+The job s_01_e_m0_05000 was saved and received the ID: 16677453
+The job s_01_e_m0_02500 was saved and received the ID: 16677454
+The job s_01_e_0_02500 was saved and received the ID: 16677455
+The job s_01_e_0_05000 was saved and received the ID: 16677456
+The job s_08_e_m0_05000 was saved and received the ID: 16677457
+The job s_08_e_m0_02500 was saved and received the ID: 16677458
+The job s_08_e_0_02500 was saved and received the ID: 16677459
+The job s_08_e_0_05000 was saved and received the ID: 16677460
+The job s_23_e_m0_05000 was saved and received the ID: 16677461
+The job s_23_e_m0_02500 was saved and received the ID: 16677462
+The job s_23_e_0_02500 was saved and received the ID: 16677463
+The job s_23_e_0_05000 was saved and received the ID: 16677464
+The job phonopy_job_Al_sc was saved and received the ID: 16677465
+The job ref_job_Al_sc_0 was saved and received the ID: 16677466
+The job elastic_job_Ni_fcc was saved and received the ID: 16677467
+The job s_e_0 was saved and received the ID: 16677468
+The job s_01_e_m0_05000 was saved and received the ID: 16677469
+The job s_01_e_m0_02500 was saved and received the ID: 16677470
+The job s_01_e_0_02500 was saved and received the ID: 16677471
+The job s_01_e_0_05000 was saved and received the ID: 16677472
+The job s_08_e_m0_05000 was saved and received the ID: 16677473
+The job s_08_e_m0_02500 was saved and received the ID: 16677474
+The job s_08_e_0_02500 was saved and received the ID: 16677475
+The job s_08_e_0_05000 was saved and received the ID: 16677476
+The job s_23_e_m0_05000 was saved and received the ID: 16677477
+The job s_23_e_m0_02500 was saved and received the ID: 16677478
+The job s_23_e_0_02500 was saved and received the ID: 16677479
+The job s_23_e_0_05000 was saved and received the ID: 16677480
+The job phonopy_job_Ni_fcc was saved and received the ID: 16677481
+The job ref_job_Ni_fcc_0 was saved and received the ID: 16677482
+The job elastic_job_Ni_bcc was saved and received the ID: 16677483
+The job s_e_0 was saved and received the ID: 16677484
+The job s_01_e_m0_05000 was saved and received the ID: 16677485
+The job s_01_e_m0_02500 was saved and received the ID: 16677486
+The job s_01_e_0_02500 was saved and received the ID: 16677487
+The job s_01_e_0_05000 was saved and received the ID: 16677488
+The job s_08_e_m0_05000 was saved and received the ID: 16677489
+The job s_08_e_m0_02500 was saved and received the ID: 16677490
+The job s_08_e_0_02500 was saved and received the ID: 16677491
+The job s_08_e_0_05000 was saved and received the ID: 16677492
+The job s_23_e_m0_05000 was saved and received the ID: 16677493
+The job s_23_e_m0_02500 was saved and received the ID: 16677494
+The job s_23_e_0_02500 was saved and received the ID: 16677495
+The job s_23_e_0_05000 was saved and received the ID: 16677496
+The job phonopy_job_Ni_bcc was saved and received the ID: 16677497
+The job ref_job_Ni_bcc_0 was saved and received the ID: 16677498
+The job elastic_job_Ni_sc was saved and received the ID: 16677499
+The job s_e_0 was saved and received the ID: 16677500
+The job s_01_e_m0_05000 was saved and received the ID: 16677501
+The job s_01_e_m0_02500 was saved and received the ID: 16677502
+The job s_01_e_0_02500 was saved and received the ID: 16677503
+The job s_01_e_0_05000 was saved and received the ID: 16677504
+The job s_08_e_m0_05000 was saved and received the ID: 16677505
+The job s_08_e_m0_02500 was saved and received the ID: 16677506
+The job s_08_e_0_02500 was saved and received the ID: 16677507
+The job s_08_e_0_05000 was saved and received the ID: 16677508
+The job s_23_e_m0_05000 was saved and received the ID: 16677509
+The job s_23_e_m0_02500 was saved and received the ID: 16677510
+The job s_23_e_0_02500 was saved and received the ID: 16677511
+The job s_23_e_0_05000 was saved and received the ID: 16677512
+The job phonopy_job_Ni_sc was saved and received the ID: 16677513
+The job ref_job_Ni_sc_0 was saved and received the ID: 16677514
+The job elastic_job_NiAl_B2 was saved and received the ID: 16677515
+The job s_e_0 was saved and received the ID: 16677516
+The job s_01_e_m0_05000 was saved and received the ID: 16677517
+The job s_01_e_m0_02500 was saved and received the ID: 16677518
+The job s_01_e_0_02500 was saved and received the ID: 16677519
+The job s_01_e_0_05000 was saved and received the ID: 16677520
+The job s_08_e_m0_05000 was saved and received the ID: 16677521
+The job s_08_e_m0_02500 was saved and received the ID: 16677522
+The job s_08_e_0_02500 was saved and received the ID: 16677523
+The job s_08_e_0_05000 was saved and received the ID: 16677524
+The job s_23_e_m0_05000 was saved and received the ID: 16677525
+The job s_23_e_m0_02500 was saved and received the ID: 16677526
+The job s_23_e_0_02500 was saved and received the ID: 16677527
+The job s_23_e_0_05000 was saved and received the ID: 16677528
+The job phonopy_job_NiAl_B2 was saved and received the ID: 16677529
+The job ref_job_NiAl_B2_0 was saved and received the ID: 16677530
+The job ref_job_NiAl_B2_1 was saved and received the ID: 16677531
+2002--Mishin-Y--Ni-Al--LAMMPS--ipr1
+The job elastic_job_Al_fcc was saved and received the ID: 16677532
+The job s_e_0 was saved and received the ID: 16677533
+The job s_01_e_m0_05000 was saved and received the ID: 16677534
+The job s_01_e_m0_02500 was saved and received the ID: 16677535
+The job s_01_e_0_02500 was saved and received the ID: 16677536
+The job s_01_e_0_05000 was saved and received the ID: 16677537
+The job s_08_e_m0_05000 was saved and received the ID: 16677538
+The job s_08_e_m0_02500 was saved and received the ID: 16677539
+The job s_08_e_0_02500 was saved and received the ID: 16677540
+The job s_08_e_0_05000 was saved and received the ID: 16677541
+The job s_23_e_m0_05000 was saved and received the ID: 16677542
+The job s_23_e_m0_02500 was saved and received the ID: 16677543
+The job s_23_e_0_02500 was saved and received the ID: 16677544
+The job s_23_e_0_05000 was saved and received the ID: 16677545
+The job phonopy_job_Al_fcc was saved and received the ID: 16677546
+The job ref_job_Al_fcc_0 was saved and received the ID: 16677547
+The job elastic_job_Al_bcc was saved and received the ID: 16677548
+The job s_e_0 was saved and received the ID: 16677549
+The job s_01_e_m0_05000 was saved and received the ID: 16677550
+The job s_01_e_m0_02500 was saved and received the ID: 16677551
+The job s_01_e_0_02500 was saved and received the ID: 16677552
+The job s_01_e_0_05000 was saved and received the ID: 16677553
+The job s_08_e_m0_05000 was saved and received the ID: 16677554
+The job s_08_e_m0_02500 was saved and received the ID: 16677555
+The job s_08_e_0_02500 was saved and received the ID: 16677556
+The job s_08_e_0_05000 was saved and received the ID: 16677557
+The job s_23_e_m0_05000 was saved and received the ID: 16677558
+The job s_23_e_m0_02500 was saved and received the ID: 16677559
+The job s_23_e_0_02500 was saved and received the ID: 16677560
+The job s_23_e_0_05000 was saved and received the ID: 16677561
+The job phonopy_job_Al_bcc was saved and received the ID: 16677562
+The job ref_job_Al_bcc_0 was saved and received the ID: 16677563
+The job elastic_job_Al_sc was saved and received the ID: 16677564
+The job s_e_0 was saved and received the ID: 16677565
+The job s_01_e_m0_05000 was saved and received the ID: 16677566
+The job s_01_e_m0_02500 was saved and received the ID: 16677567
+The job s_01_e_0_02500 was saved and received the ID: 16677568
+The job s_01_e_0_05000 was saved and received the ID: 16677569
+The job s_08_e_m0_05000 was saved and received the ID: 16677570
+The job s_08_e_m0_02500 was saved and received the ID: 16677571
+The job s_08_e_0_02500 was saved and received the ID: 16677572
+The job s_08_e_0_05000 was saved and received the ID: 16677573
+The job s_23_e_m0_05000 was saved and received the ID: 16677574
+The job s_23_e_m0_02500 was saved and received the ID: 16677575
+The job s_23_e_0_02500 was saved and received the ID: 16677576
+The job s_23_e_0_05000 was saved and received the ID: 16677577
+The job phonopy_job_Al_sc was saved and received the ID: 16677578
+The job ref_job_Al_sc_0 was saved and received the ID: 16677579
+The job elastic_job_Ni_fcc was saved and received the ID: 16677580
+The job s_e_0 was saved and received the ID: 16677581
+The job s_01_e_m0_05000 was saved and received the ID: 16677582
+The job s_01_e_m0_02500 was saved and received the ID: 16677583
+The job s_01_e_0_02500 was saved and received the ID: 16677584
+The job s_01_e_0_05000 was saved and received the ID: 16677585
+The job s_08_e_m0_05000 was saved and received the ID: 16677586
+The job s_08_e_m0_02500 was saved and received the ID: 16677587
+The job s_08_e_0_02500 was saved and received the ID: 16677588
+The job s_08_e_0_05000 was saved and received the ID: 16677589
+The job s_23_e_m0_05000 was saved and received the ID: 16677590
+The job s_23_e_m0_02500 was saved and received the ID: 16677591
+The job s_23_e_0_02500 was saved and received the ID: 16677592
+The job s_23_e_0_05000 was saved and received the ID: 16677593
+The job phonopy_job_Ni_fcc was saved and received the ID: 16677594
+The job ref_job_Ni_fcc_0 was saved and received the ID: 16677595
+The job elastic_job_Ni_bcc was saved and received the ID: 16677596
+The job s_e_0 was saved and received the ID: 16677597
+The job s_01_e_m0_05000 was saved and received the ID: 16677598
+The job s_01_e_m0_02500 was saved and received the ID: 16677599
+The job s_01_e_0_02500 was saved and received the ID: 16677600
+The job s_01_e_0_05000 was saved and received the ID: 16677601
+The job s_08_e_m0_05000 was saved and received the ID: 16677602
+The job s_08_e_m0_02500 was saved and received the ID: 16677603
+The job s_08_e_0_02500 was saved and received the ID: 16677604
+The job s_08_e_0_05000 was saved and received the ID: 16677605
+The job s_23_e_m0_05000 was saved and received the ID: 16677606
+The job s_23_e_m0_02500 was saved and received the ID: 16677607
+The job s_23_e_0_02500 was saved and received the ID: 16677608
+The job s_23_e_0_05000 was saved and received the ID: 16677609
+The job phonopy_job_Ni_bcc was saved and received the ID: 16677610
+The job ref_job_Ni_bcc_0 was saved and received the ID: 16677611
+The job elastic_job_Ni_sc was saved and received the ID: 16677612
+The job s_e_0 was saved and received the ID: 16677613
+The job s_01_e_m0_05000 was saved and received the ID: 16677614
+The job s_01_e_m0_02500 was saved and received the ID: 16677615
+The job s_01_e_0_02500 was saved and received the ID: 16677616
+The job s_01_e_0_05000 was saved and received the ID: 16677617
+The job s_08_e_m0_05000 was saved and received the ID: 16677618
+The job s_08_e_m0_02500 was saved and received the ID: 16677619
+The job s_08_e_0_02500 was saved and received the ID: 16677620
+The job s_08_e_0_05000 was saved and received the ID: 16677621
+The job s_23_e_m0_05000 was saved and received the ID: 16677622
+The job s_23_e_m0_02500 was saved and received the ID: 16677623
+The job s_23_e_0_02500 was saved and received the ID: 16677624
+The job s_23_e_0_05000 was saved and received the ID: 16677625
+The job phonopy_job_Ni_sc was saved and received the ID: 16677626
+The job ref_job_Ni_sc_0 was saved and received the ID: 16677627
+The job elastic_job_NiAl_B2 was saved and received the ID: 16677628
+The job s_e_0 was saved and received the ID: 16677629
+The job s_01_e_m0_05000 was saved and received the ID: 16677630
+The job s_01_e_m0_02500 was saved and received the ID: 16677631
+The job s_01_e_0_02500 was saved and received the ID: 16677632
+The job s_01_e_0_05000 was saved and received the ID: 16677633
+The job s_08_e_m0_05000 was saved and received the ID: 16677634
+The job s_08_e_m0_02500 was saved and received the ID: 16677635
+The job s_08_e_0_02500 was saved and received the ID: 16677636
+The job s_08_e_0_05000 was saved and received the ID: 16677637
+The job s_23_e_m0_05000 was saved and received the ID: 16677638
+The job s_23_e_m0_02500 was saved and received the ID: 16677639
+The job s_23_e_0_02500 was saved and received the ID: 16677640
+The job s_23_e_0_05000 was saved and received the ID: 16677641
+The job phonopy_job_NiAl_B2 was saved and received the ID: 16677642
+The job ref_job_NiAl_B2_0 was saved and received the ID: 16677643
+The job ref_job_NiAl_B2_1 was saved and received the ID: 16677644
+2004--Mishin-Y--Ni-Al--LAMMPS--ipr1
+The job elastic_job_Al_fcc was saved and received the ID: 16677645
+The job s_e_0 was saved and received the ID: 16677646
+The job s_01_e_m0_05000 was saved and received the ID: 16677647
+The job s_01_e_m0_02500 was saved and received the ID: 16677648
+The job s_01_e_0_02500 was saved and received the ID: 16677649
+The job s_01_e_0_05000 was saved and received the ID: 16677650
+The job s_08_e_m0_05000 was saved and received the ID: 16677651
+The job s_08_e_m0_02500 was saved and received the ID: 16677652
+The job s_08_e_0_02500 was saved and received the ID: 16677653
+The job s_08_e_0_05000 was saved and received the ID: 16677654
+The job s_23_e_m0_05000 was saved and received the ID: 16677655
+The job s_23_e_m0_02500 was saved and received the ID: 16677656
+The job s_23_e_0_02500 was saved and received the ID: 16677657
+The job s_23_e_0_05000 was saved and received the ID: 16677658
+The job phonopy_job_Al_fcc was saved and received the ID: 16677659
+The job ref_job_Al_fcc_0 was saved and received the ID: 16677660
+The job elastic_job_Al_bcc was saved and received the ID: 16677661
+The job s_e_0 was saved and received the ID: 16677662
+The job s_01_e_m0_05000 was saved and received the ID: 16677663
+The job s_01_e_m0_02500 was saved and received the ID: 16677664
+The job s_01_e_0_02500 was saved and received the ID: 16677665
+The job s_01_e_0_05000 was saved and received the ID: 16677666
+The job s_08_e_m0_05000 was saved and received the ID: 16677667
+The job s_08_e_m0_02500 was saved and received the ID: 16677668
+The job s_08_e_0_02500 was saved and received the ID: 16677669
+The job s_08_e_0_05000 was saved and received the ID: 16677670
+The job s_23_e_m0_05000 was saved and received the ID: 16677671
+The job s_23_e_m0_02500 was saved and received the ID: 16677672
+The job s_23_e_0_02500 was saved and received the ID: 16677673
+The job s_23_e_0_05000 was saved and received the ID: 16677674
+The job phonopy_job_Al_bcc was saved and received the ID: 16677675
+The job ref_job_Al_bcc_0 was saved and received the ID: 16677676
+The job elastic_job_Al_sc was saved and received the ID: 16677677
+The job s_e_0 was saved and received the ID: 16677678
+The job s_01_e_m0_05000 was saved and received the ID: 16677679
+The job s_01_e_m0_02500 was saved and received the ID: 16677680
+The job s_01_e_0_02500 was saved and received the ID: 16677681
+The job s_01_e_0_05000 was saved and received the ID: 16677682
+The job s_08_e_m0_05000 was saved and received the ID: 16677683
+The job s_08_e_m0_02500 was saved and received the ID: 16677684
+The job s_08_e_0_02500 was saved and received the ID: 16677685
+The job s_08_e_0_05000 was saved and received the ID: 16677686
+The job s_23_e_m0_05000 was saved and received the ID: 16677687
+The job s_23_e_m0_02500 was saved and received the ID: 16677688
+The job s_23_e_0_02500 was saved and received the ID: 16677689
+The job s_23_e_0_05000 was saved and received the ID: 16677690
+The job phonopy_job_Al_sc was saved and received the ID: 16677691
+The job ref_job_Al_sc_0 was saved and received the ID: 16677692
+The job elastic_job_Ni_fcc was saved and received the ID: 16677693
+The job s_e_0 was saved and received the ID: 16677694
+The job s_01_e_m0_05000 was saved and received the ID: 16677695
+The job s_01_e_m0_02500 was saved and received the ID: 16677696
+The job s_01_e_0_02500 was saved and received the ID: 16677697
+The job s_01_e_0_05000 was saved and received the ID: 16677698
+The job s_08_e_m0_05000 was saved and received the ID: 16677699
+The job s_08_e_m0_02500 was saved and received the ID: 16677700
+The job s_08_e_0_02500 was saved and received the ID: 16677701
+The job s_08_e_0_05000 was saved and received the ID: 16677702
+The job s_23_e_m0_05000 was saved and received the ID: 16677703
+The job s_23_e_m0_02500 was saved and received the ID: 16677704
+The job s_23_e_0_02500 was saved and received the ID: 16677705
+The job s_23_e_0_05000 was saved and received the ID: 16677706
+The job phonopy_job_Ni_fcc was saved and received the ID: 16677707
+The job ref_job_Ni_fcc_0 was saved and received the ID: 16677708
+The job elastic_job_Ni_bcc was saved and received the ID: 16677709
+The job s_e_0 was saved and received the ID: 16677710
+The job s_01_e_m0_05000 was saved and received the ID: 16677711
+The job s_01_e_m0_02500 was saved and received the ID: 16677712
+The job s_01_e_0_02500 was saved and received the ID: 16677713
+The job s_01_e_0_05000 was saved and received the ID: 16677714
+The job s_08_e_m0_05000 was saved and received the ID: 16677715
+The job s_08_e_m0_02500 was saved and received the ID: 16677716
+The job s_08_e_0_02500 was saved and received the ID: 16677717
+The job s_08_e_0_05000 was saved and received the ID: 16677718
+The job s_23_e_m0_05000 was saved and received the ID: 16677719
+The job s_23_e_m0_02500 was saved and received the ID: 16677720
+The job s_23_e_0_02500 was saved and received the ID: 16677721
+The job s_23_e_0_05000 was saved and received the ID: 16677722
+The job phonopy_job_Ni_bcc was saved and received the ID: 16677723
+The job ref_job_Ni_bcc_0 was saved and received the ID: 16677724
+The job elastic_job_Ni_sc was saved and received the ID: 16677725
+The job s_e_0 was saved and received the ID: 16677726
+The job s_01_e_m0_05000 was saved and received the ID: 16677727
+The job s_01_e_m0_02500 was saved and received the ID: 16677728
+The job s_01_e_0_02500 was saved and received the ID: 16677729
+The job s_01_e_0_05000 was saved and received the ID: 16677730
+The job s_08_e_m0_05000 was saved and received the ID: 16677731
+The job s_08_e_m0_02500 was saved and received the ID: 16677732
+The job s_08_e_0_02500 was saved and received the ID: 16677733
+The job s_08_e_0_05000 was saved and received the ID: 16677734
+The job s_23_e_m0_05000 was saved and received the ID: 16677735
+The job s_23_e_m0_02500 was saved and received the ID: 16677736
+The job s_23_e_0_02500 was saved and received the ID: 16677737
+The job s_23_e_0_05000 was saved and received the ID: 16677738
+The job phonopy_job_Ni_sc was saved and received the ID: 16677739
+The job ref_job_Ni_sc_0 was saved and received the ID: 16677740
+The job elastic_job_NiAl_B2 was saved and received the ID: 16677741
+The job s_e_0 was saved and received the ID: 16677742
+The job s_01_e_m0_05000 was saved and received the ID: 16677743
+The job s_01_e_m0_02500 was saved and received the ID: 16677744
+The job s_01_e_0_02500 was saved and received the ID: 16677745
+The job s_01_e_0_05000 was saved and received the ID: 16677746
+The job s_08_e_m0_05000 was saved and received the ID: 16677747
+The job s_08_e_m0_02500 was saved and received the ID: 16677748
+The job s_08_e_0_02500 was saved and received the ID: 16677749
+The job s_08_e_0_05000 was saved and received the ID: 16677750
+The job s_23_e_m0_05000 was saved and received the ID: 16677751
+The job s_23_e_m0_02500 was saved and received the ID: 16677752
+The job s_23_e_0_02500 was saved and received the ID: 16677753
+The job s_23_e_0_05000 was saved and received the ID: 16677754
+The job phonopy_job_NiAl_B2 was saved and received the ID: 16677755
+The job ref_job_NiAl_B2_0 was saved and received the ID: 16677756
+The job ref_job_NiAl_B2_1 was saved and received the ID: 16677757
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filter_elastic</span><span class="p">(</span><span class="n">job_table</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">job_table</span><span class="o">.</span><span class="n">hamilton</span> <span class="o">==</span> <span class="s2">&quot;ElasticMatrixJob&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">job_table</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;finished&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get corresponding lattice constants</span>
+<span class="k">def</span> <span class="nf">get_c11</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;output/elasticmatrix&quot;</span><span class="p">][</span><span class="s2">&quot;C&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_c12</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;output/elasticmatrix&quot;</span><span class="p">][</span><span class="s2">&quot;C&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_c44</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;output/elasticmatrix&quot;</span><span class="p">][</span><span class="s2">&quot;C&quot;</span><span class="p">][</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span><span class="s2">&quot;table_elastic&quot;</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">table</span><span class="o">.</span><span class="n">db_filter_function</span> <span class="o">=</span> <span class="n">filter_elastic</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;potential&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_potential</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;C11&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_c11</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;C12&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_c12</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;C44&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_c44</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_compound</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;crystal_structure&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_crystal_structure</span>
+
+<span class="n">table</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">data_elastic</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">()</span>
+<span class="n">data_elastic</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job table_elastic was saved and received the ID: 16677758
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "499a119b789b4b159a3d1be31f2ff08d", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "4c731254162348179b10b83202ddae9a", "version_major": 2, "version_minor": 0}
+</script><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>job_id</th>
+      <th>potential</th>
+      <th>C11</th>
+      <th>C12</th>
+      <th>C44</th>
+      <th>compound</th>
+      <th>crystal_structure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16677419</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>106.911467</td>
+      <td>69.255148</td>
+      <td>30.431795</td>
+      <td>Al</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>16677435</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>37.182823</td>
+      <td>69.500184</td>
+      <td>8.164544</td>
+      <td>Al</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>16677451</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>143.679178</td>
+      <td>76.980424</td>
+      <td>5.955743</td>
+      <td>Al</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16677467</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>241.409634</td>
+      <td>159.289244</td>
+      <td>123.327959</td>
+      <td>Ni</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>16677483</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>92.522127</td>
+      <td>155.137627</td>
+      <td>99.311026</td>
+      <td>Ni</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>16677499</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>383.279308</td>
+      <td>70.849396</td>
+      <td>-20.996755</td>
+      <td>Ni</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>16677515</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>211.238892</td>
+      <td>194.933767</td>
+      <td>173.145582</td>
+      <td>NiAl</td>
+      <td>B2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>16677532</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>148.436993</td>
+      <td>62.156106</td>
+      <td>81.370388</td>
+      <td>Al</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>16677548</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>27.653061</td>
+      <td>65.719354</td>
+      <td>76.312964</td>
+      <td>Al</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>16677564</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>211.199570</td>
+      <td>0.788820</td>
+      <td>-12.844562</td>
+      <td>Al</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>16677580</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>527.551695</td>
+      <td>290.787053</td>
+      <td>126.711367</td>
+      <td>Ni</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>16677596</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>212.644367</td>
+      <td>250.612195</td>
+      <td>102.118730</td>
+      <td>Ni</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>16677612</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>709.385976</td>
+      <td>127.425234</td>
+      <td>-7.397005</td>
+      <td>Ni</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>16677628</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>221.036773</td>
+      <td>143.274544</td>
+      <td>144.576187</td>
+      <td>NiAl</td>
+      <td>B2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>16677645</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>115.582946</td>
+      <td>64.866432</td>
+      <td>36.746602</td>
+      <td>Al</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16677661</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>26.485353</td>
+      <td>67.603158</td>
+      <td>38.534427</td>
+      <td>Al</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>16677677</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>146.569799</td>
+      <td>23.069712</td>
+      <td>-5.938088</td>
+      <td>Al</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>16677693</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>235.738355</td>
+      <td>164.048239</td>
+      <td>131.587617</td>
+      <td>Ni</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>16677709</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>146.355889</td>
+      <td>168.584721</td>
+      <td>137.141307</td>
+      <td>Ni</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>16677725</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>232.892869</td>
+      <td>15.409803</td>
+      <td>-27.963859</td>
+      <td>Ni</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>16677741</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>291.266922</td>
+      <td>223.220888</td>
+      <td>183.860728</td>
+      <td>NiAl</td>
+      <td>B2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="visualization-of-the-results">
+<h3>Visualization of the results<a class="headerlink" href="#visualization-of-the-results" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_murn</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>job_id</th>
+      <th>potential</th>
+      <th>compound</th>
+      <th>crystal_structure</th>
+      <th>a</th>
+      <th>eq_vol</th>
+      <th>eq_bm</th>
+      <th>eq_energy</th>
+      <th>n_atoms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16677136</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>fcc</td>
+      <td>4.050000</td>
+      <td>16.606962</td>
+      <td>81.040445</td>
+      <td>-3.360099</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>16677149</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>bcc</td>
+      <td>4.124560</td>
+      <td>19.125925</td>
+      <td>65.638536</td>
+      <td>-3.272304</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>16677162</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>sc</td>
+      <td>3.825505</td>
+      <td>19.795529</td>
+      <td>93.278691</td>
+      <td>-3.311557</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16677175</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>fcc</td>
+      <td>3.520000</td>
+      <td>10.903140</td>
+      <td>184.675690</td>
+      <td>-4.450159</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>16677188</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>bcc</td>
+      <td>3.510011</td>
+      <td>11.767642</td>
+      <td>137.936343</td>
+      <td>-4.372803</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>16677202</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>sc</td>
+      <td>3.350192</td>
+      <td>13.286747</td>
+      <td>181.269821</td>
+      <td>-3.974845</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>16677216</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>NiAl</td>
+      <td>B2</td>
+      <td>4.048878</td>
+      <td>23.466248</td>
+      <td>191.838019</td>
+      <td>-8.851296</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>16677229</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>fcc</td>
+      <td>4.051526</td>
+      <td>16.632938</td>
+      <td>95.999778</td>
+      <td>-3.361936</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>16677242</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>bcc</td>
+      <td>4.025298</td>
+      <td>17.746010</td>
+      <td>51.011467</td>
+      <td>-3.279029</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>16677255</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>sc</td>
+      <td>3.899182</td>
+      <td>20.956057</td>
+      <td>68.928830</td>
+      <td>-2.947367</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>16677268</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>fcc</td>
+      <td>3.452464</td>
+      <td>10.290036</td>
+      <td>398.812143</td>
+      <td>-4.500547</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>16677281</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>bcc</td>
+      <td>3.408006</td>
+      <td>10.777042</td>
+      <td>237.555220</td>
+      <td>-4.384467</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>16677296</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>sc</td>
+      <td>3.166480</td>
+      <td>11.229065</td>
+      <td>337.696930</td>
+      <td>-4.075015</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>16677309</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>NiAl</td>
+      <td>B2</td>
+      <td>4.042777</td>
+      <td>23.356240</td>
+      <td>164.752084</td>
+      <td>-8.930923</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>16677322</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>fcc</td>
+      <td>4.050000</td>
+      <td>16.606871</td>
+      <td>80.836776</td>
+      <td>-3.360109</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16677335</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>bcc</td>
+      <td>3.962698</td>
+      <td>16.934019</td>
+      <td>53.467431</td>
+      <td>-3.267420</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>16677348</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>sc</td>
+      <td>3.854830</td>
+      <td>20.252349</td>
+      <td>64.666726</td>
+      <td>-3.063436</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>16677361</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>fcc</td>
+      <td>3.520000</td>
+      <td>10.903077</td>
+      <td>185.513289</td>
+      <td>-4.450176</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>16677374</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>bcc</td>
+      <td>3.391008</td>
+      <td>10.611768</td>
+      <td>155.492922</td>
+      <td>-4.382969</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>16677387</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>sc</td>
+      <td>3.389164</td>
+      <td>13.763845</td>
+      <td>89.750307</td>
+      <td>-3.726371</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>16677401</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>NiAl</td>
+      <td>B2</td>
+      <td>4.047372</td>
+      <td>23.440061</td>
+      <td>243.213355</td>
+      <td>-8.991392</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_elastic</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>job_id</th>
+      <th>potential</th>
+      <th>C11</th>
+      <th>C12</th>
+      <th>C44</th>
+      <th>compound</th>
+      <th>crystal_structure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16677419</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>106.911467</td>
+      <td>69.255148</td>
+      <td>30.431795</td>
+      <td>Al</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>16677435</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>37.182823</td>
+      <td>69.500184</td>
+      <td>8.164544</td>
+      <td>Al</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>16677451</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>143.679178</td>
+      <td>76.980424</td>
+      <td>5.955743</td>
+      <td>Al</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16677467</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>241.409634</td>
+      <td>159.289244</td>
+      <td>123.327959</td>
+      <td>Ni</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>16677483</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>92.522127</td>
+      <td>155.137627</td>
+      <td>99.311026</td>
+      <td>Ni</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>16677499</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>383.279308</td>
+      <td>70.849396</td>
+      <td>-20.996755</td>
+      <td>Ni</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>16677515</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>211.238892</td>
+      <td>194.933767</td>
+      <td>173.145582</td>
+      <td>NiAl</td>
+      <td>B2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>16677532</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>148.436993</td>
+      <td>62.156106</td>
+      <td>81.370388</td>
+      <td>Al</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>16677548</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>27.653061</td>
+      <td>65.719354</td>
+      <td>76.312964</td>
+      <td>Al</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>16677564</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>211.199570</td>
+      <td>0.788820</td>
+      <td>-12.844562</td>
+      <td>Al</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>16677580</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>527.551695</td>
+      <td>290.787053</td>
+      <td>126.711367</td>
+      <td>Ni</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>16677596</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>212.644367</td>
+      <td>250.612195</td>
+      <td>102.118730</td>
+      <td>Ni</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>16677612</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>709.385976</td>
+      <td>127.425234</td>
+      <td>-7.397005</td>
+      <td>Ni</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>16677628</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>221.036773</td>
+      <td>143.274544</td>
+      <td>144.576187</td>
+      <td>NiAl</td>
+      <td>B2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>16677645</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>115.582946</td>
+      <td>64.866432</td>
+      <td>36.746602</td>
+      <td>Al</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16677661</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>26.485353</td>
+      <td>67.603158</td>
+      <td>38.534427</td>
+      <td>Al</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>16677677</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>146.569799</td>
+      <td>23.069712</td>
+      <td>-5.938088</td>
+      <td>Al</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>16677693</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>235.738355</td>
+      <td>164.048239</td>
+      <td>131.587617</td>
+      <td>Ni</td>
+      <td>fcc</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>16677709</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>146.355889</td>
+      <td>168.584721</td>
+      <td>137.141307</td>
+      <td>Ni</td>
+      <td>bcc</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>16677725</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>232.892869</td>
+      <td>15.409803</td>
+      <td>-27.963859</td>
+      <td>Ni</td>
+      <td>sc</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>16677741</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>291.266922</td>
+      <td>223.220888</td>
+      <td>183.860728</td>
+      <td>NiAl</td>
+      <td>B2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ground_state</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;potential&quot;</span><span class="p">,</span> <span class="s2">&quot;compound&quot;</span><span class="p">,</span> <span class="s2">&quot;crystal_structure&quot;</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="n">data_murn</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">data_elastic</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_murn&#39;</span><span class="p">,</span> <span class="s1">&#39;_elastic&#39;</span><span class="p">))</span>
+<span class="n">df_ground_state</span><span class="p">[</span><span class="s2">&quot;phase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_ground_state</span><span class="o">.</span><span class="n">compound</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">df_ground_state</span><span class="o">.</span><span class="n">crystal_structure</span>
+<span class="n">df_ground_state</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>job_id_murn</th>
+      <th>potential</th>
+      <th>compound</th>
+      <th>crystal_structure</th>
+      <th>a</th>
+      <th>eq_vol</th>
+      <th>eq_bm</th>
+      <th>eq_energy</th>
+      <th>n_atoms</th>
+      <th>job_id_elastic</th>
+      <th>C11</th>
+      <th>C12</th>
+      <th>C44</th>
+      <th>phase</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16677136</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>fcc</td>
+      <td>4.050000</td>
+      <td>16.606962</td>
+      <td>81.040445</td>
+      <td>-3.360099</td>
+      <td>1</td>
+      <td>16677419</td>
+      <td>106.911467</td>
+      <td>69.255148</td>
+      <td>30.431795</td>
+      <td>Al_fcc</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>16677149</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>bcc</td>
+      <td>4.124560</td>
+      <td>19.125925</td>
+      <td>65.638536</td>
+      <td>-3.272304</td>
+      <td>1</td>
+      <td>16677435</td>
+      <td>37.182823</td>
+      <td>69.500184</td>
+      <td>8.164544</td>
+      <td>Al_bcc</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>16677162</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>sc</td>
+      <td>3.825505</td>
+      <td>19.795529</td>
+      <td>93.278691</td>
+      <td>-3.311557</td>
+      <td>1</td>
+      <td>16677451</td>
+      <td>143.679178</td>
+      <td>76.980424</td>
+      <td>5.955743</td>
+      <td>Al_sc</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16677175</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>fcc</td>
+      <td>3.520000</td>
+      <td>10.903140</td>
+      <td>184.675690</td>
+      <td>-4.450159</td>
+      <td>1</td>
+      <td>16677467</td>
+      <td>241.409634</td>
+      <td>159.289244</td>
+      <td>123.327959</td>
+      <td>Ni_fcc</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>16677188</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>bcc</td>
+      <td>3.510011</td>
+      <td>11.767642</td>
+      <td>137.936343</td>
+      <td>-4.372803</td>
+      <td>1</td>
+      <td>16677483</td>
+      <td>92.522127</td>
+      <td>155.137627</td>
+      <td>99.311026</td>
+      <td>Ni_bcc</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>16677202</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>sc</td>
+      <td>3.350192</td>
+      <td>13.286747</td>
+      <td>181.269821</td>
+      <td>-3.974845</td>
+      <td>1</td>
+      <td>16677499</td>
+      <td>383.279308</td>
+      <td>70.849396</td>
+      <td>-20.996755</td>
+      <td>Ni_sc</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>16677216</td>
+      <td>1995__Angelo_J_E__Ni_Al_H__LAMMPS__ipr1</td>
+      <td>NiAl</td>
+      <td>B2</td>
+      <td>4.048878</td>
+      <td>23.466248</td>
+      <td>191.838019</td>
+      <td>-8.851296</td>
+      <td>2</td>
+      <td>16677515</td>
+      <td>211.238892</td>
+      <td>194.933767</td>
+      <td>173.145582</td>
+      <td>NiAl_B2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>16677229</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>fcc</td>
+      <td>4.051526</td>
+      <td>16.632938</td>
+      <td>95.999778</td>
+      <td>-3.361936</td>
+      <td>1</td>
+      <td>16677532</td>
+      <td>148.436993</td>
+      <td>62.156106</td>
+      <td>81.370388</td>
+      <td>Al_fcc</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>16677242</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>bcc</td>
+      <td>4.025298</td>
+      <td>17.746010</td>
+      <td>51.011467</td>
+      <td>-3.279029</td>
+      <td>1</td>
+      <td>16677548</td>
+      <td>27.653061</td>
+      <td>65.719354</td>
+      <td>76.312964</td>
+      <td>Al_bcc</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>16677255</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>sc</td>
+      <td>3.899182</td>
+      <td>20.956057</td>
+      <td>68.928830</td>
+      <td>-2.947367</td>
+      <td>1</td>
+      <td>16677564</td>
+      <td>211.199570</td>
+      <td>0.788820</td>
+      <td>-12.844562</td>
+      <td>Al_sc</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>16677268</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>fcc</td>
+      <td>3.452464</td>
+      <td>10.290036</td>
+      <td>398.812143</td>
+      <td>-4.500547</td>
+      <td>1</td>
+      <td>16677580</td>
+      <td>527.551695</td>
+      <td>290.787053</td>
+      <td>126.711367</td>
+      <td>Ni_fcc</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>16677281</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>bcc</td>
+      <td>3.408006</td>
+      <td>10.777042</td>
+      <td>237.555220</td>
+      <td>-4.384467</td>
+      <td>1</td>
+      <td>16677596</td>
+      <td>212.644367</td>
+      <td>250.612195</td>
+      <td>102.118730</td>
+      <td>Ni_bcc</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>16677296</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>sc</td>
+      <td>3.166480</td>
+      <td>11.229065</td>
+      <td>337.696930</td>
+      <td>-4.075015</td>
+      <td>1</td>
+      <td>16677612</td>
+      <td>709.385976</td>
+      <td>127.425234</td>
+      <td>-7.397005</td>
+      <td>Ni_sc</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>16677309</td>
+      <td>2002__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>NiAl</td>
+      <td>B2</td>
+      <td>4.042777</td>
+      <td>23.356240</td>
+      <td>164.752084</td>
+      <td>-8.930923</td>
+      <td>2</td>
+      <td>16677628</td>
+      <td>221.036773</td>
+      <td>143.274544</td>
+      <td>144.576187</td>
+      <td>NiAl_B2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>16677322</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>fcc</td>
+      <td>4.050000</td>
+      <td>16.606871</td>
+      <td>80.836776</td>
+      <td>-3.360109</td>
+      <td>1</td>
+      <td>16677645</td>
+      <td>115.582946</td>
+      <td>64.866432</td>
+      <td>36.746602</td>
+      <td>Al_fcc</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16677335</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>bcc</td>
+      <td>3.962698</td>
+      <td>16.934019</td>
+      <td>53.467431</td>
+      <td>-3.267420</td>
+      <td>1</td>
+      <td>16677661</td>
+      <td>26.485353</td>
+      <td>67.603158</td>
+      <td>38.534427</td>
+      <td>Al_bcc</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>16677348</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Al</td>
+      <td>sc</td>
+      <td>3.854830</td>
+      <td>20.252349</td>
+      <td>64.666726</td>
+      <td>-3.063436</td>
+      <td>1</td>
+      <td>16677677</td>
+      <td>146.569799</td>
+      <td>23.069712</td>
+      <td>-5.938088</td>
+      <td>Al_sc</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>16677361</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>fcc</td>
+      <td>3.520000</td>
+      <td>10.903077</td>
+      <td>185.513289</td>
+      <td>-4.450176</td>
+      <td>1</td>
+      <td>16677693</td>
+      <td>235.738355</td>
+      <td>164.048239</td>
+      <td>131.587617</td>
+      <td>Ni_fcc</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>16677374</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>bcc</td>
+      <td>3.391008</td>
+      <td>10.611768</td>
+      <td>155.492922</td>
+      <td>-4.382969</td>
+      <td>1</td>
+      <td>16677709</td>
+      <td>146.355889</td>
+      <td>168.584721</td>
+      <td>137.141307</td>
+      <td>Ni_bcc</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>16677387</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>Ni</td>
+      <td>sc</td>
+      <td>3.389164</td>
+      <td>13.763845</td>
+      <td>89.750307</td>
+      <td>-3.726371</td>
+      <td>1</td>
+      <td>16677725</td>
+      <td>232.892869</td>
+      <td>15.409803</td>
+      <td>-27.963859</td>
+      <td>Ni_sc</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>16677401</td>
+      <td>2004__Mishin_Y__Ni_Al__LAMMPS__ipr1</td>
+      <td>NiAl</td>
+      <td>B2</td>
+      <td>4.047372</td>
+      <td>23.440061</td>
+      <td>243.213355</td>
+      <td>-8.991392</td>
+      <td>2</td>
+      <td>16677741</td>
+      <td>291.266922</td>
+      <td>223.220888</td>
+      <td>183.860728</td>
+      <td>NiAl_B2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax_list</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">potential_list</span><span class="p">),</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">color_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pot</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">potential_list</span><span class="p">):</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">ax_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">df_ground_state</span><span class="p">[</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">potential</span> <span class="o">==</span> <span class="n">clean_project_name</span><span class="p">(</span><span class="n">pot</span><span class="p">)]</span>
+    
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()):</span>
+        
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">job_id_murn</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plt_show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">phase</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">color_palette</span><span class="p">[</span><span class="n">j</span><span class="p">]})</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pot</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1">#break</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/validation_NiAl_30_0.png" src="../_images/validation_NiAl_30_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fig, ax_list = plt.subplots(ncols=len(potential_list), nrows=1, sharex=&quot;row&quot;, sharey=&quot;row&quot;)</span>
+
+<span class="c1"># fig.set_figwidth(20)</span>
+<span class="c1"># fig.set_figheight(6)</span>
+
+<span class="c1"># color_palette = sns.color_palette(&quot;tab10&quot;, n_colors=len(df_ground_state.phase.unique()))</span>
+
+
+<span class="c1"># for i, pot in enumerate(potential_list):</span>
+    
+<span class="c1">#     ax = ax_list[i]</span>
+<span class="c1">#     data = df_ground_state[df_ground_state.potential == clean_project_name(pot)]</span>
+    
+<span class="c1">#     for j, (_, row) in enumerate(data.iterrows()):</span>
+        
+<span class="c1">#         ax = pr.load(row.job_id_murn).plot(plt_show=False, ax=ax, plot_kwargs={&quot;label&quot;: f&quot;phase_{j}&quot;, &quot;color&quot;: color_palette[j]})</span>
+    
+<span class="c1">#     ax.set_title(f&quot;Potential {i}&quot;)</span>
+<span class="c1">#     #break</span>
+<span class="c1"># fig.subplots_adjust(wspace=0.1);</span>
+<span class="c1"># plt.savefig(&quot;example.jpeg&quot;, bbox_inches=&quot;tight&quot;);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax_list</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">color_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">potential</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">phase</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">ax_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">df_ground_state</span><span class="p">[</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">phase</span> <span class="o">==</span> <span class="n">phase</span><span class="p">]</span>
+    
+    
+    
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">pot</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">potential_list</span><span class="p">):</span>
+        
+        <span class="n">phonopy_job</span> <span class="o">=</span> <span class="n">pr</span><span class="p">[</span><span class="n">clean_project_name</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;/phonopy_job_</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+    
+        <span class="n">thermo</span> <span class="o">=</span> <span class="n">phonopy_job</span><span class="o">.</span><span class="n">get_thermal_properties</span><span class="p">(</span><span class="n">t_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thermo</span><span class="o">.</span><span class="n">temperatures</span><span class="p">,</span> <span class="n">thermo</span><span class="o">.</span><span class="n">free_energies</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">pot</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_palette</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Temperatures [K]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Free energies [eV]&quot;</span><span class="p">)</span>
+
+<span class="n">ax_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/validation_NiAl_32_0.png" src="../_images/validation_NiAl_32_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax_list</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">color_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">potential</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">phase</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">ax_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">df_ground_state</span><span class="p">[</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">phase</span> <span class="o">==</span> <span class="n">phase</span><span class="p">]</span>
+    
+    
+    
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">pot</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">potential_list</span><span class="p">):</span>
+        
+        <span class="n">phonopy_job</span> <span class="o">=</span> <span class="n">pr</span><span class="p">[</span><span class="n">clean_project_name</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;/phonopy_job_</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+    
+        <span class="n">thermo</span> <span class="o">=</span> <span class="n">phonopy_job</span><span class="o">.</span><span class="n">get_thermal_properties</span><span class="p">(</span><span class="n">t_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+        
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phonopy_job</span><span class="p">[</span><span class="s2">&quot;output/dos_energies&quot;</span><span class="p">],</span> <span class="n">phonopy_job</span><span class="p">[</span><span class="s2">&quot;output/dos_total&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color_palette</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">pot</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency [THz]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;DOS&quot;</span><span class="p">)</span>
+
+<span class="n">ax_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/validation_NiAl_33_0.png" src="../_images/validation_NiAl_33_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># phonopy_job.plot_band_structure()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax_list</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="n">nrows</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">potential_list</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">color_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">potential</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">phase</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">df_ground_state</span><span class="p">[</span><span class="n">df_ground_state</span><span class="o">.</span><span class="n">phase</span> <span class="o">==</span> <span class="n">phase</span><span class="p">]</span>
+    
+    
+    
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">pot</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">potential_list</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">ax_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">phonopy_job</span> <span class="o">=</span> <span class="n">pr</span><span class="p">[</span><span class="n">clean_project_name</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;/phonopy_job_</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+    
+        <span class="n">phonopy_job</span><span class="o">.</span><span class="n">plot_band_structure</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">ax_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;DOS&quot;</span><span class="p">)</span>
+    <span class="n">ax_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/validation_NiAl_35_0.png" src="../_images/validation_NiAl_35_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_stop</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total run time for the notebook </span><span class="si">{</span><span class="n">time_stop</span> <span class="o">-</span> <span class="n">time_start</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total run time for the notebook 411.289093237 seconds
+</pre></div>
+</div>
+</div>
+</div>
+<p>Todo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- SQS and intermediate ordered phases, layered phases (supply the structures)
+- Properties of compounds
+- Split the workflows into several notebooks
+- Defect formation energies etc.
+- Link to Sarath&#39;s part?? (Thermal expansion using MD/QHA)
+- Showing that MD works with these potentials
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./validation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="validation_LiAl.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><strong>Workshop: From electrons to phase diagrams</strong></p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../phase_diagram/Intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Day 3: Phase Diagrams</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
