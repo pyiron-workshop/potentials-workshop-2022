@@ -1,0 +1,28 @@
+name: Jupyterbook
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      CONDA_PREFIX: /usr/share/miniconda/
+      GPAW_SETUP_PATH: /usr/share/miniconda/share/gpaw
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
+        python-version: 3.8
+        environment-file: .github/ci_support/environment.yml
+        auto-activate-base: false
+    - name: Install Jupyterbook
+      shell: bash -l {0}
+      run: |
+        jupyter-book build . --path-output public
+    - run: mv public/_build/html public_html
+    - run: touch public_html/.nojekyll
