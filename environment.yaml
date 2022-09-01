@@ -1,0 +1,31 @@
+name: workshop
+channels:
+- conda-forge
+dependencies:
+- python =3.8
+- pyiron =0.4.6
+- pyiron_base =0.5.12
+- pyiron_atomistics =0.2.47
+- pyiron_contrib =0.1.3
+- calphy =1.0.3
+- atomicrex =1.0.3
+- pyiron_gpl
+- pyiron-data
+- openmpi
+- mpi4py
+- iprpy-data
+- sphinxdft >=2.7.0
+- sphinxdft-data
+- nglview
+- seaborn
+- pyscal
+- jupyterlab
+- pyiron-data
+- sqsgenerator
+- pymatgen
+- ipykernel
+- runner
+- ipympl
+- pip:
+    - runnerase
+    - tensorflow <=2.7
