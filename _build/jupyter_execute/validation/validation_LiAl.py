@@ -29,11 +29,11 @@
 
 from helper import potentials_list
 
-# potentials_list = [potentials_list[1]]
+# potentials_list = [potentials_list[0],potentials_list[1]]
 
 # display the first element in the list
 # which is an EAM potential
-potentials_list[0]
+potentials_list[2]
 
 
 # ### Import other important modules
@@ -46,7 +46,9 @@ import matplotlib.pylab as plt
 import seaborn as sns
 import pandas as pd
 import time
+
 from helper import get_clean_project_name
+
 from pyiron_atomistics import Project
 from pyiron import pyiron_to_ase
 import pyiron_gpl
@@ -66,7 +68,7 @@ time_start
 pr = Project("validation_LiAl")
 
 # remove earlier jobs
-pr.remove_jobs(silently=True, recursive=True)
+# pr.remove_jobs(silently=True, recursive=True)
 
 
 # ### Define the important pases to consider for validation
@@ -81,6 +83,8 @@ pr.remove_jobs(silently=True, recursive=True)
 
 
 struct_dict = dict()
+
+# structures to be generated automatically
 struct_dict["Al"] = dict()
 struct_dict["Al"]["s_murn"] = ["fcc","bcc"]
 struct_dict["Al"]["a"] = 4.04
@@ -90,27 +94,21 @@ struct_dict["Li"]["s_murn"] = ["bcc","fcc"]
 struct_dict["Li"]["a"] = 3.5
 
 
-
-
+# structures to be read from file
 struct_dict["Li2Al2"] = dict()
 struct_dict["Li2Al2"]["s_murn"] = ["Li2Al2_cubic"]
-# struct_dict["Li2Al2"]["a"] = 3.7
 
 struct_dict["LiAl3"] = dict()
 struct_dict["LiAl3"]["s_murn"] = ["LiAl3_tetragonal"]
-# struct_dict["LiAl3"]["a"] = 3.7
 
 struct_dict["LiAl3"] = dict()
 struct_dict["LiAl3"]["s_murn"] = ["LiAl3_cubic"]
-# struct_dict["LiAl3"]["a"] = 3.7
 
 struct_dict["Li9Al4"] = dict()
 struct_dict["Li9Al4"]["s_murn"] = ["Li9Al4_monoclinic"]
-# struct_dict["Li9Al4"]["a"] = 3.7
 
 struct_dict["Li3Al2"] = dict()
 struct_dict["Li3Al2"]["s_murn"] = ["Li3Al2_trigonal"]
-# struct_dict["Li3Al2"]["a"] = 3.7
 
 struct_dict["Li4Al4"] = dict()
 struct_dict["Li4Al4"]["s_murn"] = ["Li4Al4_cubic"]
@@ -129,6 +127,28 @@ fl_dict = {"Li2Al2_cubic": "mp_structures/LiAl_mp-1067_primitive.cif",
            "Li9Al4_monoclinic":"mp_structures/Li9Al4_mp-568404_primitive.cif",
            "Li3Al2_trigonal":"mp_structures/Al2Li3-6021.cif",
            "Li4Al4_cubic":"mp_structures/LiAl_mp-1079240_primitive.cif"}
+
+
+# ### Visualize the strucs
+# 
+# Once the structures are defined in the pyiron format, we can view their atomic coordinates and cell vectors using `struc.plot3d()`
+
+# In[6]:
+
+
+# Option 1: use `ase.build.bulk` functionality in pyiron
+struc = pr.create_ase_bulk("Al", "fcc", a=4.04,cubic=True)
+
+# struc.plot3d()
+
+
+# In[7]:
+
+
+# Option 2: Read from a file
+struc = pr.create.structure.ase.read(fl_dict["Li4Al4_cubic"])
+
+# struc.plot3d()
 
 
 # ## (a) Ground state: E-V curves
@@ -151,11 +171,12 @@ fl_dict = {"Li2Al2_cubic": "mp_structures/LiAl_mp-1067_primitive.cif",
 # 
 # As the calculations are being performed, the status(s) of each calculation is printed. If a job is already calculated, the calculations are not re-run but rather re-read from the saved data.
 
-# In[6]:
+# In[8]:
 
 
 for pot in potentials_list:
     with pr.open(get_clean_project_name(pot)) as pr_pot:
+        print(pr_pot)
         for compound, compound_dict in struct_dict.items():
             for crys_structure in compound_dict["s_murn"]:
                 
@@ -163,7 +184,8 @@ for pot in potentials_list:
                 if crys_structure in ["fcc","bcc"]:
                     basis = pr_pot.create_ase_bulk(compound, crys_structure, a=compound_dict["a"])
                 else:
-                    basis = pr.create.structure.ase.read(fl_dict[crys_structure])
+                    basis = pr_pot.create.structure.ase.read(fl_dict[crys_structure])
+                    
                 job_relax = pr_pot.create_job(pr_pot.job_type.Lammps, f"{compound}_{crys_structure}_relax", delete_existing_job=True)
 
                 job_relax.structure = basis
@@ -184,7 +206,7 @@ for pot in potentials_list:
 
 # One can display the technical details of all submitted jobs using `pr.job_table()` below.
 
-# In[7]:
+# In[9]:
 
 
 # pr.job_table()
@@ -192,7 +214,7 @@ for pot in potentials_list:
 
 # In order to get read useful results from the completed calculations (eq_energy, eq_volume, etc), it is useful to define the following functions
 
-# In[8]:
+# In[10]:
 
 
 # Only work with Murnaghan jobs
@@ -233,7 +255,7 @@ def get_compound(job_path):
 
 # Using the functions defined above, one can now define a `pd.DataFrame` containing all useful results
 
-# In[9]:
+# In[11]:
 
 
 # Compile data using pyiron tables
@@ -256,17 +278,20 @@ data_murn["phase"] = data_murn.compound + "_" + data_murn.crystal_structure
 data_murn
 
 
-# In[10]:
+# In[31]:
 
 
-df = pd.read_pickle("dft_ref.pckl")
+df_dft_ref = pd.read_pickle("dft_ref.pckl")
 
-al_fcc = df[df["compound"]=="Al_fcc"]
-li_bcc = df[df["compound"]=="Li_bcc"]
-df_mixed = df[df["compound"].isin(["LiAl_mp-1067","LiAl3_mp-10890","Li9Al4_mp-568404","Li3Al2_mp-16506","LiAl_mp-1079240"])]
+al_fcc = df_dft_ref[df_dft_ref["compound"]=="Al_fcc"]
+li = df_dft_ref[df_dft_ref["compound"].isin(["Li_bcc","Li_fcc"])]
+df_mixed = df_dft_ref[df_dft_ref["compound"].isin(["LiAl_mp-1067","LiAl3_mp-10890","Li9Al4_mp-568404","Li3Al2_mp-16506","LiAl_mp-1079240"])]
+
+li["energy_per_atom"] = li["energy"]/li["number_of_atoms"]
+# li
 
 
-# In[11]:
+# In[32]:
 
 
 fig, ax_list = plt.subplots(ncols=3, nrows=len(potentials_list), sharex="col")
@@ -302,7 +327,7 @@ for i, pot in enumerate(potentials_list):
         
         
         ax_list[i,0].set_title(f"{get_clean_project_name(pot)}" + '_' + data1.iloc[0]["compound"],fontsize=22)
-        # ax_list[i,0].legend(prop={"size":16})
+        ax_list[i,0].legend(prop={"size":16})
         
     ax_list[i,0].scatter(al_fcc["vol"],al_fcc["energy"]/al_fcc["number_of_atoms"],
                             facecolor="none",edgecolor="k",s=100,label="DFT")
@@ -322,7 +347,7 @@ for i, pot in enumerate(potentials_list):
         ax_list[i,2].set_title(f"{get_clean_project_name(pot)}" + '_' + data2.iloc[0]["compound"],fontsize=22)
         # ax_list[i,2].legend(prop={"size":16})
         
-    ax_list[i,2].scatter(li_bcc["vol"],li_bcc["energy"]/li_bcc["number_of_atoms"],
+    ax_list[i,2].scatter(li["vol"],li["energy"]/li["number_of_atoms"],
                             facecolor="none",edgecolor="k",s=100,label="DFT")
         
     for j,(_, row) in enumerate(data3.iterrows()):
@@ -366,7 +391,7 @@ fig.subplots_adjust(wspace=0.1);
 # 
 # Calculating elastic constants and thermal properties is considerably more expensive than calculating EV curves. Hence, it is useful to only calculate these properties for a subset of most important structures 
 
-# In[12]:
+# In[16]:
 
 
 list_of_phases = ["Al_fcc","Li_bcc","Li2Al2_cubic","LiAl3_cubic"]
@@ -375,7 +400,7 @@ subset_murn = data_murn[data_murn["phase"].isin(list_of_phases)]
 subset_murn
 
 
-# In[13]:
+# In[17]:
 
 
 for pot in potentials_list:
@@ -391,6 +416,7 @@ for pot in potentials_list:
         job_ref.structure = ref.structure
         job_ref.potential = pot
         job_ref.calc_minimize()
+        
         elastic_job = job_ref.create_job(pr_pot.job_type.ElasticMatrixJob, f"elastic_job_{row.compound}_{row.crystal_structure}")
         elastic_job.input["eps_range"] = 0.05
         elastic_job.run()
@@ -401,7 +427,7 @@ for pot in potentials_list:
         phonopy_job.run()
 
 
-# In[14]:
+# In[18]:
 
 
 def filter_elastic(job_table):
@@ -418,7 +444,7 @@ def get_c44(job_path):
     return job_path["output/elasticmatrix"]["C"][3, 3]
 
 
-# In[15]:
+# In[19]:
 
 
 table = pr.create_table("table_elastic", delete_existing_job=True)
@@ -437,13 +463,13 @@ data_elastic = data_elastic[data_elastic["phase"].isin(list_of_phases)]
 data_elastic
 
 
-# In[16]:
+# In[20]:
 
 
-fig, ax_list = plt.subplots(ncols=len(data_elastic.phase.unique()), nrows=1, sharex="row")
+fig, ax_list = plt.subplots(ncols=len(data_elastic.phase.unique()), nrows=1,)
 
-fig.set_figwidth(20)
-fig.set_figheight(5)
+fig.set_figwidth(26)
+fig.set_figheight(8)
 
 color_palette = sns.color_palette("tab10", n_colors=len(data_elastic.potential.unique()))
 
@@ -456,6 +482,8 @@ for i, phase in enumerate(data_elastic.phase.unique()):
     # data = data_elastic[(data_elastic.phase == phase) & (data_elastic["potential"]=="pot")]
     data = data_elastic[(data_elastic.phase == phase)]
     
+    # DFT data is read from csv files
+    dft_ref = pd.read_csv(phase.lower()+"_dos.csv")
     
     
     for j, pot in enumerate(potentials_list):
@@ -464,11 +492,19 @@ for i, phase in enumerate(data_elastic.phase.unique()):
     
         thermo = phonopy_job.get_thermal_properties(t_min=0, t_max=800)
         
+        
+        
         ax.plot(phonopy_job["output/dos_energies"], phonopy_job["output/dos_total"], 
                 lw=4,
                 color=color_palette[j], 
                 label=get_clean_project_name(pot))
+        
+       
+        
         ax.set_xlabel("Frequency, THz",fontsize=22)
+        
+    ax.plot(dft_ref["dos_energy"],dft_ref["dos_total"],ls="--",lw=3,color="k",label="DFT")
+        
     ax.set_title(f"{phase}",fontsize=22)
     ax.tick_params(labelsize=16)
 ax_list[0].set_ylabel("DOS",fontsize=22)
@@ -477,7 +513,37 @@ ax_list[0].legend(prop={"size":16})
 fig.subplots_adjust(wspace=0.1);
 
 
-# In[17]:
+# In[21]:
+
+
+# fig, ax_list = plt.subplots(ncols=len(data_elastic.phase.unique()), nrows=len(potentials_list), sharey="row")
+
+# fig.set_figwidth(25)
+# fig.set_figheight(12)
+
+# color_palette = sns.color_palette("tab10", n_colors=len(data_elastic.potential.unique()))
+
+
+# for i, phase in enumerate(data_elastic.phase.unique()):
+    
+    
+#     data = data_elastic[data_elastic.phase == phase]
+    
+    
+    
+#     for j, pot in enumerate(potentials_list):
+#         ax = ax_list[j][i]
+#         phonopy_job = pr[get_clean_project_name(pot) + f"/phonopy_job_{phase}"]
+    
+#         phonopy_job.plot_band_structure(axis=ax)
+#         ax.set_ylabel("")
+#         ax.set_title(get_clean_project_name(pot)+"__"+phase,fontsize=18)
+#         ax_list[j][0].set_ylabel("DOS")
+#     # ax_list[0][i].set_title(f"{phase}")
+# fig.subplots_adjust(wspace=0.1, hspace=0.4);
+
+
+# In[22]:
 
 
 fig, ax_list = plt.subplots(ncols=len(data_elastic.phase.unique()), nrows=1, sharex="row", sharey="row")
@@ -515,7 +581,7 @@ ax_list[0].legend(prop={"size":16})
 fig.subplots_adjust(wspace=0.1);
 
 
-# In[18]:
+# In[23]:
 
 
 # phonopy_job.plot_band_structure()
@@ -527,7 +593,7 @@ fig.subplots_adjust(wspace=0.1);
 # 
 # For this task we compute the formation energies of the mixed phases relative to ground state energies of equilibrium unary phases.
 
-# In[19]:
+# In[24]:
 
 
 from collections import Counter
@@ -549,7 +615,7 @@ data_convexhull.head(2)
 # 
 # Similarly calculate the formation energies from DFT ref data
 
-# In[20]:
+# In[25]:
 
 
 def get_e_form(data_convexhull):
@@ -571,8 +637,6 @@ def get_e_form(data_convexhull):
     return data_convexhull
 
 df_eam = get_e_form(data_murn[data_murn["potential"]=="LiAl_eam"].copy())
-mask = df_eam["compound"]=="Li9Al4"
-df_eam = df_eam[~mask]
 df_nnp = get_e_form(data_murn[data_murn["potential"]=="RuNNer-AlLi"].copy())
 df_ace = get_e_form(data_murn[data_murn["potential"]=="LiAl_yace"].copy())
 
@@ -580,50 +644,59 @@ data_convexhull = pd.concat([df_eam,df_nnp,df_ace])
 data_convexhull
 
 
-# In[21]:
+# Read df which contains DFT ref data for plotting
+
+# In[26]:
 
 
-phases = ["Al_fcc","LiAl_mp-1067","LiAl3_mp-10890","Li9Al4_mp-568404","Li3Al2_mp-16506","LiAl_mp-1079240","Li_bcc"]
-
-df_phases = df[df["compound"].isin(phases)]
-convex_ref = df_phases.loc[df_phases.groupby('compound').energy.idxmin()]
-convex_ref["comp_dict"] = convex_ref["ao"].map(lambda at: Counter(at.get_chemical_symbols()))
-convex_ref["n_Al"] = convex_ref["comp_dict"].map(lambda d: d.get("Al",0))
-convex_ref["n_Li"] = convex_ref["comp_dict"].map(lambda d: d.get("Li",0))
-
-convex_ref["cAl"]= convex_ref["n_Al"]/convex_ref["number_of_atoms"] * 100
-convex_ref["cLi"]= convex_ref["n_Li"]/convex_ref["number_of_atoms"] * 100
+convex_ref = pd.read_pickle("dft_convexhull_ref.pckl")
+convex_ref
 
 
-E_f_Al = convex_ref.loc[convex_ref["n_Li"]==0,"energy"].min()/convex_ref[convex_ref["compound"]=="Al_fcc"]["number_of_atoms"].item()
-E_f_Li = convex_ref.loc[convex_ref["n_Al"]==0,"energy"].min()/convex_ref[convex_ref["compound"]=="Li_bcc"]["number_of_atoms"].item()
+# Define a function to automatically get the mathematical convex hull
 
-convex_ref["E_form"]=(convex_ref["energy"])-(convex_ref[["n_Al","n_Li"]].values * [E_f_Al, E_f_Li]).sum(axis=1)
-convex_ref["E_form_per_atom"] = convex_ref["E_form"]/convex_ref["number_of_atoms"] * 1e3
-
-convex_ref = convex_ref.sort_values("cLi")
-
-# convex_ref
+# In[27]:
 
 
-# In[22]:
+from scipy.spatial import ConvexHull,convex_hull_plot_2d
+
+def get_convexhull(df):
+    df_tmp = df.reset_index()
+
+    points = np.zeros([len(df_tmp["cLi"]),2])
+
+    for i,row in df_tmp.iterrows():
+        points[i,0], points[i,1] =  float(row["cLi"]), float(row["E_form_per_atom"])
+
+    hull = ConvexHull(points)
+    return hull,points
 
 
-fig,ax = plt.subplots(figsize=(22,8),ncols=len(potentials_list),constrained_layout=True)
+# In[30]:
+
+
+fig,ax = plt.subplots(figsize=(22,8),ncols=len(potentials_list),constrained_layout=True,sharey="row")
 
 dfs = ([pd.DataFrame(y) for x, y in data_convexhull.groupby(by='potential', as_index=False)])
 
 for i,pot in enumerate(potentials_list):
-    sns.lineplot(data=dfs[i],
-                 marker='o',
-                 x='cLi', y='E_form_per_atom',
-                 estimator=np.min,
-                 ax=ax[i],lw=3)
+    
+    df_tmp = dfs[i].copy()
     
     
-
+    
+    ax[i].scatter(df_tmp["cLi"],df_tmp["E_form_per_atom"],marker="o",s=50)
+    
+    
+    df_tmp = df_tmp[(df_tmp["E_form_per_atom"]<0.1) & (df_tmp["E_form"]<0.1)]
+    hull,points = get_convexhull(df_tmp)
+    
+    for simplex in hull.simplices:
+        ax[i].plot(points[simplex, 0], points[simplex, 1], 'k-')
+    
+    
     ax[i].axhline(0,ls="--",color="k")
-    ax[i].plot(dfs[i]["cLi"], dfs[i]["E_form_per_atom"],"o",markersize=10,label="potential")
+    ax[i].plot(df_tmp["cLi"], df_tmp["E_form_per_atom"],"o",markersize=10,label="potential")
     ax[i].scatter(convex_ref["cLi"],convex_ref["E_form_per_atom"],marker="x",s=70,
                   label="DFT")
     ax[i].legend(prop={"size":16})
@@ -639,14 +712,14 @@ for i,pot in enumerate(potentials_list):
 plt.show()
 
 
-# In[23]:
+# In[29]:
 
 
 time_stop = time.time()
 print(f"Total run time for the notebook {time_stop - time_start} seconds")
 
 
-# In[25]:
+# In[ ]:
 
 
 572.1296255588531/60

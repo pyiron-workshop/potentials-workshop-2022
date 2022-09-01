@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Calculate the melting temperature of the B32 structure &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    <title>Exercise 2 &#8212; Workshop: From Electrons to Phase Diagrams</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Task 1: Calculate free energy of FCC Al at 500 K, 10000 bar" href="exercise_1.html" />
+    <link rel="prev" title="Exercise 1" href="exercise_1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -162,7 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../potentials/02-HDNNP/handson.html">
-     Constructing a HDNNP using RuNNer and pyiron
+     High-Dimensional Neural Network Potentials
     </a>
    </li>
    <li class="toctree-l2">
@@ -217,17 +217,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="tutorial_2.html">
-     Pure Al
+     <font face="Helvetica" style="color:#B71C1C">
+      AlLi phase diagram
+     </font>
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="exercise_1.html">
-     Task 1: Calculate free energy of FCC Al at 500 K, 10000 bar
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 1
+     </font>
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Calculate the melting temperature of the B32 structure
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 2
+     </font>
     </a>
    </li>
   </ul>
@@ -283,6 +289,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pyiron/potentials-workshop-2022/main?urlpath=tree/book/phase_diagram/exercise_2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -296,7 +331,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://git.noc.ruhr-uni-bochum.de/potentials-workshop-2022/workshop_preparation"
+<a href="https://github.com/pyiron/potentials-workshop-2022"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -355,70 +390,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Calculate the melting temperature of the B32 structure
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculate-free-energy-as-function-of-composition-of-li">
-   Calculate free energy as function of composition of Li
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Calculate the melting temperature of the B32 structure</h1>
+                <h1><font style="color:#B71C1C" face="Helvetica" > Exercise 2 </font></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Calculate the melting temperature of the B32 structure
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculate-free-energy-as-function-of-composition-of-li">
-   Calculate free energy as function of composition of Li
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -426,12 +414,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <table border="0">
- <tr>
-    <td style="width:30%"><img src="img/potentials_logo.png" width="100%" align="justify"></td>
-    <td style="width:70%"> <p style="width:100%;color:#B71C1C;font-size:24px;text-align:justify"> From electrons to phase diagrams </p> <p style="width:100%,font-size:16px">Day 03 Hands-on session exercise (Part 2)</td>
- </tr>
-</table><div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="font-style-color-b71c1c-face-helvetica-exercise-2-font">
+<h1><font style="color:#B71C1C" face="Helvetica" > Exercise 2 </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-exercise-2-font" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -449,11 +434,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="calculate-the-melting-temperature-of-the-b32-structure">
-<h1>Calculate the melting temperature of the B32 structure<a class="headerlink" href="#calculate-the-melting-temperature-of-the-b32-structure" title="Permalink to this headline">#</a></h1>
-</section>
-<section id="calculate-free-energy-as-function-of-composition-of-li">
-<h1>Calculate free energy as function of composition of Li<a class="headerlink" href="#calculate-free-energy-as-function-of-composition-of-li" title="Permalink to this headline">#</a></h1>
+<p><font style="color:#B71C1C" face="Helvetica" > Calculate the melting temperature of the B32 structure </font></p>
+<p><font style="color:#B71C1C" face="Helvetica" > Calculate free energy as function of composition of Li </font></p>
 <ul class="simple">
 <li><p>Choose composition of Li from 0 to 0.25</p></li>
 <li><p>Choose a temperature from 700 to 1000</p></li>
@@ -495,7 +477,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Task 1: Calculate free energy of FCC Al at 500 K, 10000 bar</p>
+            <p class="prev-next-title"><font style="color:#B71C1C" face="Helvetica" > Exercise 1 </font></p>
         </div>
     </a>
 </div>

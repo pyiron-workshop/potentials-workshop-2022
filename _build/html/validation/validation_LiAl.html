@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -165,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../potentials/02-HDNNP/handson.html">
-     Constructing a HDNNP using RuNNer and pyiron
+     High-Dimensional Neural Network Potentials
     </a>
    </li>
    <li class="toctree-l2">
@@ -286,6 +286,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pyiron/potentials-workshop-2022/main?urlpath=tree/book/validation/validation_LiAl.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -299,7 +328,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://git.noc.ruhr-uni-bochum.de/potentials-workshop-2022/workshop_preparation"
+<a href="https://github.com/pyiron/potentials-workshop-2022"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -412,6 +441,11 @@ title="Print to PDF"
        Define the important pases to consider for validation
       </a>
      </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visualize-the-strucs">
+       Visualize the strucs
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -482,6 +516,11 @@ title="Print to PDF"
        Define the important pases to consider for validation
       </a>
      </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visualize-the-strucs">
+       Visualize the strucs
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -536,11 +575,11 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">helper</span> <span class="kn">import</span> <span class="n">potentials_list</span>
 
-<span class="c1"># potentials_list = [potentials_list[1]]</span>
+<span class="c1"># potentials_list = [potentials_list[0],potentials_list[1]]</span>
 
 <span class="c1"># display the first element in the list</span>
 <span class="c1"># which is an EAM potential</span>
-<span class="n">potentials_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">potentials_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -573,11 +612,11 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>0</th>
-      <td>LiAl_eam</td>
+      <td>LiAl_yace</td>
       <td>[/home/jovyan/workshop_preparation/potentials/...</td>
-      <td>EAM</td>
-      <td>[Li, Al]</td>
-      <td>[pair_style eam/fs\n, pair_coeff * * AlLi.eam....</td>
+      <td>ACE</td>
+      <td>[Al, Li]</td>
+      <td>[pair_style pace\n, pair_coeff * * AlLi-6gen-1...</td>
     </tr>
   </tbody>
 </table>
@@ -592,7 +631,9 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">time</span>
+
 <span class="kn">from</span> <span class="nn">helper</span> <span class="kn">import</span> <span class="n">get_clean_project_name</span>
+
 <span class="kn">from</span> <span class="nn">pyiron_atomistics</span> <span class="kn">import</span> <span class="n">Project</span>
 <span class="kn">from</span> <span class="nn">pyiron</span> <span class="kn">import</span> <span class="n">pyiron_to_ase</span>
 <span class="kn">import</span> <span class="nn">pyiron_gpl</span>
@@ -604,7 +645,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1654611873.989647
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1654697715.1585205
 </pre></div>
 </div>
 </div>
@@ -618,14 +659,10 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s2">&quot;validation_LiAl&quot;</span><span class="p">)</span>
 
 <span class="c1"># remove earlier jobs</span>
-<span class="n">pr</span><span class="o">.</span><span class="n">remove_jobs</span><span class="p">(</span><span class="n">silently</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># pr.remove_jobs(silently=True, recursive=True)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "c9c3c54f2c5f420c9a139ad0e39b07c4", "version_major": 2, "version_minor": 0}
-</script></div>
 </div>
 </section>
 <section id="define-the-important-pases-to-consider-for-validation">
@@ -636,6 +673,8 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">struct_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="c1"># structures to be generated automatically</span>
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Al&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Al&quot;</span><span class="p">][</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;fcc&quot;</span><span class="p">,</span><span class="s2">&quot;bcc&quot;</span><span class="p">]</span>
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Al&quot;</span><span class="p">][</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.04</span>
@@ -645,27 +684,21 @@ title="Print to PDF"
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Li&quot;</span><span class="p">][</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.5</span>
 
 
-
-
+<span class="c1"># structures to be read from file</span>
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Li2Al2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Li2Al2&quot;</span><span class="p">][</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Li2Al2_cubic&quot;</span><span class="p">]</span>
-<span class="c1"># struct_dict[&quot;Li2Al2&quot;][&quot;a&quot;] = 3.7</span>
 
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;LiAl3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;LiAl3&quot;</span><span class="p">][</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;LiAl3_tetragonal&quot;</span><span class="p">]</span>
-<span class="c1"># struct_dict[&quot;LiAl3&quot;][&quot;a&quot;] = 3.7</span>
 
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;LiAl3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;LiAl3&quot;</span><span class="p">][</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;LiAl3_cubic&quot;</span><span class="p">]</span>
-<span class="c1"># struct_dict[&quot;LiAl3&quot;][&quot;a&quot;] = 3.7</span>
 
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Li9Al4&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Li9Al4&quot;</span><span class="p">][</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Li9Al4_monoclinic&quot;</span><span class="p">]</span>
-<span class="c1"># struct_dict[&quot;Li9Al4&quot;][&quot;a&quot;] = 3.7</span>
 
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Li3Al2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Li3Al2&quot;</span><span class="p">][</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Li3Al2_trigonal&quot;</span><span class="p">]</span>
-<span class="c1"># struct_dict[&quot;Li3Al2&quot;][&quot;a&quot;] = 3.7</span>
 
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Li4Al4&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 <span class="n">struct_dict</span><span class="p">[</span><span class="s2">&quot;Li4Al4&quot;</span><span class="p">][</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Li4Al4_cubic&quot;</span><span class="p">]</span>
@@ -695,6 +728,30 @@ title="Print to PDF"
            <span class="s2">&quot;Li9Al4_monoclinic&quot;</span><span class="p">:</span><span class="s2">&quot;mp_structures/Li9Al4_mp-568404_primitive.cif&quot;</span><span class="p">,</span>
            <span class="s2">&quot;Li3Al2_trigonal&quot;</span><span class="p">:</span><span class="s2">&quot;mp_structures/Al2Li3-6021.cif&quot;</span><span class="p">,</span>
            <span class="s2">&quot;Li4Al4_cubic&quot;</span><span class="p">:</span><span class="s2">&quot;mp_structures/LiAl_mp-1079240_primitive.cif&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-the-strucs">
+<h3>Visualize the strucs<a class="headerlink" href="#visualize-the-strucs" title="Permalink to this headline">#</a></h3>
+<p>Once the structures are defined in the pyiron format, we can view their atomic coordinates and cell vectors using <code class="docutils literal notranslate"><span class="pre">struc.plot3d()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 1: use `ase.build.bulk` functionality in pyiron</span>
+<span class="n">struc</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_ase_bulk</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="s2">&quot;fcc&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">4.04</span><span class="p">,</span><span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># struc.plot3d()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 2: Read from a file</span>
+<span class="n">struc</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fl_dict</span><span class="p">[</span><span class="s2">&quot;Li4Al4_cubic&quot;</span><span class="p">])</span>
+
+<span class="c1"># struc.plot3d()</span>
 </pre></div>
 </div>
 </div>
@@ -731,6 +788,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pot</span> <span class="ow">in</span> <span class="n">potentials_list</span><span class="p">:</span>
     <span class="k">with</span> <span class="n">pr</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">get_clean_project_name</span><span class="p">(</span><span class="n">pot</span><span class="p">))</span> <span class="k">as</span> <span class="n">pr_pot</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">pr_pot</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">compound</span><span class="p">,</span> <span class="n">compound_dict</span> <span class="ow">in</span> <span class="n">struct_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">crys_structure</span> <span class="ow">in</span> <span class="n">compound_dict</span><span class="p">[</span><span class="s2">&quot;s_murn&quot;</span><span class="p">]:</span>
                 
@@ -738,7 +796,8 @@ title="Print to PDF"
                 <span class="k">if</span> <span class="n">crys_structure</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fcc&quot;</span><span class="p">,</span><span class="s2">&quot;bcc&quot;</span><span class="p">]:</span>
                     <span class="n">basis</span> <span class="o">=</span> <span class="n">pr_pot</span><span class="o">.</span><span class="n">create_ase_bulk</span><span class="p">(</span><span class="n">compound</span><span class="p">,</span> <span class="n">crys_structure</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">compound_dict</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">basis</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fl_dict</span><span class="p">[</span><span class="n">crys_structure</span><span class="p">])</span>
+                    <span class="n">basis</span> <span class="o">=</span> <span class="n">pr_pot</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fl_dict</span><span class="p">[</span><span class="n">crys_structure</span><span class="p">])</span>
+                    
                 <span class="n">job_relax</span> <span class="o">=</span> <span class="n">pr_pot</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">pr_pot</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">Lammps</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">compound</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">crys_structure</span><span class="si">}</span><span class="s2">_relax&quot;</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
                 <span class="n">job_relax</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">basis</span>
@@ -759,357 +818,169 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al_fcc_relax was saved and received the ID: 1139
-The job murn_job_Al_fcc was saved and received the ID: 1140
-The job murn_job_Al_fcc_0_9 was saved and received the ID: 1141
-The job murn_job_Al_fcc_0_92 was saved and received the ID: 1142
-The job murn_job_Al_fcc_0_94 was saved and received the ID: 1143
-The job murn_job_Al_fcc_0_96 was saved and received the ID: 1144
-The job murn_job_Al_fcc_0_98 was saved and received the ID: 1145
-The job murn_job_Al_fcc_1_0 was saved and received the ID: 1146
-The job murn_job_Al_fcc_1_02 was saved and received the ID: 1147
-The job murn_job_Al_fcc_1_04 was saved and received the ID: 1148
-The job murn_job_Al_fcc_1_06 was saved and received the ID: 1149
-The job murn_job_Al_fcc_1_08 was saved and received the ID: 1150
-The job murn_job_Al_fcc_1_1 was saved and received the ID: 1151
-The job Al_bcc_relax was saved and received the ID: 1152
-The job murn_job_Al_bcc was saved and received the ID: 1153
-The job murn_job_Al_bcc_0_9 was saved and received the ID: 1154
-The job murn_job_Al_bcc_0_92 was saved and received the ID: 1155
-The job murn_job_Al_bcc_0_94 was saved and received the ID: 1156
-The job murn_job_Al_bcc_0_96 was saved and received the ID: 1157
-The job murn_job_Al_bcc_0_98 was saved and received the ID: 1158
-The job murn_job_Al_bcc_1_0 was saved and received the ID: 1159
-The job murn_job_Al_bcc_1_02 was saved and received the ID: 1160
-The job murn_job_Al_bcc_1_04 was saved and received the ID: 1161
-The job murn_job_Al_bcc_1_06 was saved and received the ID: 1162
-The job murn_job_Al_bcc_1_08 was saved and received the ID: 1163
-The job murn_job_Al_bcc_1_1 was saved and received the ID: 1164
-The job Li_bcc_relax was saved and received the ID: 1165
-The job murn_job_Li_bcc was saved and received the ID: 1166
-The job murn_job_Li_bcc_0_9 was saved and received the ID: 1167
-The job murn_job_Li_bcc_0_92 was saved and received the ID: 1168
-The job murn_job_Li_bcc_0_94 was saved and received the ID: 1169
-The job murn_job_Li_bcc_0_96 was saved and received the ID: 1170
-The job murn_job_Li_bcc_0_98 was saved and received the ID: 1171
-The job murn_job_Li_bcc_1_0 was saved and received the ID: 1172
-The job murn_job_Li_bcc_1_02 was saved and received the ID: 1173
-The job murn_job_Li_bcc_1_04 was saved and received the ID: 1174
-The job murn_job_Li_bcc_1_06 was saved and received the ID: 1175
-The job murn_job_Li_bcc_1_08 was saved and received the ID: 1176
-The job murn_job_Li_bcc_1_1 was saved and received the ID: 1177
-The job Li_fcc_relax was saved and received the ID: 1178
-The job murn_job_Li_fcc was saved and received the ID: 1179
-The job murn_job_Li_fcc_0_9 was saved and received the ID: 1180
-The job murn_job_Li_fcc_0_92 was saved and received the ID: 1181
-The job murn_job_Li_fcc_0_94 was saved and received the ID: 1182
-The job murn_job_Li_fcc_0_96 was saved and received the ID: 1183
-The job murn_job_Li_fcc_0_98 was saved and received the ID: 1184
-The job murn_job_Li_fcc_1_0 was saved and received the ID: 1185
-The job murn_job_Li_fcc_1_02 was saved and received the ID: 1186
-The job murn_job_Li_fcc_1_04 was saved and received the ID: 1187
-The job murn_job_Li_fcc_1_06 was saved and received the ID: 1188
-The job murn_job_Li_fcc_1_08 was saved and received the ID: 1189
-The job murn_job_Li_fcc_1_1 was saved and received the ID: 1190
-The job Li2Al2_Li2Al2_cubic_relax was saved and received the ID: 1191
-The job murn_job_Li2Al2_Li2Al2_cubic was saved and received the ID: 1192
-The job murn_job_Li2Al2_Li2Al2_cubic_0_9 was saved and received the ID: 1193
-The job murn_job_Li2Al2_Li2Al2_cubic_0_92 was saved and received the ID: 1194
-The job murn_job_Li2Al2_Li2Al2_cubic_0_94 was saved and received the ID: 1195
-The job murn_job_Li2Al2_Li2Al2_cubic_0_96 was saved and received the ID: 1196
-The job murn_job_Li2Al2_Li2Al2_cubic_0_98 was saved and received the ID: 1197
-The job murn_job_Li2Al2_Li2Al2_cubic_1_0 was saved and received the ID: 1198
-The job murn_job_Li2Al2_Li2Al2_cubic_1_02 was saved and received the ID: 1199
-The job murn_job_Li2Al2_Li2Al2_cubic_1_04 was saved and received the ID: 1200
-The job murn_job_Li2Al2_Li2Al2_cubic_1_06 was saved and received the ID: 1201
-The job murn_job_Li2Al2_Li2Al2_cubic_1_08 was saved and received the ID: 1202
-The job murn_job_Li2Al2_Li2Al2_cubic_1_1 was saved and received the ID: 1203
-The job LiAl3_LiAl3_cubic_relax was saved and received the ID: 1204
-The job murn_job_LiAl3_LiAl3_cubic was saved and received the ID: 1205
-The job murn_job_LiAl3_LiAl3_cubic_0_9 was saved and received the ID: 1206
-The job murn_job_LiAl3_LiAl3_cubic_0_92 was saved and received the ID: 1207
-The job murn_job_LiAl3_LiAl3_cubic_0_94 was saved and received the ID: 1208
-The job murn_job_LiAl3_LiAl3_cubic_0_96 was saved and received the ID: 1209
-The job murn_job_LiAl3_LiAl3_cubic_0_98 was saved and received the ID: 1210
-The job murn_job_LiAl3_LiAl3_cubic_1_0 was saved and received the ID: 1211
-The job murn_job_LiAl3_LiAl3_cubic_1_02 was saved and received the ID: 1212
-The job murn_job_LiAl3_LiAl3_cubic_1_04 was saved and received the ID: 1213
-The job murn_job_LiAl3_LiAl3_cubic_1_06 was saved and received the ID: 1214
-The job murn_job_LiAl3_LiAl3_cubic_1_08 was saved and received the ID: 1215
-The job murn_job_LiAl3_LiAl3_cubic_1_1 was saved and received the ID: 1216
-The job Li9Al4_Li9Al4_monoclinic_relax was saved and received the ID: 1217
-The job murn_job_Li9Al4_Li9Al4_monoclinic was saved and received the ID: 1218
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_9 was saved and received the ID: 1219
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_92 was saved and received the ID: 1220
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_94 was saved and received the ID: 1221
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_96 was saved and received the ID: 1222
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_98 was saved and received the ID: 1223
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_0 was saved and received the ID: 1224
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_02 was saved and received the ID: 1225
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_04 was saved and received the ID: 1226
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_06 was saved and received the ID: 1227
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_08 was saved and received the ID: 1228
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_1 was saved and received the ID: 1229
-The job Li3Al2_Li3Al2_trigonal_relax was saved and received the ID: 1230
-The job murn_job_Li3Al2_Li3Al2_trigonal was saved and received the ID: 1231
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_9 was saved and received the ID: 1232
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_92 was saved and received the ID: 1233
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_94 was saved and received the ID: 1234
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_96 was saved and received the ID: 1235
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_98 was saved and received the ID: 1236
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_0 was saved and received the ID: 1237
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_02 was saved and received the ID: 1238
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_04 was saved and received the ID: 1239
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_06 was saved and received the ID: 1240
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_08 was saved and received the ID: 1241
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_1 was saved and received the ID: 1242
-The job Li4Al4_Li4Al4_cubic_relax was saved and received the ID: 1243
-The job murn_job_Li4Al4_Li4Al4_cubic was saved and received the ID: 1244
-The job murn_job_Li4Al4_Li4Al4_cubic_0_9 was saved and received the ID: 1245
-The job murn_job_Li4Al4_Li4Al4_cubic_0_92 was saved and received the ID: 1246
-The job murn_job_Li4Al4_Li4Al4_cubic_0_94 was saved and received the ID: 1247
-The job murn_job_Li4Al4_Li4Al4_cubic_0_96 was saved and received the ID: 1248
-The job murn_job_Li4Al4_Li4Al4_cubic_0_98 was saved and received the ID: 1249
-The job murn_job_Li4Al4_Li4Al4_cubic_1_0 was saved and received the ID: 1250
-The job murn_job_Li4Al4_Li4Al4_cubic_1_02 was saved and received the ID: 1251
-The job murn_job_Li4Al4_Li4Al4_cubic_1_04 was saved and received the ID: 1252
-The job murn_job_Li4Al4_Li4Al4_cubic_1_06 was saved and received the ID: 1253
-The job murn_job_Li4Al4_Li4Al4_cubic_1_08 was saved and received the ID: 1254
-The job murn_job_Li4Al4_Li4Al4_cubic_1_1 was saved and received the ID: 1255
-The job Al_fcc_relax was saved and received the ID: 1256
-The job murn_job_Al_fcc was saved and received the ID: 1257
-The job murn_job_Al_fcc_0_9 was saved and received the ID: 1258
-The job murn_job_Al_fcc_0_92 was saved and received the ID: 1259
-The job murn_job_Al_fcc_0_94 was saved and received the ID: 1260
-The job murn_job_Al_fcc_0_96 was saved and received the ID: 1261
-The job murn_job_Al_fcc_0_98 was saved and received the ID: 1262
-The job murn_job_Al_fcc_1_0 was saved and received the ID: 1263
-The job murn_job_Al_fcc_1_02 was saved and received the ID: 1264
-The job murn_job_Al_fcc_1_04 was saved and received the ID: 1265
-The job murn_job_Al_fcc_1_06 was saved and received the ID: 1266
-The job murn_job_Al_fcc_1_08 was saved and received the ID: 1267
-The job murn_job_Al_fcc_1_1 was saved and received the ID: 1268
-The job Al_bcc_relax was saved and received the ID: 1269
-The job murn_job_Al_bcc was saved and received the ID: 1270
-The job murn_job_Al_bcc_0_9 was saved and received the ID: 1271
-The job murn_job_Al_bcc_0_92 was saved and received the ID: 1272
-The job murn_job_Al_bcc_0_94 was saved and received the ID: 1273
-The job murn_job_Al_bcc_0_96 was saved and received the ID: 1274
-The job murn_job_Al_bcc_0_98 was saved and received the ID: 1275
-The job murn_job_Al_bcc_1_0 was saved and received the ID: 1276
-The job murn_job_Al_bcc_1_02 was saved and received the ID: 1277
-The job murn_job_Al_bcc_1_04 was saved and received the ID: 1278
-The job murn_job_Al_bcc_1_06 was saved and received the ID: 1279
-The job murn_job_Al_bcc_1_08 was saved and received the ID: 1280
-The job murn_job_Al_bcc_1_1 was saved and received the ID: 1281
-The job Li_bcc_relax was saved and received the ID: 1282
-The job murn_job_Li_bcc was saved and received the ID: 1283
-The job murn_job_Li_bcc_0_9 was saved and received the ID: 1284
-The job murn_job_Li_bcc_0_92 was saved and received the ID: 1285
-The job murn_job_Li_bcc_0_94 was saved and received the ID: 1286
-The job murn_job_Li_bcc_0_96 was saved and received the ID: 1287
-The job murn_job_Li_bcc_0_98 was saved and received the ID: 1288
-The job murn_job_Li_bcc_1_0 was saved and received the ID: 1289
-The job murn_job_Li_bcc_1_02 was saved and received the ID: 1290
-The job murn_job_Li_bcc_1_04 was saved and received the ID: 1291
-The job murn_job_Li_bcc_1_06 was saved and received the ID: 1292
-The job murn_job_Li_bcc_1_08 was saved and received the ID: 1293
-The job murn_job_Li_bcc_1_1 was saved and received the ID: 1294
-The job Li_fcc_relax was saved and received the ID: 1295
-The job murn_job_Li_fcc was saved and received the ID: 1296
-The job murn_job_Li_fcc_0_9 was saved and received the ID: 1297
-The job murn_job_Li_fcc_0_92 was saved and received the ID: 1298
-The job murn_job_Li_fcc_0_94 was saved and received the ID: 1299
-The job murn_job_Li_fcc_0_96 was saved and received the ID: 1300
-The job murn_job_Li_fcc_0_98 was saved and received the ID: 1301
-The job murn_job_Li_fcc_1_0 was saved and received the ID: 1302
-The job murn_job_Li_fcc_1_02 was saved and received the ID: 1303
-The job murn_job_Li_fcc_1_04 was saved and received the ID: 1304
-The job murn_job_Li_fcc_1_06 was saved and received the ID: 1305
-The job murn_job_Li_fcc_1_08 was saved and received the ID: 1306
-The job murn_job_Li_fcc_1_1 was saved and received the ID: 1307
-The job Li2Al2_Li2Al2_cubic_relax was saved and received the ID: 1308
-The job murn_job_Li2Al2_Li2Al2_cubic was saved and received the ID: 1309
-The job murn_job_Li2Al2_Li2Al2_cubic_0_9 was saved and received the ID: 1310
-The job murn_job_Li2Al2_Li2Al2_cubic_0_92 was saved and received the ID: 1311
-The job murn_job_Li2Al2_Li2Al2_cubic_0_94 was saved and received the ID: 1312
-The job murn_job_Li2Al2_Li2Al2_cubic_0_96 was saved and received the ID: 1313
-The job murn_job_Li2Al2_Li2Al2_cubic_0_98 was saved and received the ID: 1314
-The job murn_job_Li2Al2_Li2Al2_cubic_1_0 was saved and received the ID: 1315
-The job murn_job_Li2Al2_Li2Al2_cubic_1_02 was saved and received the ID: 1316
-The job murn_job_Li2Al2_Li2Al2_cubic_1_04 was saved and received the ID: 1317
-The job murn_job_Li2Al2_Li2Al2_cubic_1_06 was saved and received the ID: 1318
-The job murn_job_Li2Al2_Li2Al2_cubic_1_08 was saved and received the ID: 1319
-The job murn_job_Li2Al2_Li2Al2_cubic_1_1 was saved and received the ID: 1320
-The job LiAl3_LiAl3_cubic_relax was saved and received the ID: 1321
-The job murn_job_LiAl3_LiAl3_cubic was saved and received the ID: 1322
-The job murn_job_LiAl3_LiAl3_cubic_0_9 was saved and received the ID: 1323
-The job murn_job_LiAl3_LiAl3_cubic_0_92 was saved and received the ID: 1324
-The job murn_job_LiAl3_LiAl3_cubic_0_94 was saved and received the ID: 1325
-The job murn_job_LiAl3_LiAl3_cubic_0_96 was saved and received the ID: 1326
-The job murn_job_LiAl3_LiAl3_cubic_0_98 was saved and received the ID: 1327
-The job murn_job_LiAl3_LiAl3_cubic_1_0 was saved and received the ID: 1328
-The job murn_job_LiAl3_LiAl3_cubic_1_02 was saved and received the ID: 1329
-The job murn_job_LiAl3_LiAl3_cubic_1_04 was saved and received the ID: 1330
-The job murn_job_LiAl3_LiAl3_cubic_1_06 was saved and received the ID: 1331
-The job murn_job_LiAl3_LiAl3_cubic_1_08 was saved and received the ID: 1332
-The job murn_job_LiAl3_LiAl3_cubic_1_1 was saved and received the ID: 1333
-The job Li9Al4_Li9Al4_monoclinic_relax was saved and received the ID: 1334
-The job murn_job_Li9Al4_Li9Al4_monoclinic was saved and received the ID: 1335
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_9 was saved and received the ID: 1336
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_92 was saved and received the ID: 1337
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_94 was saved and received the ID: 1338
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_96 was saved and received the ID: 1339
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_98 was saved and received the ID: 1340
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_0 was saved and received the ID: 1341
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_02 was saved and received the ID: 1342
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_04 was saved and received the ID: 1343
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_06 was saved and received the ID: 1344
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_08 was saved and received the ID: 1345
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_1 was saved and received the ID: 1346
-The job Li3Al2_Li3Al2_trigonal_relax was saved and received the ID: 1347
-The job murn_job_Li3Al2_Li3Al2_trigonal was saved and received the ID: 1348
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_9 was saved and received the ID: 1349
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_92 was saved and received the ID: 1350
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_94 was saved and received the ID: 1351
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_96 was saved and received the ID: 1352
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_98 was saved and received the ID: 1353
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_0 was saved and received the ID: 1354
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_02 was saved and received the ID: 1355
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_04 was saved and received the ID: 1356
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_06 was saved and received the ID: 1357
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_08 was saved and received the ID: 1358
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_1 was saved and received the ID: 1359
-The job Li4Al4_Li4Al4_cubic_relax was saved and received the ID: 1360
-The job murn_job_Li4Al4_Li4Al4_cubic was saved and received the ID: 1361
-The job murn_job_Li4Al4_Li4Al4_cubic_0_9 was saved and received the ID: 1362
-The job murn_job_Li4Al4_Li4Al4_cubic_0_92 was saved and received the ID: 1363
-The job murn_job_Li4Al4_Li4Al4_cubic_0_94 was saved and received the ID: 1364
-The job murn_job_Li4Al4_Li4Al4_cubic_0_96 was saved and received the ID: 1365
-The job murn_job_Li4Al4_Li4Al4_cubic_0_98 was saved and received the ID: 1366
-The job murn_job_Li4Al4_Li4Al4_cubic_1_0 was saved and received the ID: 1367
-The job murn_job_Li4Al4_Li4Al4_cubic_1_02 was saved and received the ID: 1368
-The job murn_job_Li4Al4_Li4Al4_cubic_1_04 was saved and received the ID: 1369
-The job murn_job_Li4Al4_Li4Al4_cubic_1_06 was saved and received the ID: 1370
-The job murn_job_Li4Al4_Li4Al4_cubic_1_08 was saved and received the ID: 1371
-The job murn_job_Li4Al4_Li4Al4_cubic_1_1 was saved and received the ID: 1372
-The job Al_fcc_relax was saved and received the ID: 1373
-The job murn_job_Al_fcc was saved and received the ID: 1374
-The job murn_job_Al_fcc_0_9 was saved and received the ID: 1375
-The job murn_job_Al_fcc_0_92 was saved and received the ID: 1376
-The job murn_job_Al_fcc_0_94 was saved and received the ID: 1377
-The job murn_job_Al_fcc_0_96 was saved and received the ID: 1378
-The job murn_job_Al_fcc_0_98 was saved and received the ID: 1379
-The job murn_job_Al_fcc_1_0 was saved and received the ID: 1380
-The job murn_job_Al_fcc_1_02 was saved and received the ID: 1381
-The job murn_job_Al_fcc_1_04 was saved and received the ID: 1382
-The job murn_job_Al_fcc_1_06 was saved and received the ID: 1383
-The job murn_job_Al_fcc_1_08 was saved and received the ID: 1384
-The job murn_job_Al_fcc_1_1 was saved and received the ID: 1385
-The job Al_bcc_relax was saved and received the ID: 1386
-The job murn_job_Al_bcc was saved and received the ID: 1387
-The job murn_job_Al_bcc_0_9 was saved and received the ID: 1388
-The job murn_job_Al_bcc_0_92 was saved and received the ID: 1389
-The job murn_job_Al_bcc_0_94 was saved and received the ID: 1390
-The job murn_job_Al_bcc_0_96 was saved and received the ID: 1391
-The job murn_job_Al_bcc_0_98 was saved and received the ID: 1392
-The job murn_job_Al_bcc_1_0 was saved and received the ID: 1393
-The job murn_job_Al_bcc_1_02 was saved and received the ID: 1394
-The job murn_job_Al_bcc_1_04 was saved and received the ID: 1395
-The job murn_job_Al_bcc_1_06 was saved and received the ID: 1396
-The job murn_job_Al_bcc_1_08 was saved and received the ID: 1397
-The job murn_job_Al_bcc_1_1 was saved and received the ID: 1398
-The job Li_bcc_relax was saved and received the ID: 1399
-The job murn_job_Li_bcc was saved and received the ID: 1400
-The job murn_job_Li_bcc_0_9 was saved and received the ID: 1401
-The job murn_job_Li_bcc_0_92 was saved and received the ID: 1402
-The job murn_job_Li_bcc_0_94 was saved and received the ID: 1403
-The job murn_job_Li_bcc_0_96 was saved and received the ID: 1404
-The job murn_job_Li_bcc_0_98 was saved and received the ID: 1405
-The job murn_job_Li_bcc_1_0 was saved and received the ID: 1406
-The job murn_job_Li_bcc_1_02 was saved and received the ID: 1407
-The job murn_job_Li_bcc_1_04 was saved and received the ID: 1408
-The job murn_job_Li_bcc_1_06 was saved and received the ID: 1409
-The job murn_job_Li_bcc_1_08 was saved and received the ID: 1410
-The job murn_job_Li_bcc_1_1 was saved and received the ID: 1411
-The job Li_fcc_relax was saved and received the ID: 1412
-The job murn_job_Li_fcc was saved and received the ID: 1413
-The job murn_job_Li_fcc_0_9 was saved and received the ID: 1414
-The job murn_job_Li_fcc_0_92 was saved and received the ID: 1415
-The job murn_job_Li_fcc_0_94 was saved and received the ID: 1416
-The job murn_job_Li_fcc_0_96 was saved and received the ID: 1417
-The job murn_job_Li_fcc_0_98 was saved and received the ID: 1418
-The job murn_job_Li_fcc_1_0 was saved and received the ID: 1419
-The job murn_job_Li_fcc_1_02 was saved and received the ID: 1420
-The job murn_job_Li_fcc_1_04 was saved and received the ID: 1421
-The job murn_job_Li_fcc_1_06 was saved and received the ID: 1422
-The job murn_job_Li_fcc_1_08 was saved and received the ID: 1423
-The job murn_job_Li_fcc_1_1 was saved and received the ID: 1424
-The job Li2Al2_Li2Al2_cubic_relax was saved and received the ID: 1425
-The job murn_job_Li2Al2_Li2Al2_cubic was saved and received the ID: 1426
-The job murn_job_Li2Al2_Li2Al2_cubic_0_9 was saved and received the ID: 1427
-The job murn_job_Li2Al2_Li2Al2_cubic_0_92 was saved and received the ID: 1428
-The job murn_job_Li2Al2_Li2Al2_cubic_0_94 was saved and received the ID: 1429
-The job murn_job_Li2Al2_Li2Al2_cubic_0_96 was saved and received the ID: 1430
-The job murn_job_Li2Al2_Li2Al2_cubic_0_98 was saved and received the ID: 1431
-The job murn_job_Li2Al2_Li2Al2_cubic_1_0 was saved and received the ID: 1432
-The job murn_job_Li2Al2_Li2Al2_cubic_1_02 was saved and received the ID: 1433
-The job murn_job_Li2Al2_Li2Al2_cubic_1_04 was saved and received the ID: 1434
-The job murn_job_Li2Al2_Li2Al2_cubic_1_06 was saved and received the ID: 1435
-The job murn_job_Li2Al2_Li2Al2_cubic_1_08 was saved and received the ID: 1436
-The job murn_job_Li2Al2_Li2Al2_cubic_1_1 was saved and received the ID: 1437
-The job LiAl3_LiAl3_cubic_relax was saved and received the ID: 1438
-The job murn_job_LiAl3_LiAl3_cubic was saved and received the ID: 1439
-The job murn_job_LiAl3_LiAl3_cubic_0_9 was saved and received the ID: 1440
-The job murn_job_LiAl3_LiAl3_cubic_0_92 was saved and received the ID: 1441
-The job murn_job_LiAl3_LiAl3_cubic_0_94 was saved and received the ID: 1442
-The job murn_job_LiAl3_LiAl3_cubic_0_96 was saved and received the ID: 1443
-The job murn_job_LiAl3_LiAl3_cubic_0_98 was saved and received the ID: 1444
-The job murn_job_LiAl3_LiAl3_cubic_1_0 was saved and received the ID: 1445
-The job murn_job_LiAl3_LiAl3_cubic_1_02 was saved and received the ID: 1446
-The job murn_job_LiAl3_LiAl3_cubic_1_04 was saved and received the ID: 1447
-The job murn_job_LiAl3_LiAl3_cubic_1_06 was saved and received the ID: 1448
-The job murn_job_LiAl3_LiAl3_cubic_1_08 was saved and received the ID: 1449
-The job murn_job_LiAl3_LiAl3_cubic_1_1 was saved and received the ID: 1450
-The job Li9Al4_Li9Al4_monoclinic_relax was saved and received the ID: 1451
-The job murn_job_Li9Al4_Li9Al4_monoclinic was saved and received the ID: 1452
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_9 was saved and received the ID: 1453
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_92 was saved and received the ID: 1454
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_94 was saved and received the ID: 1455
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_96 was saved and received the ID: 1456
-The job murn_job_Li9Al4_Li9Al4_monoclinic_0_98 was saved and received the ID: 1457
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_0 was saved and received the ID: 1458
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_02 was saved and received the ID: 1459
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_04 was saved and received the ID: 1460
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_06 was saved and received the ID: 1461
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_08 was saved and received the ID: 1462
-The job murn_job_Li9Al4_Li9Al4_monoclinic_1_1 was saved and received the ID: 1463
-The job Li3Al2_Li3Al2_trigonal_relax was saved and received the ID: 1464
-The job murn_job_Li3Al2_Li3Al2_trigonal was saved and received the ID: 1465
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_9 was saved and received the ID: 1466
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_92 was saved and received the ID: 1467
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_94 was saved and received the ID: 1468
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_96 was saved and received the ID: 1469
-The job murn_job_Li3Al2_Li3Al2_trigonal_0_98 was saved and received the ID: 1470
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_0 was saved and received the ID: 1471
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_02 was saved and received the ID: 1472
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_04 was saved and received the ID: 1473
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_06 was saved and received the ID: 1474
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_08 was saved and received the ID: 1475
-The job murn_job_Li3Al2_Li3Al2_trigonal_1_1 was saved and received the ID: 1476
-The job Li4Al4_Li4Al4_cubic_relax was saved and received the ID: 1477
-The job murn_job_Li4Al4_Li4Al4_cubic was saved and received the ID: 1478
-The job murn_job_Li4Al4_Li4Al4_cubic_0_9 was saved and received the ID: 1479
-The job murn_job_Li4Al4_Li4Al4_cubic_0_92 was saved and received the ID: 1480
-The job murn_job_Li4Al4_Li4Al4_cubic_0_94 was saved and received the ID: 1481
-The job murn_job_Li4Al4_Li4Al4_cubic_0_96 was saved and received the ID: 1482
-The job murn_job_Li4Al4_Li4Al4_cubic_0_98 was saved and received the ID: 1483
-The job murn_job_Li4Al4_Li4Al4_cubic_1_0 was saved and received the ID: 1484
-The job murn_job_Li4Al4_Li4Al4_cubic_1_02 was saved and received the ID: 1485
-The job murn_job_Li4Al4_Li4Al4_cubic_1_04 was saved and received the ID: 1486
-The job murn_job_Li4Al4_Li4Al4_cubic_1_06 was saved and received the ID: 1487
-The job murn_job_Li4Al4_Li4Al4_cubic_1_08 was saved and received the ID: 1488
-The job murn_job_Li4Al4_Li4Al4_cubic_1_1 was saved and received the ID: 1489
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jovyan/workshop_preparation/validation/validation_LiAl/LiAl_eam/
+The job Al_fcc_relax was saved and received the ID: 1752
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:16,704 - pyiron_log - WARNING - The job murn_job_Al_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al_bcc_relax was saved and received the ID: 1753
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:18,339 - pyiron_log - WARNING - The job murn_job_Al_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li_bcc_relax was saved and received the ID: 1754
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:19,051 - pyiron_log - WARNING - The job murn_job_Li_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li_fcc_relax was saved and received the ID: 1755
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:20,323 - pyiron_log - WARNING - The job murn_job_Li_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li2Al2_Li2Al2_cubic_relax was saved and received the ID: 1756
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:22,012 - pyiron_log - WARNING - The job murn_job_Li2Al2_Li2Al2_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job LiAl3_LiAl3_cubic_relax was saved and received the ID: 1757
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:23,393 - pyiron_log - WARNING - The job murn_job_LiAl3_LiAl3_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li9Al4_Li9Al4_monoclinic_relax was saved and received the ID: 1758
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:24,515 - pyiron_log - WARNING - The job murn_job_Li9Al4_Li9Al4_monoclinic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li3Al2_Li3Al2_trigonal_relax was saved and received the ID: 1759
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:25,720 - pyiron_log - WARNING - The job murn_job_Li3Al2_Li3Al2_trigonal is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li4Al4_Li4Al4_cubic_relax was saved and received the ID: 1760
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:27,012 - pyiron_log - WARNING - The job murn_job_Li4Al4_Li4Al4_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jovyan/workshop_preparation/validation/validation_LiAl/RuNNer-AlLi/
+The job Al_fcc_relax was saved and received the ID: 1761
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:27,799 - pyiron_log - WARNING - The job murn_job_Al_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al_bcc_relax was saved and received the ID: 1762
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:28,779 - pyiron_log - WARNING - The job murn_job_Al_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li_bcc_relax was saved and received the ID: 1763
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:29,535 - pyiron_log - WARNING - The job murn_job_Li_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li_fcc_relax was saved and received the ID: 1764
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:30,637 - pyiron_log - WARNING - The job murn_job_Li_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li2Al2_Li2Al2_cubic_relax was saved and received the ID: 1765
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:32,209 - pyiron_log - WARNING - The job murn_job_Li2Al2_Li2Al2_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job LiAl3_LiAl3_cubic_relax was saved and received the ID: 1766
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:33,439 - pyiron_log - WARNING - The job murn_job_LiAl3_LiAl3_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li9Al4_Li9Al4_monoclinic_relax was saved and received the ID: 1767
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:34,543 - pyiron_log - WARNING - The job murn_job_Li9Al4_Li9Al4_monoclinic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li3Al2_Li3Al2_trigonal_relax was saved and received the ID: 1768
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:35,739 - pyiron_log - WARNING - The job murn_job_Li3Al2_Li3Al2_trigonal is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li4Al4_Li4Al4_cubic_relax was saved and received the ID: 1769
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:36,881 - pyiron_log - WARNING - The job murn_job_Li4Al4_Li4Al4_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jovyan/workshop_preparation/validation/validation_LiAl/LiAl_yace/
+The job Al_fcc_relax was saved and received the ID: 1770
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:38,178 - pyiron_log - WARNING - The job murn_job_Al_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al_bcc_relax was saved and received the ID: 1771
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:39,859 - pyiron_log - WARNING - The job murn_job_Al_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li_bcc_relax was saved and received the ID: 1772
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:41,447 - pyiron_log - WARNING - The job murn_job_Li_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li_fcc_relax was saved and received the ID: 1773
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:42,997 - pyiron_log - WARNING - The job murn_job_Li_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li2Al2_Li2Al2_cubic_relax was saved and received the ID: 1774
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:44,100 - pyiron_log - WARNING - The job murn_job_Li2Al2_Li2Al2_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job LiAl3_LiAl3_cubic_relax was saved and received the ID: 1775
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:45,161 - pyiron_log - WARNING - The job murn_job_LiAl3_LiAl3_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li9Al4_Li9Al4_monoclinic_relax was saved and received the ID: 1776
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:46,678 - pyiron_log - WARNING - The job murn_job_Li9Al4_Li9Al4_monoclinic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li3Al2_Li3Al2_trigonal_relax was saved and received the ID: 1777
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:48,152 - pyiron_log - WARNING - The job murn_job_Li3Al2_Li3Al2_trigonal is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Li4Al4_Li4Al4_cubic_relax was saved and received the ID: 1778
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:15:49,387 - pyiron_log - WARNING - The job murn_job_Li4Al4_Li4Al4_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
 </pre></div>
 </div>
 </div>
@@ -1188,13 +1059,13 @@ The job murn_job_Li4Al4_Li4Al4_cubic_1_1 was saved and received the ID: 1489
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job table_murn was saved and received the ID: 1490
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job table_murn was saved and received the ID: 1779
 </pre></div>
 </div>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "6d1c37e272d846ad8c2137340845b232", "version_major": 2, "version_minor": 0}
+{"model_id": "e14e271016bb4acd89c1fd1d4a475704", "version_major": 2, "version_minor": 0}
 </script><script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "0973817f82434af0b659d3acfee493d1", "version_major": 2, "version_minor": 0}
+{"model_id": "3f8fdcefa33941dcb7d235877eaaf96b", "version_major": 2, "version_minor": 0}
 </script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/srv/conda/envs/notebook/lib/python3.8/site-packages/pyiron_base/table/datamining.py:620: PerformanceWarning: 
 your performance may suffer as PyTables will pickle object types that it cannot
 map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&gt;Index([&#39;potential&#39;, &#39;ase_atoms&#39;, &#39;compound&#39;, &#39;crystal_structure&#39;], dtype=&#39;object&#39;)]
@@ -1488,7 +1359,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>18</th>
-      <td>1374</td>
+      <td>1393</td>
       <td>LiAl_yace</td>
       <td>(Atom('Al', [0.0, 0.0, 0.0], index=0))</td>
       <td>Al</td>
@@ -1502,7 +1373,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>19</th>
-      <td>1387</td>
+      <td>1406</td>
       <td>LiAl_yace</td>
       <td>(Atom('Al', [0.0, 0.0, 0.0], index=0))</td>
       <td>Al</td>
@@ -1516,7 +1387,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>20</th>
-      <td>1400</td>
+      <td>1419</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [0.0, 0.0, 0.0], index=0))</td>
       <td>Li</td>
@@ -1530,7 +1401,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>21</th>
-      <td>1413</td>
+      <td>1435</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [0.0, 0.0, 0.0], index=0))</td>
       <td>Li</td>
@@ -1544,7 +1415,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>22</th>
-      <td>1426</td>
+      <td>1451</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [4.5021943685456485, 2.599343130623782, 1.8380131542949232], index=0), Atom('Li', [6.753291552821257, 3.8990146959337566, 2.7570197314419675], index=1), Atom('Al', [-3.838851410290508e...</td>
       <td>Li2Al2</td>
@@ -1558,7 +1429,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>23</th>
-      <td>1439</td>
+      <td>1464</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [0.0, 0.0, 0.0], index=0), Atom('Al', [2.0106543994993293, 2.0106543994993293, 2.462341474538397e-16], index=1), Atom('Al', [2.0106543994993293, 1.2311707372691985e-16, 2.0106543994993...</td>
       <td>LiAl3</td>
@@ -1572,7 +1443,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>24</th>
-      <td>1452</td>
+      <td>1480</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [5.141009159558869, 1.0571139195527752, 0.820249453790277], index=0), Atom('Li', [3.2705789348169056, 1.5045550288016276, 2.715159327393234], index=1), Atom('Li', [-3.601125467999465, ...</td>
       <td>Li9Al4</td>
@@ -1586,7 +1457,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>25</th>
-      <td>1465</td>
+      <td>1493</td>
       <td>LiAl_yace</td>
       <td>(Atom('Al', [2.2270976540671734, 1.2858164055924044, 1.9025646270076813], index=0), Atom('Al', [-2.227095628822777, 3.8574462424884515, 2.7757665665986657], index=1), Atom('Li', [8.407589514518869...</td>
       <td>Li3Al2</td>
@@ -1600,7 +1471,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>26</th>
-      <td>1478</td>
+      <td>1506</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [2.2269869888586107, 1.285751535686306, 7.864026721150146], index=0), Atom('Li', [-1.5554058443124377e-09, 2.571503074062492, 0.7130584901440213], index=1), Atom('Li', [-1.555405844312...</td>
       <td>Li4Al4</td>
@@ -1618,11 +1489,14 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s2">&quot;dft_ref.pckl&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dft_ref</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s2">&quot;dft_ref.pckl&quot;</span><span class="p">)</span>
 
-<span class="n">al_fcc</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Al_fcc&quot;</span><span class="p">]</span>
-<span class="n">li_bcc</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Li_bcc&quot;</span><span class="p">]</span>
-<span class="n">df_mixed</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;LiAl_mp-1067&quot;</span><span class="p">,</span><span class="s2">&quot;LiAl3_mp-10890&quot;</span><span class="p">,</span><span class="s2">&quot;Li9Al4_mp-568404&quot;</span><span class="p">,</span><span class="s2">&quot;Li3Al2_mp-16506&quot;</span><span class="p">,</span><span class="s2">&quot;LiAl_mp-1079240&quot;</span><span class="p">])]</span>
+<span class="n">al_fcc</span> <span class="o">=</span> <span class="n">df_dft_ref</span><span class="p">[</span><span class="n">df_dft_ref</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Al_fcc&quot;</span><span class="p">]</span>
+<span class="n">li</span> <span class="o">=</span> <span class="n">df_dft_ref</span><span class="p">[</span><span class="n">df_dft_ref</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;Li_bcc&quot;</span><span class="p">,</span><span class="s2">&quot;Li_fcc&quot;</span><span class="p">])]</span>
+<span class="n">df_mixed</span> <span class="o">=</span> <span class="n">df_dft_ref</span><span class="p">[</span><span class="n">df_dft_ref</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;LiAl_mp-1067&quot;</span><span class="p">,</span><span class="s2">&quot;LiAl3_mp-10890&quot;</span><span class="p">,</span><span class="s2">&quot;Li9Al4_mp-568404&quot;</span><span class="p">,</span><span class="s2">&quot;Li3Al2_mp-16506&quot;</span><span class="p">,</span><span class="s2">&quot;LiAl_mp-1079240&quot;</span><span class="p">])]</span>
+
+<span class="n">li</span><span class="p">[</span><span class="s2">&quot;energy_per_atom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">li</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">li</span><span class="p">[</span><span class="s2">&quot;number_of_atoms&quot;</span><span class="p">]</span>
+<span class="c1"># li</span>
 </pre></div>
 </div>
 </div>
@@ -1662,7 +1536,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
         
         
         <span class="n">ax_list</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">get_clean_project_name</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">data1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;compound&quot;</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
-        <span class="c1"># ax_list[i,0].legend(prop={&quot;size&quot;:16})</span>
+        <span class="n">ax_list</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="mi">16</span><span class="p">})</span>
         
     <span class="n">ax_list</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">al_fcc</span><span class="p">[</span><span class="s2">&quot;vol&quot;</span><span class="p">],</span><span class="n">al_fcc</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">al_fcc</span><span class="p">[</span><span class="s2">&quot;number_of_atoms&quot;</span><span class="p">],</span>
                             <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;DFT&quot;</span><span class="p">)</span>
@@ -1682,7 +1556,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
         <span class="n">ax_list</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">get_clean_project_name</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">data2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;compound&quot;</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
         <span class="c1"># ax_list[i,2].legend(prop={&quot;size&quot;:16})</span>
         
-    <span class="n">ax_list</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">li_bcc</span><span class="p">[</span><span class="s2">&quot;vol&quot;</span><span class="p">],</span><span class="n">li_bcc</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">li_bcc</span><span class="p">[</span><span class="s2">&quot;number_of_atoms&quot;</span><span class="p">],</span>
+    <span class="n">ax_list</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">li</span><span class="p">[</span><span class="s2">&quot;vol&quot;</span><span class="p">],</span><span class="n">li</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">li</span><span class="p">[</span><span class="s2">&quot;number_of_atoms&quot;</span><span class="p">],</span>
                             <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;DFT&quot;</span><span class="p">)</span>
         
     <span class="k">for</span> <span class="n">j</span><span class="p">,(</span><span class="n">_</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data3</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()):</span>
@@ -1720,7 +1594,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/validation_LiAl_20_0.png" src="../_images/validation_LiAl_20_0.png" />
+<img alt="../_images/validation_LiAl_23_0.png" src="../_images/validation_LiAl_23_0.png" />
 </div>
 </div>
 </section>
@@ -1885,7 +1759,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>18</th>
-      <td>1374</td>
+      <td>1393</td>
       <td>LiAl_yace</td>
       <td>(Atom('Al', [0.0, 0.0, 0.0], index=0))</td>
       <td>Al</td>
@@ -1899,7 +1773,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>20</th>
-      <td>1400</td>
+      <td>1419</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [0.0, 0.0, 0.0], index=0))</td>
       <td>Li</td>
@@ -1913,7 +1787,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>22</th>
-      <td>1426</td>
+      <td>1451</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [4.5021943685456485, 2.599343130623782, 1.8380131542949232], index=0), Atom('Li', [6.753291552821257, 3.8990146959337566, 2.7570197314419675], index=1), Atom('Al', [-3.838851410290508e...</td>
       <td>Li2Al2</td>
@@ -1927,7 +1801,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
     </tr>
     <tr>
       <th>23</th>
-      <td>1439</td>
+      <td>1464</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [0.0, 0.0, 0.0], index=0), Atom('Al', [2.0106543994993293, 2.0106543994993293, 2.462341474538397e-16], index=1), Atom('Al', [2.0106543994993293, 1.2311707372691985e-16, 2.0106543994993...</td>
       <td>LiAl3</td>
@@ -1958,6 +1832,7 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
         <span class="n">job_ref</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">ref</span><span class="o">.</span><span class="n">structure</span>
         <span class="n">job_ref</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">pot</span>
         <span class="n">job_ref</span><span class="o">.</span><span class="n">calc_minimize</span><span class="p">()</span>
+        
         <span class="n">elastic_job</span> <span class="o">=</span> <span class="n">job_ref</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">pr_pot</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">ElasticMatrixJob</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;elastic_job_</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">compound</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">crystal_structure</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">elastic_job</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;eps_range&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.05</span>
         <span class="n">elastic_job</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -1971,206 +1846,42 @@ map directly to c-types [inferred_type-&gt;mixed,key-&gt;block2_values] [items-&
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LiAl_eam
-The job elastic_job_Al_fcc was saved and received the ID: 1491
-The job s_e_0 was saved and received the ID: 1492
-The job s_01_e_m0_05000 was saved and received the ID: 1493
-The job s_01_e_m0_02500 was saved and received the ID: 1494
-The job s_01_e_0_02500 was saved and received the ID: 1495
-The job s_01_e_0_05000 was saved and received the ID: 1496
-The job s_08_e_m0_05000 was saved and received the ID: 1497
-The job s_08_e_m0_02500 was saved and received the ID: 1498
-The job s_08_e_0_02500 was saved and received the ID: 1499
-The job s_08_e_0_05000 was saved and received the ID: 1500
-The job s_23_e_m0_05000 was saved and received the ID: 1501
-The job s_23_e_m0_02500 was saved and received the ID: 1502
-The job s_23_e_0_02500 was saved and received the ID: 1503
-The job s_23_e_0_05000 was saved and received the ID: 1504
-The job phonopy_job_Al_fcc was saved and received the ID: 1505
-The job ref_job_Al_fcc_0 was saved and received the ID: 1506
-The job elastic_job_Li_bcc was saved and received the ID: 1507
-The job s_e_0 was saved and received the ID: 1508
-The job s_01_e_m0_05000 was saved and received the ID: 1509
-The job s_01_e_m0_02500 was saved and received the ID: 1510
-The job s_01_e_0_02500 was saved and received the ID: 1511
-The job s_01_e_0_05000 was saved and received the ID: 1512
-The job s_08_e_m0_05000 was saved and received the ID: 1513
-The job s_08_e_m0_02500 was saved and received the ID: 1514
-The job s_08_e_0_02500 was saved and received the ID: 1515
-The job s_08_e_0_05000 was saved and received the ID: 1516
-The job s_23_e_m0_05000 was saved and received the ID: 1517
-The job s_23_e_m0_02500 was saved and received the ID: 1518
-The job s_23_e_0_02500 was saved and received the ID: 1519
-The job s_23_e_0_05000 was saved and received the ID: 1520
-The job phonopy_job_Li_bcc was saved and received the ID: 1521
-The job ref_job_Li_bcc_0 was saved and received the ID: 1522
-The job elastic_job_Li2Al2_cubic was saved and received the ID: 1523
-The job s_e_0 was saved and received the ID: 1524
-The job s_01_e_m0_05000 was saved and received the ID: 1525
-The job s_01_e_m0_02500 was saved and received the ID: 1526
-The job s_01_e_0_02500 was saved and received the ID: 1527
-The job s_01_e_0_05000 was saved and received the ID: 1528
-The job s_08_e_m0_05000 was saved and received the ID: 1529
-The job s_08_e_m0_02500 was saved and received the ID: 1530
-The job s_08_e_0_02500 was saved and received the ID: 1531
-The job s_08_e_0_05000 was saved and received the ID: 1532
-The job s_23_e_m0_05000 was saved and received the ID: 1533
-The job s_23_e_m0_02500 was saved and received the ID: 1534
-The job s_23_e_0_02500 was saved and received the ID: 1535
-The job s_23_e_0_05000 was saved and received the ID: 1536
-The job phonopy_job_Li2Al2_cubic was saved and received the ID: 1537
-The job ref_job_Li2Al2_cubic_0 was saved and received the ID: 1538
-The job ref_job_Li2Al2_cubic_1 was saved and received the ID: 1539
-The job elastic_job_LiAl3_cubic was saved and received the ID: 1540
-The job s_e_0 was saved and received the ID: 1541
-The job s_01_e_m0_05000 was saved and received the ID: 1542
-The job s_01_e_m0_02500 was saved and received the ID: 1543
-The job s_01_e_0_02500 was saved and received the ID: 1544
-The job s_01_e_0_05000 was saved and received the ID: 1545
-The job s_08_e_m0_05000 was saved and received the ID: 1546
-The job s_08_e_m0_02500 was saved and received the ID: 1547
-The job s_08_e_0_02500 was saved and received the ID: 1548
-The job s_08_e_0_05000 was saved and received the ID: 1549
-The job s_23_e_m0_05000 was saved and received the ID: 1550
-The job s_23_e_m0_02500 was saved and received the ID: 1551
-The job s_23_e_0_02500 was saved and received the ID: 1552
-The job s_23_e_0_05000 was saved and received the ID: 1553
-The job phonopy_job_LiAl3_cubic was saved and received the ID: 1554
-The job ref_job_LiAl3_cubic_0 was saved and received the ID: 1555
-The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1556
-RuNNer-AlLi
-The job elastic_job_Al_fcc was saved and received the ID: 1557
-The job s_e_0 was saved and received the ID: 1558
-The job s_01_e_m0_05000 was saved and received the ID: 1559
-The job s_01_e_m0_02500 was saved and received the ID: 1560
-The job s_01_e_0_02500 was saved and received the ID: 1561
-The job s_01_e_0_05000 was saved and received the ID: 1562
-The job s_08_e_m0_05000 was saved and received the ID: 1563
-The job s_08_e_m0_02500 was saved and received the ID: 1564
-The job s_08_e_0_02500 was saved and received the ID: 1565
-The job s_08_e_0_05000 was saved and received the ID: 1566
-The job s_23_e_m0_05000 was saved and received the ID: 1567
-The job s_23_e_m0_02500 was saved and received the ID: 1568
-The job s_23_e_0_02500 was saved and received the ID: 1569
-The job s_23_e_0_05000 was saved and received the ID: 1570
-The job phonopy_job_Al_fcc was saved and received the ID: 1571
-The job ref_job_Al_fcc_0 was saved and received the ID: 1572
-The job elastic_job_Li_bcc was saved and received the ID: 1573
-The job s_e_0 was saved and received the ID: 1574
-The job s_01_e_m0_05000 was saved and received the ID: 1575
-The job s_01_e_m0_02500 was saved and received the ID: 1576
-The job s_01_e_0_02500 was saved and received the ID: 1577
-The job s_01_e_0_05000 was saved and received the ID: 1578
-The job s_08_e_m0_05000 was saved and received the ID: 1579
-The job s_08_e_m0_02500 was saved and received the ID: 1580
-The job s_08_e_0_02500 was saved and received the ID: 1581
-The job s_08_e_0_05000 was saved and received the ID: 1582
-The job s_23_e_m0_05000 was saved and received the ID: 1583
-The job s_23_e_m0_02500 was saved and received the ID: 1584
-The job s_23_e_0_02500 was saved and received the ID: 1585
-The job s_23_e_0_05000 was saved and received the ID: 1586
-The job phonopy_job_Li_bcc was saved and received the ID: 1587
-The job ref_job_Li_bcc_0 was saved and received the ID: 1588
-The job elastic_job_Li2Al2_cubic was saved and received the ID: 1589
-The job s_e_0 was saved and received the ID: 1590
-The job s_01_e_m0_05000 was saved and received the ID: 1591
-The job s_01_e_m0_02500 was saved and received the ID: 1592
-The job s_01_e_0_02500 was saved and received the ID: 1593
-The job s_01_e_0_05000 was saved and received the ID: 1594
-The job s_08_e_m0_05000 was saved and received the ID: 1595
-The job s_08_e_m0_02500 was saved and received the ID: 1596
-The job s_08_e_0_02500 was saved and received the ID: 1597
-The job s_08_e_0_05000 was saved and received the ID: 1598
-The job s_23_e_m0_05000 was saved and received the ID: 1599
-The job s_23_e_m0_02500 was saved and received the ID: 1600
-The job s_23_e_0_02500 was saved and received the ID: 1601
-The job s_23_e_0_05000 was saved and received the ID: 1602
-The job phonopy_job_Li2Al2_cubic was saved and received the ID: 1603
-The job ref_job_Li2Al2_cubic_0 was saved and received the ID: 1604
-The job ref_job_Li2Al2_cubic_1 was saved and received the ID: 1605
-The job elastic_job_LiAl3_cubic was saved and received the ID: 1606
-The job s_e_0 was saved and received the ID: 1607
-The job s_01_e_m0_05000 was saved and received the ID: 1608
-The job s_01_e_m0_02500 was saved and received the ID: 1609
-The job s_01_e_0_02500 was saved and received the ID: 1610
-The job s_01_e_0_05000 was saved and received the ID: 1611
-The job s_08_e_m0_05000 was saved and received the ID: 1612
-The job s_08_e_m0_02500 was saved and received the ID: 1613
-The job s_08_e_0_02500 was saved and received the ID: 1614
-The job s_08_e_0_05000 was saved and received the ID: 1615
-The job s_23_e_m0_05000 was saved and received the ID: 1616
-The job s_23_e_m0_02500 was saved and received the ID: 1617
-The job s_23_e_0_02500 was saved and received the ID: 1618
-The job s_23_e_0_05000 was saved and received the ID: 1619
-The job phonopy_job_LiAl3_cubic was saved and received the ID: 1620
-The job ref_job_LiAl3_cubic_0 was saved and received the ID: 1621
-The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1622
-LiAl_yace
-The job elastic_job_Al_fcc was saved and received the ID: 1623
-The job s_e_0 was saved and received the ID: 1624
-The job s_01_e_m0_05000 was saved and received the ID: 1625
-The job s_01_e_m0_02500 was saved and received the ID: 1626
-The job s_01_e_0_02500 was saved and received the ID: 1627
-The job s_01_e_0_05000 was saved and received the ID: 1628
-The job s_08_e_m0_05000 was saved and received the ID: 1629
-The job s_08_e_m0_02500 was saved and received the ID: 1630
-The job s_08_e_0_02500 was saved and received the ID: 1631
-The job s_08_e_0_05000 was saved and received the ID: 1632
-The job s_23_e_m0_05000 was saved and received the ID: 1633
-The job s_23_e_m0_02500 was saved and received the ID: 1634
-The job s_23_e_0_02500 was saved and received the ID: 1635
-The job s_23_e_0_05000 was saved and received the ID: 1636
-The job phonopy_job_Al_fcc was saved and received the ID: 1637
-The job ref_job_Al_fcc_0 was saved and received the ID: 1638
-The job elastic_job_Li_bcc was saved and received the ID: 1639
-The job s_e_0 was saved and received the ID: 1640
-The job s_01_e_m0_05000 was saved and received the ID: 1641
-The job s_01_e_m0_02500 was saved and received the ID: 1642
-The job s_01_e_0_02500 was saved and received the ID: 1643
-The job s_01_e_0_05000 was saved and received the ID: 1644
-The job s_08_e_m0_05000 was saved and received the ID: 1645
-The job s_08_e_m0_02500 was saved and received the ID: 1646
-The job s_08_e_0_02500 was saved and received the ID: 1647
-The job s_08_e_0_05000 was saved and received the ID: 1648
-The job s_23_e_m0_05000 was saved and received the ID: 1649
-The job s_23_e_m0_02500 was saved and received the ID: 1650
-The job s_23_e_0_02500 was saved and received the ID: 1651
-The job s_23_e_0_05000 was saved and received the ID: 1652
-The job phonopy_job_Li_bcc was saved and received the ID: 1653
-The job ref_job_Li_bcc_0 was saved and received the ID: 1654
-The job elastic_job_Li2Al2_cubic was saved and received the ID: 1655
-The job s_e_0 was saved and received the ID: 1656
-The job s_01_e_m0_05000 was saved and received the ID: 1657
-The job s_01_e_m0_02500 was saved and received the ID: 1658
-The job s_01_e_0_02500 was saved and received the ID: 1659
-The job s_01_e_0_05000 was saved and received the ID: 1660
-The job s_08_e_m0_05000 was saved and received the ID: 1661
-The job s_08_e_m0_02500 was saved and received the ID: 1662
-The job s_08_e_0_02500 was saved and received the ID: 1663
-The job s_08_e_0_05000 was saved and received the ID: 1664
-The job s_23_e_m0_05000 was saved and received the ID: 1665
-The job s_23_e_m0_02500 was saved and received the ID: 1666
-The job s_23_e_0_02500 was saved and received the ID: 1667
-The job s_23_e_0_05000 was saved and received the ID: 1668
-The job phonopy_job_Li2Al2_cubic was saved and received the ID: 1669
-The job ref_job_Li2Al2_cubic_0 was saved and received the ID: 1670
-The job ref_job_Li2Al2_cubic_1 was saved and received the ID: 1671
-The job elastic_job_LiAl3_cubic was saved and received the ID: 1672
-The job s_e_0 was saved and received the ID: 1673
-The job s_01_e_m0_05000 was saved and received the ID: 1674
-The job s_01_e_m0_02500 was saved and received the ID: 1675
-The job s_01_e_0_02500 was saved and received the ID: 1676
-The job s_01_e_0_05000 was saved and received the ID: 1677
-The job s_08_e_m0_05000 was saved and received the ID: 1678
-The job s_08_e_m0_02500 was saved and received the ID: 1679
-The job s_08_e_0_02500 was saved and received the ID: 1680
-The job s_08_e_0_05000 was saved and received the ID: 1681
-The job s_23_e_m0_05000 was saved and received the ID: 1682
-The job s_23_e_m0_02500 was saved and received the ID: 1683
-The job s_23_e_0_02500 was saved and received the ID: 1684
-The job s_23_e_0_05000 was saved and received the ID: 1685
-The job phonopy_job_LiAl3_cubic was saved and received the ID: 1686
-The job ref_job_LiAl3_cubic_0 was saved and received the ID: 1687
-The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:17:48,273 - pyiron_log - WARNING - The job elastic_job_Al_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:48,454 - pyiron_log - WARNING - The job phonopy_job_Al_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:48,754 - pyiron_log - WARNING - The job elastic_job_Li_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:48,922 - pyiron_log - WARNING - The job phonopy_job_Li_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:49,223 - pyiron_log - WARNING - The job elastic_job_Li2Al2_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:49,398 - pyiron_log - WARNING - The job phonopy_job_Li2Al2_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:49,706 - pyiron_log - WARNING - The job elastic_job_LiAl3_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:49,875 - pyiron_log - WARNING - The job phonopy_job_LiAl3_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RuNNer-AlLi
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:17:50,177 - pyiron_log - WARNING - The job elastic_job_Al_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:50,342 - pyiron_log - WARNING - The job phonopy_job_Al_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:50,639 - pyiron_log - WARNING - The job elastic_job_Li_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:50,802 - pyiron_log - WARNING - The job phonopy_job_Li_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:51,099 - pyiron_log - WARNING - The job elastic_job_Li2Al2_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:51,271 - pyiron_log - WARNING - The job phonopy_job_Li2Al2_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:51,581 - pyiron_log - WARNING - The job elastic_job_LiAl3_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:51,752 - pyiron_log - WARNING - The job phonopy_job_LiAl3_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LiAl_yace
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 14:17:52,054 - pyiron_log - WARNING - The job elastic_job_Al_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:52,218 - pyiron_log - WARNING - The job phonopy_job_Al_fcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:52,515 - pyiron_log - WARNING - The job elastic_job_Li_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:52,680 - pyiron_log - WARNING - The job phonopy_job_Li_bcc is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:52,983 - pyiron_log - WARNING - The job elastic_job_Li2Al2_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:53,159 - pyiron_log - WARNING - The job phonopy_job_Li2Al2_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:53,468 - pyiron_log - WARNING - The job elastic_job_LiAl3_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-08 14:17:53,638 - pyiron_log - WARNING - The job phonopy_job_LiAl3_cubic is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
 </pre></div>
 </div>
 </div>
@@ -2213,13 +1924,13 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job table_elastic was saved and received the ID: 1689
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job table_elastic was saved and received the ID: 1780
 </pre></div>
 </div>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "511c4550cc024acfb5f576b096f88376", "version_major": 2, "version_minor": 0}
+{"model_id": "89746b00b5e44227af8f4be90b4a7684", "version_major": 2, "version_minor": 0}
 </script><script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "515a8a2db0394275b94460cc6d8f341a", "version_major": 2, "version_minor": 0}
+{"model_id": "4d510fbf4808477e9ce8421f89be7324", "version_major": 2, "version_minor": 0}
 </script><div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2251,7 +1962,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
   <tbody>
     <tr>
       <th>0</th>
-      <td>1491</td>
+      <td>1524</td>
       <td>LiAl_eam</td>
       <td>120.339279</td>
       <td>66.483631</td>
@@ -2262,7 +1973,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>1</th>
-      <td>1507</td>
+      <td>1540</td>
       <td>LiAl_eam</td>
       <td>16.740018</td>
       <td>11.018163</td>
@@ -2273,7 +1984,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>2</th>
-      <td>1523</td>
+      <td>1556</td>
       <td>LiAl_eam</td>
       <td>179.464635</td>
       <td>54.231219</td>
@@ -2284,7 +1995,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>3</th>
-      <td>1540</td>
+      <td>1573</td>
       <td>LiAl_eam</td>
       <td>65.443987</td>
       <td>47.601166</td>
@@ -2295,7 +2006,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>4</th>
-      <td>1557</td>
+      <td>1590</td>
       <td>RuNNer-AlLi</td>
       <td>119.613688</td>
       <td>59.261331</td>
@@ -2306,7 +2017,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>5</th>
-      <td>1573</td>
+      <td>1606</td>
       <td>RuNNer-AlLi</td>
       <td>13.974565</td>
       <td>4.476591</td>
@@ -2317,7 +2028,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>6</th>
-      <td>1589</td>
+      <td>1622</td>
       <td>RuNNer-AlLi</td>
       <td>124.404880</td>
       <td>20.665379</td>
@@ -2328,7 +2039,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>7</th>
-      <td>1606</td>
+      <td>1639</td>
       <td>RuNNer-AlLi</td>
       <td>88.575923</td>
       <td>50.190830</td>
@@ -2339,7 +2050,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>8</th>
-      <td>1623</td>
+      <td>1685</td>
       <td>LiAl_yace</td>
       <td>133.807535</td>
       <td>62.693651</td>
@@ -2350,7 +2061,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>9</th>
-      <td>1639</td>
+      <td>1701</td>
       <td>LiAl_yace</td>
       <td>18.307762</td>
       <td>13.775557</td>
@@ -2361,7 +2072,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>10</th>
-      <td>1655</td>
+      <td>1717</td>
       <td>LiAl_yace</td>
       <td>114.275413</td>
       <td>13.925574</td>
@@ -2372,7 +2083,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>11</th>
-      <td>1672</td>
+      <td>1734</td>
       <td>LiAl_yace</td>
       <td>112.037951</td>
       <td>42.770574</td>
@@ -2387,10 +2098,10 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax_list</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">data_elastic</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax_list</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">data_elastic</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 
 <span class="n">color_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">data_elastic</span><span class="o">.</span><span class="n">potential</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
 
@@ -2403,6 +2114,8 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     <span class="c1"># data = data_elastic[(data_elastic.phase == phase) &amp; (data_elastic[&quot;potential&quot;]==&quot;pot&quot;)]</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">data_elastic</span><span class="p">[(</span><span class="n">data_elastic</span><span class="o">.</span><span class="n">phase</span> <span class="o">==</span> <span class="n">phase</span><span class="p">)]</span>
     
+    <span class="c1"># DFT data is read from csv files</span>
+    <span class="n">dft_ref</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">phase</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;_dos.csv&quot;</span><span class="p">)</span>
     
     
     <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">pot</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">potentials_list</span><span class="p">):</span>
@@ -2411,11 +2124,19 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     
         <span class="n">thermo</span> <span class="o">=</span> <span class="n">phonopy_job</span><span class="o">.</span><span class="n">get_thermal_properties</span><span class="p">(</span><span class="n">t_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
         
+        
+        
         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phonopy_job</span><span class="p">[</span><span class="s2">&quot;output/dos_energies&quot;</span><span class="p">],</span> <span class="n">phonopy_job</span><span class="p">[</span><span class="s2">&quot;output/dos_total&quot;</span><span class="p">],</span> 
                 <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
                 <span class="n">color</span><span class="o">=</span><span class="n">color_palette</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> 
                 <span class="n">label</span><span class="o">=</span><span class="n">get_clean_project_name</span><span class="p">(</span><span class="n">pot</span><span class="p">))</span>
+        
+       
+        
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency, THz&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+        
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dft_ref</span><span class="p">[</span><span class="s2">&quot;dos_energy&quot;</span><span class="p">],</span><span class="n">dft_ref</span><span class="p">[</span><span class="s2">&quot;dos_total&quot;</span><span class="p">],</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;DFT&quot;</span><span class="p">)</span>
+        
     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">ax_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;DOS&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
@@ -2426,7 +2147,38 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/validation_LiAl_26_0.png" src="../_images/validation_LiAl_26_0.png" />
+<img alt="../_images/validation_LiAl_29_0.png" src="../_images/validation_LiAl_29_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fig, ax_list = plt.subplots(ncols=len(data_elastic.phase.unique()), nrows=len(potentials_list), sharey=&quot;row&quot;)</span>
+
+<span class="c1"># fig.set_figwidth(25)</span>
+<span class="c1"># fig.set_figheight(12)</span>
+
+<span class="c1"># color_palette = sns.color_palette(&quot;tab10&quot;, n_colors=len(data_elastic.potential.unique()))</span>
+
+
+<span class="c1"># for i, phase in enumerate(data_elastic.phase.unique()):</span>
+    
+    
+<span class="c1">#     data = data_elastic[data_elastic.phase == phase]</span>
+    
+    
+    
+<span class="c1">#     for j, pot in enumerate(potentials_list):</span>
+<span class="c1">#         ax = ax_list[j][i]</span>
+<span class="c1">#         phonopy_job = pr[get_clean_project_name(pot) + f&quot;/phonopy_job_{phase}&quot;]</span>
+    
+<span class="c1">#         phonopy_job.plot_band_structure(axis=ax)</span>
+<span class="c1">#         ax.set_ylabel(&quot;&quot;)</span>
+<span class="c1">#         ax.set_title(get_clean_project_name(pot)+&quot;__&quot;+phase,fontsize=18)</span>
+<span class="c1">#         ax_list[j][0].set_ylabel(&quot;DOS&quot;)</span>
+<span class="c1">#     # ax_list[0][i].set_title(f&quot;{phase}&quot;)</span>
+<span class="c1"># fig.subplots_adjust(wspace=0.1, hspace=0.4);</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -2468,7 +2220,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/validation_LiAl_27_0.png" src="../_images/validation_LiAl_27_0.png" />
+<img alt="../_images/validation_LiAl_31_0.png" src="../_images/validation_LiAl_31_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2587,8 +2339,6 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     <span class="k">return</span> <span class="n">data_convexhull</span>
 
 <span class="n">df_eam</span> <span class="o">=</span> <span class="n">get_e_form</span><span class="p">(</span><span class="n">data_murn</span><span class="p">[</span><span class="n">data_murn</span><span class="p">[</span><span class="s2">&quot;potential&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;LiAl_eam&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">df_eam</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Li9Al4&quot;</span>
-<span class="n">df_eam</span> <span class="o">=</span> <span class="n">df_eam</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span>
 <span class="n">df_nnp</span> <span class="o">=</span> <span class="n">get_e_form</span><span class="p">(</span><span class="n">data_murn</span><span class="p">[</span><span class="n">data_murn</span><span class="p">[</span><span class="s2">&quot;potential&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;RuNNer-AlLi&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
 <span class="n">df_ace</span> <span class="o">=</span> <span class="n">get_e_form</span><span class="p">(</span><span class="n">data_murn</span><span class="p">[</span><span class="n">data_murn</span><span class="p">[</span><span class="s2">&quot;potential&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;LiAl_yace&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
 
@@ -2762,6 +2512,27 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
       <td>60.000000</td>
       <td>-0.173341</td>
       <td>-34.668107</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1218</td>
+      <td>LiAl_eam</td>
+      <td>(Atom('Li', [4.9874611628416465, 1.0099045365192156, 0.8188840806477526], index=0), Atom('Li', [3.1237816780987666, 1.455730745331952, 2.673723152073369], index=1), Atom('Li', [-3.4421956688209843...</td>
+      <td>Li9Al4</td>
+      <td>monoclinic</td>
+      <td>13.023701</td>
+      <td>190.504374</td>
+      <td>53.125276</td>
+      <td>-28.970054</td>
+      <td>13</td>
+      <td>Li9Al4_monoclinic</td>
+      <td>{'Li': 9, 'Al': 4}</td>
+      <td>4</td>
+      <td>9</td>
+      <td>30.769231</td>
+      <td>69.230769</td>
+      <td>0.785300</td>
+      <td>60.407664</td>
     </tr>
     <tr>
       <th>2</th>
@@ -2996,7 +2767,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>18</th>
-      <td>1374</td>
+      <td>1393</td>
       <td>LiAl_yace</td>
       <td>(Atom('Al', [0.0, 0.0, 0.0], index=0))</td>
       <td>Al</td>
@@ -3017,7 +2788,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>19</th>
-      <td>1387</td>
+      <td>1406</td>
       <td>LiAl_yace</td>
       <td>(Atom('Al', [0.0, 0.0, 0.0], index=0))</td>
       <td>Al</td>
@@ -3038,7 +2809,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>23</th>
-      <td>1439</td>
+      <td>1464</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [0.0, 0.0, 0.0], index=0), Atom('Al', [2.0106543994993293, 2.0106543994993293, 2.462341474538397e-16], index=1), Atom('Al', [2.0106543994993293, 1.2311707372691985e-16, 2.0106543994993...</td>
       <td>LiAl3</td>
@@ -3059,7 +2830,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>22</th>
-      <td>1426</td>
+      <td>1451</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [4.5021943685456485, 2.599343130623782, 1.8380131542949232], index=0), Atom('Li', [6.753291552821257, 3.8990146959337566, 2.7570197314419675], index=1), Atom('Al', [-3.838851410290508e...</td>
       <td>Li2Al2</td>
@@ -3080,7 +2851,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>26</th>
-      <td>1478</td>
+      <td>1506</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [2.2269869888586107, 1.285751535686306, 7.864026721150146], index=0), Atom('Li', [-1.5554058443124377e-09, 2.571503074062492, 0.7130584901440213], index=1), Atom('Li', [-1.555405844312...</td>
       <td>Li4Al4</td>
@@ -3101,7 +2872,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>25</th>
-      <td>1465</td>
+      <td>1493</td>
       <td>LiAl_yace</td>
       <td>(Atom('Al', [2.2270976540671734, 1.2858164055924044, 1.9025646270076813], index=0), Atom('Al', [-2.227095628822777, 3.8574462424884515, 2.7757665665986657], index=1), Atom('Li', [8.407589514518869...</td>
       <td>Li3Al2</td>
@@ -3122,7 +2893,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>24</th>
-      <td>1452</td>
+      <td>1480</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [5.141009159558869, 1.0571139195527752, 0.820249453790277], index=0), Atom('Li', [3.2705789348169056, 1.5045550288016276, 2.715159327393234], index=1), Atom('Li', [-3.601125467999465, ...</td>
       <td>Li9Al4</td>
@@ -3143,7 +2914,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>20</th>
-      <td>1400</td>
+      <td>1419</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [0.0, 0.0, 0.0], index=0))</td>
       <td>Li</td>
@@ -3164,7 +2935,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
     </tr>
     <tr>
       <th>21</th>
-      <td>1413</td>
+      <td>1435</td>
       <td>LiAl_yace</td>
       <td>(Atom('Li', [0.0, 0.0, 0.0], index=0))</td>
       <td>Li</td>
@@ -3187,50 +2958,208 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
 </table>
 </div></div></div>
 </div>
+<p>Read df which contains DFT ref data for plotting</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phases</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Al_fcc&quot;</span><span class="p">,</span><span class="s2">&quot;LiAl_mp-1067&quot;</span><span class="p">,</span><span class="s2">&quot;LiAl3_mp-10890&quot;</span><span class="p">,</span><span class="s2">&quot;Li9Al4_mp-568404&quot;</span><span class="p">,</span><span class="s2">&quot;Li3Al2_mp-16506&quot;</span><span class="p">,</span><span class="s2">&quot;LiAl_mp-1079240&quot;</span><span class="p">,</span><span class="s2">&quot;Li_bcc&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">convex_ref</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s2">&quot;dft_convexhull_ref.pckl&quot;</span><span class="p">)</span>
+<span class="n">convex_ref</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="n">df_phases</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">phases</span><span class="p">)]</span>
-<span class="n">convex_ref</span> <span class="o">=</span> <span class="n">df_phases</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_phases</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;compound&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
-<span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;comp_dict&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;ao&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">at</span><span class="p">:</span> <span class="n">Counter</span><span class="p">(</span><span class="n">at</span><span class="o">.</span><span class="n">get_chemical_symbols</span><span class="p">()))</span>
-<span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;n_Al&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;comp_dict&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
-<span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;n_Li&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;comp_dict&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Li&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;cAl&quot;</span><span class="p">]</span><span class="o">=</span> <span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;n_Al&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;number_of_atoms&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
-<span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;cLi&quot;</span><span class="p">]</span><span class="o">=</span> <span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;n_Li&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;number_of_atoms&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>energy</th>
+      <th>vol</th>
+      <th>compound</th>
+      <th>ao</th>
+      <th>number_of_atoms</th>
+      <th>comp_dict</th>
+      <th>n_Al</th>
+      <th>n_Li</th>
+      <th>cAl</th>
+      <th>cLi</th>
+      <th>E_form</th>
+      <th>E_form_per_atom</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>438</th>
+      <td>/home/users/lysogy36/tools/VASP/Al-Li/DFT/Al_fcc/murn/strain_1_0/data.json</td>
+      <td>-13.930995</td>
+      <td>16.484415</td>
+      <td>Al_fcc</td>
+      <td>(Atom('Al', [0.0, 0.0, 0.0], index=0), Atom('Al', [0.0, 2.019983601551115, 2.019983601551115], index=1), Atom('Al', [2.019983601551115, 0.0, 2.019983601551115], index=2), Atom('Al', [2.01998360155...</td>
+      <td>4</td>
+      <td>{'Al': 4}</td>
+      <td>4</td>
+      <td>0</td>
+      <td>100.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>910</th>
+      <td>/home/users/lysogy36/tools/VASP/Al-Li/DFT/LiAl3_mp-10890/murn/strain_1_0/data.json</td>
+      <td>-12.597018</td>
+      <td>16.295840</td>
+      <td>LiAl3_mp-10890</td>
+      <td>(Atom('Li', [0.0, 0.0, 0.0], index=0), Atom('Al', [2.0122514573524146, 2.0122514573524146, 0.0], index=1), Atom('Al', [2.0122514573524146, 0.0, 2.0122514573524146], index=2), Atom('Al', [0.0, 2.01...</td>
+      <td>4</td>
+      <td>{'Li': 1, 'Al': 3}</td>
+      <td>3</td>
+      <td>1</td>
+      <td>75.000000</td>
+      <td>25.000000</td>
+      <td>-0.392474</td>
+      <td>-98.118408</td>
+    </tr>
+    <tr>
+      <th>1950</th>
+      <td>/home/users/lysogy36/tools/VASP/Al-Li/DFT/LiAl_mp-1067/murn/strain_1_0/data.json</td>
+      <td>-11.204795</td>
+      <td>16.028228</td>
+      <td>LiAl_mp-1067</td>
+      <td>(Atom('Li', [0.0, 0.0, 0.0], index=0), Atom('Li', [2.246243529971499, 1.2968693066945, 0.9170250810763773], index=1), Atom('Al', [4.492487059942998, 2.593738613389, 1.8340501621527545], index=2), ...</td>
+      <td>4</td>
+      <td>{'Li': 2, 'Al': 2}</td>
+      <td>2</td>
+      <td>2</td>
+      <td>50.000000</td>
+      <td>50.000000</td>
+      <td>-0.726701</td>
+      <td>-181.675339</td>
+    </tr>
+    <tr>
+      <th>1275</th>
+      <td>/home/users/lysogy36/tools/VASP/Al-Li/DFT/LiAl_mp-1079240/murn/strain_1_0/data.json</td>
+      <td>-21.715330</td>
+      <td>18.537039</td>
+      <td>LiAl_mp-1079240</td>
+      <td>(Atom('Li', [-2.093764484173552e-06, 2.574581270471953, 3.588630766943668], index=0), Atom('Li', [2.229653899294873, 1.2872887040708958, 5.022609593138096], index=1), Atom('Li', [2.229653899294873...</td>
+      <td>8</td>
+      <td>{'Li': 4, 'Al': 4}</td>
+      <td>4</td>
+      <td>4</td>
+      <td>50.000000</td>
+      <td>50.000000</td>
+      <td>-0.759143</td>
+      <td>-94.892853</td>
+    </tr>
+    <tr>
+      <th>652</th>
+      <td>/home/users/lysogy36/tools/VASP/Al-Li/DFT/Li3Al2_mp-16506/murn/strain_1_0/data.json</td>
+      <td>-13.176984</td>
+      <td>16.098544</td>
+      <td>Li3Al2_mp-16506</td>
+      <td>(Atom('Li', [7.387307289355338, 3.3557842846492325, 2.205190367378745], index=0), Atom('Li', [4.984874333407062, 2.2644466100798333, 1.488038392346624], index=1), Atom('Li', [0.0, 0.0, 0.0], index...</td>
+      <td>5</td>
+      <td>{'Li': 3, 'Al': 2}</td>
+      <td>2</td>
+      <td>3</td>
+      <td>40.000000</td>
+      <td>60.000000</td>
+      <td>-0.942593</td>
+      <td>-188.518538</td>
+    </tr>
+    <tr>
+      <th>231</th>
+      <td>/home/users/lysogy36/tools/VASP/Al-Li/DFT/Li9Al4_mp-568404/murn/strain_1_0/data.json</td>
+      <td>-31.786765</td>
+      <td>16.532577</td>
+      <td>Li9Al4_mp-568404</td>
+      <td>(Atom('Li', [15.085585487572331, 3.6087478779487228, 4.372653838370371], index=0), Atom('Li', [13.209884188064274, 3.160045831227256, 2.4668794892606694], index=1), Atom('Li', [6.31626414433567, 1...</td>
+      <td>13</td>
+      <td>{'Li': 9, 'Al': 4}</td>
+      <td>4</td>
+      <td>9</td>
+      <td>30.769231</td>
+      <td>69.230769</td>
+      <td>-2.049089</td>
+      <td>-157.622253</td>
+    </tr>
+    <tr>
+      <th>1343</th>
+      <td>/home/users/lysogy36/tools/VASP/Al-Li/DFT/Li_bcc/murn/strain_1_0/data.json</td>
+      <td>-3.512596</td>
+      <td>20.099126</td>
+      <td>Li_bcc</td>
+      <td>(Atom('Li', [0.0, 0.0, 0.0], index=0), Atom('Li', [1.712796338409787, 1.712796338409787, 1.712796338409787], index=1))</td>
+      <td>2</td>
+      <td>{'Li': 2}</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.000000</td>
+      <td>100.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Define a function to automatically get the mathematical convex hull</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">ConvexHull</span><span class="p">,</span><span class="n">convex_hull_plot_2d</span>
 
+<span class="k">def</span> <span class="nf">get_convexhull</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df_tmp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
-<span class="n">E_f_Al</span> <span class="o">=</span> <span class="n">convex_ref</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;n_Li&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">/</span><span class="n">convex_ref</span><span class="p">[</span><span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Al_fcc&quot;</span><span class="p">][</span><span class="s2">&quot;number_of_atoms&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
-<span class="n">E_f_Li</span> <span class="o">=</span> <span class="n">convex_ref</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;n_Al&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">/</span><span class="n">convex_ref</span><span class="p">[</span><span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Li_bcc&quot;</span><span class="p">][</span><span class="s2">&quot;number_of_atoms&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">df_tmp</span><span class="p">[</span><span class="s2">&quot;cLi&quot;</span><span class="p">]),</span><span class="mi">2</span><span class="p">])</span>
 
-<span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;E_form&quot;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">])</span><span class="o">-</span><span class="p">(</span><span class="n">convex_ref</span><span class="p">[[</span><span class="s2">&quot;n_Al&quot;</span><span class="p">,</span><span class="s2">&quot;n_Li&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="p">[</span><span class="n">E_f_Al</span><span class="p">,</span> <span class="n">E_f_Li</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;E_form_per_atom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;E_form&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;number_of_atoms&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e3</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">df_tmp</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;cLi&quot;</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;E_form_per_atom&quot;</span><span class="p">])</span>
 
-<span class="n">convex_ref</span> <span class="o">=</span> <span class="n">convex_ref</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;cLi&quot;</span><span class="p">)</span>
-
-<span class="c1"># convex_ref</span>
+    <span class="n">hull</span> <span class="o">=</span> <span class="n">ConvexHull</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hull</span><span class="p">,</span><span class="n">points</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">ncols</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">potentials_list</span><span class="p">),</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">ncols</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">potentials_list</span><span class="p">),</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sharey</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="p">)</span>
 
 <span class="n">dfs</span> <span class="o">=</span> <span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">data_convexhull</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;potential&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)])</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">pot</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">potentials_list</span><span class="p">):</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dfs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                 <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
-                 <span class="n">x</span><span class="o">=</span><span class="s1">&#39;cLi&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;E_form_per_atom&#39;</span><span class="p">,</span>
-                 <span class="n">estimator</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">,</span>
-                 <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="n">df_tmp</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     
     
-
+    
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_tmp</span><span class="p">[</span><span class="s2">&quot;cLi&quot;</span><span class="p">],</span><span class="n">df_tmp</span><span class="p">[</span><span class="s2">&quot;E_form_per_atom&quot;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    
+    
+    <span class="n">df_tmp</span> <span class="o">=</span> <span class="n">df_tmp</span><span class="p">[(</span><span class="n">df_tmp</span><span class="p">[</span><span class="s2">&quot;E_form_per_atom&quot;</span><span class="p">]</span><span class="o">&lt;</span><span class="mf">0.1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_tmp</span><span class="p">[</span><span class="s2">&quot;E_form&quot;</span><span class="p">]</span><span class="o">&lt;</span><span class="mf">0.1</span><span class="p">)]</span>
+    <span class="n">hull</span><span class="p">,</span><span class="n">points</span> <span class="o">=</span> <span class="n">get_convexhull</span><span class="p">(</span><span class="n">df_tmp</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">simplex</span> <span class="ow">in</span> <span class="n">hull</span><span class="o">.</span><span class="n">simplices</span><span class="p">:</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">simplex</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">simplex</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
+    
+    
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;cLi&quot;</span><span class="p">],</span> <span class="n">dfs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;E_form_per_atom&quot;</span><span class="p">],</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;potential&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_tmp</span><span class="p">[</span><span class="s2">&quot;cLi&quot;</span><span class="p">],</span> <span class="n">df_tmp</span><span class="p">[</span><span class="s2">&quot;E_form_per_atom&quot;</span><span class="p">],</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;potential&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;cLi&quot;</span><span class="p">],</span><span class="n">convex_ref</span><span class="p">[</span><span class="s2">&quot;E_form_per_atom&quot;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span>
                   <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DFT&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="mi">16</span><span class="p">})</span>
@@ -3248,7 +3177,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/validation_LiAl_34_0.png" src="../_images/validation_LiAl_34_0.png" />
+<img alt="../_images/validation_LiAl_41_0.png" src="../_images/validation_LiAl_41_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3259,7 +3188,7 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total run time for the notebook 572.1296255588531 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total run time for the notebook 180.9642095565796 seconds
 </pre></div>
 </div>
 </div>
@@ -3267,11 +3196,6 @@ The job ref_job_LiAl3_cubic_1 was saved and received the ID: 1688
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">572.1296255588531</span><span class="o">/</span><span class="mi">60</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.53549375931422
 </pre></div>
 </div>
 </div>

@@ -19,9 +19,9 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://git.noc.ruhr-uni-bochum.de/potentials-workshop-2022/workshop_preparation
+  url: https://github.com/pyiron/potentials-workshop-2022
   path_to_book: book
-  branch: master
+  branch: main
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository

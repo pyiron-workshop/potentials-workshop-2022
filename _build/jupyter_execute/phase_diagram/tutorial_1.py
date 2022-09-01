@@ -1,40 +1,28 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <table border="0">
-#  <tr>
-#     <td style="width:30%"><img src="img/potentials_logo.png" width="100%" align="justify"></td>
-#     <td style="width:70%"> <p style="width:100%;color:#B71C1C;font-size:24px;text-align:justify"> From electrons to phase diagrams </p> <p style="width:100%,font-size:16px">Day 03 Hands-on session (Part 2)</td>
-#  </tr>
-# </table>
+# # <font style="color:#B71C1C" face="Helvetica" > Phase diagrams and how to calculate them </font>
 
 # In this notebook, we will use the potentials fitted in the previous days for the calculation of thermodynamic properties such as Helmholtz and Gibbs free energies, which in turn can be used for the calculation of phase diagrams. We will discuss calphy, the tool for automated calculation of free energies, and the methology involved.
 # 
 
 # ---
 
-# ### <font style="color:#B71C1C" face="Helvetica" > Phase diagrams and how to calculate them </font>
+# ## <font style="color:#B71C1C" face="Helvetica" > A simple phase diagram </font>
 
-# <table border="0">
-#  <tr>
-#     <td style="width:40%"><img src="img/phase_dia_1.png" width="100%" align="justify"></td>
-#     <td style="width:60%"> <p style="font-size:14px">Phase diagrams provide a wealth of information such as: coexisting lines, melting temperature, phase stability, nucleation mechanism. </p></td>
-#  </tr>
-# </table>
+# <img src="img/phase_dia_1.png" width="40%">
 
-# ### <font style="color:#B71C1C" face="Helvetica" > Calculation of phase diagrams: the essential ingredients</font>
+# Phase diagrams provide a wealth of information such as: coexisting lines, melting temperature, phase stability, nucleation mechanism.
 
-# <table border="0">
-#  <tr>
-#     <td style="width:50%"><img src="img/cimg4.png" width="100%" align="justify"></td>
-#     <td style="width:50%"> <p style="font-size:14px">Phase diagrams can be evaluated from free energy diagrams. <br> <br>
-#         The required input are: <br> <br>
-#         &#9679; $G(P, T)$ for unary systems <br>
-#         &#9679; $G(x, T)$ for binary systems </p></td>
-#  </tr>
-# </table>
+# ## <font style="color:#B71C1C" face="Helvetica" > Calculation of phase diagrams: the essential ingredients</font>
 
-# ### <font style="color:#B71C1C" face="Helvetica" > Calculation of free energies: Thermodynamic integration </font>
+# <img src="img/cimg4.png" width="30%">
+
+# Phase diagrams can be evaluated from free energy diagrams. The required input are:
+# - $G(P, T)$ for unary systems
+# - $G(x, T)$ for binary systems
+
+# ## <font style="color:#B71C1C" face="Helvetica" > Calculation of free energies: Thermodynamic integration </font>
 
 # <img src="img/fig1.png" width="1000">
 
@@ -61,7 +49,7 @@
 # 
 # 
 
-# ### <font style="color:#B71C1C" face="Helvetica" > Speeding things up: Non-equilibrium calculations </font>
+# ## <font style="color:#B71C1C" face="Helvetica" > Speeding things up: Non-equilibrium calculations </font>
 
 # ##### Non-Equilibrium Hamiltonian Interpolation
 # 
@@ -121,7 +109,7 @@
 # 
 # So, how do we calculate the free energy of a system modelled with a given interatomic potential?
 
-# ### <font style="color:#B71C1C" face="Helvetica" > Hands-on: Calculate free energy </font>
+# ## <font style="color:#B71C1C" face="Helvetica" > Hands-on: Calculate free energy </font>
 
 # Before we really do the calculations, let's convert our equations to a workflow.
 
@@ -567,7 +555,7 @@ plt.legend();
 
 # <img src="img/tm_methods.png" width="900">
 
-# ### Further reading
+# ## <font style="color:#B71C1C" face="Helvetica" > Further reading </font>
 # 
 # - [Menon, Sarath, Yury Lysogorskiy, Jutta Rogal, and Ralf Drautz. “Automated Free-Energy Calculation from Atomistic Simulations.” Physical Review Materials 5, no. 10 (October 11, 2021): 103801.](https://doi.org/10.1103/PhysRevMaterials.5.103801).
 # - [Freitas, Rodrigo, Mark Asta, and Maurice de Koning. “Nonequilibrium Free-Energy Calculation of Solids Using LAMMPS.” Computational Materials Science 112 (February 2016): 333–41.](https://doi.org/10.1016/j.commatsci.2015.10.050).
@@ -576,9 +564,3 @@ plt.legend();
 # - [Paula Leite, Rodolfo, Rodrigo Freitas, Rodolfo Azevedo, and Maurice de Koning. “The Uhlenbeck-Ford Model: Exact Virial Coefficients and Application as a Reference System in Fluid-Phase Free-Energy Calculations.” The Journal of Chemical Physics 145, no. 19 (November 21, 2016): 194101.](https://doi.org/10.1063/1.4967775).
 # 
 # 
-
-# In[ ]:
-
-
-
-

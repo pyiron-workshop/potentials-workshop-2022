@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Pure Al &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    <title>AlLi phase diagram &#8212; Workshop: From Electrons to Phase Diagrams</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -165,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../potentials/02-HDNNP/handson.html">
-     Constructing a HDNNP using RuNNer and pyiron
+     High-Dimensional Neural Network Potentials
     </a>
    </li>
    <li class="toctree-l2">
@@ -220,7 +220,9 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Pure Al
+     <font face="Helvetica" style="color:#B71C1C">
+      AlLi phase diagram
+     </font>
     </a>
    </li>
    <li class="toctree-l2">
@@ -286,6 +288,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pyiron/potentials-workshop-2022/main?urlpath=tree/book/phase_diagram/tutorial_2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -299,7 +330,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://git.noc.ruhr-uni-bochum.de/potentials-workshop-2022/workshop_preparation"
+<a href="https://github.com/pyiron/potentials-workshop-2022"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -380,53 +411,67 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Pure Al
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-pure-al-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Pure Al
+   </font>
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solid">
-     Solid
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-solid-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Solid
+     </font>
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#liquid">
-     Liquid
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-liquid-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Liquid
+     </font>
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#free-energy-with-composition">
-   Free energy with composition
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-free-energy-with-composition-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Free energy with composition
+   </font>
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pack-the-project">
      Pack the project
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analysing-the-results">
    Analysing the results
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#configurational-entropy">
-     Configurational entropy
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-configurational-entropy-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Configurational entropy
+     </font>
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#common-tangent-constructions">
-     Common tangent constructions
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-common-tangent-constructions-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Common tangent constructions
+     </font>
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#further-reading">
-     Further reading
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-further-reading-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Further reading
+     </font>
     </a>
    </li>
   </ul>
@@ -440,7 +485,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pure Al</h1>
+                <h1><font style="color:#B71C1C" face="Helvetica" > AlLi phase diagram </font></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -450,53 +495,67 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Pure Al
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-pure-al-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Pure Al
+   </font>
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solid">
-     Solid
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-solid-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Solid
+     </font>
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#liquid">
-     Liquid
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-liquid-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Liquid
+     </font>
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#free-energy-with-composition">
-   Free energy with composition
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-free-energy-with-composition-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Free energy with composition
+   </font>
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pack-the-project">
      Pack the project
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analysing-the-results">
    Analysing the results
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#configurational-entropy">
-     Configurational entropy
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-configurational-entropy-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Configurational entropy
+     </font>
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#common-tangent-constructions">
-     Common tangent constructions
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-common-tangent-constructions-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Common tangent constructions
+     </font>
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#further-reading">
-     Further reading
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-further-reading-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Further reading
+     </font>
     </a>
    </li>
   </ul>
@@ -511,13 +570,11 @@ title="Print to PDF"
                 
               <div>
                 
-  <table border="0">
- <tr>
-    <td style="width:30%"><img src="img/potentials_logo.png" width="100%" align="justify"></td>
-    <td style="width:70%"> <p style="width:100%;color:#B71C1C;font-size:24px;text-align:justify"> From electrons to phase diagrams </p> <p style="width:100%,font-size:16px">Day 03 Hands-on session (Part 3)</td>
- </tr>
-</table><p>In this notebook, we will use the EAM potential fitted in the previous day and move towards the AlLi phase diagram. We will use many of the methods and tools we discussed in the last sessions and put them together for calculation of phase diagrams. We start with the phase diagram of AlLi from Ref. <a class="reference external" href="https://doi.org/10.1002/adma.19910031215">[1]</a>.</p>
-<img src="img/alli_phase_diagram.jpg" width="50%" align="justify"><p>In the last session, we calculated the melting temperatures of the pure phases Al and Li, thereby arriving at two points on the phase diagram. In this notebook, we will start with the left side of the phase diagram, until <span class="math notranslate nohighlight">\(X_{Li} &lt; 0.5\)</span>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="font-style-color-b71c1c-face-helvetica-alli-phase-diagram-font">
+<h1><font style="color:#B71C1C" face="Helvetica" > AlLi phase diagram </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-alli-phase-diagram-font" title="Permalink to this headline">#</a></h1>
+<p>In this notebook, we will use the EAM potential fitted in the previous day and move towards the AlLi phase diagram. We will use many of the methods and tools we discussed in the last sessions and put them together for calculation of phase diagrams. We start with the phase diagram of AlLi from Ref. <a class="reference external" href="https://doi.org/10.1002/adma.19910031215">[1]</a>.</p>
+<a class="reference internal image-reference" href="../_images/alli_phase_diagram.jpg"><img alt="../_images/alli_phase_diagram.jpg" src="../_images/alli_phase_diagram.jpg" style="width: 50%;" /></a>
+<p>In the last session, we calculated the melting temperatures of the pure phases Al and Li, thereby arriving at two points on the phase diagram. In this notebook, we will start with the left side of the phase diagram, until <span class="math notranslate nohighlight">\(X_{Li} &lt; 0.5\)</span>.</p>
 <p>As always, we start by importing the necessary modules.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -531,63 +588,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics</span> <span class="kn">import</span> <span class="n">Project</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">helpers</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">calphy.integrators</span> <span class="kn">import</span> <span class="n">kb</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">pyiron</span><span class="o">-</span><span class="n">demonstration</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pyiron_atomistics</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;0.1&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">__all__</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.project</span> <span class="kn">import</span> <span class="n">Project</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.toolkit</span> <span class="kn">import</span> <span class="n">AtomisticsTools</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.structure.atoms</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">ase_to_pyiron</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">pyiron_to_ase</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">Atoms</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="p">)</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">pyiron</span><span class="o">-</span><span class="n">demonstration</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pyiron_atomistics</span><span class="o">/</span><span class="n">project</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.vasp.potential</span> <span class="kn">import</span> <span class="n">VaspPotential</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="kn">import</span> <span class="nn">pyiron_atomistics.atomistics.structure.pyironase</span> <span class="k">as</span> <span class="nn">ase</span>
-<span class="ne">---&gt; </span><span class="mi">32</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.structure.atoms</span> <span class="kn">import</span> <span class="n">Atoms</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.structure.factory</span> <span class="kn">import</span> <span class="n">StructureFactory</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.master.parallel</span> <span class="kn">import</span> <span class="n">pipe</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">pyiron</span><span class="o">-</span><span class="n">demonstration</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pyiron_atomistics</span><span class="o">/</span><span class="n">atomistics</span><span class="o">/</span><span class="n">structure</span><span class="o">/</span><span class="n">atoms</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.structure.atom</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">Atom</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">ase_to_pyiron</span> <span class="k">as</span> <span class="n">ase_to_pyiron_atom</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.structure.pyscal</span> <span class="kn">import</span> <span class="n">pyiron_to_pyscal_system</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.structure.neighbors</span> <span class="kn">import</span> <span class="n">Neighbors</span><span class="p">,</span> <span class="n">Tree</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.structure._visualize</span> <span class="kn">import</span> <span class="n">Visualize</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.structure.analyse</span> <span class="kn">import</span> <span class="n">Analyse</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">pyiron</span><span class="o">-</span><span class="n">demonstration</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pyiron_atomistics</span><span class="o">/</span><span class="n">atomistics</span><span class="o">/</span><span class="n">structure</span><span class="o">/</span><span class="n">neighbors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">gamma</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">pyiron_base</span> <span class="kn">import</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">FlattenedStorage</span>
-<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.structure.analyse</span> <span class="kn">import</span> <span class="n">get_average_of_unique_labels</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">scipy.spatial.transform</span> <span class="kn">import</span> <span class="n">Rotation</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">sph_harm</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">pyiron</span><span class="o">-</span><span class="n">demonstration</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pyiron_atomistics</span><span class="o">/</span><span class="n">atomistics</span><span class="o">/</span><span class="n">structure</span><span class="o">/</span><span class="n">analyse</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">coo_matrix</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">Voronoi</span><span class="p">,</span> <span class="n">Delaunay</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">scipy.spatial.qhull</span> <span class="kn">import</span> <span class="n">_QhullUser</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.structure.pyscal</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">get_steinhardt_parameter_structure</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">analyse_cna_adaptive</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">analyse_find_solids</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">pyiron_atomistics.atomistics.structure.strain</span> <span class="kn">import</span> <span class="n">Strain</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;_QhullUser&#39; from &#39;scipy.spatial.qhull&#39; (/home/sarath/miniconda3/envs/pyiron-demonstration/lib/python3.9/site-packages/scipy/spatial/qhull.py)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/menon/miniconda3/envs/pyiron-atom-dev/lib/python3.10/site-packages/paramiko-2.10.3-py3.10.egg/paramiko/transport.py:236: CryptographyDeprecationWarning: Blowfish has been deprecated
+  &quot;class&quot;: algorithms.Blowfish,
 </pre></div>
 </div>
 </div>
@@ -600,10 +602,10 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="pure-al">
-<h1>Pure Al<a class="headerlink" href="#pure-al" title="Permalink to this headline">#</a></h1>
-<section id="solid">
-<h2>Solid<a class="headerlink" href="#solid" title="Permalink to this headline">#</a></h2>
+<section id="font-style-color-b71c1c-face-helvetica-pure-al-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Pure Al </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-pure-al-font" title="Permalink to this headline">#</a></h2>
+<section id="font-style-color-b71c1c-face-helvetica-solid-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Solid </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-solid-font" title="Permalink to this headline">#</a></h3>
 <p>We start by creating an FCC structure. The converged lattice constant has been provided so as to speed up the calculations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -621,7 +623,9 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "c6db7802eb8f48ecbb997e820604c7e1", "version_major": 2, "version_minor": 0}
+{"model_id": "ef24a3fbb5d44217baa9ce7dda876f51", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "9a3b6ab37b0e4bcda4ad20a38d7d5a9c", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>Our FCC lattice consists of a 5x5x5 supercell consisting of 500 atoms. Now we create a Calphy job in pyiron and assign a potential.</p>
@@ -676,8 +680,8 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="liquid">
-<h2>Liquid<a class="headerlink" href="#liquid" title="Permalink to this headline">#</a></h2>
+<section id="font-style-color-b71c1c-face-helvetica-liquid-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Liquid </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-liquid-font" title="Permalink to this headline">#</a></h3>
 <p>Before we look at the output of the previous calculation, we will also calculate the free energy of the liquid phase. For this we can use the same structure as the solid. The Calphy workflow will first superheat the structure, melt it, and then equilibrate to the required temperature and pressure. Therefore the input for the pyiron job looks fairly same.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -798,8 +802,8 @@ title="Print to PDF"
 </div>
 </section>
 </section>
-<section id="free-energy-with-composition">
-<h1>Free energy with composition<a class="headerlink" href="#free-energy-with-composition" title="Permalink to this headline">#</a></h1>
+<section id="font-style-color-b71c1c-face-helvetica-free-energy-with-composition-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Free energy with composition </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-free-energy-with-composition-font" title="Permalink to this headline">#</a></h2>
 <p>Now we will calculate the free energy of FCC solid, liquid and B32 phases with increasing Li compositions. We will use compositions from 0.1 to 0.5 Li. For the solid structure, we will first create an Al FCC structure, and replace randomly selected atoms with Li. Let’s see how we do this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -967,7 +971,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="pack-the-project">
-<h2>Pack the project<a class="headerlink" href="#pack-the-project" title="Permalink to this headline">#</a></h2>
+<h3>Pack the project<a class="headerlink" href="#pack-the-project" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;LiAl&quot;</span><span class="p">)</span>
@@ -998,7 +1002,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="analysing-the-results">
-<h1>Analysing the results<a class="headerlink" href="#analysing-the-results" title="Permalink to this headline">#</a></h1>
+<h2>Analysing the results<a class="headerlink" href="#analysing-the-results" title="Permalink to this headline">#</a></h2>
 <p>Now we can analyse the results of the above calculations. First we create an array of the composition values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1088,8 +1092,8 @@ float: free energy value at required temperature
 <img alt="../_images/tutorial_2_74_1.png" src="../_images/tutorial_2_74_1.png" />
 </div>
 </div>
-<section id="configurational-entropy">
-<h2>Configurational entropy<a class="headerlink" href="#configurational-entropy" title="Permalink to this headline">#</a></h2>
+<section id="font-style-color-b71c1c-face-helvetica-configurational-entropy-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Configurational entropy </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-configurational-entropy-font" title="Permalink to this headline">#</a></h3>
 <p>In the above example, we had off stoichiometric compositions, but we did not include configurational entropy for the solid structures. The easiest way to do this, which we will use here, is to employ the ideal mixing assumption. In the case of ideal mixing, the configuration entropy of mixing is given by,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1218,8 +1222,8 @@ S_{mix} = -k_B (x \log(x) + (1-x) \log(1-x))
 </div>
 </div>
 </section>
-<section id="common-tangent-constructions">
-<h2>Common tangent constructions<a class="headerlink" href="#common-tangent-constructions" title="Permalink to this headline">#</a></h2>
+<section id="font-style-color-b71c1c-face-helvetica-common-tangent-constructions-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Common tangent constructions </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-common-tangent-constructions-font" title="Permalink to this headline">#</a></h3>
 <p>With the above curves, we can move on to common tangent constructions to identify regions where the two phases coexist. In order to calculate the common tangent for two curves <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span>, we can solve the following set of equationns:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1413,18 +1417,17 @@ res: list of floats length 2
 <p>Now let’s put together all the common tangent constructions to arrive at the phase diagram.</p>
 <p>Since we used a very small system, and switching times, the obtained phase diagram will not be accurate. The results shown here uses a system size of about 4000 atoms for each structure, and 50 ps of equilibration and switching time.</p>
 <p>Let’s first look at the phase diagram with the calculated points.</p>
-<img src="img/phase_diagram_dotted.png" width="50%" align="justify"><p>And the phase diagram</p>
-<table border="0">
- <tr>
-    <td style="width:50%"><img src="img/phase_diagram_calculated.png" width="100%" align="justify"></td>
-    <td style="width:50%"><img src="img/alli_phase_diagram.jpg" width="100%" align="justify"></td>
- </tr>
-</table></section>
-<section id="further-reading">
-<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../_images/phase_diagram_dotted.png"><img alt="../_images/phase_diagram_dotted.png" src="../_images/phase_diagram_dotted.png" style="width: 50%;" /></a>
+<p>And the phase diagram</p>
+<a class="reference internal image-reference" href="../_images/phase_diagram_calculated.png"><img alt="../_images/phase_diagram_calculated.png" src="../_images/phase_diagram_calculated.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/alli_phase_diagram.jpg"><img alt="../_images/alli_phase_diagram.jpg" src="../_images/alli_phase_diagram.jpg" style="width: 50%;" /></a>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-further-reading-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Further reading </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-further-reading-font" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://doi.org/10.1088/0953-8984/22/5/055401">Ryu, Seunghwa, and Wei Cai. “A Gold-Silicon Potential Fitted to the Binary Phase Diagram.” Journal of Physics Condensed Matter 22, no. 5 (2010).</a>.</p></li>
 </ul>
+</section>
 </section>
 </section>
 
@@ -1437,16 +1440,16 @@ res: list of floats length 2
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "pyiron-atom-dev"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "pyiron-atom-dev",
             path: "./phase_diagram"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'pyiron-atom-dev'</script>
 
               </div>
               

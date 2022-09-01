@@ -1,16 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <table border="0">
-#  <tr>
-#     <td style="width:30%"><img src="img/potentials_logo.png" width="100%" align="justify"></td>
-#     <td style="width:70%"> <p style="width:100%;color:#B71C1C;font-size:24px;text-align:justify"> From electrons to phase diagrams </p> <p style="width:100%,font-size:16px">Day 03 Hands-on session (Part 3)</td>
-#  </tr>
-# </table>
+# # <font style="color:#B71C1C" face="Helvetica" > AlLi phase diagram </font>
 
 # In this notebook, we will use the EAM potential fitted in the previous day and move towards the AlLi phase diagram. We will use many of the methods and tools we discussed in the last sessions and put them together for calculation of phase diagrams. We start with the phase diagram of AlLi from Ref. [[1]](https://doi.org/10.1002/adma.19910031215). 
 
-# <img src="img/alli_phase_diagram.jpg" width="50%" align="justify">
+# <img src="img/alli_phase_diagram.jpg" width="50%">
 
 # In the last session, we calculated the melting temperatures of the pure phases Al and Li, thereby arriving at two points on the phase diagram. In this notebook, we will start with the left side of the phase diagram, until $X_{Li} < 0.5$.
 
@@ -29,19 +24,19 @@ from tqdm.notebook import tqdm
 
 # Most of the interesting features of the phase diagram at composition of $X_{Li} < 0.5$ lies between the temperature range of 800-1000 K. Therefore, we will calculate the free energy in this range. Similar to the previous session, we will use reversible scaling to obtain the free energy in this temperature range in a single calculation. We will recalculate the free energy of pure Al in FCC lattice and pure Al liquid first.
 
-# In[74]:
+# In[2]:
 
 
 pr = Project("phase_diagram")
 
 
-# ## Pure Al
+# ## <font style="color:#B71C1C" face="Helvetica" > Pure Al </font>
 
-# ### Solid
+# ### <font style="color:#B71C1C" face="Helvetica" > Solid </font>
 
 # We start by creating an FCC structure. The converged lattice constant has been provided so as to speed up the calculations. 
 
-# In[75]:
+# In[3]:
 
 
 structure = pr.create.structure.ase.bulk('Al', cubic=True, a=4.135).repeat(4)
@@ -49,7 +44,7 @@ structure = pr.create.structure.ase.bulk('Al', cubic=True, a=4.135).repeat(4)
 
 # We can visualise the structure.
 
-# In[76]:
+# In[4]:
 
 
 structure.plot3d()
@@ -102,7 +97,7 @@ job_sol.calc_free_energy(temperature=[800, 1000],
 job_sol.run()
 
 
-# ### Liquid
+# ### <font style="color:#B71C1C" face="Helvetica" > Liquid </font>
 
 # Before we look at the output of the previous calculation, we will also calculate the free energy of the liquid phase. For this we can use the same structure as the solid. The Calphy workflow will first superheat the structure, melt it, and then equilibrate to the required temperature and pressure. Therefore the input for the pyiron job looks fairly same.
 
@@ -190,7 +185,7 @@ job_AlLi.calc_free_energy(temperature=[800, 1000],
 job_AlLi.run()
 
 
-# ## Free energy with composition
+# ## <font style="color:#B71C1C" face="Helvetica" > Free energy with composition </font>
 
 # Now we will calculate the free energy of FCC solid, liquid and B32 phases with increasing Li compositions. We will use compositions from 0.1 to 0.5 Li. For the solid structure, we will first create an Al FCC structure, and replace randomly selected atoms with Li. Let's see how we do this.
 
@@ -389,7 +384,7 @@ plt.ylabel(r"F (eV/atom)")
 plt.legend()
 
 
-# ### Configurational entropy
+# ### <font style="color:#B71C1C" face="Helvetica" > Configurational entropy </font>
 
 # In the above example, we had off stoichiometric compositions, but we did not include configurational entropy for the solid structures. The easiest way to do this, which we will use here, is to employ the ideal mixing assumption. In the case of ideal mixing, the configuration entropy of mixing is given by,
 # 
@@ -492,7 +487,7 @@ plt.ylabel(r"F (eV/atom)")
 plt.legend()
 
 
-# ### Common tangent constructions
+# ### <font style="color:#B71C1C" face="Helvetica" > Common tangent constructions </font>
 # 
 # With the above curves, we can move on to common tangent constructions to identify regions where the two phases coexist. In order to calculate the common tangent for two curves $f$ and $g$, we can solve the following set of equationns:
 # 
@@ -638,18 +633,14 @@ plt.legend()
 # 
 # Let's first look at the phase diagram with the calculated points.
 
-# <img src="img/phase_diagram_dotted.png" width="50%" align="justify">
+# <img src="img/phase_diagram_dotted.png" width="50%">
 
 # And the phase diagram
 
-# <table border="0">
-#  <tr>
-#     <td style="width:50%"><img src="img/phase_diagram_calculated.png" width="100%" align="justify"></td>
-#     <td style="width:50%"><img src="img/alli_phase_diagram.jpg" width="100%" align="justify"></td>
-#  </tr>
-# </table>
+# <img src="img/phase_diagram_calculated.png" width="50%">
+# <img src="img/alli_phase_diagram.jpg" width="50%">
 
-# ### Further reading
+# ### <font style="color:#B71C1C" face="Helvetica" > Further reading </font>
 # 
 # - [Ryu, Seunghwa, and Wei Cai. “A Gold-Silicon Potential Fitted to the Binary Phase Diagram.” Journal of Physics Condensed Matter 22, no. 5 (2010).](https://doi.org/10.1088/0953-8984/22/5/055401).
 # 

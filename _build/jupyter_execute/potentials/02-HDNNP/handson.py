@@ -2,21 +2,16 @@
 # coding: utf-8
 
 # ![Logo](figures/GOE_Logo_Quer_IPC_Farbe_RGB.png)
-# # Constructing a HDNNP using RuNNer and pyiron
-# **Alexander L. M. Knoll, and Moritz R. Schäfer** 
+# # High-Dimensional Neural Network Potentials
+# **[Alexander L. M. Knoll](mailto:aknoll@chemie.uni-goettingen.de), and [Moritz R. Schäfer](mailto:moritzrichard.schaefer@uni-goettingen.de)** 
 # 
 # Behler Group, Theoretische Chemie, Institut für Physikalische Chemie
-# 
-
-# ## Constructing a High-Dimensional Neural Network Potential for Lithium Aluminum Alloys using RuNNer and pyiron
-# 
-# This Jupyter Notebook is written for the RuNNer tutorial at the workshop "Potentials" from 08-10 June, 2022 by **Marius Herbold, Alexander L. M. Knoll, and Moritz R. Schäfer** (marius.herbold@chemie.uni-goettingen.de, aknoll@chemie.uni-goettingen.de, moritzrichard.schaefer@uni-goettingen.de, Georg-August-Universität Göttingen, Theoretische Chemie, Institut für Physikalische Chemie).
 # 
 
 # For this tutorial it is intended to use the RuNNer release version 1.2, available in conda-forge. 
 # The most recent version of RuNNer is [hosted on Gitlab](https://gitlab.com/TheochemGoettingen/RuNNer). For access please contact Prof. Dr. Jörg Behler (joerg.behler@uni-goettingen.de).
 
-# In[ ]:
+# In[1]:
 
 
 import numpy as np
@@ -33,22 +28,21 @@ from ase.geometry import get_distances
 
 from runnerase import generate_symmetryfunctions
 
-get_ipython().run_line_magic('matplotlib', 'widget')
+get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # ## Background
+# ### Architecture of an HDNNP
 
 # **RuNNer** is a stand-alone Fortran program for the construction of high-dimensional neural network potentials (HDNNPs), written mainly by Jörg Behler. The central assumption made in constructing a HDNNP is that the total energy of the system $E_{\mathrm{tot}}$ [can be separated into atomic contributions $E_i$](https://www.doi.org/10.1103/PhysRevLett.98.146401). HDNNP relates the local environment of the atoms to their atomic energies $E_i$, which contribute to the sum of all $N$ atomic energies, resulting in the total energy of the system $E_\mathrm{tot}$.
 
 # \begin{align}
-#     E_\mathrm{tot} = \sum_{i}^{N}E_i\notag
+# E_\mathrm{tot} = \sum_{i}^{N}E_i\notag
 # \end{align}
 
 # Every atomic energy is described by an atomic neural network (NN), which is element-specific. The entirety of all atomic NNs composes a HDNNP, whose general architecture is shown below for a binary system.
 
-# <div>
-# <img src="figures/2g.png" width="500"/>
-# </div>
+# <img src="figures/2g.png" class="center" width="500"/>
 
 # As you can see, the atomic contributions in this model are predicted independently from each other. Therefore, the model can easily describe systems with differering numbers of atoms: adding or removing an atom corresponds to adding or removing a row in the figure shown above. This ability is what puts the "high-dimensional" into the name "HDNNP". 
 # 
@@ -56,101 +50,87 @@ get_ipython().run_line_magic('matplotlib', 'widget')
 # 
 # Atomic NNs look like this:
 
-# <div>
 # <img src="figures/ann.png" width="500"/>
-# </div>
 
 # Every value in the SF vector $G$ serves as one piece of input information to the atomic NN. We refer to the circles in the figure as _nodes_ (from graph theory) or _neurons_ (from neural science). The information from the input nodes flows through the atomic NN from left to right: the input layer is followed by a configurable number of hidden layers which consist, in turn, of an arbitrary number of _hidden nodes_. At the end, all information is collected in the output layer, which in our case is interpreted as the atomic energy contribution of the atom under consideration. The input nodes and the hidden nodes in the first layer are connected by weights. Moreover, the hidden and output nodes carry a bias value.
 # 
 # During training, the weights and biases are optimized using backpropagation to represent best the data in the training data set.
 
-# ## Definition of the Symmetry Functions (SFs)
+# ### Symmetry Functions (SFs)
 
 # SFs provide the input for the NN and describe the local atomic environment of each atom. In principle, one could also use Cartesian coordinates to capture the atomic positions in a structure. As Cartesian coordinates describe the absolute positions of atoms the numerical input to the atomic NNs would change with translation or rotation of the system. However, these actions do not influence the energy of the system and different numerical inputs belonging to the same NN output lead to large training errors.
 # 
 # In contrast, SFs describe the relative positions of the atoms to each other and are hence translationally and rotationally invariant. We differentiate two types of SFs: radial SF depend on the distance between atom pairs and serve as a measure for their bond order. Angular SFs additionally depend on the interatomic angles.
 
-# ### The Cutoff Function
+# #### Cutoff Functions
 
 # The cutoff function $f_{\mathrm{c}}$ ensures that only the neighbors within one atomic environment counts towards the symmetry function values. The cutoff radius $R_\mathrm{c}$ (usually $12\,\mathrm{bohr}$) defines how much of the local atomic environment is considered. All SFs and their derivatives will decrease to zero if the pairwise distance is larger than $R_\mathrm{c}$. There are several cutoff funtions defined in **RuNNer** and we will use here
 
-# \begin{equation}
+# \begin{align}
 #     f_{c}(R_{ij}) = 
 #     \begin{cases}
 #     0.5 \cdot [\cos(\pi x) + 1]& ~ \text{for $R_{ij} \leq R_\mathrm{c}$},\\
 #     0& ~ \text{for $R_{ij} > R_\mathrm{c}$}
 #     \end{cases}
-# \end{equation}
+# \end{align}
 
 # with the atomic distance $R_{ij}$, the cutoff radius $R_\mathrm{c}$, and $x = \frac{R_{ij}}{R_{\mathrm{c}}}$.
 
 # Take a look at the figure below for a graphical representation of the cutoff radius in a periodic system: the red atom is the central atom for which the SF values will be calculated. All yellow atoms lie within in the cutoff radius and will therefore contribute to the SF values.
 
-# <div>
 # <img src="figures/Rc.png" width="500"/>
-# </div>
 
-# ### The Radial Symmetry Functions
+# #### Radial Symmetry Functions
 
 # To define the parameters for the radial SFs, it is important to know the shortest bond distance for each element combination in your data set. Usually, 5-6 radial SF are used for any element pair, with different $\eta$ values to increase the resolution for structure description. It is possible to shift the maximum of the radial SF $G^2$ by $R_{s}$.
 
-# \begin{equation}
+# \begin{align}
 #     G_{i}^{2} = \sum_{j}^{}e^{-\eta (R_{ij} - R_{s})^2} \cdot f_{c}(R_{ij}).
-# \end{equation}
+# \end{align}
 
 # In most applications, the Gaussian exponents $\eta$ for the radial SFs are chosen such that the SF turning points are equally distributed between the cutoff radius and specific minimum pairwise distance in the training dataset (small eta $\eta$ = max. contraction). In RuNNer, you can either define element pair specific SF or define global SF which are used for every element combination. It is also possible to define different cutoff radii for the SF, even though this is rarely helpful and therefore not recommended.
 # 
 # Below, you can see a graphical representation of the radial symmetry functions including the cutoff function for a cutoff radius of 12 Bohr.
 
-# <div>
 # <img src="figures/radials.png" width="800"/>
-# </div>
 
-# ### The Angular Symmetry Functions
+# #### Angular Symmetry Functions
 
 # The same rules apply to the angular SFs. Here, however, three atomic positions are included in the calculation.
 
-# \begin{equation*}
+# \begin{align}
 #     G_{i}^{3} = 2^{\zeta - 1}\sum_{j}^{} \sum_{k}^{} \left[( 1 + \lambda \cdot cos \theta_{ijk})^{\zeta} \cdot e^{-\eta (R_{ij}^2 + R_{ik}^2 + R_{jk}^2)} \cdot f_{\mathrm{c}}(R_{ij}) \cdot f_{\mathrm{c}}(R_{ik}) \cdot f_{\mathrm{c}}(R_{jk}) \right]
-# \end{equation*}
+# \end{align}
 
 # The angle $\theta_{ijk} = \frac{\mathbf{R}_{ij} \cdot \mathbf{R}_{ik}}{R_{ij} \cdot R_{ik}}$ is centered at atom $i$. For most system, we use permutations of $\zeta = \{1, 2, 4, 16\}$, $\eta = 0$, and $\lambda$ = $\{+1, -1\}$. If many atoms of each element are present, angular SFs are usually not critical and a default set of SFs can be used.
 
-# <div>
 # <img src="figures/angulars.png" width="800"/>
-# </div>
 
-# ##  The Third and Fourth Generations of NN Potentials
+# ###  3rd and 4th Generation HDNNPs
 
 # Due to time limitations, we will only focus on the model described above which is known as the second generation of HDNNPs (see [here](https://www.doi.org/10.1103/PhysRevLett.98.146401), and [here](https://www.doi.org/10.1002/anie.201703114), and [here](https://www.doi.org/10.1002/qua.24890)). However, in recent years third- and fourth-generation HDNNPs were developed by the Behler group.
 
-# ### Repetition: Second Generation HDNNP
+# #### Repetition: Second Generation HDNNP
 
-# <div>
 # <img src="figures/2g.png" width="500">
-# </div>
 
-# ### Third Generation HDNNP
+# #### Third Generation HDNNP
 
 # In second-generation HDNNPs only atomic interactions inside the cutoff sphere are taken into account. The resulting short-ranged potentials are well-suited to describe local bonding even for complex atomic environments. However, it can be expected that for many systems long-range interactions, primarily electrostatics, will be important.
 # 
 # To overcome those limitations, third-generation NNs (see [here](https://www.doi.org/10.1103/PhysRevB.83.153101), and [here](https://www.doi.org/10.1063/1.3682557)) define a second set of atomic neural networks to construct environment-dependent atomic charges. They can then be used to calculate the long-range electrostatic energy without truncation. The total energy of the system is then given by the sum of the short-range and the electrostatic energies.
 
-# <div>
 # <img src="figures/3g.png" width="800"/>
-# </div>
 
-# ### Fourth Generation HDNNP
+# #### Fourth Generation HDNNP
 
 # While the use of environment-dependent charges is a clear step forward, they are not sufficient if long-range charge transfer is present.
 # 
 # When dealing with systems where long-range charge transer is present, the usage of fourth-generation NNs (see [here](https://www.doi.org/10.1038/s41467-020-20427-2), and [here](https://www.doi.org/10.1021/acs.accounts.0c00689)) is recommended. Here, environment-dependent electronegativities $\chi$ are computed first. They will then be used in a charge equilibration scheme to determine the atomic charges $Q$. Again, we can compute the electrostatic energy from this. Moreover, the atomic charges serve as an additional input neuron to train the short-range energy and forces. As it was the case for the third-generation NNs the total energy is then given by the sum of the short-range and the electrostatic energies.
 
-# <div>
 # <img src="figures/4g.png" width="800"/>
-# </div>
 
-# # Using RuNNer via the pyiron Interface 
+# ## Using RuNNer via the pyiron Interface 
 
 # In general, training a HDNNP with **RuNNer** can be separated into three different stages - so-called modes - in which different types of calculation are performed.
 
@@ -160,7 +140,7 @@ get_ipython().run_line_magic('matplotlib', 'widget')
 
 # All these steps are performed consecutively beginning with mode 1.
 
-# ## Data Preparation
+# ### Data Preparation
 
 # The creation of a meaningful neural network potential lives and dies with high quality training data. Therefore, we will begin by inspecting the full training dataset. 
 # The dataset has been stored prior to the workshop in form of a `TrainingContainer`. 
@@ -168,7 +148,7 @@ get_ipython().run_line_magic('matplotlib', 'widget')
 # 
 # Go ahead and open up the project:
 
-# In[ ]:
+# In[2]:
 
 
 pr = Project('../../introduction/training')
@@ -176,7 +156,7 @@ pr = Project('../../introduction/training')
 
 # The project already contains several jobs:
 
-# In[ ]:
+# In[3]:
 
 
 pr.job_table()
@@ -184,7 +164,7 @@ pr.job_table()
 
 # The training data is stored in the project node `initial`.
 
-# In[ ]:
+# In[4]:
 
 
 data_full = pr['basic']
@@ -192,10 +172,10 @@ data_full = pr['basic']
 
 # In order to get a feeling for the data, we inspect its energy-volume curve:
 
-# In[ ]:
+# In[5]:
 
 
-fig, ax = plt.subplots(figsize=(8, 4))
+fig, ax = plt.subplots(figsize=(14, 6))
 data_full.plot.energy_volume()
 plt.show()
 
@@ -209,7 +189,7 @@ plt.show()
 # * structures with a positive energy.
 # * structures in which atoms do not have any neighbors within a cutoff radius of 12 Bohr.
 
-# In[ ]:
+# In[6]:
 
 
 def filter_lithium(container, idx):
@@ -236,7 +216,7 @@ def filter_lithium(container, idx):
     return 'Al' not in elements and energy < 0.0 and no_neighbors is False
 
 
-# In[ ]:
+# In[7]:
 
 
 # Remove the job if it already exists.
@@ -246,7 +226,7 @@ if 'data_lithium' in pr.list_nodes():
 data_lithium = data_full.sample('data_lithium', filter_lithium)
 
 
-# In[ ]:
+# In[8]:
 
 
 print(len(list(data_lithium.iter_structures())))
@@ -254,7 +234,7 @@ print(len(list(data_lithium.iter_structures())))
 
 # When inspecting the list of jobs in the project again, you will find that an additional `TrainingContainer` has been created.
 
-# In[ ]:
+# In[9]:
 
 
 pr.job_table()
@@ -262,10 +242,10 @@ pr.job_table()
 
 # For comparison, here is the energy-volume curve from before, overlayed with the structures in the reduced dataset.
 
-# In[ ]:
+# In[10]:
 
 
-fig, ax = plt.subplots(figsize=(8, 4))
+fig, ax = plt.subplots(figsize=(14, 6))
 data_full.plot.energy_volume()
 data_lithium.plot.energy_volume()
 plt.legend(['Full dataset', 'Lithium'])
@@ -274,17 +254,17 @@ plt.show()
 
 # As you can see, we have selected a very small part of the dataset for our demonstration (176 of ~4000 structures). Nevertheless, the following chapters will demonstrate all the relevant RuNNer concepts to create a similar potential with more training data. 
 
-# ## The `RunnerFit` Job
+# ### Job Setup: `RunnerFit`
 
 # pyiron and the RuNNer Fortran program communicate via a custom job type called `RunnerFit`. Here, we add a new job to the project via `create_job` and give it the name `fit_data_lithium`.
 
-# In[ ]:
+# In[11]:
 
 
 pr_fit = pr.create_group('fit_lithium')
 
 
-# In[ ]:
+# In[12]:
 
 
 mode1 = pr_fit.create.job.RunnerFit('fit_mode1', delete_existing_job=True)
@@ -292,14 +272,12 @@ mode1 = pr_fit.create.job.RunnerFit('fit_mode1', delete_existing_job=True)
 
 # Every `RunnerFit` job is initialized with a sensible choice of input parameters for RuNNer (`parameters`) and an empty storage for training structures (`training_data`). This information can easily be accessed through the `input` property.  
 
-# In[ ]:
+# In[13]:
 
 
 mode1.input
 
 
-# ### Description of the Parameters in this Dictionary.
-# 
 # Here, we will only explain the global keywords which are relevant for all modes. The remaining keywords will be explained in following chapters. If a keyword is not specified on the pyiron-side, the **RuNNer** Fortran program uses default values, if possible.
 # For a more detailed explanation of all RuNNer keywords, take a look at [the RuNNer documentation](https://theochemgoettingen.gitlab.io/RuNNer).
 
@@ -315,11 +293,11 @@ mode1.input
 # |points_in_memory | 1000| This keyword controls memory consumption and IO and is therefore important to achieve an optimum performance of RuNNer. Has a different meaning depending on the current runner_mode.
 # |use_short_forces | True| Use forces for fitting the short range NN weights.
 
-# ### Adding Training Data
+# #### Adding Training Data
 
 # As of yet, this job does not have a training dataset. However, as you already saw for the EAM potential, adding a new training dataset to the job is as simple as calling `add_training_data`:
 
-# In[ ]:
+# In[14]:
 
 
 # The if-conditions prevents you from accidentally adding the same
@@ -332,11 +310,11 @@ len(mode1.training_data)
 
 # By calling `add_training_data` multiple times, it is very easy to combine several independent training datasets for one fit.
 
-# ### Specification of RuNNer Parameters
+# #### Specification of RuNNer Parameters
 # 
 # While many of the default parameters in `RunnerFit` are suited for a wide range of calculations, you still need to carefully check each of them before starting a fit. Special attention must be given to the atom-centered symmetry functions as they have to be tailored to the system under investigation.
 
-# #### Generating Symmetry Functions with runnerase
+# #### Generating SFs with `runnerase`
 
 # `RunnerFit` builds on the RuNNer ASE interface which is publicly available as `runnerase`. For further information check out the [runnerase documentation](https://runner-suite.gitlab.io/runnerase).
 # 
@@ -348,7 +326,7 @@ len(mode1.training_data)
 
 # However, `runnerase` does not operate on pyiron objects like the `TrainingContainer`. Therefore, we transform the `TrainingContainer` with our lithium structures into a List of ASE Atoms objects. The `container_to_ase` function is defined in pyiron_contrib. 
 
-# In[ ]:
+# In[15]:
 
 
 dataset = container_to_ase(data_lithium)
@@ -356,10 +334,8 @@ dataset = container_to_ase(data_lithium)
 
 # In the following, we have prepared two interactive plotting functions for you, so you can try out different parameters for the SFs.
 
-# In[ ]:
+# In[16]:
 
-
-get_ipython().run_line_magic('matplotlib', 'inline')
 
 @widgets.interact(amount=(0, 12, 1), algorithm=['turn', 'half'],
                   cutoff_function=[True, False], show_legend=[True, False])
@@ -375,7 +351,7 @@ def update(amount=6, algorithm='turn', cutoff_function=True, show_legend=False):
     plt.show()
 
 
-# In[ ]:
+# In[17]:
 
 
 @widgets.interact(amount=(0, 12, 1), algorithm=['half', 'turn', 'literature'],
@@ -394,7 +370,7 @@ def update(amount = 4, algorithm='literature', show_legend=False):
 # 
 # When `generate_symmetryfunctions` is called, it returns a `SymmetryFunctionSet` itself. Two `SymmetryFunctionSet`s can easily be combined using the `+` operator. This way, we can add a collection of radial symmetry functions to our job.
 
-# In[ ]:
+# In[18]:
 
 
 # Reset the symmetry function container.
@@ -409,7 +385,7 @@ mode1.parameters.symfunction_short += radials
 
 # All SFs stored in `radials` can be accessed through its `storage` property. As you can see, `radials` essentially organizes a list of SFs in a convenient storage format.
 
-# In[ ]:
+# In[19]:
 
 
 radials.storage
@@ -417,7 +393,7 @@ radials.storage
 
 # Similarly, we can generate a set of angular symmetry functions and add them to the job as well.
 
-# In[ ]:
+# In[20]:
 
 
 # Generate angular symmetry functions.                                                                                                                                                                                                                        
@@ -427,7 +403,7 @@ angulars = generate_symmetryfunctions(dataset, sftype=3, amount=4,
 mode1.parameters.symfunction_short += angulars
 
 
-# In[ ]:
+# In[21]:
 
 
 angulars.storage
@@ -435,13 +411,13 @@ angulars.storage
 
 # When we look at the `input` of the job again, you will find that all symmetry functions appear.
 
-# In[ ]:
+# In[22]:
 
 
 mode1.input
 
 
-# ## Calculation of Symmetry Function Values - RuNNer Mode 1
+# ### Mode 1: Calculation of SF Values
 
 # In **RuNNer**'s mode 1 the following steps are performed:
 # - calculation of SF values,
@@ -463,7 +439,7 @@ mode1.input
 
 # Finally, starting mode 1 is as simple as calling the `run` function. For safety, we reset the `runner_mode` parameter to 1. 
 
-# In[ ]:
+# In[23]:
 
 
 # Run Mode 1.
@@ -471,11 +447,9 @@ mode1.parameters.runner_mode = 1
 mode1.run(delete_existing_job=True)
 
 
-# ### Output Mode 1
-# 
 # The output of the calculation is stored in the `output` property of the job.
 
-# In[ ]:
+# In[24]:
 
 
 mode1.output
@@ -487,26 +461,25 @@ mode1.output
 
 # We store the two different output values in variables and access their plotting interfaces.
 
-# In[ ]:
+# In[25]:
 
 
 split = mode1.output['splittraintest']
 sfvalues = mode1.output['sfvalues'].to_runnerase()
 
 
-# In[ ]:
+# In[26]:
 
 
-get_ipython().run_line_magic('matplotlib', 'widget')
-fig, ax = plt.subplots(figsize=(8, 4))
+fig, ax = plt.subplots(figsize=(14, 6))
 split.plot.pie()
 plt.show()
 
 
-# In[ ]:
+# In[27]:
 
 
-fig, ax = plt.subplots(figsize=(8, 4))
+fig, ax = plt.subplots(figsize=(14, 6))
 sfvalues.plot.boxplot()
 plt.show()
 
@@ -515,7 +488,7 @@ plt.show()
 # 
 # This plot can give clues about outliers in the datatset which are difficult to fit. For example, symmetry function 7 shows very large values for one atom. This could indicate, that two atoms are getting unreasonably close (for radial SFs) or that their angle is very narrow (for angular SFs). Investigating such structures and, if necessary, removing them from the training dataset, can often improve a fit.    
 
-# ### Potential Training - RuNNer Mode 2
+# ### Mode 2: Potential Training
 
 # In ``mode 2``, the magic happens and your data will be fitted. Again, we summarize important keywords in a table. There are many other keywords which allow you to finetune your potential. However, the selection below should give you many possibilities to change the outcome of the training process.
 
@@ -542,9 +515,11 @@ plt.show()
 # |**global_nodes_short** | [[15 15]]| Set the default number of nodes in the hidden layers of the short-range NNs in case of nn_type_short 1. In the array, the entries 1 - maxnum_layersshort - 1 refer to the hidden layers. The first entry (0) refers to the nodes in the input layer and is determined automatically from the symmetry functions.
 
 # During the fitting process of the NN, the error function $\Gamma$ is minimized, which is defined as 
+
 # \begin{equation}
 #     \Gamma = \mathrm{RMSE}(E)=\frac{1}{N_\mathrm{struct}} \sum_{i}^{N_\mathrm{\mathrm{struct}}} (E_{\mathrm{NN}}^{i} - E_{\mathrm{ref}}^{i})^2,
 # \end{equation}
+
 # if only energy fitting is used, which defines simultaneously the root-mean squared error of the energies $\mathrm{RMSE}(E)$. This defines the differences of the reference data and the NNP predictions.
 
 # In order to run mode 2, we will restart the previous calculation, thereby creating a new job with its own folder structure. This way, we can try different combinations of parameters without overwriting any of the previous results. 
@@ -553,7 +528,7 @@ plt.show()
 # 
 # The next cell will run a few minutes.
 
-# In[ ]:
+# In[28]:
 
 
 # Run Mode 2.
@@ -566,7 +541,7 @@ mode2.run(delete_existing_job=True)
 
 # After the job has finished, we can first take a look at the behaviour of the error function, i.e. the RMSE. The `output` of mode 2 consists of three properties: the results of the fitting process (`fitresults`), the optimized weights and the symmetry function scaling data for shifting to zero mean and unit variance (`scaling`).
 
-# In[ ]:
+# In[29]:
 
 
 mode2.output['fitresults'].table()
@@ -576,18 +551,18 @@ mode2.output['fitresults'].table()
 # 
 # A more accessible analysis can be obtained by looking at the plots of this data.
 
-# In[ ]:
+# In[30]:
 
 
-fig, ax = plt.subplots(1, 1, figsize=(8, 4))
+fig, ax = plt.subplots(1, 1, figsize=(14, 6))
 mode2.output['fitresults'].plot.rmse_e()
 plt.show()
 
 
-# In[ ]:
+# In[31]:
 
 
-fig, ax = plt.subplots(1, 1, figsize=(8, 4))
+fig, ax = plt.subplots(1, 1, figsize=(14, 6))
 mode2.output['fitresults'].plot.rmse_f()
 plt.show()
 
@@ -596,7 +571,7 @@ plt.show()
 # 
 # Nevertheless, the RMSE is a rather strong reduction of the really complex potential energy surface (PES) and can only be understood as a rule of thumb for the quality of the NNP fit.
 
-# ## Potential Evaluation - RuNNer Mode 3
+# ### Mode 3: Potential Evaluation
 
 # **RuNNer** ``mode 3`` is the prediction mode and brings the NNP to application. 
 
@@ -607,7 +582,7 @@ plt.show()
 
 # We start the calculation following the same pattern as for mode 2.
 
-# In[ ]:
+# In[32]:
 
 
 # Run Mode 3.
@@ -619,7 +594,7 @@ mode3.run(delete_existing_job=True)
 
 # As we turned on `calculate_forces`, mode 3 will give us the energy and force for each structure in the training and testing datasets. Take a look at the `output` to see that we now have access to all possible output properties.
 
-# In[ ]:
+# In[33]:
 
 
 mode3.output.list_nodes()
@@ -627,29 +602,29 @@ mode3.output.list_nodes()
 
 # For a more detailed analyze, we can have a look at the atomic energy and force prediction of the NNP compared to the reference values. For a perfect fit, all points will be on the diagonal of the plot. In this plot, we can identify, for example, whether some energies ranges are not well described in our data set. This could be related to our first data set analysis above.
 
-# In[ ]:
+# In[34]:
 
 
-fig, ax = plt.subplots(1, 1, figsize=(8, 4))
+fig, ax = plt.subplots(1, 1, figsize=(14, 6))
 mode3.plot.energy_scatter_histogram()
 plt.show()
 
 
-# In[ ]:
+# In[35]:
 
 
-fig, ax = plt.subplots(1, 1, figsize=(8, 4))
+fig, ax = plt.subplots(1, 1, figsize=(14, 6))
 mode3.plot.force_scatter_histogram(axis=0)
 plt.show()
 
 
-# ## Using the potential
+# ### LAMMPS: Using the Potential
 
 # After successfully running modes 1 through 3, the potential is ready for application. Via [n2p2](https://compphysvienna.github.io/n2p2/index.html), the NNP can be used in combination with LAMMPS to drive large-scale atomistic simulations.
 # 
 # As was done for previous potentials, we create a pandas dataframe holding all the relevant pieces of information about the potential using `get_lammps_potential`. **API break:** In our case, we need to specifically define the `elements` present in the simulations. Otherwise, the mapping between species in n2p2 and LAMMPS might be off.
 
-# In[ ]:
+# In[36]:
 
 
 pot = mode3.get_lammps_potential(elements=['Li'])
@@ -661,7 +636,7 @@ display(pot)
 # 
 # We create a new subproject for these calculations:
 
-# In[ ]:
+# In[37]:
 
 
 if 'E_V_curve' in pr.list_groups():
@@ -671,7 +646,7 @@ pr_ev = pr.create_group('E_V_curve')
 
 # Next, we create Li bulk structures, varying the cell parameter `a` between 3.0 and 4.0 Angstrom. For each structure, we create a LAMMPS job that minimizes the energy of the system.
 
-# In[ ]:
+# In[38]:
 
 
 a_list = np.linspace(3.0, 4.0, 7)
@@ -686,7 +661,7 @@ for a in a_list:
 
 # Finally, we create a plot from the collected data.
 
-# In[ ]:
+# In[39]:
 
 
 volume_list = []
@@ -709,7 +684,7 @@ plt.ylabel('Energy [eV]')
 plt.show()
 
 
-# ### Playing with the Neural Network Potential
+# ## Next steps
 
 # Great that you have already come this far in the notebook! If you still have some time left, we invite you to play with a few key parameters of RuNNer to experience firsthand how they can influence the fit.
 # 
@@ -723,7 +698,7 @@ plt.show()
 # 4. Experience a really quick fit by setting `use_short_forces` to `False`.
 # 5. Observe that the training outcome can vary depending on different choices of the variable `random_seed`.
 
-# ### Resources
+# ## Resources
 # 
 # Here is a collection of all the resources mentioned in the text. These are a very good starting points towards using RuNNer in your own research!
 # 

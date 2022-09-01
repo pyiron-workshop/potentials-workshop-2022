@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Task 1: Calculate free energy of FCC Al at 500 K, 10000 bar &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    <title>Exercise 1 &#8212; Workshop: From Electrons to Phase Diagrams</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Calculate the melting temperature of the B32 structure" href="exercise_2.html" />
-    <link rel="prev" title="Pure Al" href="tutorial_2.html" />
+    <link rel="next" title="Exercise 2" href="exercise_2.html" />
+    <link rel="prev" title="AlLi phase diagram" href="tutorial_2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -163,7 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../potentials/02-HDNNP/handson.html">
-     Constructing a HDNNP using RuNNer and pyiron
+     High-Dimensional Neural Network Potentials
     </a>
    </li>
    <li class="toctree-l2">
@@ -218,17 +218,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="tutorial_2.html">
-     Pure Al
+     <font face="Helvetica" style="color:#B71C1C">
+      AlLi phase diagram
+     </font>
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Task 1: Calculate free energy of FCC Al at 500 K, 10000 bar
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 1
+     </font>
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="exercise_2.html">
-     Calculate the melting temperature of the B32 structure
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 2
+     </font>
     </a>
    </li>
   </ul>
@@ -284,6 +290,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pyiron/potentials-workshop-2022/main?urlpath=tree/book/phase_diagram/exercise_1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -297,7 +332,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://git.noc.ruhr-uni-bochum.de/potentials-workshop-2022/workshop_preparation"
+<a href="https://github.com/pyiron/potentials-workshop-2022"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -356,124 +391,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Task 1: Calculate free energy of FCC Al at 500 K, 10000 bar
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-2-does-al-have-a-solid-solid-phase-tranformation">
-   Task 2: Does Al have a solid-solid phase tranformation?
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-about-at-higher-pressures-check-the-pressure-range-of-100-gpa-to-300-gpa-what-is-the-most-efficient-way-to-run-these-calculations">
-     What about at higher pressures? Check the pressure range of 100 GPa to 300 GPa? What is the most efficient way to run these calculations?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-3-calculate-melting-temperature-of-al-at-10000-bar">
-   Task 3: Calculate melting temperature of Al at 10000 bar
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-4-how-do-select-the-temperature-range-to-calculate-the-melting-temperature-what-happens-if-the-range-is-too-high-low">
-   Task 4: How do select the temperature range to calculate the melting temperature? What happens if the range is too high/low?
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-5-how-can-we-compare-estimate-the-error-on-the-calculated-melting-temperature">
-   Task 5: How can we compare estimate the error on the calculated melting temperature?
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-6-calculate-the-melting-temperature-of-li">
-   Task 6: Calculate the melting temperature of Li
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Task 1: Calculate free energy of FCC Al at 500 K, 10000 bar</h1>
+                <h1><font style="color:#B71C1C" face="Helvetica" > Exercise 1 </font></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Task 1: Calculate free energy of FCC Al at 500 K, 10000 bar
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-2-does-al-have-a-solid-solid-phase-tranformation">
-   Task 2: Does Al have a solid-solid phase tranformation?
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-about-at-higher-pressures-check-the-pressure-range-of-100-gpa-to-300-gpa-what-is-the-most-efficient-way-to-run-these-calculations">
-     What about at higher pressures? Check the pressure range of 100 GPa to 300 GPa? What is the most efficient way to run these calculations?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-3-calculate-melting-temperature-of-al-at-10000-bar">
-   Task 3: Calculate melting temperature of Al at 10000 bar
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-4-how-do-select-the-temperature-range-to-calculate-the-melting-temperature-what-happens-if-the-range-is-too-high-low">
-   Task 4: How do select the temperature range to calculate the melting temperature? What happens if the range is too high/low?
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-5-how-can-we-compare-estimate-the-error-on-the-calculated-melting-temperature">
-   Task 5: How can we compare estimate the error on the calculated melting temperature?
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-6-calculate-the-melting-temperature-of-li">
-   Task 6: Calculate the melting temperature of Li
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -481,12 +415,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <table border="0">
- <tr>
-    <td style="width:30%"><img src="img/potentials_logo.png" width="100%" align="justify"></td>
-    <td style="width:70%"> <p style="width:100%;color:#B71C1C;font-size:24px;text-align:justify"> From electrons to phase diagrams </p> <p style="width:100%,font-size:16px">Day 03 Hands-on session exercise (Part 1)</td>
- </tr>
-</table><div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="font-style-color-b71c1c-face-helvetica-exercise-1-font">
+<h1><font style="color:#B71C1C" face="Helvetica" > Exercise 1 </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-exercise-1-font" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">helpers</span> <span class="kn">import</span> <span class="n">potential_list</span>
 <span class="kn">from</span> <span class="nn">pyiron_atomistics</span> <span class="kn">import</span> <span class="n">Project</span>
@@ -503,30 +434,17 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="task-1-calculate-free-energy-of-fcc-al-at-500-k-10000-bar">
-<h1>Task 1: Calculate free energy of FCC Al at 500 K, 10000 bar<a class="headerlink" href="#task-1-calculate-free-energy-of-fcc-al-at-500-k-10000-bar" title="Permalink to this headline">#</a></h1>
+<p><font style="color:#B71C1C" face="Helvetica" > Task 1: Calculate free energy of FCC Al at 500 K, 10000 bar </font></p>
 <p>Use a lattice constant of 4.099 for the FCC structure</p>
-</section>
-<section id="task-2-does-al-have-a-solid-solid-phase-tranformation">
-<h1>Task 2: Does Al have a solid-solid phase tranformation?<a class="headerlink" href="#task-2-does-al-have-a-solid-solid-phase-tranformation" title="Permalink to this headline">#</a></h1>
+<p><font style="color:#B71C1C" face="Helvetica" > Task 2: Does Al have a solid-solid phase tranformation? </font></p>
 <p>Calculate the free energy of Al in BCC and FCC structures in the temperature range of 500-1000 K. See if there is a solid-solid phase transformation. Use lattice constant of 3.264 for BCC, and 4.099 for FCC.</p>
 <p>Plot the solution</p>
-<section id="what-about-at-higher-pressures-check-the-pressure-range-of-100-gpa-to-300-gpa-what-is-the-most-efficient-way-to-run-these-calculations">
-<h2>What about at higher pressures? Check the pressure range of 100 GPa to 300 GPa? What is the most efficient way to run these calculations?<a class="headerlink" href="#what-about-at-higher-pressures-check-the-pressure-range-of-100-gpa-to-300-gpa-what-is-the-most-efficient-way-to-run-these-calculations" title="Permalink to this headline">#</a></h2>
+<p><font style="color:#B71C1C" face="Helvetica" > What about at higher pressures? Check the pressure range of 100 GPa to 300 GPa? What is the most efficient way to run these calculations? </font></p>
 <p>Use a temperature of 500 K. For FCC, use a 4x4x4 supercell with lattice constant of 3.49825. For BCC, use a 4x4x4 super cell with lattice constant of 2.7765.</p>
-</section>
-</section>
-<section id="task-3-calculate-melting-temperature-of-al-at-10000-bar">
-<h1>Task 3: Calculate melting temperature of Al at 10000 bar<a class="headerlink" href="#task-3-calculate-melting-temperature-of-al-at-10000-bar" title="Permalink to this headline">#</a></h1>
-</section>
-<section id="task-4-how-do-select-the-temperature-range-to-calculate-the-melting-temperature-what-happens-if-the-range-is-too-high-low">
-<h1>Task 4: How do select the temperature range to calculate the melting temperature? What happens if the range is too high/low?<a class="headerlink" href="#task-4-how-do-select-the-temperature-range-to-calculate-the-melting-temperature-what-happens-if-the-range-is-too-high-low" title="Permalink to this headline">#</a></h1>
-</section>
-<section id="task-5-how-can-we-compare-estimate-the-error-on-the-calculated-melting-temperature">
-<h1>Task 5: How can we compare estimate the error on the calculated melting temperature?<a class="headerlink" href="#task-5-how-can-we-compare-estimate-the-error-on-the-calculated-melting-temperature" title="Permalink to this headline">#</a></h1>
-</section>
-<section id="task-6-calculate-the-melting-temperature-of-li">
-<h1>Task 6: Calculate the melting temperature of Li<a class="headerlink" href="#task-6-calculate-the-melting-temperature-of-li" title="Permalink to this headline">#</a></h1>
+<p><font style="color:#B71C1C" face="Helvetica" > Task 3: Calculate melting temperature of Al at 10000 bar </font></p>
+<p><font style="color:#B71C1C" face="Helvetica" > Task 4: How do select the temperature range to calculate the melting temperature? What happens if the range is too high/low? </font></p>
+<p><font style="color:#B71C1C" face="Helvetica" > Task 5: How can we compare estimate the error on the calculated melting temperature? </font></p>
+<p><font style="color:#B71C1C" face="Helvetica" > Task 6: Calculate the melting temperature of Li </font></p>
 <p>Use temperature range of 350-500.</p>
 </section>
 
@@ -561,13 +479,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Pure Al</p>
+            <p class="prev-next-title"><font style="color:#B71C1C" face="Helvetica" > AlLi phase diagram </font></p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="exercise_2.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Calculate the melting temperature of the B32 structure</p>
+        <p class="prev-next-title"><font style="color:#B71C1C" face="Helvetica" > Exercise 2 </font></p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

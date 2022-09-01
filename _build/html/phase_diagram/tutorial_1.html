@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pure Al" href="tutorial_2.html" />
+    <link rel="next" title="AlLi phase diagram" href="tutorial_2.html" />
     <link rel="prev" title="Day 3: Phase Diagrams" href="Intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -165,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../potentials/02-HDNNP/handson.html">
-     Constructing a HDNNP using RuNNer and pyiron
+     High-Dimensional Neural Network Potentials
     </a>
    </li>
    <li class="toctree-l2">
@@ -220,7 +220,9 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="tutorial_2.html">
-     Pure Al
+     <font face="Helvetica" style="color:#B71C1C">
+      AlLi phase diagram
+     </font>
     </a>
    </li>
    <li class="toctree-l2">
@@ -286,6 +288,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pyiron/potentials-workshop-2022/main?urlpath=tree/book/phase_diagram/tutorial_1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -299,7 +330,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://git.noc.ruhr-uni-bochum.de/potentials-workshop-2022/workshop_preparation"
+<a href="https://github.com/pyiron/potentials-workshop-2022"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -380,106 +411,108 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-a-simple-phase-diagram-font">
    <font face="Helvetica" style="color:#B71C1C">
-    Phase diagrams and how to calculate them
+    A simple phase diagram
    </font>
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-calculation-of-phase-diagrams-the-essential-ingredients-font">
    <font face="Helvetica" style="color:#B71C1C">
     Calculation of phase diagrams: the essential ingredients
    </font>
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-calculation-of-free-energies-thermodynamic-integration-font">
    <font face="Helvetica" style="color:#B71C1C">
     Calculation of free energies: Thermodynamic integration
    </font>
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-speeding-things-up-non-equilibrium-calculations-font">
    <font face="Helvetica" style="color:#B71C1C">
     Speeding things up: Non-equilibrium calculations
    </font>
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#non-equilibrium-hamiltonian-interpolation">
      Non-Equilibrium Hamiltonian Interpolation
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-calculate-free-energy-font">
    <font face="Helvetica" style="color:#B71C1C">
     Hands-on: Calculate free energy
    </font>
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#task-find-free-energy-of-al-in-fcc-lattice-at-500-k-and-0-pressure">
      Task: Find free energy of Al in FCC lattice at 500 K and 0 pressure
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#import-modules">
      Import modules
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#create-a-project">
      Create a project
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-free-energy-variation-with-temperature-font">
-   <font face="Helvetica" style="color:#B71C1C">
-    Free energy variation with temperature
-   </font>
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reversible-scaling">
-   Reversible scaling
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-melting-temperature-of-al-font">
-   <font face="Helvetica" style="color:#B71C1C">
-    Melting temperature of Al
-   </font>
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#free-energy-of-solid">
-     Free energy of solid
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-free-energy-variation-with-temperature-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Free energy variation with temperature
+     </font>
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#free-energy-of-liquid">
-     Free energy of liquid
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reversible-scaling">
+     Reversible scaling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-melting-temperature-of-al-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Melting temperature of Al
+     </font>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#free-energy-of-solid">
+       Free energy of solid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#free-energy-of-liquid">
+       Free energy of liquid
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-comparison-of-melting-temperature-methods-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Comparison of melting temperature methods
+     </font>
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-comparison-of-melting-temperature-methods-font">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-further-reading-font">
    <font face="Helvetica" style="color:#B71C1C">
-    Comparison of melting temperature methods
+    Further reading
    </font>
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-reading">
-   Further reading
   </a>
  </li>
 </ul>
@@ -501,106 +534,108 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-a-simple-phase-diagram-font">
    <font face="Helvetica" style="color:#B71C1C">
-    Phase diagrams and how to calculate them
+    A simple phase diagram
    </font>
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-calculation-of-phase-diagrams-the-essential-ingredients-font">
    <font face="Helvetica" style="color:#B71C1C">
     Calculation of phase diagrams: the essential ingredients
    </font>
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-calculation-of-free-energies-thermodynamic-integration-font">
    <font face="Helvetica" style="color:#B71C1C">
     Calculation of free energies: Thermodynamic integration
    </font>
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-speeding-things-up-non-equilibrium-calculations-font">
    <font face="Helvetica" style="color:#B71C1C">
     Speeding things up: Non-equilibrium calculations
    </font>
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#non-equilibrium-hamiltonian-interpolation">
      Non-Equilibrium Hamiltonian Interpolation
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-calculate-free-energy-font">
    <font face="Helvetica" style="color:#B71C1C">
     Hands-on: Calculate free energy
    </font>
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#task-find-free-energy-of-al-in-fcc-lattice-at-500-k-and-0-pressure">
      Task: Find free energy of Al in FCC lattice at 500 K and 0 pressure
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#import-modules">
      Import modules
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#create-a-project">
      Create a project
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-free-energy-variation-with-temperature-font">
-   <font face="Helvetica" style="color:#B71C1C">
-    Free energy variation with temperature
-   </font>
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reversible-scaling">
-   Reversible scaling
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-melting-temperature-of-al-font">
-   <font face="Helvetica" style="color:#B71C1C">
-    Melting temperature of Al
-   </font>
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#free-energy-of-solid">
-     Free energy of solid
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-free-energy-variation-with-temperature-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Free energy variation with temperature
+     </font>
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#free-energy-of-liquid">
-     Free energy of liquid
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reversible-scaling">
+     Reversible scaling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-melting-temperature-of-al-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Melting temperature of Al
+     </font>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#free-energy-of-solid">
+       Free energy of solid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#free-energy-of-liquid">
+       Free energy of liquid
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-comparison-of-melting-temperature-methods-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Comparison of melting temperature methods
+     </font>
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-comparison-of-melting-temperature-methods-font">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-further-reading-font">
    <font face="Helvetica" style="color:#B71C1C">
-    Comparison of melting temperature methods
+    Further reading
    </font>
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-reading">
-   Further reading
   </a>
  </li>
 </ul>
@@ -613,35 +648,28 @@ title="Print to PDF"
                 
               <div>
                 
-  <table border="0">
- <tr>
-    <td style="width:30%"><img src="img/potentials_logo.png" width="100%" align="justify"></td>
-    <td style="width:70%"> <p style="width:100%;color:#B71C1C;font-size:24px;text-align:justify"> From electrons to phase diagrams </p> <p style="width:100%,font-size:16px">Day 03 Hands-on session (Part 2)</td>
- </tr>
-</table><p>In this notebook, we will use the potentials fitted in the previous days for the calculation of thermodynamic properties such as Helmholtz and Gibbs free energies, which in turn can be used for the calculation of phase diagrams. We will discuss calphy, the tool for automated calculation of free energies, and the methology involved.</p>
-<hr class="docutils" />
-<section id="font-style-color-b71c1c-face-helvetica-phase-diagrams-and-how-to-calculate-them-font">
+  <section class="tex2jax_ignore mathjax_ignore" id="font-style-color-b71c1c-face-helvetica-phase-diagrams-and-how-to-calculate-them-font">
 <h1><font style="color:#B71C1C" face="Helvetica" > Phase diagrams and how to calculate them </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-phase-diagrams-and-how-to-calculate-them-font" title="Permalink to this headline">#</a></h1>
-<table border="0">
- <tr>
-    <td style="width:40%"><img src="img/phase_dia_1.png" width="100%" align="justify"></td>
-    <td style="width:60%"> <p style="font-size:14px">Phase diagrams provide a wealth of information such as: coexisting lines, melting temperature, phase stability, nucleation mechanism. </p></td>
- </tr>
-</table></section>
+<p>In this notebook, we will use the potentials fitted in the previous days for the calculation of thermodynamic properties such as Helmholtz and Gibbs free energies, which in turn can be used for the calculation of phase diagrams. We will discuss calphy, the tool for automated calculation of free energies, and the methology involved.</p>
+<hr class="docutils" />
+<section id="font-style-color-b71c1c-face-helvetica-a-simple-phase-diagram-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > A simple phase diagram </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-a-simple-phase-diagram-font" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../_images/phase_dia_1.png"><img alt="../_images/phase_dia_1.png" src="../_images/phase_dia_1.png" style="width: 40%;" /></a>
+<p>Phase diagrams provide a wealth of information such as: coexisting lines, melting temperature, phase stability, nucleation mechanism.</p>
+</section>
 <section id="font-style-color-b71c1c-face-helvetica-calculation-of-phase-diagrams-the-essential-ingredients-font">
-<h1><font style="color:#B71C1C" face="Helvetica" > Calculation of phase diagrams: the essential ingredients</font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-calculation-of-phase-diagrams-the-essential-ingredients-font" title="Permalink to this headline">#</a></h1>
-<table border="0">
- <tr>
-    <td style="width:50%"><img src="img/cimg4.png" width="100%" align="justify"></td>
-    <td style="width:50%"> <p style="font-size:14px">Phase diagrams can be evaluated from free energy diagrams. <br> <br>
-        The required input are: <br> <br>
-        &#9679; $G(P, T)$ for unary systems <br>
-        &#9679; $G(x, T)$ for binary systems </p></td>
- </tr>
-</table></section>
+<h2><font style="color:#B71C1C" face="Helvetica" > Calculation of phase diagrams: the essential ingredients</font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-calculation-of-phase-diagrams-the-essential-ingredients-font" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../_images/cimg4.png"><img alt="../_images/cimg4.png" src="../_images/cimg4.png" style="width: 30%;" /></a>
+<p>Phase diagrams can be evaluated from free energy diagrams. The required input are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(G(P, T)\)</span> for unary systems</p></li>
+<li><p><span class="math notranslate nohighlight">\(G(x, T)\)</span> for binary systems</p></li>
+</ul>
+</section>
 <section id="font-style-color-b71c1c-face-helvetica-calculation-of-free-energies-thermodynamic-integration-font">
-<h1><font style="color:#B71C1C" face="Helvetica" > Calculation of free energies: Thermodynamic integration </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-calculation-of-free-energies-thermodynamic-integration-font" title="Permalink to this headline">#</a></h1>
-<img src="img/fig1.png" width="1000"><ul class="simple">
+<h2><font style="color:#B71C1C" face="Helvetica" > Calculation of free energies: Thermodynamic integration </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-calculation-of-free-energies-thermodynamic-integration-font" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../_images/fig1.png"><img alt="../_images/fig1.png" src="../_images/fig1.png" style="width: 1000px;" /></a>
+<ul class="simple">
 <li><p>free energy of reference system are known: Einstein crystal, <a class="reference external" href="https://doi.org/10.1063/1.4967775">Uhlenbeck-Ford model</a></p></li>
 <li><p>the two systems are coupled by
 $<span class="math notranslate nohighlight">\(
@@ -672,10 +700,11 @@ G_f = G_i + \int_{\lambda=0}^1 d\lambda \bigg \langle  \frac{\partial H(\lambda)
 <p><strong>Dimensionality: (phase, <span class="math notranslate nohighlight">\(P\)</span>, <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(\lambda\)</span>)</strong></p>
 </section>
 <section id="font-style-color-b71c1c-face-helvetica-speeding-things-up-non-equilibrium-calculations-font">
-<h1><font style="color:#B71C1C" face="Helvetica" > Speeding things up: Non-equilibrium calculations </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-speeding-things-up-non-equilibrium-calculations-font" title="Permalink to this headline">#</a></h1>
+<h2><font style="color:#B71C1C" face="Helvetica" > Speeding things up: Non-equilibrium calculations </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-speeding-things-up-non-equilibrium-calculations-font" title="Permalink to this headline">#</a></h2>
 <section id="non-equilibrium-hamiltonian-interpolation">
-<h2>Non-Equilibrium Hamiltonian Interpolation<a class="headerlink" href="#non-equilibrium-hamiltonian-interpolation" title="Permalink to this headline">#</a></h2>
-<img src="img/cimg5.png" width="600"><p>In this method:</p>
+<h3>Non-Equilibrium Hamiltonian Interpolation<a class="headerlink" href="#non-equilibrium-hamiltonian-interpolation" title="Permalink to this headline">#</a></h3>
+<a class="reference internal image-reference" href="../_images/cimg5.png"><img alt="../_images/cimg5.png" src="../_images/cimg5.png" style="width: 600px;" /></a>
+<p>In this method:</p>
 <ul class="simple">
 <li><p>Discrete <span class="math notranslate nohighlight">\(\lambda\)</span> parameter is replaced by a time dependent <span class="math notranslate nohighlight">\(\lambda(t)\)</span></p></li>
 <li><p>Instead of running calculations at each <span class="math notranslate nohighlight">\(\lambda\)</span>, run a single, short, non-equilibrium calculation</p></li>
@@ -738,10 +767,10 @@ W_s = \int_{t_i}^{t_f} dt \frac{d\lambda (t)}{dt}  \frac{ H(\lambda)}{\partial \
 </section>
 </section>
 <section id="font-style-color-b71c1c-face-helvetica-hands-on-calculate-free-energy-font">
-<h1><font style="color:#B71C1C" face="Helvetica" > Hands-on: Calculate free energy </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-hands-on-calculate-free-energy-font" title="Permalink to this headline">#</a></h1>
+<h2><font style="color:#B71C1C" face="Helvetica" > Hands-on: Calculate free energy </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-hands-on-calculate-free-energy-font" title="Permalink to this headline">#</a></h2>
 <p>Before we really do the calculations, let’s convert our equations to a workflow.</p>
 <section id="task-find-free-energy-of-al-in-fcc-lattice-at-500-k-and-0-pressure">
-<h2>Task: Find free energy of Al in FCC lattice at 500 K and 0 pressure<a class="headerlink" href="#task-find-free-energy-of-al-in-fcc-lattice-at-500-k-and-0-pressure" title="Permalink to this headline">#</a></h2>
+<h3>Task: Find free energy of Al in FCC lattice at 500 K and 0 pressure<a class="headerlink" href="#task-find-free-energy-of-al-in-fcc-lattice-at-500-k-and-0-pressure" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>Create an Al FCC lattice</p></li>
 <li><p>Choose an interatomic potential</p></li>
@@ -782,7 +811,7 @@ F_E = 3 k_B T \sum_{i} ln \bigg ( \frac{\hbar \omega_i}{k_B T} \bigg )
 <p>As you can see, there are a number of steps that need to be done. This is where <strong>calphy</strong> and <strong>pyiron</strong> come in. These tools automatise all of the above steps and makes it easy to perform these calculations.</p>
 </section>
 <section id="import-modules">
-<h2>Import modules<a class="headerlink" href="#import-modules" title="Permalink to this headline">#</a></h2>
+<h3>Import modules<a class="headerlink" href="#import-modules" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">helpers</span> <span class="kn">import</span> <span class="n">potential_list</span>
@@ -795,7 +824,7 @@ F_E = 3 k_B T \sum_{i} ln \bigg ( \frac{\hbar \omega_i}{k_B T} \bigg )
 </div>
 </section>
 <section id="create-a-project">
-<h2>Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this headline">#</a></h2>
+<h3>Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s1">&#39;AlLi_thermodynamics&#39;</span><span class="p">)</span> 
@@ -1092,13 +1121,12 @@ After the calculation is over, the various output options can be accessed throug
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial_1_56_0.png" src="../_images/tutorial_1_56_0.png" />
+<img alt="../_images/tutorial_1_58_0.png" src="../_images/tutorial_1_58_0.png" />
 </div>
 </div>
-</section>
 </section>
 <section id="font-style-color-b71c1c-face-helvetica-free-energy-variation-with-temperature-font">
-<h1><font style="color:#B71C1C" face="Helvetica" > Free energy variation with temperature </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-free-energy-variation-with-temperature-font" title="Permalink to this headline">#</a></h1>
+<h3><font style="color:#B71C1C" face="Helvetica" > Free energy variation with temperature </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-free-energy-variation-with-temperature-font" title="Permalink to this headline">#</a></h3>
 <p>Now that we have calculated the free energy successfully, we can see how we get the variation of free energy with temperature. The easiest option is to run the calculations we saw above at multiple temperatures. We do at 600 K and 700 K.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1174,14 +1202,14 @@ After the calculation is over, the various output options can be accessed throug
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial_1_65_0.png" src="../_images/tutorial_1_65_0.png" />
+<img alt="../_images/tutorial_1_67_0.png" src="../_images/tutorial_1_67_0.png" />
 </div>
 </div>
 <p>That works very well, but can we need three different calculations to arrive at the plot. Furthermore, in order to find the free energy at, for example, 650 K, we need to run another calculation. That is where, reversible scaling, the method discussed in the morning comes in.</p>
 </section>
 <section id="reversible-scaling">
-<h1>Reversible scaling<a class="headerlink" href="#reversible-scaling" title="Permalink to this headline">#</a></h1>
-<img src="img/cimg6.png" width="600">
+<h3>Reversible scaling<a class="headerlink" href="#reversible-scaling" title="Permalink to this headline">#</a></h3>
+<a class="reference internal image-reference" href="../_images/cimg6.png"><img alt="../_images/cimg6.png" src="../_images/cimg6.png" style="width: 600px;" /></a>
 <p>As discussed in the morning lecture, Gibb’s free energy via reversible scaling at a constant pressure is given by,</p>
 <p><span class="math notranslate nohighlight">\( G(N,P,T_f) = G(N,P,T_i) + \dfrac{3}{3}Nk_BT_f\ln{\dfrac{T_f}{T_i}} + \dfrac{T_f}{T_i}\Delta G \)</span>,</p>
 <p>Therefore, <span class="math notranslate nohighlight">\(G(N,P,T_f)\)</span> can be computed from <span class="math notranslate nohighlight">\(G(N,P,T_i)\)</span> via the free energy difference <span class="math notranslate nohighlight">\(\Delta G\)</span>.</p>
@@ -1238,13 +1266,13 @@ After the calculation is over, the various output options can be accessed throug
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial_1_72_0.png" src="../_images/tutorial_1_72_0.png" />
+<img alt="../_images/tutorial_1_74_0.png" src="../_images/tutorial_1_74_0.png" />
 </div>
 </div>
 <p>We can see that there is excellent agreement between the direct and reversible scaling calculations. However for reversible scaling calculations, we just need to run a single calculation instead of different ones.</p>
 </section>
 <section id="font-style-color-b71c1c-face-helvetica-melting-temperature-of-al-font">
-<h1><font style="color:#B71C1C" face="Helvetica" > Melting temperature of Al</font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-melting-temperature-of-al-font" title="Permalink to this headline">#</a></h1>
+<h3><font style="color:#B71C1C" face="Helvetica" > Melting temperature of Al</font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-melting-temperature-of-al-font" title="Permalink to this headline">#</a></h3>
 <p>With the recipe we have, we can now go ahead and calculate the melting temperature of Al. This will actually give our first point on the phase diagram. First, the steps needed to find the melting temperature:</p>
 <ul class="simple">
 <li><p>Since the <span class="math notranslate nohighlight">\(T_m\)</span> is 933 K, we can choose the range of 800-1100 K to calculate free energy</p></li>
@@ -1253,7 +1281,7 @@ After the calculation is over, the various output options can be accessed throug
 </ul>
 <p>By now, we have seen how to calculate the free energy of the FCC structure. This can be done rather quickly.</p>
 <section id="free-energy-of-solid">
-<h2>Free energy of solid<a class="headerlink" href="#free-energy-of-solid" title="Permalink to this headline">#</a></h2>
+<h4>Free energy of solid<a class="headerlink" href="#free-energy-of-solid" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">4.1362</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -1284,7 +1312,7 @@ After the calculation is over, the various output options can be accessed throug
 </div>
 </section>
 <section id="free-energy-of-liquid">
-<h2>Free energy of liquid<a class="headerlink" href="#free-energy-of-liquid" title="Permalink to this headline">#</a></h2>
+<h4>Free energy of liquid<a class="headerlink" href="#free-energy-of-liquid" title="Permalink to this headline">#</a></h4>
 <p>Calculation of the free energy of liquid is as easy as changing the option <code class="docutils literal notranslate"><span class="pre">reference_phase</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;liquid&quot;</span></code>. That is all the change that is needed. Run the calculation..</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1343,7 +1371,7 @@ E = - \epsilon \log(1-\exp(-r^2/\sigma^2))
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial_1_85_0.png" src="../_images/tutorial_1_85_0.png" />
+<img alt="../_images/tutorial_1_87_0.png" src="../_images/tutorial_1_87_0.png" />
 </div>
 </div>
 <p>The melting temperature is defined as the temperature at which the free energy difference between the solid and liquid phases is zero. We can also plot the free energy difference directly.</p>
@@ -1384,7 +1412,7 @@ E = - \epsilon \log(1-\exp(-r^2/\sigma^2))
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial_1_91_0.png" src="../_images/tutorial_1_91_0.png" />
+<img alt="../_images/tutorial_1_93_0.png" src="../_images/tutorial_1_93_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1400,16 +1428,18 @@ E = - \epsilon \log(1-\exp(-r^2/\sigma^2))
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial_1_92_0.png" src="../_images/tutorial_1_92_0.png" />
+<img alt="../_images/tutorial_1_94_0.png" src="../_images/tutorial_1_94_0.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="font-style-color-b71c1c-face-helvetica-comparison-of-melting-temperature-methods-font">
-<h1><font style="color:#B71C1C" face="Helvetica" > Comparison of melting temperature methods </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-comparison-of-melting-temperature-methods-font" title="Permalink to this headline">#</a></h1>
-<img src="img/tm_methods.png" width="900"></section>
-<section id="further-reading">
-<h1>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h1>
+<h3><font style="color:#B71C1C" face="Helvetica" > Comparison of melting temperature methods </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-comparison-of-melting-temperature-methods-font" title="Permalink to this headline">#</a></h3>
+<a class="reference internal image-reference" href="../_images/tm_methods.png"><img alt="../_images/tm_methods.png" src="../_images/tm_methods.png" style="width: 900px;" /></a>
+</section>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-further-reading-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Further reading </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-further-reading-font" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://doi.org/10.1103/PhysRevMaterials.5.103801">Menon, Sarath, Yury Lysogorskiy, Jutta Rogal, and Ralf Drautz. “Automated Free-Energy Calculation from Atomistic Simulations.” Physical Review Materials 5, no. 10 (October 11, 2021): 103801.</a>.</p></li>
 <li><p><a class="reference external" href="https://doi.org/10.1016/j.commatsci.2015.10.050">Freitas, Rodrigo, Mark Asta, and Maurice de Koning. “Nonequilibrium Free-Energy Calculation of Solids Using LAMMPS.” Computational Materials Science 112 (February 2016): 333–41.</a>.</p></li>
@@ -1417,6 +1447,7 @@ E = - \epsilon \log(1-\exp(-r^2/\sigma^2))
 <li><p><a class="reference external" href="https://doi.org/10.1103/PhysRevLett.83.3973">Koning, Maurice de, A. Antonelli, and Sidney Yip. “Optimized Free-Energy Evaluation Using a Single Reversible-Scaling Simulation.” Physical Review Letters 83, no. 20 (November 15, 1999): 3973–77.</a>.</p></li>
 <li><p><a class="reference external" href="https://doi.org/10.1063/1.4967775">Paula Leite, Rodolfo, Rodrigo Freitas, Rodolfo Azevedo, and Maurice de Koning. “The Uhlenbeck-Ford Model: Exact Virial Coefficients and Application as a Reference System in Fluid-Phase Free-Energy Calculations.” The Journal of Chemical Physics 145, no. 19 (November 21, 2016): 194101.</a>.</p></li>
 </ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1456,7 +1487,7 @@ E = - \epsilon \log(1-\exp(-r^2/\sigma^2))
     <a class='right-next' id="next-link" href="tutorial_2.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pure Al</p>
+        <p class="prev-next-title"><font style="color:#B71C1C" face="Helvetica" > AlLi phase diagram </font></p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

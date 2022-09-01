@@ -1,12 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <table border="0">
-#  <tr>
-#     <td style="width:30%"><img src="img/potentials_logo.png" width="100%" align="justify"></td>
-#     <td style="width:70%"> <p style="width:100%;color:#B71C1C;font-size:24px;text-align:justify"> From electrons to phase diagrams </p> <p style="width:100%,font-size:16px">Day 03 Hands-on session exercise (Part 2)</td>
-#  </tr>
-# </table>
+# # <font style="color:#B71C1C" face="Helvetica" > Exercise 2 </font>
 
 # In[1]:
 
@@ -24,7 +19,7 @@ from calphy.integrators import kb
 pr = Project('exe2') 
 
 
-# ### Calculate the melting temperature of the B32 structure
+# <font style="color:#B71C1C" face="Helvetica" > Calculate the melting temperature of the B32 structure </font>
 
 # In[ ]:
 
@@ -32,7 +27,7 @@ pr = Project('exe2')
 
 
 
-# ### Calculate free energy as function of composition of Li
+# <font style="color:#B71C1C" face="Helvetica" > Calculate free energy as function of composition of Li </font>
 
 # - Choose composition of Li from 0 to 0.25
 # - Choose a temperature from 700 to 1000
