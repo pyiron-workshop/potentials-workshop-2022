@@ -16,12 +16,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: conda-incubator/setup-miniconda@v2
+    - uses: ./
       with:
-        auto-update-conda: true
-        python-version: 3.8
+        python-version: "3.8"
+        mamba-version: "*"
+        channels: conda-forge,nodefaults
+        channel-priority: true
         environment-file: .github/ci_support/environment.yml
-        auto-activate-base: false
     - name: Install Jupyterbook
       shell: bash -l {0}
       run: |
