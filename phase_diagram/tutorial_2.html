@@ -1,0 +1,1504 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>AlLi phase diagram &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercise 1" href="exercise_1.html" />
+    <link rel="prev" title="Phase diagrams and how to calculate them" href="tutorial_1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/potentials_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Workshop: From Electrons to Phase Diagrams</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../introduction/Intro.html">
+   Day 1: Introduction to Pyiron
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/ex_01_introduction_to_pyiron.html">
+     Exercise 1: Introduction to atomistic simulations with pyiron
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/ex_02_creating_structure_databases.html">
+     Exercise 2: Creating and working with structure databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/ex_03_visualizing_training_data.html">
+     Exercise 3: Visualizing Training Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../potentials/Intro.html">
+   Day 2: Fitting Potentials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/01-EAM/IntroductionPotentialFitting.html">
+     Interatomic potentials
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/01-EAM/HandsOnPotenitalFitting.html">
+     Training data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/02-HDNNP/handson.html">
+     High-Dimensional Neural Network Potentials
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/03-ACE/pacemaker_example.html">
+     Import and load
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../validation/Intro.html">
+   Day 2: Validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../validation/validation_LiAl.html">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../validation/validation_NiAl.html">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Intro.html">
+   Day 3: Phase Diagrams
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="tutorial_1.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Phase diagrams and how to calculate them
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     <font face="Helvetica" style="color:#B71C1C">
+      AlLi phase diagram
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="exercise_1.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 1
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="exercise_2.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 2
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pyiron/potentials-workshop-2022/main?urlpath=tree/book/phase_diagram/tutorial_2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/pyiron/potentials-workshop-2022"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/phase_diagram/tutorial_2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-pure-al-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Pure Al
+   </font>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-solid-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Solid
+     </font>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-liquid-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Liquid
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-free-energy-with-composition-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Free energy with composition
+   </font>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pack-the-project">
+     Pack the project
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysing-the-results">
+   Analysing the results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-configurational-entropy-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Configurational entropy
+     </font>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-common-tangent-constructions-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Common tangent constructions
+     </font>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-further-reading-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Further reading
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1><font style="color:#B71C1C" face="Helvetica" > AlLi phase diagram </font></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-pure-al-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Pure Al
+   </font>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-solid-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Solid
+     </font>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-liquid-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Liquid
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-free-energy-with-composition-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Free energy with composition
+   </font>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pack-the-project">
+     Pack the project
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysing-the-results">
+   Analysing the results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-configurational-entropy-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Configurational entropy
+     </font>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-common-tangent-constructions-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Common tangent constructions
+     </font>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-further-reading-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Further reading
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="font-style-color-b71c1c-face-helvetica-alli-phase-diagram-font">
+<h1><font style="color:#B71C1C" face="Helvetica" > AlLi phase diagram </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-alli-phase-diagram-font" title="Permalink to this headline">#</a></h1>
+<p>In this notebook, we will use the EAM potential fitted in the previous day and move towards the AlLi phase diagram. We will use many of the methods and tools we discussed in the last sessions and put them together for calculation of phase diagrams. We start with the phase diagram of AlLi from Ref. <a class="reference external" href="https://doi.org/10.1002/adma.19910031215">[1]</a>.</p>
+<a class="reference internal image-reference" href="../_images/alli_phase_diagram.jpg"><img alt="../_images/alli_phase_diagram.jpg" src="../_images/alli_phase_diagram.jpg" style="width: 50%;" /></a>
+<p>In the last session, we calculated the melting temperatures of the pure phases Al and Li, thereby arriving at two points on the phase diagram. In this notebook, we will start with the left side of the phase diagram, until <span class="math notranslate nohighlight">\(X_{Li} &lt; 0.5\)</span>.</p>
+<p>As always, we start by importing the necessary modules.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pyiron_atomistics</span> <span class="kn">import</span> <span class="n">Project</span>
+<span class="kn">from</span> <span class="nn">helpers</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">calphy.integrators</span> <span class="kn">import</span> <span class="n">kb</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/menon/miniconda3/envs/pyiron-atom-dev/lib/python3.10/site-packages/paramiko-2.10.3-py3.10.egg/paramiko/transport.py:236: CryptographyDeprecationWarning: Blowfish has been deprecated
+  &quot;class&quot;: algorithms.Blowfish,
+</pre></div>
+</div>
+</div>
+</div>
+<p>Most of the interesting features of the phase diagram at composition of <span class="math notranslate nohighlight">\(X_{Li} &lt; 0.5\)</span> lies between the temperature range of 800-1000 K. Therefore, we will calculate the free energy in this range. Similar to the previous session, we will use reversible scaling to obtain the free energy in this temperature range in a single calculation. We will recalculate the free energy of pure Al in FCC lattice and pure Al liquid first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s2">&quot;phase_diagram&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="font-style-color-b71c1c-face-helvetica-pure-al-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Pure Al </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-pure-al-font" title="Permalink to this headline">#</a></h2>
+<section id="font-style-color-b71c1c-face-helvetica-solid-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Solid </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-solid-font" title="Permalink to this headline">#</a></h3>
+<p>We start by creating an FCC structure. The converged lattice constant has been provided so as to speed up the calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">4.135</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can visualise the structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "ef24a3fbb5d44217baa9ce7dda876f51", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "9a3b6ab37b0e4bcda4ad20a38d7d5a9c", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Our FCC lattice consists of a 5x5x5 supercell consisting of 500 atoms. Now we create a Calphy job in pyiron and assign a potential.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sol</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;xp_sol&quot;</span><span class="p">)</span>
+<span class="n">job_sol</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The potential has been configured for pure Al.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sol</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;Al-atomicrex&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have assigned the potential and structure. To speed up the calculations, we will run it on 2 cores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sol</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s use the <code class="docutils literal notranslate"><span class="pre">calc_free_energy</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sol</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> 
+                     <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                     <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+                     <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                     <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we actually run the calculation, let us discuss the various parameters. <code class="docutils literal notranslate"><span class="pre">temperature</span></code> keyword gives the temperature range over which the free energy is to be calculated. Since we provide <code class="docutils literal notranslate"><span class="pre">[700,</span> <span class="pre">1000]</span></code>, the free energy is calculated between this range. <code class="docutils literal notranslate"><span class="pre">pressure</span></code> denotes the pressure of the calculation, we chose 0 in this case. Since we are using a solid FCC lattice, we set <code class="docutils literal notranslate"><span class="pre">reference_phase</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;solid&quot;</span></code>. This means that the Einstein crystal will be used as the reference system. Finally, we have <code class="docutils literal notranslate"><span class="pre">n_equilibration_steps</span></code> and <code class="docutils literal notranslate"><span class="pre">n_switching_steps</span></code>. <code class="docutils literal notranslate"><span class="pre">n_equilibration_steps</span></code> denotes the number of MD steps over which the system is equilibrated to the required temperature and pressure. <code class="docutils literal notranslate"><span class="pre">n_switching_steps</span></code> are the number of MD steps over which the system is continuously transformed between the given interatomic potential, and the reference Einstein crystal.</p>
+<p>Finally we run the calculation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sol</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-07 20:54:40,399 - pyiron_log - WARNING - The job xp_sol is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-liquid-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Liquid </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-liquid-font" title="Permalink to this headline">#</a></h3>
+<p>Before we look at the output of the previous calculation, we will also calculate the free energy of the liquid phase. For this we can use the same structure as the solid. The Calphy workflow will first superheat the structure, melt it, and then equilibrate to the required temperature and pressure. Therefore the input for the pyiron job looks fairly same.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_lqd</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;xp_lqd&quot;</span><span class="p">)</span>
+<span class="n">job_lqd</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span>
+<span class="n">job_lqd</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;Al-atomicrex&quot;</span>
+<span class="n">job_lqd</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">job_lqd</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> 
+                     <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                     <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;liquid&quot;</span><span class="p">,</span>
+                     <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                     <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The major change in the input is that the <code class="docutils literal notranslate"><span class="pre">reference_phase</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;liquid&quot;</span></code>, instead of <code class="docutils literal notranslate"><span class="pre">&quot;solid&quot;</span></code>. In this case, the Uhlenbeck-Ford model is used as the reference system instead of the Einstein crystal. Now run the job,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_lqd</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-07 20:54:42,201 - pyiron_log - WARNING - The job xp_lqd is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can look at the output; and plot the free energies of the two phases and calculate the melting temperature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [&#39;lial_thermodynamics_composition&#39;, &#39;phase_diagram&#39;], &#39;nodes&#39;: [&#39;xp_alli&#39;, &#39;xp_sol&#39;, &#39;xp_lqd&#39;, &#39;x0_sol&#39;, &#39;x0_lqd&#39;, &#39;x0_alli&#39;, &#39;x1_sol&#39;, &#39;x1_lqd&#39;, &#39;x1_alli&#39;, &#39;x2_sol&#39;, &#39;x2_lqd&#39;, &#39;x2_alli&#39;, &#39;x3_sol&#39;, &#39;x3_lqd&#39;, &#39;x3_alli&#39;, &#39;x4_sol&#39;, &#39;x4_lqd&#39;, &#39;x4_alli&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s1">&#39;xp_sol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="n">pr</span><span class="p">[</span><span class="s1">&#39;xp_sol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Al solid&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#C62828&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s1">&#39;xp_lqd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="n">pr</span><span class="p">[</span><span class="s1">&#39;xp_lqd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Al liquid&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#006899&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f622020f7f0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/tutorial_2_32_1.png" src="../_images/tutorial_2_32_1.png" />
+</div>
+</div>
+<p>Great, finally, we will also calculate the free energy of the Al Li structure. Let’s read in the structrue from the given file and plot it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AlLi</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;LiAl_poscar&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;vasp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AlLi</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "8c74d2bc602d40688ddf032218df7aa1", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>We are calculating the free energy at zero percent Li, there will replace all the Li atoms with Al.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AlLi</span><span class="p">[:]</span> <span class="o">=</span> <span class="s1">&#39;Al&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AlLi</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "22b6fe33b9444d9fbbc31264683f98b9", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Now we run the calculation to calculate the free energy at the same temperature range.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_AlLi</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;xp_alli&quot;</span><span class="p">)</span>
+<span class="n">job_AlLi</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">AlLi</span>
+<span class="n">job_AlLi</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;Al-atomicrex&quot;</span>
+<span class="n">job_AlLi</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">job_AlLi</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> 
+                     <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                     <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+                     <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                     <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<span class="n">job_AlLi</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-07 20:54:48,944 - pyiron_log - WARNING - The job xp_alli is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-free-energy-with-composition-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Free energy with composition </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-free-energy-with-composition-font" title="Permalink to this headline">#</a></h2>
+<p>Now we will calculate the free energy of FCC solid, liquid and B32 phases with increasing Li compositions. We will use compositions from 0.1 to 0.5 Li. For the solid structure, we will first create an Al FCC structure, and replace randomly selected atoms with Li. Let’s see how we do this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">4.135</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "a14410defeb04ef2b4fe4911418f0633", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Now we assume we need to create 0.1 composition of Li. Therefore, the number of Li atoms needed are:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comp</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">n_Li</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">comp</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">structure</span><span class="p">))</span>
+<span class="n">n_Li</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we randomly replace 50 Al atoms with Li.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">structure</span><span class="p">))[:</span><span class="n">n_Li</span><span class="p">]]</span> <span class="o">=</span> <span class="s1">&#39;Li&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "5e66ed5316d44a539952dd45bd0914db", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>We can see that some Al atoms are now replaced with Li. We also need to create B32 structures of varying compositions. For that we start with the LiAl B32 structure, and replace randomly selected Li atoms with Al, therby reducing the amount of Li in the structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;AlLi_poscar&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;vasp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "8dfeea5e8e4a42f28d5bba535eebb0ad", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Once again, find the number of Li atoms that need to replaced.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_Li</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="mf">0.5</span><span class="o">-</span><span class="n">comp</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">structure</span><span class="p">))</span>
+<span class="n">n_Li</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>172
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now replace random Li atoms with Al</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rinds</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">structure</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">structure</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">),</span> <span class="n">n_Li</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">structure</span><span class="p">[</span><span class="n">rinds</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Al&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "30bb7d6a6d6e4cf0a1926fe8aa65be6c", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Now we have all the necessary components in place. We can simply create a loop over the compositions and run the calculations. We have prepared the functions which create structures that can be used directly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">count</span><span class="p">,</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])):</span>
+    <span class="n">structure_fcc</span><span class="p">,</span> <span class="n">structure_b32</span> <span class="o">=</span> <span class="n">create_structures</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">job_sol</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;x</span><span class="si">%d</span><span class="s2">_sol&quot;</span><span class="o">%</span><span class="k">count</span>, delete_aborted_job=True)
+    <span class="n">job_sol</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure_fcc</span>
+    <span class="n">job_sol</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;LiAl-atomicrex&quot;</span>
+    <span class="n">job_sol</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">job_sol</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> 
+                         <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                         <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+                         <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                         <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+    <span class="n">job_sol</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">job_lqd</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;x</span><span class="si">%d</span><span class="s2">_lqd&quot;</span><span class="o">%</span><span class="k">count</span>, delete_aborted_job=True)
+    <span class="n">job_lqd</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure_fcc</span>
+    <span class="n">job_lqd</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;LiAl-atomicrex&quot;</span>
+    <span class="n">job_lqd</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">job_lqd</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> 
+                         <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                         <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;liquid&quot;</span><span class="p">,</span>
+                         <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                         <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+    <span class="n">job_lqd</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">job_alli</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;x</span><span class="si">%d</span><span class="s2">_alli&quot;</span><span class="o">%</span><span class="k">count</span>, delete_aborted_job=True)
+    <span class="n">job_alli</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure_b32</span>
+    <span class="n">job_alli</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;LiAl-atomicrex&quot;</span>
+    <span class="n">job_alli</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">job_alli</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> 
+                         <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                         <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+                         <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                         <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+    <span class="n">job_alli</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "b38b1b003ad242ea9beff91174322aa9", "version_major": 2, "version_minor": 0}
+</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-07 20:55:03,281 - pyiron_log - WARNING - The job x0_sol is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:03,786 - pyiron_log - WARNING - The job x0_lqd is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:04,280 - pyiron_log - WARNING - The job x0_alli is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:04,873 - pyiron_log - WARNING - The job x1_sol is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:05,356 - pyiron_log - WARNING - The job x1_lqd is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:05,652 - pyiron_log - WARNING - The job x1_alli is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:05,996 - pyiron_log - WARNING - The job x2_sol is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:06,287 - pyiron_log - WARNING - The job x2_lqd is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:06,577 - pyiron_log - WARNING - The job x2_alli is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:06,929 - pyiron_log - WARNING - The job x3_sol is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:07,219 - pyiron_log - WARNING - The job x3_lqd is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:07,506 - pyiron_log - WARNING - The job x3_alli is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:07,815 - pyiron_log - WARNING - The job x4_sol is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:08,107 - pyiron_log - WARNING - The job x4_lqd is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+2022-06-07 20:55:08,399 - pyiron_log - WARNING - The job x4_alli is being loaded instead of running. To re-run use the argument &#39;delete_existing_job=True in create_job&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="pack-the-project">
+<h3>Pack the project<a class="headerlink" href="#pack-the-project" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;LiAl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s2">&quot;LiAl_analysis&quot;</span><span class="p">)</span>
+<span class="n">pr</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;LiAl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [&#39;phase_diagram&#39;], &#39;nodes&#39;: []}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="analysing-the-results">
+<h2>Analysing the results<a class="headerlink" href="#analysing-the-results" title="Permalink to this headline">#</a></h2>
+<p>Now we can analyse the results of the above calculations. First we create an array of the composition values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the initial set of analysis, we will choose a temperature of 800 K.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="mi">800</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The calculations we ran already has the free energy at all temperatures from 800-1000 K. We need to extract the free energy at the correct temperature. The <code class="docutils literal notranslate"><span class="pre">helpers.py</span></code> file in the folder contains some helper functions for this notebook. We provide a <code class="docutils literal notranslate"><span class="pre">fe_at</span></code> method which can extract the free energy at the required temperature. Let’s take a look at the method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fe_at<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> fe_at<span class=" -Color -Color-Blue">(</span>p<span class=" -Color -Color-Blue">,</span> temp<span class=" -Color -Color-Blue">,</span> threshold<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0.1</span><span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Get the free energy at a given temperature
+
+Parameters
+----------
+p: pyiron Job
+    Pyiron job with calculated free energy and temperature
+    
+temp: float
+    Required temperature
+    
+threshold: optional, default 1E-1
+    Minimum difference needed between required temperature and temperature found in pyiron job
+    
+Returns
+-------
+float: free energy value at required temperature
+<span class=" -Color -Color-Red">File:</span>      ~/potentials/phase_diagram/helpers.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<p>For for pure Al calculations, and for each composition, we extract the free energy at 800 K of the FCC, liquid and B32 phases.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">b32</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">lqd</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">fcc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/xp_sol&quot;</span><span class="p">],</span> <span class="n">temp</span><span class="p">))</span>
+<span class="n">lqd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/xp_lqd&quot;</span><span class="p">],</span> <span class="n">temp</span><span class="p">))</span>
+<span class="n">b32</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/xp_alli&quot;</span><span class="p">],</span> <span class="n">temp</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">fcc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/x</span><span class="si">%d</span><span class="s2">_sol&quot;</span><span class="o">%</span><span class="k">i</span>], temp))
+    <span class="n">lqd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/x</span><span class="si">%d</span><span class="s2">_lqd&quot;</span><span class="o">%</span><span class="k">i</span>], temp))
+    <span class="n">b32</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/x</span><span class="si">%d</span><span class="s2">_alli&quot;</span><span class="o">%</span><span class="k">i</span>], temp))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the results</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">fcc</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">lqd</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#66cfff&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">b32</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ffc766&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">fcc</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">lqd</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lqd&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#66cfff&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">b32</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;b32&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ffc766&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_</span><span class="si">{Li}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;F (eV/atom)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6241f3ef10&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial_2_74_1.png" src="../_images/tutorial_2_74_1.png" />
+</div>
+</div>
+<section id="font-style-color-b71c1c-face-helvetica-configurational-entropy-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Configurational entropy </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-configurational-entropy-font" title="Permalink to this headline">#</a></h3>
+<p>In the above example, we had off stoichiometric compositions, but we did not include configurational entropy for the solid structures. The easiest way to do this, which we will use here, is to employ the ideal mixing assumption. In the case of ideal mixing, the configuration entropy of mixing is given by,</p>
+<div class="math notranslate nohighlight">
+\[
+S_{mix} = -k_B (x \log(x) + (1-x) \log(1-x))
+\]</div>
+<p>We can add this directly to the free energy.</p>
+<p>For the liquid phase, addition of configurational entropy explicitely is not needed as is it included in the free energy calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smix</span> <span class="o">=</span> <span class="o">-</span><span class="n">kb</span><span class="o">*</span><span class="p">(</span><span class="n">comp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">comp</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">comp</span><span class="p">))</span>
+<span class="n">smix</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1698/1902816561.py:1: RuntimeWarning: divide by zero encountered in log
+  smix = -kb*(comp*np.log(comp) + (1-comp)*np.log(1-comp))
+/tmp/ipykernel_1698/1902816561.py:1: RuntimeWarning: invalid value encountered in multiply
+  smix = -kb*(comp*np.log(comp) + (1-comp)*np.log(1-comp))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fcc</span><span class="p">)</span><span class="o">-</span><span class="n">temp</span><span class="o">*</span><span class="n">smix</span>
+<span class="n">b32_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b32</span><span class="p">)</span><span class="o">-</span><span class="n">temp</span><span class="o">*</span><span class="n">smix</span>
+<span class="n">lqd_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">lqd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">fcc_mix</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">lqd_mix</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#66cfff&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">b32_mix</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ffc766&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">fcc_mix</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">lqd_mix</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lqd&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#66cfff&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">b32_mix</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;b32&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ffc766&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_</span><span class="si">{Li}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;F (eV/atom)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f62413ba7c0&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial_2_79_1.png" src="../_images/tutorial_2_79_1.png" />
+</div>
+</div>
+<p>To obtain the results in a computationally efficient way, we used composition along every 0.1 Li. We can fit a 3rd order polynomial to these points to get a finer grid. We will use <code class="docutils literal notranslate"><span class="pre">numpy.polyfit</span></code> for this purpose.</p>
+<p>Let’s first define a finer composition grid</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comp_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we fit the free energy values and use this fit to revaluate the free energy on the finer grid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcc_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">fcc_mix</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">fcc_fe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">fcc_fit</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+
+<span class="n">lqd_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">lqd_mix</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">lqd_fe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">lqd_fit</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+
+<span class="n">b32_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">b32_mix</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">b32_fe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">b32_fit</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the fits</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">fcc_fe</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">lqd_fe</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#66cfff&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">b32_fe</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ffc766&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">fcc_mix</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">lqd_mix</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lqd&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#66cfff&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">b32_mix</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;b32&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ffc766&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_</span><span class="si">{Li}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;F (eV/atom)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6259f01910&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial_2_86_1.png" src="../_images/tutorial_2_86_1.png" />
+</div>
+</div>
+<p>Now in order to identify regions we need to construct common tangents to free energy curves. To make this easier, we convert to free energy of mixing relative to the liquid. For this purpose, we subtract a straight line connecting the free energy of the pure Al liquid to the 0.5 Li liquid, from the calculated free energy. This same line will then be subtracted from the fcc and b32 curves. Our <code class="docutils literal notranslate"><span class="pre">helpers.py</span></code> module previously introduced includes helper methods to do this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lqd_fe_norm</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">normalise_fe</span><span class="p">(</span><span class="n">lqd_fe</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+<span class="n">fcc_fe_norm</span> <span class="o">=</span> <span class="n">fcc_fe</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">comp_grid</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
+<span class="n">b32_fe_norm</span> <span class="o">=</span> <span class="n">b32_fe</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">comp_grid</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">fcc_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">lqd_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#66cfff&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lqd&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">b32_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ffc766&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;b32&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_</span><span class="si">{Li}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;F (eV/atom)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f622006dc70&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial_2_89_1.png" src="../_images/tutorial_2_89_1.png" />
+</div>
+</div>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-common-tangent-constructions-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Common tangent constructions </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-common-tangent-constructions-font" title="Permalink to this headline">#</a></h3>
+<p>With the above curves, we can move on to common tangent constructions to identify regions where the two phases coexist. In order to calculate the common tangent for two curves <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span>, we can solve the following set of equationns:</p>
+<div class="math notranslate nohighlight">
+\[
+f^\prime (x_1) = g^\prime (x_1)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{f(x_1) - g(x_2)}{(x_1 - x_2)} = f^\prime (x_1)
+\]</div>
+<p><span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> are the endpoints of the common tangent.</p>
+<p>The fitting is done using the <code class="docutils literal notranslate"><span class="pre">fsolve</span></code> method from <code class="docutils literal notranslate"><span class="pre">scipy</span></code>. Once again, <code class="docutils literal notranslate"><span class="pre">helpers.py</span></code> module offers a function to do this fitting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>find_common_tangent<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> find_common_tangent<span class=" -Color -Color-Blue">(</span>fe1<span class=" -Color -Color-Blue">,</span> fe2<span class=" -Color -Color-Blue">,</span> guess_range<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Do a common tangent construction between two free energy curves.
+
+Parameters
+----------
+fe1: numpy array
+    first free energy curve
+
+fe2: numpy array
+    second free energy curve
+
+guess_range: list of floats length 2
+    The guess range to find end points of the common tangent
+
+Returns
+-------
+res: list of floats length 2
+    The end points of the common tangent
+<span class=" -Color -Color-Red">File:</span>      ~/potentials/phase_diagram/helpers.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will use this method to find the common tangent between the fcc and b32 curves</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ct</span> <span class="o">=</span> <span class="n">find_common_tangent</span><span class="p">(</span><span class="n">fcc_fit</span><span class="p">,</span> <span class="n">b32_fit</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
+<span class="n">ct</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.24357731, 0.32399064])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we provided the polynomials that describe the free energy curves, obtained from fitting to the function. We have obtained <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>. We can plot the common tangent now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">fcc_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">lqd_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#66cfff&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lqd&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">b32_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ffc766&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;b32&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">fcc_fit</span><span class="p">,</span> <span class="n">ct</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">ct</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">),</span>
+             <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">b32_fit</span><span class="p">,</span> <span class="n">ct</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">ct</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_</span><span class="si">{Li}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;F (eV/atom)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f62414b4b80&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial_2_96_1.png" src="../_images/tutorial_2_96_1.png" />
+</div>
+</div>
+<p>Lets take a moment to analyse this plot. We obtained 0.24 and 0.32 as the end points of the common tangent. From the figure, this means that FCC is the most stable structure upto <span class="math notranslate nohighlight">\(x_{Li} = 0.24\)</span>. Between <span class="math notranslate nohighlight">\(0.24 \leq x_{Li} \leq 0.32\)</span>, both fcc and b32 phases coexist. Finally, for <span class="math notranslate nohighlight">\(x_{Li} &gt; 0.32\)</span>, b32 is the most stable phase.</p>
+<p>Therefore we have obtained already a slice of the phase diagram at 800 K. We can now put all of this methods together and easily calculate for different temperatures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="mi">900</span>
+
+<span class="n">fcc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">b32</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">lqd</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/xp_sol&quot;</span><span class="p">],</span> <span class="n">temp</span><span class="p">))</span>
+<span class="n">lqd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/xp_lqd&quot;</span><span class="p">],</span> <span class="n">temp</span><span class="p">))</span>
+<span class="n">b32</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/xp_alli&quot;</span><span class="p">],</span> <span class="n">temp</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">fcc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/x</span><span class="si">%d</span><span class="s2">_sol&quot;</span><span class="o">%</span><span class="k">i</span>], temp))
+    <span class="n">lqd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/x</span><span class="si">%d</span><span class="s2">_lqd&quot;</span><span class="o">%</span><span class="k">i</span>], temp))
+    <span class="n">b32</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/x</span><span class="si">%d</span><span class="s2">_alli&quot;</span><span class="o">%</span><span class="k">i</span>], temp))
+<span class="n">fcc_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fcc</span><span class="p">)</span><span class="o">-</span><span class="n">temp</span><span class="o">*</span><span class="n">smix</span>
+<span class="n">b32_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b32</span><span class="p">)</span><span class="o">-</span><span class="n">temp</span><span class="o">*</span><span class="n">smix</span>
+<span class="n">lqd_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">lqd</span><span class="p">)</span>
+<span class="n">fcc_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">fcc_mix</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">fcc_fe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">fcc_fit</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+<span class="n">lqd_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">lqd_mix</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">lqd_fe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">lqd_fit</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+<span class="n">b32_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">b32_mix</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">b32_fe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">b32_fit</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+<span class="n">lqd_fe_norm</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">normalise_fe</span><span class="p">(</span><span class="n">lqd_fe</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+<span class="n">fcc_fe_norm</span> <span class="o">=</span> <span class="n">fcc_fe</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">comp_grid</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
+<span class="n">b32_fe_norm</span> <span class="o">=</span> <span class="n">b32_fe</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">comp_grid</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
+<span class="n">ct</span> <span class="o">=</span> <span class="n">find_common_tangent</span><span class="p">(</span><span class="n">fcc_fit</span><span class="p">,</span> <span class="n">b32_fit</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ct</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">fcc_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">lqd_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#66cfff&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lqd&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">b32_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ffc766&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;b32&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">fcc_fit</span><span class="p">,</span> <span class="n">ct</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">ct</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">),</span>
+             <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">b32_fit</span><span class="p">,</span> <span class="n">ct</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">ct</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_</span><span class="si">{Li}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;F (eV/atom)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.25254351 0.3283028 ]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f62413f2dc0&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial_2_99_2.png" src="../_images/tutorial_2_99_2.png" />
+</div>
+</div>
+<p>Now we continue this process for temperatures of 950 K.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="mi">950</span>
+
+<span class="n">fcc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">b32</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">lqd</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">fcc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/xp_sol&quot;</span><span class="p">],</span> <span class="n">temp</span><span class="p">))</span>
+<span class="n">lqd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/xp_lqd&quot;</span><span class="p">],</span> <span class="n">temp</span><span class="p">))</span>
+<span class="n">b32</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/xp_alli&quot;</span><span class="p">],</span> <span class="n">temp</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">fcc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/x</span><span class="si">%d</span><span class="s2">_sol&quot;</span><span class="o">%</span><span class="k">i</span>], temp))
+    <span class="n">lqd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/x</span><span class="si">%d</span><span class="s2">_lqd&quot;</span><span class="o">%</span><span class="k">i</span>], temp))
+    <span class="n">b32</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe_at</span><span class="p">(</span><span class="n">pr</span><span class="p">[</span><span class="s2">&quot;phase_diagram/x</span><span class="si">%d</span><span class="s2">_alli&quot;</span><span class="o">%</span><span class="k">i</span>], temp))
+<span class="n">fcc_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fcc</span><span class="p">)</span><span class="o">-</span><span class="n">temp</span><span class="o">*</span><span class="n">smix</span>
+<span class="n">b32_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b32</span><span class="p">)</span><span class="o">-</span><span class="n">temp</span><span class="o">*</span><span class="n">smix</span>
+<span class="n">lqd_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">lqd</span><span class="p">)</span>
+<span class="n">fcc_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">fcc_mix</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">fcc_fe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">fcc_fit</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+<span class="n">lqd_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">lqd_mix</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">lqd_fe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">lqd_fit</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+<span class="n">b32_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="n">b32_mix</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">b32_fe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">b32_fit</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+<span class="n">lqd_fe_norm</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">normalise_fe</span><span class="p">(</span><span class="n">lqd_fe</span><span class="p">,</span> <span class="n">comp_grid</span><span class="p">)</span>
+<span class="n">fcc_fe_norm</span> <span class="o">=</span> <span class="n">fcc_fe</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">comp_grid</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
+<span class="n">b32_fe_norm</span> <span class="o">=</span> <span class="n">b32_fe</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">comp_grid</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">fcc_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">lqd_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#66cfff&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lqd&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">b32_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ffc766&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;b32&#39;</span><span class="p">)</span>
+<span class="n">ct</span> <span class="o">=</span> <span class="n">find_common_tangent</span><span class="p">(</span><span class="n">fcc_fit</span><span class="p">,</span> <span class="n">lqd_fit</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ct</span><span class="p">)</span>
+<span class="n">ct1</span> <span class="o">=</span> <span class="n">find_common_tangent</span><span class="p">(</span><span class="n">b32_fit</span><span class="p">,</span> <span class="n">lqd_fit</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ct1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">fcc_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">lqd_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#66cfff&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lqd&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comp_grid</span><span class="p">,</span> <span class="n">b32_fe_norm</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ffc766&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;b32&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">fcc_fit</span><span class="p">,</span> <span class="n">ct</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">ct</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">),</span>
+             <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">lqd_fit</span><span class="p">,</span> <span class="n">ct</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">ct</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ct1</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">b32_fit</span><span class="p">,</span> <span class="n">ct1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">ct1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">),</span>
+             <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">lqd_fit</span><span class="p">,</span> <span class="n">ct1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="p">(</span><span class="n">slope</span><span class="o">*</span><span class="n">ct1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_</span><span class="si">{Li}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;F (eV/atom)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.23139167 0.26587513]
+[0.35619186 0.31664302]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f62096d3a90&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial_2_101_2.png" src="../_images/tutorial_2_101_2.png" />
+</div>
+</div>
+<p>Now let’s put together all the common tangent constructions to arrive at the phase diagram.</p>
+<p>Since we used a very small system, and switching times, the obtained phase diagram will not be accurate. The results shown here uses a system size of about 4000 atoms for each structure, and 50 ps of equilibration and switching time.</p>
+<p>Let’s first look at the phase diagram with the calculated points.</p>
+<a class="reference internal image-reference" href="../_images/phase_diagram_dotted.png"><img alt="../_images/phase_diagram_dotted.png" src="../_images/phase_diagram_dotted.png" style="width: 50%;" /></a>
+<p>And the phase diagram</p>
+<a class="reference internal image-reference" href="../_images/phase_diagram_calculated.png"><img alt="../_images/phase_diagram_calculated.png" src="../_images/phase_diagram_calculated.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/alli_phase_diagram.jpg"><img alt="../_images/alli_phase_diagram.jpg" src="../_images/alli_phase_diagram.jpg" style="width: 50%;" /></a>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-further-reading-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Further reading </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-further-reading-font" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doi.org/10.1088/0953-8984/22/5/055401">Ryu, Seunghwa, and Wei Cai. “A Gold-Silicon Potential Fitted to the Binary Phase Diagram.” Journal of Physics Condensed Matter 22, no. 5 (2010).</a>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "pyiron-atom-dev"
+        },
+        kernelOptions: {
+            kernelName: "pyiron-atom-dev",
+            path: "./phase_diagram"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'pyiron-atom-dev'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="tutorial_1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><font style="color:#B71C1C" face="Helvetica" > Phase diagrams and how to calculate them </font></p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="exercise_1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><font style="color:#B71C1C" face="Helvetica" > Exercise 1 </font></p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

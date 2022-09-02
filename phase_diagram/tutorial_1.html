@@ -1,0 +1,1523 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Phase diagrams and how to calculate them &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AlLi phase diagram" href="tutorial_2.html" />
+    <link rel="prev" title="Day 3: Phase Diagrams" href="Intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/potentials_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Workshop: From Electrons to Phase Diagrams</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../introduction/Intro.html">
+   Day 1: Introduction to Pyiron
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/ex_01_introduction_to_pyiron.html">
+     Exercise 1: Introduction to atomistic simulations with pyiron
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/ex_02_creating_structure_databases.html">
+     Exercise 2: Creating and working with structure databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/ex_03_visualizing_training_data.html">
+     Exercise 3: Visualizing Training Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../potentials/Intro.html">
+   Day 2: Fitting Potentials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/01-EAM/IntroductionPotentialFitting.html">
+     Interatomic potentials
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/01-EAM/HandsOnPotenitalFitting.html">
+     Training data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/02-HDNNP/handson.html">
+     High-Dimensional Neural Network Potentials
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/03-ACE/pacemaker_example.html">
+     Import and load
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../validation/Intro.html">
+   Day 2: Validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../validation/validation_LiAl.html">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../validation/validation_NiAl.html">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Intro.html">
+   Day 3: Phase Diagrams
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     <font face="Helvetica" style="color:#B71C1C">
+      Phase diagrams and how to calculate them
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tutorial_2.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      AlLi phase diagram
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="exercise_1.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 1
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="exercise_2.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 2
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pyiron/potentials-workshop-2022/main?urlpath=tree/book/phase_diagram/tutorial_1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/pyiron/potentials-workshop-2022"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/phase_diagram/tutorial_1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-a-simple-phase-diagram-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    A simple phase diagram
+   </font>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-calculation-of-phase-diagrams-the-essential-ingredients-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Calculation of phase diagrams: the essential ingredients
+   </font>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-calculation-of-free-energies-thermodynamic-integration-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Calculation of free energies: Thermodynamic integration
+   </font>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-speeding-things-up-non-equilibrium-calculations-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Speeding things up: Non-equilibrium calculations
+   </font>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-equilibrium-hamiltonian-interpolation">
+     Non-Equilibrium Hamiltonian Interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-calculate-free-energy-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Hands-on: Calculate free energy
+   </font>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task-find-free-energy-of-al-in-fcc-lattice-at-500-k-and-0-pressure">
+     Task: Find free energy of Al in FCC lattice at 500 K and 0 pressure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-modules">
+     Import modules
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-a-project">
+     Create a project
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-free-energy-variation-with-temperature-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Free energy variation with temperature
+     </font>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reversible-scaling">
+     Reversible scaling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-melting-temperature-of-al-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Melting temperature of Al
+     </font>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#free-energy-of-solid">
+       Free energy of solid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#free-energy-of-liquid">
+       Free energy of liquid
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-comparison-of-melting-temperature-methods-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Comparison of melting temperature methods
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-further-reading-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Further reading
+   </font>
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1><font style="color:#B71C1C" face="Helvetica" > Phase diagrams and how to calculate them </font></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-a-simple-phase-diagram-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    A simple phase diagram
+   </font>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-calculation-of-phase-diagrams-the-essential-ingredients-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Calculation of phase diagrams: the essential ingredients
+   </font>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-calculation-of-free-energies-thermodynamic-integration-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Calculation of free energies: Thermodynamic integration
+   </font>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-speeding-things-up-non-equilibrium-calculations-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Speeding things up: Non-equilibrium calculations
+   </font>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-equilibrium-hamiltonian-interpolation">
+     Non-Equilibrium Hamiltonian Interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-calculate-free-energy-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Hands-on: Calculate free energy
+   </font>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task-find-free-energy-of-al-in-fcc-lattice-at-500-k-and-0-pressure">
+     Task: Find free energy of Al in FCC lattice at 500 K and 0 pressure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-modules">
+     Import modules
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-a-project">
+     Create a project
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-free-energy-variation-with-temperature-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Free energy variation with temperature
+     </font>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reversible-scaling">
+     Reversible scaling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-melting-temperature-of-al-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Melting temperature of Al
+     </font>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#free-energy-of-solid">
+       Free energy of solid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#free-energy-of-liquid">
+       Free energy of liquid
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-comparison-of-melting-temperature-methods-font">
+     <font face="Helvetica" style="color:#B71C1C">
+      Comparison of melting temperature methods
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-further-reading-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Further reading
+   </font>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="font-style-color-b71c1c-face-helvetica-phase-diagrams-and-how-to-calculate-them-font">
+<h1><font style="color:#B71C1C" face="Helvetica" > Phase diagrams and how to calculate them </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-phase-diagrams-and-how-to-calculate-them-font" title="Permalink to this headline">#</a></h1>
+<p>In this notebook, we will use the potentials fitted in the previous days for the calculation of thermodynamic properties such as Helmholtz and Gibbs free energies, which in turn can be used for the calculation of phase diagrams. We will discuss calphy, the tool for automated calculation of free energies, and the methology involved.</p>
+<hr class="docutils" />
+<section id="font-style-color-b71c1c-face-helvetica-a-simple-phase-diagram-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > A simple phase diagram </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-a-simple-phase-diagram-font" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../_images/phase_dia_1.png"><img alt="../_images/phase_dia_1.png" src="../_images/phase_dia_1.png" style="width: 40%;" /></a>
+<p>Phase diagrams provide a wealth of information such as: coexisting lines, melting temperature, phase stability, nucleation mechanism.</p>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-calculation-of-phase-diagrams-the-essential-ingredients-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Calculation of phase diagrams: the essential ingredients</font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-calculation-of-phase-diagrams-the-essential-ingredients-font" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../_images/cimg4.png"><img alt="../_images/cimg4.png" src="../_images/cimg4.png" style="width: 30%;" /></a>
+<p>Phase diagrams can be evaluated from free energy diagrams. The required input are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(G(P, T)\)</span> for unary systems</p></li>
+<li><p><span class="math notranslate nohighlight">\(G(x, T)\)</span> for binary systems</p></li>
+</ul>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-calculation-of-free-energies-thermodynamic-integration-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Calculation of free energies: Thermodynamic integration </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-calculation-of-free-energies-thermodynamic-integration-font" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../_images/fig1.png"><img alt="../_images/fig1.png" src="../_images/fig1.png" style="width: 1000px;" /></a>
+<ul class="simple">
+<li><p>free energy of reference system are known: Einstein crystal, <a class="reference external" href="https://doi.org/10.1063/1.4967775">Uhlenbeck-Ford model</a></p></li>
+<li><p>the two systems are coupled by
+$<span class="math notranslate nohighlight">\(
+H(\lambda) = \lambda H_f + (1-\lambda)\lambda H_i
+\)</span>$</p></li>
+<li><p>Run calculations for each <span class="math notranslate nohighlight">\(\lambda\)</span> and integrate
+$<span class="math notranslate nohighlight">\(
+G_f = G_i + \int_{\lambda=0}^1 d\lambda \bigg \langle  \frac{\partial H(\lambda)}{\partial \lambda } \bigg \rangle
+\)</span>$</p></li>
+</ul>
+<p>To calculate <span class="math notranslate nohighlight">\(F\)</span>,</p>
+<ul class="simple">
+<li><p>for each phase</p>
+<ul>
+<li><p>for each pressure</p>
+<ul>
+<li><p>for each temperature</p>
+<ul>
+<li><p>for each <span class="math notranslate nohighlight">\(\lambda\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>If we choose 100 different <span class="math notranslate nohighlight">\(\lambda\)</span> values; 100 calculations are needed for each temperature and pressure!</p>
+<p><strong>Dimensionality: (phase, <span class="math notranslate nohighlight">\(P\)</span>, <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(\lambda\)</span>)</strong></p>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-speeding-things-up-non-equilibrium-calculations-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Speeding things up: Non-equilibrium calculations </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-speeding-things-up-non-equilibrium-calculations-font" title="Permalink to this headline">#</a></h2>
+<section id="non-equilibrium-hamiltonian-interpolation">
+<h3>Non-Equilibrium Hamiltonian Interpolation<a class="headerlink" href="#non-equilibrium-hamiltonian-interpolation" title="Permalink to this headline">#</a></h3>
+<a class="reference internal image-reference" href="../_images/cimg5.png"><img alt="../_images/cimg5.png" src="../_images/cimg5.png" style="width: 600px;" /></a>
+<p>In this method:</p>
+<ul class="simple">
+<li><p>Discrete <span class="math notranslate nohighlight">\(\lambda\)</span> parameter is replaced by a time dependent <span class="math notranslate nohighlight">\(\lambda(t)\)</span></p></li>
+<li><p>Instead of running calculations at each <span class="math notranslate nohighlight">\(\lambda\)</span>, run a single, short, non-equilibrium calculation</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+G_f = G_i + \int_{t_i}^{t_f} dt \frac{d\lambda (t)}{dt}  \frac{ H(\lambda)}{\partial \lambda }
+\]</div>
+<p>As discussed:</p>
+<ul class="simple">
+<li><p>the coupling parameter <span class="math notranslate nohighlight">\(\lambda\)</span> earlier is replaced by a time dependent parameter</p></li>
+<li><p>The equation also no longer has an ensemble average</p></li>
+</ul>
+<p>These aspects makes it quite easy and fast to estimate this integral.</p>
+<p>However:</p>
+<ul class="simple">
+<li><p>this equation holds when the switching betwen the system of interest and reference system is carried out infinitely slowly</p></li>
+<li><p>Practically, this is not not possible.</p></li>
+</ul>
+<p>Therefore we can write:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta G = W_{rev} = W_s - E_d
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+W_s = \int_{t_i}^{t_f} dt \frac{d\lambda (t)}{dt}  \frac{ H(\lambda)}{\partial \lambda }
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E_d\)</span> is the energy dissipation</p></li>
+<li><p><span class="math notranslate nohighlight">\(E_d \to 0\)</span> when <span class="math notranslate nohighlight">\(t_f-t_i \to \infty\)</span></p></li>
+</ul>
+<p>So far, so good, but how is this useful?</p>
+<ul class="simple">
+<li><p>Instead of a single transformation from system of interest to reference, we switch back too</p></li>
+<li><p>These are called forward <span class="math notranslate nohighlight">\((i \to f)\)</span> and backward <span class="math notranslate nohighlight">\((f \to i)\)</span> switching</p></li>
+<li><p><span class="math notranslate nohighlight">\(t_f - t_i = t_{sw}\)</span> is the switching time in each direction</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(t_{sw}\)</span> is long enough, <span class="math notranslate nohighlight">\(E_d^{i \to f} = E_d^{f \to i}\)</span></p></li>
+<li><p>and <span class="math notranslate nohighlight">\(\Delta G = \frac{1}{2} (W_s^{i \to f} - W_s^{f \to i})\)</span></p></li>
+</ul>
+<p>Now, we have all the components required for actual calculations.</p>
+<p>We have also managed to successfully reduce the dimensionality</p>
+<ul class="simple">
+<li><p>for each phase</p>
+<ul>
+<li><p>for each pressure</p>
+<ul>
+<li><p>for each temperature</p>
+<ul>
+<li><p>~~for each <span class="math notranslate nohighlight">\(\lambda\)</span>~~</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Dimensionality: (phase, <span class="math notranslate nohighlight">\(P\)</span>, <span class="math notranslate nohighlight">\(T\)</span>)</strong></p>
+<p>So, how do we calculate the free energy of a system modelled with a given interatomic potential?</p>
+</section>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-hands-on-calculate-free-energy-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Hands-on: Calculate free energy </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-hands-on-calculate-free-energy-font" title="Permalink to this headline">#</a></h2>
+<p>Before we really do the calculations, let’s convert our equations to a workflow.</p>
+<section id="task-find-free-energy-of-al-in-fcc-lattice-at-500-k-and-0-pressure">
+<h3>Task: Find free energy of Al in FCC lattice at 500 K and 0 pressure<a class="headerlink" href="#task-find-free-energy-of-al-in-fcc-lattice-at-500-k-and-0-pressure" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>Create an Al FCC lattice</p></li>
+<li><p>Choose an interatomic potential</p></li>
+<li><p>Run MD calculations at 500 K and 0 pressure to equilibrate the system</p></li>
+<li><p>Introduce the reference system</p></li>
+<li><p>Switch….</p></li>
+<li><p>…..</p></li>
+</ol>
+<p>Steps 1-3 should be fairly easy, we saw this in the last days and also in the first session. But how do we introduce a reference system?</p>
+<ul class="simple">
+<li><p>A reference system is simply one for which the free energy is analytically known (<span class="math notranslate nohighlight">\(G_i\)</span>)</p></li>
+<li><p>We calculate the free energy difference between this and the system of interest.</p></li>
+</ul>
+<p>In case of solids, a good choice of a reference system is the Einstein crystal. An Einstein crystal is a set of independent harmonic oscillators attached to the lattice positions.</p>
+<p>The free energy of the Einstein crystal is:</p>
+<div class="math notranslate nohighlight">
+\[
+F_E = 3 k_B T \sum_{i} ln \bigg ( \frac{\hbar \omega_i}{k_B T} \bigg )
+\]</div>
+<p>We need to calculate:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\omega\)</span></p></li>
+<li><p>A common way is $<span class="math notranslate nohighlight">\(  \frac{1}{2} k_i \langle (\Delta \pmb{r}_i)^2 \rangle = \frac{3}{2} k_\mathrm{B} T \)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\langle (\Delta \pmb{r}_i)^2 \rangle\)</span> is the mean squared displacement.</p></li>
+</ul>
+<p>Now that we know about the reference system, let’s update our pseudo workflow:</p>
+<ol class="simple">
+<li><p>Create an Al fcc lattice</p></li>
+<li><p>Choose an interatomic potential</p></li>
+<li><p>Run MD calculations at 500 K and 0 pressure to equilibrate the system</p></li>
+<li><p>Calculate the mean squared displacement, therefore spring constants</p></li>
+<li><p>Switch system of interest to reference system</p></li>
+<li><p>Equilibrate the system</p></li>
+<li><p>Switch back to system of interest</p></li>
+<li><p>Find the work done</p></li>
+<li><p>Add to the free energy of the Einstein crystal</p></li>
+</ol>
+<p>As you can see, there are a number of steps that need to be done. This is where <strong>calphy</strong> and <strong>pyiron</strong> come in. These tools automatise all of the above steps and makes it easy to perform these calculations.</p>
+</section>
+<section id="import-modules">
+<h3>Import modules<a class="headerlink" href="#import-modules" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">helpers</span> <span class="kn">import</span> <span class="n">potential_list</span>
+<span class="kn">from</span> <span class="nn">pyiron_atomistics</span> <span class="kn">import</span> <span class="n">Project</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-project">
+<h3>Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s1">&#39;AlLi_thermodynamics&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we create a job within</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;Al_fcc_500&quot;</span><span class="p">,</span> <span class="n">delete_aborted_job</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are a number of input the job can take. We can gain some information about the job from the docstrings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>al_sol<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Type:</span>        Calphy
+<span class=" -Color -Color-Red">String form:</span> {&#39;groups&#39;: [], &#39;nodes&#39;: []}
+<span class=" -Color -Color-Red">File:</span>        /srv/conda/envs/notebook/lib/python3.8/site-packages/pyiron_atomistics/calphy/job.py
+<span class=" -Color -Color-Red">Docstring:</span>  
+Class to set up and run calphy jobs for calculation of free energies using LAMMPS.
+
+An input structure (:attr:`structure`) and interatomic potential (:attr:`potential`) are necessary input options. The additional input options such as the temperature and pressure are specified in the :meth:`.calc_free_energy` method. Depending on the input parameters, a corresponding calculation mode is selected. Further input options can be accessed through :attr:`input.md` and :attr:`input.tolerance`.
+
+An example which calculates the free energy of Cu using an interatomic potential:
+
+```python
+job.structure = pr.create.structure.ase.bulk(&#39;Cu&#39;, cubic=True).repeat(5)
+job.potential = &quot;2001--Mishin-Y--Cu-1--LAMMPS--ipr1&quot;
+job.calc_free_energy(temperature=1100, pressure=0, reference_phase=&quot;solid&quot;)
+job.run()
+```
+
+In order to calculate the free energy of the liquid phase, the `reference_phase` should be set to `liquid`.
+
+The different modes can be selected as follows:
+
+For free energy at a given temperature and pressure:
+
+```python
+job.calc_free_energy(temperature=1100, pressure=0, reference_phase=&quot;solid&quot;)
+```
+
+Alternatively, :func:`calc_mode_fe` can be used.
+
+To obtain the free energy between a given temperature range (temperature scaling):
+
+```python
+job.calc_free_energy(temperature=[1100, 1400], pressure=0, reference_phase=&quot;solid&quot;)
+```
+
+Alternatively, :func:`calc_mode_ts` can be used.
+
+For free energy between a given pressure range (pressure scaling)
+
+```python
+job.calc_free_energy(temperature=1000, pressure=[0, 100000], reference_phase=&quot;solid&quot;)
+```
+
+Alternatively, :func:`calc_mode_pscale` can be used.
+
+To obtain the free energy difference between two interatomic potentials (alchemy/upsampling)
+
+```python
+job.potential = [&quot;2001--Mishin-Y--Cu-1--LAMMPS--ipr1&quot;, &quot;1986--Foiles-S-M--Cu--LAMMPS--ipr1&quot;]
+job.calc_free_energy(temperature=1100, pressure=0, reference_phase=&quot;solid&quot;)
+job.run()
+```
+
+Alternatively, :func:`calc_mode_alchemy` can be used.
+
+The way `pressure` is specified determines how the barostat affects the system. For isotropic pressure control:
+
+```python
+job.calc_free_energy(temperature=[1100, 1400], pressure=0, reference_phase=&quot;solid&quot;)
+```
+
+For anisotropic pressure control:
+
+```python
+job.calc_free_energy(temperature=[1100, 1400], pressure=[0, 0, 0], reference_phase=&quot;solid&quot;)
+```
+
+To constrain the lattice:
+
+```python
+job.calc_free_energy(temperature=[1100, 1400], pressure=None, reference_phase=&quot;solid&quot;)
+```
+
+In addition the boolean option :attr:`input.npt` can be used to determine the MD ensemble. If True, temperature integration and alchemy/upsampling are carried out in the NPT ensemble. If False, the NVT ensemble is employed.
+
+After the calculation is over, the various output options can be accessed through `job.output`.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we create an FCC structure and assign it to the Job</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">4.09825</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "d51b8a33dfd84af18dfe20696eaefd63", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "92c7b3c6a7ad40b897063f788efbdb08", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First the interatomic potential need to be set. We can view the list of available interatomic potentials first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol</span><span class="o">.</span><span class="n">view_potentials</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Config</th>
+      <th>Filename</th>
+      <th>Model</th>
+      <th>Name</th>
+      <th>Species</th>
+      <th>Citations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[pair_style eam/fs\n, pair_coeff * * AlLi.eam....</td>
+      <td>[atomicrex/AlLi.eam.fs]</td>
+      <td>Atomicrex</td>
+      <td>Al-atomicrex</td>
+      <td>[Al]</td>
+      <td>{}</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[pair_style eam/fs\n, pair_coeff * * AlLi.eam....</td>
+      <td>[atomicrex/AlLi.eam.fs]</td>
+      <td>Atomicrex</td>
+      <td>AlLi-atomicrex</td>
+      <td>[Al, Li]</td>
+      <td>{}</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>[pair_style eam/fs\n, pair_coeff * * AlLi-atom...</td>
+      <td>[atomicrex/AlLi-atomicrex2.eam.fs]</td>
+      <td>Atomicrex</td>
+      <td>AlLi-atomicrex2</td>
+      <td>[Al, Li]</td>
+      <td>{}</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>[pair_style hdnnp 6.350126526766093 dir ./ sho...</td>
+      <td>[hdnnp/input.nn, hdnnp/scaling.data, hdnnp/wei...</td>
+      <td>HDNNP</td>
+      <td>RuNNer-AlLi</td>
+      <td>[Al, Li]</td>
+      <td>{}</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>[pair_style pace\n, pair_coeff * * AlLi-6gen-1...</td>
+      <td>[ace/AlLi-6gen-18May.yace]</td>
+      <td>ACE</td>
+      <td>AlLi-ACE</td>
+      <td>[Al, Li]</td>
+      <td>{}</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;Al-atomicrex&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We run the job on four cores</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now set up the calculation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> 
+                     <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                     <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+                     <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                     <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we actually run the calculation, let us discuss the various parameters. <code class="docutils literal notranslate"><span class="pre">temperature</span></code> keyword gives the temperature range over which the free energy is to be calculated. Since we provide <code class="docutils literal notranslate"><span class="pre">500</span></code>, the free energy is calculated at this temperature. <code class="docutils literal notranslate"><span class="pre">pressure</span></code> denotes the pressure of the calculation, we chose 0 in this case. Since we are using a solid FCC lattice, we set <code class="docutils literal notranslate"><span class="pre">reference_phase</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;solid&quot;</span></code>. This means that the Einstein crystal will be used as the reference system. Finally, we have <code class="docutils literal notranslate"><span class="pre">n_equilibration_steps</span></code> and <code class="docutils literal notranslate"><span class="pre">n_switching_steps</span></code>. <code class="docutils literal notranslate"><span class="pre">n_equilibration_steps</span></code> denotes the number of MD steps over which the system is equilibrated to the required temperature and pressure. <code class="docutils literal notranslate"><span class="pre">n_switching_steps</span></code> are the number of MD steps over which the system is continuously transformed between the given interatomic potential, and the reference Einstein crystal.</p>
+<p>Now we can actually run the calculation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al_fcc_500 was saved and received the ID: 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a look at the output, first the free energy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3.566695694534851
+</pre></div>
+</div>
+</div>
+</div>
+<p>The units are in eV/atom. We can also see the contributions from the reference system and the work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free_reference</span><span class="p">,</span> <span class="n">al_sol</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_work</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.14938870406059537, -3.417306990474256)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The sum of which gives the energy.</p>
+<p>We can plot and see the energy difference between the system of interest and reference system as a function of the coupling parameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">al_sol</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">forward_lambda</span><span class="p">,</span> <span class="n">al_sol</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">forward_energy_diff</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;forward&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#C62828&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">al_sol</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">backward_lambda</span><span class="p">,</span> <span class="n">al_sol</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">backward_energy_diff</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;backward&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#006899&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\lambda$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial_1_58_0.png" src="../_images/tutorial_1_58_0.png" />
+</div>
+</div>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-free-energy-variation-with-temperature-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Free energy variation with temperature </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-free-energy-variation-with-temperature-font" title="Permalink to this headline">#</a></h3>
+<p>Now that we have calculated the free energy successfully, we can see how we get the variation of free energy with temperature. The easiest option is to run the calculations we saw above at multiple temperatures. We do at 600 K and 700 K.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">4.1115</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol1</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;Al_fcc_600&quot;</span><span class="p">,</span> <span class="n">delete_aborted_job</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">al_sol1</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span>
+<span class="n">al_sol1</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;Al-atomicrex&quot;</span>
+<span class="n">al_sol1</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">al_sol1</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> 
+                     <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                     <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+                     <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                     <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<span class="n">al_sol1</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al_fcc_600 was saved and received the ID: 2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">4.123</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol2</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;Al_fcc_700&quot;</span><span class="p">,</span> <span class="n">delete_aborted_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">al_sol2</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span>
+<span class="n">al_sol2</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;Al-atomicrex&quot;</span>
+<span class="n">al_sol2</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">al_sol2</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> 
+                     <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                     <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+                     <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                     <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<span class="n">al_sol2</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al_fcc_700 was saved and received the ID: 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compile the results and plot them</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">700</span><span class="p">]</span>
+<span class="n">fes</span> <span class="o">=</span> <span class="p">[</span><span class="n">al_sol</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span><span class="p">,</span> <span class="n">al_sol1</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span><span class="p">,</span> <span class="n">al_sol2</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">fes</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fcc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature (K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Free energy (eV/K)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial_1_67_0.png" src="../_images/tutorial_1_67_0.png" />
+</div>
+</div>
+<p>That works very well, but can we need three different calculations to arrive at the plot. Furthermore, in order to find the free energy at, for example, 650 K, we need to run another calculation. That is where, reversible scaling, the method discussed in the morning comes in.</p>
+</section>
+<section id="reversible-scaling">
+<h3>Reversible scaling<a class="headerlink" href="#reversible-scaling" title="Permalink to this headline">#</a></h3>
+<a class="reference internal image-reference" href="../_images/cimg6.png"><img alt="../_images/cimg6.png" src="../_images/cimg6.png" style="width: 600px;" /></a>
+<p>As discussed in the morning lecture, Gibb’s free energy via reversible scaling at a constant pressure is given by,</p>
+<p><span class="math notranslate nohighlight">\( G(N,P,T_f) = G(N,P,T_i) + \dfrac{3}{3}Nk_BT_f\ln{\dfrac{T_f}{T_i}} + \dfrac{T_f}{T_i}\Delta G \)</span>,</p>
+<p>Therefore, <span class="math notranslate nohighlight">\(G(N,P,T_f)\)</span> can be computed from <span class="math notranslate nohighlight">\(G(N,P,T_i)\)</span> via the free energy difference <span class="math notranslate nohighlight">\(\Delta G\)</span>.</p>
+<p>Here, <span class="math notranslate nohighlight">\(\Delta G = \dfrac{1}{2}[W_{if}-W_{fi}\)</span>] — (2)</p>
+<p>The reversible work is related to the internal energy <span class="math notranslate nohighlight">\(U\)</span> by,
+<span class="math notranslate nohighlight">\(W = \int_{1}^{\lambda_f}&lt;U&gt; \,d\lambda\)</span> — (3)</p>
+<p>Using MD <span class="math notranslate nohighlight">\(W\)</span> can be computed as:</p>
+<ul class="simple">
+<li><p>equilibrate for time <span class="math notranslate nohighlight">\(t_{eq}\)</span> in NPT ensemble</p></li>
+<li><p>switch <span class="math notranslate nohighlight">\(\lambda\)</span> : <span class="math notranslate nohighlight">\(1-&gt;\dfrac{T_f}{T_i}\)</span> over time <span class="math notranslate nohighlight">\(t_{sw}\)</span></p></li>
+<li><p>calculate work <span class="math notranslate nohighlight">\(W_{if}\)</span> from (3)</p></li>
+<li><p>equilibrate for time <span class="math notranslate nohighlight">\(t_{eq}\)</span> in NPT ensemble</p></li>
+<li><p>switch <span class="math notranslate nohighlight">\(\lambda\)</span> : <span class="math notranslate nohighlight">\(\dfrac{T_f}{T_i}-&gt;1\)</span> over time <span class="math notranslate nohighlight">\(t_{sw}\)</span></p></li>
+<li><p>calculate work <span class="math notranslate nohighlight">\(W_{fi}\)</span> from (3).</p></li>
+</ul>
+<p>In terms of actual calculation, nothing really changes. If a list of temperature is provided, pyiron realises that you want to perform a free energy calculation withing this range. Let’s try this now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">4.09825</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_sol3</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;Al_fcc_ts&quot;</span><span class="p">,</span> <span class="n">delete_aborted_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">al_sol3</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span>
+<span class="n">al_sol3</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;Al-atomicrex&quot;</span>
+<span class="n">al_sol3</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">al_sol3</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">700</span><span class="p">],</span> 
+                     <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                     <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+                     <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                     <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<span class="n">al_sol3</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al_fcc_ts was saved and received the ID: 4
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lets plot the results together with the free energy values we calculated earlier</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">al_sol3</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="n">al_sol3</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RS&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">fes</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Direct&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#e58080&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;#424242&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature (K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Free energy (eV/K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial_1_74_0.png" src="../_images/tutorial_1_74_0.png" />
+</div>
+</div>
+<p>We can see that there is excellent agreement between the direct and reversible scaling calculations. However for reversible scaling calculations, we just need to run a single calculation instead of different ones.</p>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-melting-temperature-of-al-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Melting temperature of Al</font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-melting-temperature-of-al-font" title="Permalink to this headline">#</a></h3>
+<p>With the recipe we have, we can now go ahead and calculate the melting temperature of Al. This will actually give our first point on the phase diagram. First, the steps needed to find the melting temperature:</p>
+<ul class="simple">
+<li><p>Since the <span class="math notranslate nohighlight">\(T_m\)</span> is 933 K, we can choose the range of 800-1100 K to calculate free energy</p></li>
+<li><p>Calculate free energy of FCC structure in this range</p></li>
+<li><p>Calculate free energy of liquid in this range.</p></li>
+</ul>
+<p>By now, we have seen how to calculate the free energy of the FCC structure. This can be done rather quickly.</p>
+<section id="free-energy-of-solid">
+<h4>Free energy of solid<a class="headerlink" href="#free-energy-of-solid" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">4.1362</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_fcc</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;Al_fcc_tm&quot;</span><span class="p">,</span> <span class="n">delete_aborted_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">al_fcc</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span>
+<span class="n">al_fcc</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;Al-atomicrex&quot;</span>
+<span class="n">al_fcc</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">al_fcc</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">1100</span><span class="p">],</span> 
+                     <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                     <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+                     <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                     <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<span class="n">al_fcc</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al_fcc_tm was saved and received the ID: 5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="free-energy-of-liquid">
+<h4>Free energy of liquid<a class="headerlink" href="#free-energy-of-liquid" title="Permalink to this headline">#</a></h4>
+<p>Calculation of the free energy of liquid is as easy as changing the option <code class="docutils literal notranslate"><span class="pre">reference_phase</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;liquid&quot;</span></code>. That is all the change that is needed. Run the calculation..</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">al_lqd</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Calphy</span><span class="p">(</span><span class="s2">&quot;Al_lqd_tm&quot;</span><span class="p">,</span> <span class="n">delete_aborted_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">al_lqd</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span>
+<span class="n">al_lqd</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;Al-atomicrex&quot;</span>
+<span class="n">al_lqd</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">al_lqd</span><span class="o">.</span><span class="n">calc_free_energy</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">1100</span><span class="p">],</span> 
+                     <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                     <span class="n">reference_phase</span><span class="o">=</span><span class="s2">&quot;liquid&quot;</span><span class="p">,</span>
+                     <span class="n">n_equilibration_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                     <span class="n">n_switching_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<span class="n">al_lqd</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al_lqd_tm was saved and received the ID: 6
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we actually look at the results, there are a couple of points to be discussed:</p>
+<p><strong>How is the liquid prepared in this calculation?</strong></p>
+<ul class="simple">
+<li><p>Start from the given structure</p></li>
+<li><p>This structure is heated until it melts.</p></li>
+<li><p>Melting of the structure is automatically detected by calphy</p></li>
+<li><p>Once melted, it is equilibrated to the required temperature and pressure.</p></li>
+</ul>
+<p><strong>What about the reference system for liquid?</strong></p>
+<p>The reference system for the Liquid structure is also different. In this case, the Uhlenbeck-Ford system is used as the reference system for liquid.</p>
+<p>The Uhlenbeck-Ford model is described by,</p>
+<div class="math notranslate nohighlight">
+\[
+E = - \epsilon \log(1-\exp(-r^2/\sigma^2))
+\]</div>
+<p>where,</p>
+<div class="math notranslate nohighlight">
+\[
+\epsilon = p k_B T
+\]</div>
+<p><span class="math notranslate nohighlight">\(\epsilon\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are energy and length scales, respectively.</p>
+<p>It is purely repulsive liquid model which does not undergo any phase transformations.</p>
+<p>Now that we have covered these details, we can go ahead a look at the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">al_fcc</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="n">al_fcc</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Al solid&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#C62828&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">al_lqd</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="n">al_lqd</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Al liquid&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#006899&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature (K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Free energy (eV/K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial_1_87_0.png" src="../_images/tutorial_1_87_0.png" />
+</div>
+</div>
+<p>The melting temperature is defined as the temperature at which the free energy difference between the solid and liquid phases is zero. We can also plot the free energy difference directly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fediff</span> <span class="o">=</span> <span class="n">al_fcc</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span> <span class="o">-</span> <span class="n">al_lqd</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Find where the value is zero and get the corresponding temperature</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fediff</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">tm</span> <span class="o">=</span> <span class="n">al_fcc</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">temperature</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span>
+<span class="n">tm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>942.9916874292612
+</pre></div>
+</div>
+</div>
+</div>
+<p>The calculated melting temperature is shown above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">al_fcc</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="n">al_fcc</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Al solid&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#C62828&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">al_lqd</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="n">al_lqd</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">energy_free</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Al liquid&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#006899&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">tm</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature (K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Free energy (eV/K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial_1_93_0.png" src="../_images/tutorial_1_93_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">al_fcc</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="n">fediff</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\Delta F$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#C62828&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">tm</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature (K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Free energy (eV/K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial_1_94_0.png" src="../_images/tutorial_1_94_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-comparison-of-melting-temperature-methods-font">
+<h3><font style="color:#B71C1C" face="Helvetica" > Comparison of melting temperature methods </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-comparison-of-melting-temperature-methods-font" title="Permalink to this headline">#</a></h3>
+<a class="reference internal image-reference" href="../_images/tm_methods.png"><img alt="../_images/tm_methods.png" src="../_images/tm_methods.png" style="width: 900px;" /></a>
+</section>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-further-reading-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Further reading </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-further-reading-font" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doi.org/10.1103/PhysRevMaterials.5.103801">Menon, Sarath, Yury Lysogorskiy, Jutta Rogal, and Ralf Drautz. “Automated Free-Energy Calculation from Atomistic Simulations.” Physical Review Materials 5, no. 10 (October 11, 2021): 103801.</a>.</p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1016/j.commatsci.2015.10.050">Freitas, Rodrigo, Mark Asta, and Maurice de Koning. “Nonequilibrium Free-Energy Calculation of Solids Using LAMMPS.” Computational Materials Science 112 (February 2016): 333–41.</a>.</p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1016/j.commatsci.2018.12.029">Paula Leite, Rodolfo, and Maurice de Koning. “Nonequilibrium Free-Energy Calculations of Fluids Using LAMMPS.” Computational Materials Science 159 (March 2019): 316–26.</a>.</p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1103/PhysRevLett.83.3973">Koning, Maurice de, A. Antonelli, and Sidney Yip. “Optimized Free-Energy Evaluation Using a Single Reversible-Scaling Simulation.” Physical Review Letters 83, no. 20 (November 15, 1999): 3973–77.</a>.</p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1063/1.4967775">Paula Leite, Rodolfo, Rodrigo Freitas, Rodolfo Azevedo, and Maurice de Koning. “The Uhlenbeck-Ford Model: Exact Virial Coefficients and Application as a Reference System in Fluid-Phase Free-Energy Calculations.” The Journal of Chemical Physics 145, no. 19 (November 21, 2016): 194101.</a>.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./phase_diagram"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Day 3: Phase Diagrams</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="tutorial_2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><font style="color:#B71C1C" face="Helvetica" > AlLi phase diagram </font></p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

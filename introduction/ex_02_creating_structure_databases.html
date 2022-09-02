@@ -1,0 +1,1257 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Exercise 2: Creating and working with structure databases &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercise 3: Visualizing Training Data" href="ex_03_visualizing_training_data.html" />
+    <link rel="prev" title="Exercise 1: Introduction to atomistic simulations with pyiron" href="ex_01_introduction_to_pyiron.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/potentials_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Workshop: From Electrons to Phase Diagrams</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Intro.html">
+   Day 1: Introduction to Pyiron
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex_01_introduction_to_pyiron.html">
+     Exercise 1: Introduction to atomistic simulations with pyiron
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Exercise 2: Creating and working with structure databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex_03_visualizing_training_data.html">
+     Exercise 3: Visualizing Training Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../potentials/Intro.html">
+   Day 2: Fitting Potentials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/01-EAM/IntroductionPotentialFitting.html">
+     Interatomic potentials
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/01-EAM/HandsOnPotenitalFitting.html">
+     Training data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/02-HDNNP/handson.html">
+     High-Dimensional Neural Network Potentials
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/03-ACE/pacemaker_example.html">
+     Import and load
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../validation/Intro.html">
+   Day 2: Validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../validation/validation_LiAl.html">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../validation/validation_NiAl.html">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../phase_diagram/Intro.html">
+   Day 3: Phase Diagrams
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/tutorial_1.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Phase diagrams and how to calculate them
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/tutorial_2.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      AlLi phase diagram
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/exercise_1.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 1
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/exercise_2.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 2
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pyiron/potentials-workshop-2022/main?urlpath=tree/book/introduction/ex_02_creating_structure_databases.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/pyiron/potentials-workshop-2022"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/introduction/ex_02_creating_structure_databases.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-necessary-modules-and-creating-a-project">
+   Importing necessary modules and creating a project
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-structure-container-from-the-data">
+   Creating a structure “container” from the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-structures-from-the-e-v-curves">
+   Add structures from the E-V curves
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-structures-from-the-md">
+   Add structures from the MD
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-some-defect-structures-vacancies-surfaces-etc">
+   Add some defect structures (vacancies, surfaces, etc)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reloading-the-dataset">
+   Reloading the dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-credit">
+   Extra Credit
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Exercise 2: Creating and working with structure databases</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-necessary-modules-and-creating-a-project">
+   Importing necessary modules and creating a project
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-structure-container-from-the-data">
+   Creating a structure “container” from the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-structures-from-the-e-v-curves">
+   Add structures from the E-V curves
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-structures-from-the-md">
+   Add structures from the MD
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-some-defect-structures-vacancies-surfaces-etc">
+   Add some defect structures (vacancies, surfaces, etc)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reloading-the-dataset">
+   Reloading the dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-credit">
+   Extra Credit
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-2-creating-and-working-with-structure-databases">
+<h1>Exercise 2: Creating and working with structure databases<a class="headerlink" href="#exercise-2-creating-and-working-with-structure-databases" title="Permalink to this headline">#</a></h1>
+<p>Before the excercise, you should:</p>
+<ul class="simple">
+<li><p>Finish exercise 1</p></li>
+</ul>
+<p>The aim of this exercise is to make you familiar with:</p>
+<ul class="simple">
+<li><p>Creating structure databases and working with them for potential fitting (day 2)</p></li>
+</ul>
+<section id="importing-necessary-modules-and-creating-a-project">
+<h2>Importing necessary modules and creating a project<a class="headerlink" href="#importing-necessary-modules-and-creating-a-project" title="Permalink to this headline">#</a></h2>
+<p>This is done the same way as shown in the first exercise</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyiron</span> <span class="kn">import</span> <span class="n">Project</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s2">&quot;creating_datasets&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-a-structure-container-from-the-data">
+<h2>Creating a structure “container” from the data<a class="headerlink" href="#creating-a-structure-container-from-the-data" title="Permalink to this headline">#</a></h2>
+<p>We now go over the jobs generated in the first notebook to store structures, energies, and forces into a structure container which will later be used for potential fitting</p>
+<p><strong>Note</strong>: Usually these datasets are created using highly accurate DFT calculations. But for practical reasons, we only demonstrate how to do this using data from LAMMPS calculations (the workflow remain the same)</p>
+<p>Access the project created in exercise 1.  <code class="docutils literal notranslate"><span class="pre">..</span></code> means go up one folder in the directory tree as usual in linux.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr_fs</span> <span class="o">=</span> <span class="n">pr</span><span class="p">[</span><span class="s2">&quot;../first_steps&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create a TrainingContainer job (to store structures and databases).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">container</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">TrainingContainer</span><span class="p">(</span><span class="s1">&#39;dataset_example&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-structures-from-the-e-v-curves">
+<h2>Add structures from the E-V curves<a class="headerlink" href="#add-structures-from-the-e-v-curves" title="Permalink to this headline">#</a></h2>
+<p>For starters, we append structures from the energy volume curves we calculated earlier</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">pr_fs</span><span class="p">[</span><span class="s2">&quot;E_V_curve&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iter_jobs</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;finished&quot;</span><span class="p">):</span>
+    <span class="n">container</span><span class="o">.</span><span class="n">include_job</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "b1848ff9b9ae4cad9b8c0bb14ce6a858", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>We can obtain this data as a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> table</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">container</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>atoms</th>
+      <th>energy</th>
+      <th>forces</th>
+      <th>stress</th>
+      <th>number_of_atoms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>job_a_3_8</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.192897</td>
+      <td>[[1.6276043110675176e-16, 1.0529105848988851e-16, 5.1718187378489473e-17]]</td>
+      <td>[25.037460606087844, 25.03746060546885, 25.03746060312137, 1.2058153515681625e-10, -5.4886913858354095e-11, 5.489273462444544e-11]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>job_a_3_9</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.319542</td>
+      <td>[[7.639186604470375e-18, 1.2897999183801789e-17, 6.560662375038692e-17]]</td>
+      <td>[11.783580963401858, 11.783580963641624, 11.783580962525912, -9.081682946998626e-10, -5.281239282339811e-10, 5.281079211272299e-10]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>job_a_4_0</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.367063</td>
+      <td>[[-3.5024524628727396e-17, -1.320930466294525e-17, 5.849496262865057e-18]]</td>
+      <td>[2.177486595771194, 2.1774865945028847, 2.1774865945028834, -1.07506321000983e-09, 1.2040691217407586e-09, 7.657961759832688e-10]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>job_a_4_1</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.360600</td>
+      <td>[[-2.237762269513316e-17, -4.0689075283847526e-17, 2.1062919550300275e-17]]</td>
+      <td>[-3.3265634524504444, -3.3265634530820014, -3.3265634530820085, -6.528356607304887e-10, 1.6521880752407014e-12, 6.566095180460252e-10]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>job_a_4_2</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.317017</td>
+      <td>[[2.140556230444804e-17, 9.465137265930533e-17, -1.6146749725116617e-17]]</td>
+      <td>[-7.344005402848352, -7.344005402593722, -7.344005404806233, -4.6368149924092e-10, -7.669372280361131e-10, 7.669350452488288e-10]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>job_a_4_3</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.241535</td>
+      <td>[[-5.0018187940959333e-17, -7.753256254350387e-17, -7.947668332487412e-17]]</td>
+      <td>[-10.206225126673713, -10.206225127480902, -10.2062251274809, -6.120026228018106e-11, 5.826092092320323e-10, 7.850612746551634e-11]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>job_a_4_4</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.145751</td>
+      <td>[[-7.31320096256601e-17, 2.773206044106321e-16, -1.2031135854225408e-16]]</td>
+      <td>[-11.04382992252993, -11.043829922467113, -11.043829922415048, -1.632215571589768e-11, 6.058689905330539e-12, -6.060145096853376e-12]</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="add-structures-from-the-md">
+<h2>Add structures from the MD<a class="headerlink" href="#add-structures-from-the-md" title="Permalink to this headline">#</a></h2>
+<p>We also add some structures obtained from the MD simulations</p>
+<p>Reloading the MD job.  Indexing a project loads jobs within.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_md</span> <span class="o">=</span> <span class="n">pr_fs</span><span class="p">[</span><span class="s2">&quot;lammps_job&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now iterate over the structures within and add each of them to the container.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">traj_length</span> <span class="o">=</span> <span class="n">job_md</span><span class="o">.</span><span class="n">number_of_structures</span>
+<span class="n">stride</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default include_job will fetch the last computation step from the given job
+for other steps you have to explicitly pass which step you want.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">traj_length</span><span class="p">,</span> <span class="n">stride</span><span class="p">):</span>
+    <span class="n">container</span><span class="o">.</span><span class="n">include_job</span><span class="p">(</span><span class="n">job_md</span><span class="p">,</span> <span class="n">iteration_step</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-some-defect-structures-vacancies-surfaces-etc">
+<h2>Add some defect structures (vacancies, surfaces, etc)<a class="headerlink" href="#add-some-defect-structures-vacancies-surfaces-etc" title="Permalink to this headline">#</a></h2>
+<p>It’s necessary to also include some defect structures, and surfaces to the training dataset.</p>
+<p>Setup a MD calculation for a structure with a vacancy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_lammps</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Lammps</span><span class="p">(</span><span class="s2">&quot;lammps_job_vac&quot;</span><span class="p">)</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">3.61</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>remove the first atom of the structure to create the vacancy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">job_lammps</span><span class="o">.</span><span class="n">structure</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;2005--Mendelev-M-I--Al-Fe--LAMMPS--ipr1&quot;</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">calc_md</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_ionic_steps</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job lammps_job_vac was saved and received the ID: 94
+</pre></div>
+</div>
+</div>
+</div>
+<p>Setup a MD calculation for a surface structure</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_lammps</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Lammps</span><span class="p">(</span><span class="s2">&quot;lammps_job_surf&quot;</span><span class="p">)</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">surface</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">surface_type</span><span class="o">=</span><span class="s2">&quot;fcc111&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">orthogonal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;2005--Mendelev-M-I--Al-Fe--LAMMPS--ipr1&quot;</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">calc_md</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_ionic_steps</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job lammps_job_surf was saved and received the ID: 95
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [], &#39;nodes&#39;: [&#39;lammps_job_vac&#39;, &#39;lammps_job_surf&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now add these structures to the dataset like we did before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">job_md</span> <span class="ow">in</span> <span class="n">pr</span><span class="o">.</span><span class="n">iter_jobs</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;finished&quot;</span><span class="p">,</span> <span class="n">hamilton</span><span class="o">=</span><span class="s2">&quot;Lammps&quot;</span><span class="p">):</span>
+    <span class="n">stride</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">number_of_structures</span><span class="p">,</span> <span class="n">stride</span><span class="p">):</span>
+        <span class="n">container</span><span class="o">.</span><span class="n">include_job</span><span class="p">(</span><span class="n">job_md</span><span class="p">,</span> <span class="n">iteration_step</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "31bc8ca78c8342b99dd8870a3d673da9", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>We run the job to store this dataset in the pyiron database.  Without running the training container “job” the data will <strong>not</strong> saved!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">container</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job dataset_example was saved and received the ID: 96
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span><span class="o">.</span><span class="n">job_table</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>status</th>
+      <th>chemicalformula</th>
+      <th>job</th>
+      <th>subjob</th>
+      <th>projectpath</th>
+      <th>project</th>
+      <th>timestart</th>
+      <th>timestop</th>
+      <th>totalcputime</th>
+      <th>computer</th>
+      <th>hamilton</th>
+      <th>hamversion</th>
+      <th>parentid</th>
+      <th>masterid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>94</td>
+      <td>finished</td>
+      <td>Al107</td>
+      <td>lammps_job_vac</td>
+      <td>/lammps_job_vac</td>
+      <td>/home/jovyan/</td>
+      <td>potentials/introduction/creating_datasets/</td>
+      <td>2022-06-07 16:37:46.720756</td>
+      <td>2022-06-07 16:37:49.823856</td>
+      <td>3.0</td>
+      <td>pyiron@jupyter-m-2epoul#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>95</td>
+      <td>finished</td>
+      <td>Al128</td>
+      <td>lammps_job_surf</td>
+      <td>/lammps_job_surf</td>
+      <td>/home/jovyan/</td>
+      <td>potentials/introduction/creating_datasets/</td>
+      <td>2022-06-07 16:37:51.214853</td>
+      <td>2022-06-07 16:37:53.832937</td>
+      <td>2.0</td>
+      <td>pyiron@jupyter-m-2epoul#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>96</td>
+      <td>finished</td>
+      <td>None</td>
+      <td>dataset_example</td>
+      <td>/dataset_example</td>
+      <td>/home/jovyan/</td>
+      <td>potentials/introduction/creating_datasets/</td>
+      <td>2022-06-07 16:37:56.081557</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>pyiron@jupyter-m-2epoul#1</td>
+      <td>TrainingContainer</td>
+      <td>0.4</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="reloading-the-dataset">
+<h2>Reloading the dataset<a class="headerlink" href="#reloading-the-dataset" title="Permalink to this headline">#</a></h2>
+<p>This dataset can now be reloaded anywhere to use in the potential fitting procedures</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pr</span><span class="p">[</span><span class="s2">&quot;dataset_example&quot;</span><span class="p">]</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>atoms</th>
+      <th>energy</th>
+      <th>forces</th>
+      <th>stress</th>
+      <th>number_of_atoms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>job_a_3_8</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.192897</td>
+      <td>[[1.6276043110675176e-16, 1.0529105848988851e-16, 5.1718187378489473e-17]]</td>
+      <td>[25.037460606087844, 25.03746060546885, 25.03746060312137, 1.2058153515681625e-10, -5.4886913858354095e-11, 5.489273462444544e-11]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>job_a_3_9</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.319542</td>
+      <td>[[7.639186604470375e-18, 1.2897999183801789e-17, 6.560662375038692e-17]]</td>
+      <td>[11.783580963401858, 11.783580963641624, 11.783580962525912, -9.081682946998626e-10, -5.281239282339811e-10, 5.281079211272299e-10]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>job_a_4_0</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.367063</td>
+      <td>[[-3.5024524628727396e-17, -1.320930466294525e-17, 5.849496262865057e-18]]</td>
+      <td>[2.177486595771194, 2.1774865945028847, 2.1774865945028834, -1.07506321000983e-09, 1.2040691217407586e-09, 7.657961759832688e-10]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>job_a_4_1</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.360600</td>
+      <td>[[-2.237762269513316e-17, -4.0689075283847526e-17, 2.1062919550300275e-17]]</td>
+      <td>[-3.3265634524504444, -3.3265634530820014, -3.3265634530820085, -6.528356607304887e-10, 1.6521880752407014e-12, 6.566095180460252e-10]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>job_a_4_2</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.317017</td>
+      <td>[[2.140556230444804e-17, 9.465137265930533e-17, -1.6146749725116617e-17]]</td>
+      <td>[-7.344005402848352, -7.344005402593722, -7.344005404806233, -4.6368149924092e-10, -7.669372280361131e-10, 7.669350452488288e-10]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>job_a_4_3</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.241535</td>
+      <td>[[-5.0018187940959333e-17, -7.753256254350387e-17, -7.947668332487412e-17]]</td>
+      <td>[-10.206225126673713, -10.206225127480902, -10.2062251274809, -6.120026228018106e-11, 5.826092092320323e-10, 7.850612746551634e-11]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>job_a_4_4</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-3.145751</td>
+      <td>[[-7.31320096256601e-17, 2.773206044106321e-16, -1.2031135854225408e-16]]</td>
+      <td>[-11.04382992252993, -11.043829922467113, -11.043829922415048, -1.632215571589768e-11, 6.058689905330539e-12, -6.060145096853376e-12]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>lammps_job</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-363.917370</td>
+      <td>[[5.8841820305133305e-15, 3.7990444123892135e-16, 2.740863092043364e-16], [5.02375918642883e-15, -1.5751289161869397e-15, -1.3274971399912499e-15], [1.02695629777827e-15, 8.812395257962181e-16, -8...</td>
+      <td>[0.999556665124294, 0.9904736758167861, 0.824951894171107, -0.0179550181978282, 0.0636336051961363, -0.042563616603965106]</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>lammps_job</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-352.327898</td>
+      <td>[[-0.75036385499113, 0.4598380918639449, 0.725200216845603], [-0.271732166045788, 0.302073802280348, 0.257384300490495], [0.448407157614891, -0.296549448310268, 0.241166662468148], [-0.00933123696...</td>
+      <td>[-0.20333593198685002, -0.0514950077978542, -0.380336649881006, -0.192008378726288, -0.000849147802610262, -0.021247590027086802]</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>lammps_job</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-349.888834</td>
+      <td>[[-0.380822550162949, 0.795020858927261, 0.552227922138795], [-0.815959874301847, -0.02386117799239805, -0.47623155209815404], [-0.286795110662345, 0.30418979949872, 0.970569998348215], [-0.550088...</td>
+      <td>[-0.636237386917572, -1.22215332293502, -0.718802458515107, 0.0334113551032086, -0.467781756142989, -0.15083572558775]</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>lammps_job</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-350.830057</td>
+      <td>[[-0.420012726158848, -0.266177748010431, -0.10061532349639205], [0.127384145208824, -0.248152628480852, -0.154576243850877], [-0.968537642185758, -0.39199433409687007, 0.11778481825176891], [-0.5...</td>
+      <td>[-0.5131786603043991, 0.0857860295485518, -0.487658631946179, -0.00960577613028209, -0.194135185700395, -0.21118720406901198]</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>lammps_job</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-350.702007</td>
+      <td>[[0.9153781717748, -0.5196757756775509, 0.498517073710415], [-0.667528324894004, -0.21672146416275304, -0.31211194811421505], [0.120312800491091, -0.043411302241849095, -0.406043538747074], [0.235...</td>
+      <td>[-0.51351056300053, -0.20205565562462502, -0.349611569619353, 0.0656675082015293, -0.549794514544474, -0.0898565835636916]</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>lammps_job</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-350.283347</td>
+      <td>[[0.235132393610786, -0.92320491047853, 0.23010090806109595], [0.4464059221284, 0.599380126332439, -0.47014243704993197], [-0.0750267922586507, 0.262245923203885, 0.479967633267096], [-0.694735048...</td>
+      <td>[-0.578429638769351, -0.434046865104863, -0.168847000423391, 0.144047568705863, -0.10672866413529901, -0.318309629189494]</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>lammps_job</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-351.595189</td>
+      <td>[[-0.10082749580572, 0.523484145402097, -1.0350343625323], [0.354729759304219, 0.701653159364364, 0.7878115361205081], [-0.0367556462367837, -0.495902791299659, 1.00115978036795], [-0.010109163992...</td>
+      <td>[-0.48245036720220597, -0.6429619358987481, -0.45615891646821305, 0.12156601043839001, 0.028722694543442204, -0.138869603615178]</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>lammps_job</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-351.355429</td>
+      <td>[[-0.53033805263242, 0.30151077109769797, 0.48889617311781], [0.365332073308618, 0.257204756311451, 0.46421415718266706], [-0.55795462205606, -0.528920209655739, -1.01193560142206], [-0.8349912505...</td>
+      <td>[0.13501098545634, 0.8436525885969681, 0.633953784861439, -0.09832009167866321, -0.0583454827760237, -0.148099371736581]</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>lammps_job</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-349.861266</td>
+      <td>[[-0.735834944299172, 0.16983472103263894, 0.30896574018502293], [-0.56617377829579, -0.06252047071209063, -0.18361928260349702], [-0.326718424112994, -0.721001479459434, 0.09705913082936173], [0....</td>
+      <td>[0.446586866327166, 0.13068019034171802, -0.0693758990272317, -0.263866851749946, 0.10925215678469699, 0.13607792544806202]</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>lammps_job</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-352.007585</td>
+      <td>[[0.301178602933076, 0.258002276944641, -0.27143156569769294], [-0.298930228924858, -0.03075712133705462, -0.364812391605405], [-0.797427142712701, -0.74286906074633, -0.4273785140338071], [0.0727...</td>
+      <td>[-0.757934402614806, -0.614667264232027, -0.667927922027262, -0.20235825539995303, -0.188727963861254, 0.38752048478086604]</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>lammps_job</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-350.590328</td>
+      <td>[[0.224009094047, -0.839607604551706, 0.777637424807001], [0.694708728593008, -0.01978842244270086, -0.563089538819962], [-0.0726046276015651, 0.180208519203361, 0.157259401253289], [0.11284631102...</td>
+      <td>[-0.57750724810661, -0.330705291904955, -0.24897277922262204, 0.0035474383929712198, 0.217652379540492, -0.372803571664775]</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>lammps_job_vac</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-290.793066</td>
+      <td>[[-3.1974423109204496e-14, -0.5904705706758219, -0.590470570675822], [-0.5904705706758229, -3.325957990662624e-14, -0.590470570675822], [-0.5904705706758219, -0.590470570675821, -3.642777903722078...</td>
+      <td>[58.87969078759508, 58.65874845858828, 58.50796880315438, -0.047554178778302515, -0.33314286846391333, 0.07410497611298358]</td>
+      <td>107</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>lammps_job_surf</td>
+      <td>[element: [None, AtomicNumber                       13\nAtomicRadius                    118.0\nAtomicMass                  26.981539\nColor                          Silver\nCovalentRadius         ...</td>
+      <td>-428.609075</td>
+      <td>[[2.44249065417534e-15, 4.56905929757667e-10, 0.314474097336679], [-9.29811783123569e-16, 4.56905354696835e-10, 0.314474097336678], [2.7611647777231502e-15, 4.56905929757667e-10, 0.314474097336678...</td>
+      <td>[-0.693731819636784, -0.575956660364361, -0.802656043307567, -0.0667956150106202, -0.145663378134875, -0.0209963500927039]</td>
+      <td>128</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can now inspect the data in this dataset quite easily</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_structure</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "be32df4aeb1540f48e05dfc3ffe9b651", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "7b5ac841e06742c99f8085b15a5ebdb4", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">energy_volume</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ex_02_creating_structure_databases_38_0.png" src="../_images/ex_02_creating_structure_databases_38_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">forces</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ex_02_creating_structure_databases_39_0.png" src="../_images/ex_02_creating_structure_databases_39_0.png" />
+</div>
+</div>
+<p>The datasets used in the potential fitting procedure for day 2 (obtained from accurate DFT calculations) will be accessed in the same way.</p>
+</section>
+<section id="extra-credit">
+<h2>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Add more interesting structures. Ideas:</p>
+<ul class="simple">
+<li><p>Dimer, trimers</p></li>
+<li><p>Cleaving of a bulk structure, i.e. create a super cell and separate the atoms along a chosen plane</p></li>
+<li><p>high or low pressure MD</p></li>
+<li><p>Different crystal structures</p></li>
+<li><p>…</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ex_01_introduction_to_pyiron.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Exercise 1: Introduction to atomistic simulations with pyiron</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ex_03_visualizing_training_data.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercise 3: Visualizing Training Data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

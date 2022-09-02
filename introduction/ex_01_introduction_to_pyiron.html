@@ -1,0 +1,2073 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Exercise 1: Introduction to atomistic simulations with pyiron &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercise 2: Creating and working with structure databases" href="ex_02_creating_structure_databases.html" />
+    <link rel="prev" title="Day 1: Introduction to Pyiron" href="Intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/potentials_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Workshop: From Electrons to Phase Diagrams</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Intro.html">
+   Day 1: Introduction to Pyiron
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Exercise 1: Introduction to atomistic simulations with pyiron
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex_02_creating_structure_databases.html">
+     Exercise 2: Creating and working with structure databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex_03_visualizing_training_data.html">
+     Exercise 3: Visualizing Training Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../potentials/Intro.html">
+   Day 2: Fitting Potentials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/01-EAM/IntroductionPotentialFitting.html">
+     Interatomic potentials
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/01-EAM/HandsOnPotenitalFitting.html">
+     Training data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/02-HDNNP/handson.html">
+     High-Dimensional Neural Network Potentials
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../potentials/03-ACE/pacemaker_example.html">
+     Import and load
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../validation/Intro.html">
+   Day 2: Validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../validation/validation_LiAl.html">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../validation/validation_NiAl.html">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../phase_diagram/Intro.html">
+   Day 3: Phase Diagrams
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/tutorial_1.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Phase diagrams and how to calculate them
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/tutorial_2.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      AlLi phase diagram
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/exercise_1.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 1
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../phase_diagram/exercise_2.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 2
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pyiron/potentials-workshop-2022/main?urlpath=tree/book/introduction/ex_01_introduction_to_pyiron.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/pyiron/potentials-workshop-2022"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/introduction/ex_01_introduction_to_pyiron.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-crash-course">
+   Jupyter Crash Course
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importing-necessary-libraries">
+     Importing necessary libraries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creation-of-a-project-instance">
+     <strong>
+      Creation of a project instance
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-atomic-structures">
+     <strong>
+      Creating atomic structures
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-an-atomistic-calculation-using-interatomic-potentials-with-lammps">
+     <strong>
+      Running an atomistic calculation using interatomic potentials (with LAMMPS)
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysing-a-calculation">
+   <strong>
+    Analysing a calculation
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-an-atomistic-calculation-using-dft-with-sphinx">
+     <strong>
+      Running an atomistic calculation using DFT (with SPHInX)
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-1-energy-volume-curve-for-al">
+   <strong>
+    Task 1: Energy volume curve for Al
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-2-e-v-curves-for-dft">
+   <strong>
+    Task 2: E-V curves for DFT
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advanced-pyiron-automated-workflows-and-analysis-tools">
+   <strong>
+    Advanced pyiron: Automated workflows and analysis tools
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-credits">
+   Extra Credits
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Exercise 1: Introduction to atomistic simulations with pyiron</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-crash-course">
+   Jupyter Crash Course
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importing-necessary-libraries">
+     Importing necessary libraries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creation-of-a-project-instance">
+     <strong>
+      Creation of a project instance
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-atomic-structures">
+     <strong>
+      Creating atomic structures
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-an-atomistic-calculation-using-interatomic-potentials-with-lammps">
+     <strong>
+      Running an atomistic calculation using interatomic potentials (with LAMMPS)
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysing-a-calculation">
+   <strong>
+    Analysing a calculation
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-an-atomistic-calculation-using-dft-with-sphinx">
+     <strong>
+      Running an atomistic calculation using DFT (with SPHInX)
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-1-energy-volume-curve-for-al">
+   <strong>
+    Task 1: Energy volume curve for Al
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-2-e-v-curves-for-dft">
+   <strong>
+    Task 2: E-V curves for DFT
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advanced-pyiron-automated-workflows-and-analysis-tools">
+   <strong>
+    Advanced pyiron: Automated workflows and analysis tools
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-credits">
+   Extra Credits
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-1-introduction-to-atomistic-simulations-with-pyiron">
+<h1>Exercise 1: Introduction to atomistic simulations with pyiron<a class="headerlink" href="#exercise-1-introduction-to-atomistic-simulations-with-pyiron" title="Permalink to this headline">#</a></h1>
+<p>Before the excercise, you should:</p>
+<ul class="simple">
+<li><p>Be familiar with python especially with numerical libraries like numpy and plotting tools like matplotlib</p></li>
+<li><p>Understand how Jupyter Notebooks work</p></li>
+</ul>
+<p>The aim of this exercise is to make you familiar with:</p>
+<ul class="simple">
+<li><p>A general overview of what pyiron can do</p></li>
+<li><p>How to set up atomic structures and run atomistic simulation codes through pyiron</p></li>
+</ul>
+<section id="jupyter-crash-course">
+<h2>Jupyter Crash Course<a class="headerlink" href="#jupyter-crash-course" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Select cells by clicking on them.</p></li>
+<li><p>Navigate through with <code class="docutils literal notranslate"><span class="pre">up</span></code> and <code class="docutils literal notranslate"><span class="pre">down</span></code> keys (or <code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> for you vimmers).</p></li>
+<li><p>Press Enter to edit a cell.</p></li>
+<li><p>Press Shift-Enter to execute it.</p></li>
+<li><p>Create new cells above or below the current one with <code class="docutils literal notranslate"><span class="pre">a</span></code> or <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
+<li><p>Copy, cut and paste them with <code class="docutils literal notranslate"><span class="pre">c</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">v</span></code>.</p></li>
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">m</span></code> to turn a cell into a markdown cell.</p></li>
+<li><p>See the <code class="docutils literal notranslate"><span class="pre">Help</span></code> in the toolbar for more.</p></li>
+</ol>
+<section id="importing-necessary-libraries">
+<h3>Importing necessary libraries<a class="headerlink" href="#importing-necessary-libraries" title="Permalink to this headline">#</a></h3>
+<p>As a first step we import the libraries <a class="reference external" href="http://www.numpy.org/">numpy</a> for data analysis and <a class="reference external" href="https://matplotlib.org/">matplotlib</a> for visualization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fundamentally, we only need to import one module from <code class="docutils literal notranslate"><span class="pre">pyiron</span></code>: the <code class="docutils literal notranslate"><span class="pre">Project</span></code> class</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyiron</span> <span class="kn">import</span> <span class="n">Project</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Project object introduced below is central in pyiron. It allows to name the project as well as to derive all other objects such as structures, jobs etc. without having to import them. Thus, by code completion <em>Tab</em> the respective commands can be found easily.</p>
+<p>We now create a pyiron Project named ‘first_steps’.</p>
+</section>
+<section id="creation-of-a-project-instance">
+<h3><strong>Creation of a project instance</strong><a class="headerlink" href="#creation-of-a-project-instance" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s2">&quot;first_steps&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The project name also applies for the directory that is created for the project. All data generated by this <code class="docutils literal notranslate"><span class="pre">Project</span></code> object resides in this directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span><span class="o">.</span><span class="n">path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/home/jovyan/potentials/introduction/first_steps/&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [], &#39;nodes&#39;: []}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">groups</span></code> and <code class="docutils literal notranslate"><span class="pre">nodes</span></code> will be populated later, as we add jobs and sub project to it.</p>
+</section>
+<section id="creating-atomic-structures">
+<h3><strong>Creating atomic structures</strong><a class="headerlink" href="#creating-atomic-structures" title="Permalink to this headline">#</a></h3>
+<p>Every atomistic simulation needs an atomic structure. For more details on generating and manipulating structures, please have a look at our <a class="reference external" href="https://pyiron.readthedocs.io/en/latest/source/notebooks/structures.html">structures example</a>. In this section however, we show how to generate and manipulate bulk crystals, surfaces, etc. pyiron’s structure class is derived from the popular <a class="reference external" href="https://wiki.fysik.dtu.dk/ase/ase/build/build.html"><code class="docutils literal notranslate"><span class="pre">ase</span></code> package</a> and any <code class="docutils literal notranslate"><span class="pre">ase</span></code> function to manipulate structures can also be applied here.</p>
+<p>Creating a bulk fcc cubic unitcell</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Al_unitcell_cubic</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">4.04</span><span class="p">)</span>
+<span class="n">Al_unitcell_cubic</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Al: [0. 0. 0.]
+Al: [0.   2.02 2.02]
+Al: [2.02 0.   2.02]
+Al: [2.02 2.02 0.  ]
+pbc: [ True  True  True]
+cell: 
+Cell([4.04, 4.04, 4.04])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Creating a super cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Al_supercell_3_3_3</span> <span class="o">=</span> <span class="n">Al_unitcell_cubic</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">Al_supercell_3_3_3</span><span class="o">.</span><span class="n">plot3d</span><span class="p">(</span><span class="n">particle_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "0c0e655b058145e0b12e3ef9d8517405", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "7bdda413eec14ff4b035a2ac72ab824b", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Creating a bulk fcc primitive unitcell and supercell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Al_unitcell_primitive</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">4.04</span><span class="p">)</span>
+<span class="n">Al_unitcell_primitive</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">plot3d</span><span class="p">(</span><span class="n">particle_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "81570626c1364735b6510f3b7ff9f7c5", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Creating a vacancy is easy, just delete an atom.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Al_vacancy</span> <span class="o">=</span> <span class="n">Al_supercell_3_3_3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">del</span> <span class="n">Al_vacancy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Deleting the first atom</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Al_supercell_3_3_3</span><span class="o">.</span><span class="n">get_chemical_formula</span><span class="p">(),</span> <span class="n">Al_vacancy</span><span class="o">.</span><span class="n">get_chemical_formula</span><span class="p">())</span>
+<span class="n">Al_vacancy</span><span class="o">.</span><span class="n">plot3d</span><span class="p">(</span><span class="n">particle_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Al108 Al107
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "cc3641aae04b49c2a4027dd1021bb027", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Surfaces are also easy to create, thanks to ASE integration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_layers</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">Al_fcc_111</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">surface</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">surface_type</span><span class="o">=</span><span class="s2">&quot;fcc111&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">num_layers</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">orthogonal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Al_fcc_111</span><span class="o">.</span><span class="n">plot3d</span><span class="p">(</span><span class="n">particle_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "3c5caa70f8114aeb9930d7e3eafb18fa", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>We also have some specialized methods for compounds.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">compound</span><span class="o">.</span><span class="n">B2</span><span class="p">(</span><span class="s2">&quot;Li&quot;</span><span class="p">,</span> <span class="s2">&quot;Al&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "d324258fb5594ec1a24f59467dea6272", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>If needed you can also have full control over the structure.  Here we’ll use it to setup a single atom and a dimer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="n">Al_atom_box</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">atoms</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="n">cell</span><span class="p">,</span> <span class="n">scaled_positions</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
+<span class="n">Al_atom_box</span><span class="o">.</span><span class="n">plot3d</span><span class="p">(</span><span class="n">particle_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "d9eb624f5ccd4838b464c2b85ebcc97a", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="n">Al_atom_1</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">atoms</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="n">cell</span><span class="p">,</span> <span class="n">scaled_positions</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
+<span class="n">Al_atom_2</span> <span class="o">=</span> <span class="n">Al_atom_1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">dimer_length</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="n">Al_atom_2</span><span class="o">.</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dimer_length</span>
+<span class="n">Al_dimer</span> <span class="o">=</span> <span class="n">Al_atom_1</span> <span class="o">+</span> <span class="n">Al_atom_2</span>
+<span class="n">Al_dimer</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
+<span class="n">Al_dimer</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "9a9fd94bf88e4ef6b8b9160fc290b91d", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>This demonstrates also how to build more complex structures, just <code class="docutils literal notranslate"><span class="pre">+</span></code> them together, if they have the same boundary conditions.</p>
+</section>
+<section id="running-an-atomistic-calculation-using-interatomic-potentials-with-lammps">
+<h3><strong>Running an atomistic calculation using interatomic potentials (with LAMMPS)</strong><a class="headerlink" href="#running-an-atomistic-calculation-using-interatomic-potentials-with-lammps" title="Permalink to this headline">#</a></h3>
+<p>Once we have an atomic structure, we can set up a simulation “job” of any atomistic simulation that is intergrated within pyiron. In this section, we are going to use the popular <a class="reference external" href="https://lammps.sandia.gov/">LAMMPS code</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a job</span>
+<span class="n">job_lammps</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Lammps</span><span class="p">(</span><span class="n">job_name</span><span class="o">=</span><span class="s2">&quot;lammps_job&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Every atomistic simulation code needs an input atomic structure. We use the Al supercell structure we created earlier</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign an atomic structure to the job</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">Al_supercell_3_3_3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once the structure is assigned, an appropriate potential should also be chosen. This list of available for the structure containing Al can be found below.  This list originates from the NIST Interatomic Potential Database.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># See available potentials</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">list_potentials</span><span class="p">()[</span><span class="mi">20</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;2004--Mishin-Y--Ni-Al--LAMMPS--ipr2&#39;,
+ &#39;2004--Zhou-X-W--Al--LAMMPS--ipr2&#39;,
+ &#39;2005--Mendelev-M-I--Al-Fe--LAMMPS--ipr1&#39;,
+ &#39;2007--Silva-A-C--Al-Ni--LAMMPS--ipr1&#39;,
+ &#39;2008--Mendelev-M-I--Al--LAMMPS--ipr1&#39;,
+ &#39;2009--Kim-Y-M--Mg-Al--LAMMPS--ipr1&#39;,
+ &#39;2009--Mendelev-M-I--Al-Mg--LAMMPS--ipr1&#39;,
+ &#39;2009--Purja-Pun-G-P--Ni-Al--LAMMPS--ipr1&#39;,
+ &#39;2009--Zhakhovskii-V-V--Al--LAMMPS--ipr2&#39;,
+ &#39;2010--Lee-E--Fe-Al--LAMMPS--ipr1&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Choose one of these potentials</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;2005--Mendelev-M-I--Al-Fe--LAMMPS--ipr1&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At this stage, the computational parameters for the simulation needs to be specified. pyiron parses generic computational parameters into code specific parameters allowing for an easy transition between simulation codes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify calculation details: in this case: MD at 800 K in the NPT ensemble (pressure=0) for 10000 steps</span>
+<span class="n">job_lammps</span><span class="o">.</span><span class="n">calc_md</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_ionic_steps</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now see how pyiron sets-up the corresponding LAMMPS input</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_lammps</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">control</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter</th>
+      <th>Value</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>units</td>
+      <td>metal</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>dimension</td>
+      <td>3</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>boundary</td>
+      <td>p p p</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>atom_style</td>
+      <td>atomic</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>read_data</td>
+      <td>structure.inp</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>include</td>
+      <td>potential.inp</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>fix___ensemble</td>
+      <td>all npt temp 800.0 800.0 0.1 iso 0.0 0.0 1.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>variable___dumptime</td>
+      <td>equal 100</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>variable___thermotime</td>
+      <td>equal 100</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>timestep</td>
+      <td>0.001</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>velocity</td>
+      <td>all create 1600.0 13455 dist gaussian</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>dump___1</td>
+      <td>all custom ${dumptime} dump.out id type xsu ysu zsu fx fy fz vx vy vz</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>dump_modify___1</td>
+      <td>sort id format line "%d %d %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g"</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>thermo_style</td>
+      <td>custom step temp pe etotal pxx pxy pxz pyy pyz pzz vol</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>thermo_modify</td>
+      <td>format float %20.15g</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>thermo</td>
+      <td>${thermotime}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>run</td>
+      <td>10000</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Once the <code class="docutils literal notranslate"><span class="pre">run()</span></code> commmand is called, pyiron creates necessary input files, calls the simulation code, and finally parses and stores the output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_lammps</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job lammps_job was saved and received the ID: 47
+</pre></div>
+</div>
+</div>
+</div>
+<p>When printing the project, the saved job will also appear under <code class="docutils literal notranslate"><span class="pre">nodes</span></code> now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [], &#39;nodes&#39;: [&#39;lammps_job&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can get a quick overview with the <code class="docutils literal notranslate"><span class="pre">job_table</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span><span class="o">.</span><span class="n">job_table</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>status</th>
+      <th>chemicalformula</th>
+      <th>job</th>
+      <th>subjob</th>
+      <th>projectpath</th>
+      <th>project</th>
+      <th>timestart</th>
+      <th>timestop</th>
+      <th>totalcputime</th>
+      <th>computer</th>
+      <th>hamilton</th>
+      <th>hamversion</th>
+      <th>parentid</th>
+      <th>masterid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>47</td>
+      <td>finished</td>
+      <td>Al108</td>
+      <td>lammps_job</td>
+      <td>/lammps_job</td>
+      <td>/home/jovyan/</td>
+      <td>potentials/introduction/first_steps/</td>
+      <td>2022-06-07 16:22:34.601906</td>
+      <td>2022-06-07 16:22:38.109900</td>
+      <td>3.0</td>
+      <td>pyiron@jupyter-m-2epoul#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="analysing-a-calculation">
+<h2><strong>Analysing a calculation</strong><a class="headerlink" href="#analysing-a-calculation" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the job</span>
+<span class="n">job_loaded</span> <span class="o">=</span> <span class="n">pr</span><span class="p">[</span><span class="s1">&#39;lammps_job&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jobs in turn also have groups and nodes in them, corresponding to the input and output that was stored for them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_loaded</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [&#39;executable&#39;, &#39;input&#39;, &#39;output&#39;], &#39;nodes&#39;: [&#39;HDF_VERSION&#39;, &#39;NAME&#39;, &#39;TYPE&#39;, &#39;VERSION&#39;, &#39;server&#39;, &#39;status&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>You will generally find all relevant data in the <code class="docutils literal notranslate"><span class="pre">output</span></code> group, for your further processing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_loaded</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [&#39;generic&#39;, &#39;structure&#39;], &#39;nodes&#39;: []}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The group <code class="docutils literal notranslate"><span class="pre">structure</span></code> holds the final structure at the end of the simulation, whereas the <code class="docutils literal notranslate"><span class="pre">generic</span></code> group keeps output you can expect for all atomistic jobs in pyiron.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_loaded</span><span class="p">[</span><span class="s2">&quot;output/generic&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [], &#39;nodes&#39;: [&#39;cells&#39;, &#39;energy_pot&#39;, &#39;energy_tot&#39;, &#39;forces&#39;, &#39;indices&#39;, &#39;positions&#39;, &#39;pressures&#39;, &#39;steps&#39;, &#39;temperature&#39;, &#39;unwrapped_positions&#39;, &#39;velocities&#39;, &#39;volume&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">job_loaded</span><span class="p">[</span><span class="s2">&quot;output/generic/energy_pot&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f101a8870a0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/ex_01_introduction_to_pyiron_56_1.png" src="../_images/ex_01_introduction_to_pyiron_56_1.png" />
+</div>
+</div>
+<p>Structures from the MD trajectory can be accessed using <code class="docutils literal notranslate"><span class="pre">get_structure</span></code>, passing as the argument the index of the step you want to retrieve.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_struct</span> <span class="o">=</span> <span class="n">job_loaded</span><span class="o">.</span><span class="n">get_structure</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">final_struct</span><span class="o">.</span><span class="n">plot3d</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "e2bb178b883048dcb3555eae0ac3af54", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">plot3d</span></code> method you can visualize the structure interactively.  To see the full trajectory, you can use the <code class="docutils literal notranslate"><span class="pre">animate_structure</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_loaded</span><span class="o">.</span><span class="n">animate_structure</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "0f140505b54546c5abeeef14ece66add", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Let’s go through a few more examples of visualizing the output of the job.</p>
+<p>When you run the job, you can specify how often pyiron and lammps should be writing the intermediate structures and energies, etc. The default for this is every 100 steps.  The output group <code class="docutils literal notranslate"><span class="pre">generic/steps</span></code> contains an array to which actual step of the MD trajectory a snapshot belongs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperatures</span> <span class="o">=</span> <span class="n">job_loaded</span><span class="p">[</span><span class="s1">&#39;output/generic/temperature&#39;</span><span class="p">]</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="n">job_loaded</span><span class="p">[</span><span class="s1">&#39;output/generic/steps&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">temperatures</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;MD step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature [K]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ex_01_introduction_to_pyiron_62_0.png" src="../_images/ex_01_introduction_to_pyiron_62_0.png" />
+</div>
+</div>
+<p>We can also make a histogram of the positions during the simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">job_loaded</span><span class="p">[</span><span class="s1">&#39;output/generic/positions&#39;</span><span class="p">]</span>
+<span class="c1"># The first axis refers to the simulation step, the second to the atom in the structure.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="c1"># Let&#39;s pick only the bottom layer of atoms</span>
+<span class="n">sel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">sel</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">sel</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x [$\AA$]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y [$\AA$]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ex_01_introduction_to_pyiron_64_0.png" src="../_images/ex_01_introduction_to_pyiron_64_0.png" />
+</div>
+</div>
+<section id="running-an-atomistic-calculation-using-dft-with-sphinx">
+<h3><strong>Running an atomistic calculation using DFT (with SPHInX)</strong><a class="headerlink" href="#running-an-atomistic-calculation-using-dft-with-sphinx" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sphinx</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Sphinx</span><span class="p">(</span><span class="s2">&quot;sphinx_job&quot;</span><span class="p">)</span>
+<span class="n">job_sphinx</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">Al_unitcell_primitive</span>
+<span class="n">job_sphinx</span><span class="o">.</span><span class="n">set_exchange_correlation_functional</span><span class="p">(</span><span class="s2">&quot;PBE&quot;</span><span class="p">)</span>
+<span class="n">job_sphinx</span><span class="o">.</span><span class="n">plane_wave_cutoff</span> <span class="o">=</span> <span class="mi">350</span>
+<span class="n">job_sphinx</span><span class="o">.</span><span class="n">set_occupancy_smearing</span><span class="p">(</span><span class="s2">&quot;fermi&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">job_sphinx</span><span class="o">.</span><span class="n">calc_static</span><span class="p">()</span>
+<span class="n">job_sphinx</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job sphinx_job was saved and received the ID: 48
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sphinx</span><span class="p">[</span><span class="s2">&quot;output/generic&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>DataContainer({
+  "dft": {
+    "n_valence": "{'Al': 3}",
+    "bands_k_weights": "array([0.03125, 0.09375, 0.09375, 0.09375, 0.09375, 0.1875 , 0.1875 ,\n       0.09375, 0.03125, 0.09375])",
+    "kpoints_cartesian": "array([[ 0.15999579,  0.15999579,  0.15999579],\n       [-0.15999579, -0.15999579,  1.11997052],\n       [-0.47998736, -0.47998736,  2.07994525],\n       [-0.79997894, -0.79997894,  3.03991998],\n       [-0.47998736,  0.79997894,  0.79997894],\n       [-0.79997894,  0.47998736,  1.75995367],\n       [-1.11997052,  0.15999579,  2.7199284 ],\n       [-1.11997052,  1.43996209,  1.43996209],\n       [ 0.47998736,  0.47998736,  0.47998736],\n       [ 0.15999579,  0.15999579,  1.43996209]])",
+    "bands_e_fermi": "array([5.826281, 5.728571])",
+    "bands_occ": "array([[[2.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,\n         0.0000e+00],\n        [2.0000e+00, 2.0000e-04, 0.0000e+00, 0.0000e+00, 0.0000e+00,\n         0.0000e+00],\n        [2.0000e+00, 2.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,\n         0.0000e+00],\n        [2.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,\n         0.0000e+00],\n        [2.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,\n         0.0000e+00],\n        [2.0000e+00, 2.0172e+00, 5.3000e-03, 0.0000e+00, 0.0000e+00,\n         0.0000e+00],\n        [2.0000e+00, 8.9180e-01, 0.0000e+00, 0.0000e+00, 0.0000e+00,\n         0.0000e+00],\n        [2.0000e+00, 1.8580e-01, 2.0000e-04, 0.0000e+00, 0.0000e+00,\n         0.0000e+00],\n        [2.0000e+00, 2.0212e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,\n         0.0000e+00],\n        [2.0000e+00, 2.0002e+00, 1.0000e-04, 0.0000e+00, 0.0000e+00,\n         0.0000e+00]]])",
+    "bands_eigen_values": "array([[[ 5.1303, 14.0305, 17.448 , 17.448 , 21.4033, 21.4038],\n        [ 2.886 ,  7.8761, 12.2759, 17.483 , 19.4736, 19.566 ],\n        [ 0.4173,  2.6042, 13.2754, 14.5396, 16.3723, 20.5521],\n        [ 4.0041, 10.9748, 14.5241, 16.1197, 17.3349, 19.8625],\n        [ 1.7777,  8.874 , 11.2518, 12.5463, 14.1234, 18.1266],\n        [ 2.5362,  4.6844,  7.0896,  9.2511, 17.583 , 21.7615],\n        [ 0.6753,  5.7575, 10.227 , 12.3039, 18.524 , 20.6616],\n        [ 1.4632,  6.0015,  7.8495, 11.5583, 13.0563, 17.1834],\n        [ 1.7756,  4.7487, 16.5213, 16.5215, 18.5486, 18.5497],\n        [ 1.5011,  3.6299,  8.1685, 13.5452, 15.4597, 23.5714]]])",
+    "scf_convergence": "[True]",
+    "scf_energy_int": "[[-57.07249516929677, -57.186612261850335, -57.187335449229764, -57.187341601887454]]",
+    "scf_energy_free": "[[-57.0952651989044, -57.209309192558685, -57.21005766552014, -57.21006554754307]]",
+    "scf_magnetic_forces": "[]",
+    "scf_computation_time": "[[0.264505, 0.528669, 0.827663, 1.125228]]",
+    "scf_energy_zero": "[[-57.08957269148888, -57.20363495987479, -57.20437711144075, -57.20438456112916]]",
+    "scf_energy_band": "[[3.74461494688908, 3.5621788078508088, 3.576114113284531, 3.5755812775248286]]",
+    "scf_electronic_entropy": "[[3.098019981452102, 3.088074371020078, 3.0915146481058895, 3.091749941969506]]",
+    "scf_residue": "[[0.00499972, 0.000815417, 5.41578e-05, 1.06328e-05]]",
+    "energy_int": "array([-57.1873416])",
+    "energy_free": "array([-57.21006555])",
+    "magnetic_forces": "array([], dtype=float64)",
+    "computation_time": "array([1.125228])",
+    "energy_zero": "array([-57.20438456])",
+    "energy_band": "array([3.57558128])",
+    "electronic_entropy": "array([3.09174994])",
+    "residue": "array([1.06328e-05])"
+  },
+  "positions": "array([[[0., 0., 0.]]])",
+  "cells": "array([[[0.  , 2.02, 2.02],\n        [2.02, 0.  , 2.02],\n        [2.02, 2.02, 0.  ]]])",
+  "volume": "array([16.48480823])",
+  "forces": "array([[[-0.,  0.,  0.]]])",
+  "energy_tot": "array([-57.21006555])",
+  "energy_pot": "array([-57.21006555])"
+})</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sphinx</span><span class="p">[</span><span class="s2">&quot;output/generic/energy_tot&quot;</span><span class="p">]</span> <span class="c1"># Energy for every ionic step</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-57.21006555])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sphinx</span><span class="p">[</span><span class="s1">&#39;output/electronic_structure&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ElectronicStructure Instance
+----------------------------
+Number of spin channels: 1
+Number of k-points: 10
+Number of bands: 6
+spin 0: Is a metal: True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sphinx</span><span class="o">.</span><span class="n">input</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>Group({
+  "sphinx": {
+    "pawPot": {
+      "species": [
+        {
+          "name": "'\"Al\"'",
+          "potType": "'\"AtomPAW\"'",
+          "element": "'\"Al\"'",
+          "potential": "'\"Al_GGA.atomicdata\"'"
+        }
+      ]
+    },
+    "structure": {
+      "cell": "array([[0.        , 3.81724677, 3.81724677],\n       [3.81724677, 0.        , 3.81724677],\n       [3.81724677, 3.81724677, 0.        ]])",
+      "species": [
+        {
+          "element": "'\"Al\"'",
+          "atom": [
+            {
+              "coords": "array([0., 0., 0.])"
+            }
+          ]
+        }
+      ]
+    },
+    "basis": {
+      "eCut": "25.724525522958494",
+      "kPoint": {
+        "coords": "array([0.5, 0.5, 0.5])",
+        "weight": "1",
+        "relative": "True"
+      },
+      "folding": "array([4, 4, 4])",
+      "saveMemory": "True"
+    },
+    "PAWHamiltonian": {
+      "nEmptyStates": "4",
+      "ekt": "0.2",
+      "FermiDirac": "1",
+      "xc": "'PBE'",
+      "spinPolarized": "False"
+    },
+    "initialGuess": {
+      "waves": {
+        "lcao": [],
+        "pawBasis": "True"
+      },
+      "rho": {
+        "atomicOrbitals": "True"
+      },
+      "noWavesStorage": "False"
+    },
+    "main": {
+      "scfDiag": [
+        {
+          "rhoMixing": "'1.0'",
+          "spinMixing": "'1.0'",
+          "dEnergy": "3.674932217565499e-06",
+          "maxSteps": "'100'",
+          "preconditioner": {
+            "type": "'KERKER'",
+            "scaling": "1.0",
+            "spinScaling": "1.0"
+          },
+          "blockCCG": []
+        }
+      ],
+      "evalForces": {
+        "file": "'\"relaxHist.sx\"'"
+      }
+    }
+  },
+  "EnCut": "350",
+  "KpointCoords": "[0.5, 0.5, 0.5]",
+  "KpointFolding": "[4, 4, 4]",
+  "EmptyStates": "4",
+  "Sigma": "0.2",
+  "Xcorr": "'PBE'",
+  "VaspPot": "False",
+  "Estep": "100",
+  "Ediff": "0.0001",
+  "WriteWaves": "True",
+  "KJxc": "False",
+  "SaveMemory": "True",
+  "rhoMixing": "1.0",
+  "spinMixing": "1.0",
+  "rhoResidualScaling": "1.0",
+  "spinResidualScaling": "1.0",
+  "CheckOverlap": "True",
+  "THREADS": "1",
+  "use_on_the_fly_cg_optimization": "True",
+  "FermiDirac": "1"
+})</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eigenvalues</span> <span class="o">=</span> <span class="n">job_sphinx</span><span class="p">[</span><span class="s1">&#39;output/electronic_structure/eig_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">occupancies</span> <span class="o">=</span> <span class="n">job_sphinx</span><span class="p">[</span><span class="s1">&#39;output/electronic_structure/occ_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="n">efermi</span> <span class="o">=</span> <span class="n">job_sphinx</span><span class="p">[</span><span class="s1">&#39;output/electronic_structure/efermi&#39;</span><span class="p">]</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span>
+<span class="c1"># args = np.argsort(eigenvalues)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">[</span><span class="n">args</span><span class="p">]</span> <span class="o">-</span> <span class="n">efermi</span><span class="p">,</span> <span class="n">occupancies</span><span class="p">[</span><span class="n">args</span><span class="p">],</span> <span class="s2">&quot;-x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Energy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Occupancy&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ex_01_introduction_to_pyiron_71_0.png" src="../_images/ex_01_introduction_to_pyiron_71_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="task-1-energy-volume-curve-for-al">
+<h2><strong>Task 1: Energy volume curve for Al</strong><a class="headerlink" href="#task-1-energy-volume-curve-for-al" title="Permalink to this headline">#</a></h2>
+<p>First we create some functions to extract the final energy and volume of a job</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_volume</span><span class="p">(</span><span class="n">job</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job</span><span class="p">[</span><span class="s2">&quot;output/generic/volume&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_energy</span><span class="p">(</span><span class="n">job</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job</span><span class="p">[</span><span class="s2">&quot;output/generic/energy_tot&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_loaded</span> <span class="o">=</span> <span class="n">pr</span><span class="p">[</span><span class="s1">&#39;lammps_job&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_energy</span><span class="p">(</span><span class="n">job_loaded</span><span class="p">),</span> <span class="n">get_volume</span><span class="p">(</span><span class="n">job_loaded</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-339.86911482815, 1897.35642816221)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We create first a few jobs with different lattice parameters.</p>
+<p>Project can be nested within each other with <code class="docutils literal notranslate"><span class="pre">create_group</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr_ev</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">&quot;E_V_curve&quot;</span><span class="p">)</span> <span class="c1"># Creating a new sub-project within the main project</span>
+<span class="n">a_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.8</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+    <span class="n">job_name</span> <span class="o">=</span> <span class="s2">&quot;job_a_</span><span class="si">{:.4}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+    <span class="n">job</span> <span class="o">=</span> <span class="n">pr_ev</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Lammps</span><span class="p">(</span><span class="n">job_name</span><span class="p">)</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr_ev</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s2">&quot;2005--Mendelev-M-I--Al-Fe--LAMMPS--ipr1&quot;</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">calc_minimize</span><span class="p">()</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job job_a_3_8 was saved and received the ID: 49
+The job job_a_3_9 was saved and received the ID: 50
+The job job_a_4_0 was saved and received the ID: 51
+The job job_a_4_1 was saved and received the ID: 52
+The job job_a_4_2 was saved and received the ID: 53
+The job job_a_4_3 was saved and received the ID: 54
+The job job_a_4_4 was saved and received the ID: 55
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [&#39;E_V_curve&#39;], &#39;nodes&#39;: [&#39;lammps_job&#39;, &#39;sphinx_job&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr_ev</span><span class="o">.</span><span class="n">job_table</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>status</th>
+      <th>chemicalformula</th>
+      <th>job</th>
+      <th>subjob</th>
+      <th>projectpath</th>
+      <th>project</th>
+      <th>timestart</th>
+      <th>timestop</th>
+      <th>totalcputime</th>
+      <th>computer</th>
+      <th>hamilton</th>
+      <th>hamversion</th>
+      <th>parentid</th>
+      <th>masterid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>49</td>
+      <td>finished</td>
+      <td>Al</td>
+      <td>job_a_3_8</td>
+      <td>/job_a_3_8</td>
+      <td>/home/jovyan/</td>
+      <td>potentials/introduction/first_steps/E_V_curve/</td>
+      <td>2022-06-07 16:22:47.261636</td>
+      <td>2022-06-07 16:22:47.860877</td>
+      <td>0.0</td>
+      <td>pyiron@jupyter-m-2epoul#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>50</td>
+      <td>finished</td>
+      <td>Al</td>
+      <td>job_a_3_9</td>
+      <td>/job_a_3_9</td>
+      <td>/home/jovyan/</td>
+      <td>potentials/introduction/first_steps/E_V_curve/</td>
+      <td>2022-06-07 16:22:49.073172</td>
+      <td>2022-06-07 16:22:49.352637</td>
+      <td>0.0</td>
+      <td>pyiron@jupyter-m-2epoul#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>51</td>
+      <td>finished</td>
+      <td>Al</td>
+      <td>job_a_4_0</td>
+      <td>/job_a_4_0</td>
+      <td>/home/jovyan/</td>
+      <td>potentials/introduction/first_steps/E_V_curve/</td>
+      <td>2022-06-07 16:22:50.395300</td>
+      <td>2022-06-07 16:22:51.172536</td>
+      <td>0.0</td>
+      <td>pyiron@jupyter-m-2epoul#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>52</td>
+      <td>finished</td>
+      <td>Al</td>
+      <td>job_a_4_1</td>
+      <td>/job_a_4_1</td>
+      <td>/home/jovyan/</td>
+      <td>potentials/introduction/first_steps/E_V_curve/</td>
+      <td>2022-06-07 16:22:51.994665</td>
+      <td>2022-06-07 16:22:52.415024</td>
+      <td>0.0</td>
+      <td>pyiron@jupyter-m-2epoul#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>53</td>
+      <td>finished</td>
+      <td>Al</td>
+      <td>job_a_4_2</td>
+      <td>/job_a_4_2</td>
+      <td>/home/jovyan/</td>
+      <td>potentials/introduction/first_steps/E_V_curve/</td>
+      <td>2022-06-07 16:22:53.700368</td>
+      <td>2022-06-07 16:22:54.143684</td>
+      <td>0.0</td>
+      <td>pyiron@jupyter-m-2epoul#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>54</td>
+      <td>finished</td>
+      <td>Al</td>
+      <td>job_a_4_3</td>
+      <td>/job_a_4_3</td>
+      <td>/home/jovyan/</td>
+      <td>potentials/introduction/first_steps/E_V_curve/</td>
+      <td>2022-06-07 16:22:55.563556</td>
+      <td>2022-06-07 16:22:56.456825</td>
+      <td>0.0</td>
+      <td>pyiron@jupyter-m-2epoul#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>55</td>
+      <td>finished</td>
+      <td>Al</td>
+      <td>job_a_4_4</td>
+      <td>/job_a_4_4</td>
+      <td>/home/jovyan/</td>
+      <td>potentials/introduction/first_steps/E_V_curve/</td>
+      <td>2022-06-07 16:22:57.806968</td>
+      <td>2022-06-07 16:22:58.085522</td>
+      <td>0.0</td>
+      <td>pyiron@jupyter-m-2epoul#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now that we have all the jobs and they finished correctly, we can analyze them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vol_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">energy_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">pr</span><span class="p">[</span><span class="s2">&quot;E_V_curve&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iter_jobs</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;finished&quot;</span><span class="p">):</span>
+    <span class="n">vol_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_volume</span><span class="p">(</span><span class="n">job</span><span class="p">))</span>
+    <span class="n">energy_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_energy</span><span class="p">(</span><span class="n">job</span><span class="p">))</span>
+
+<span class="n">args</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">vol_list</span><span class="p">)</span>
+<span class="n">vol_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vol_list</span><span class="p">)</span>
+<span class="n">energy_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">energy_list</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vol_list</span><span class="p">[</span><span class="n">args</span><span class="p">],</span> <span class="n">energy_list</span><span class="p">[</span><span class="n">args</span><span class="p">],</span> <span class="s2">&quot;-x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Volume [$\mathrm{\AA^3}$]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Energy [eV]&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "198b4f4d58c84da19545cd43ef64828b", "version_major": 2, "version_minor": 0}
+</script><img alt="../_images/ex_01_introduction_to_pyiron_82_1.png" src="../_images/ex_01_introduction_to_pyiron_82_1.png" />
+</div>
+</div>
+</section>
+<section id="task-2-e-v-curves-for-dft">
+<h2><strong>Task 2: E-V curves for DFT</strong><a class="headerlink" href="#task-2-e-v-curves-for-dft" title="Permalink to this headline">#</a></h2>
+<p>We now do the same with a DFT job to allow us to compare.  Notice that the structure of the code is almost the same between DFT and Lammps, just the input parameters are different.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr_ev</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">&quot;E_V_curve_DFT&quot;</span><span class="p">)</span> <span class="c1"># Creating a new sub-project within the main project</span>
+<span class="n">a_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.8</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+    <span class="n">job_name</span> <span class="o">=</span> <span class="s2">&quot;job_a_</span><span class="si">{:.4}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+    <span class="n">job</span> <span class="o">=</span> <span class="n">pr_ev</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Sphinx</span><span class="p">(</span><span class="n">job_name</span><span class="p">)</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr_ev</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">set_exchange_correlation_functional</span><span class="p">(</span><span class="s2">&quot;PBE&quot;</span><span class="p">)</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">plane_wave_cutoff</span> <span class="o">=</span> <span class="mi">350</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">set_kpoints</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">set_occupancy_smearing</span><span class="p">(</span><span class="s2">&quot;fermi&quot;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">calc_minimize</span><span class="p">()</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job job_a_3_8 was saved and received the ID: 56
+The job job_a_3_9 was saved and received the ID: 57
+The job job_a_4_0 was saved and received the ID: 58
+The job job_a_4_1 was saved and received the ID: 59
+The job job_a_4_2 was saved and received the ID: 60
+The job job_a_4_3 was saved and received the ID: 61
+The job job_a_4_4 was saved and received the ID: 62
+</pre></div>
+</div>
+</div>
+</div>
+<p>Also for the analysis the code necessary is the same, allowing us to easily loop over both groups and plot them together.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">pr</span><span class="o">.</span><span class="n">iter_groups</span><span class="p">():</span>
+    <span class="n">vol_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">energy_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">iter_jobs</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;finished&quot;</span><span class="p">):</span>
+        <span class="n">vol_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_volume</span><span class="p">(</span><span class="n">job</span><span class="p">))</span>
+        <span class="n">energy_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_energy</span><span class="p">(</span><span class="n">job</span><span class="p">))</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">vol_list</span><span class="p">)</span>
+    <span class="n">vol_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vol_list</span><span class="p">)</span>
+    <span class="n">energy_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">energy_list</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vol_list</span><span class="p">[</span><span class="n">args</span><span class="p">],</span> <span class="n">energy_list</span><span class="p">[</span><span class="n">args</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">energy_list</span><span class="p">),</span> <span class="s2">&quot;-x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Volume [$\mathrm{\AA^3}$]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Energy [eV]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "7ae4ebb2f9d648c58fdba0b008304243", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "30879f042ea6432c890661157407f483", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "d3dd578efc1847a4a78f69a481669e8d", "version_major": 2, "version_minor": 0}
+</script><img alt="../_images/ex_01_introduction_to_pyiron_86_3.png" src="../_images/ex_01_introduction_to_pyiron_86_3.png" />
+</div>
+</div>
+</section>
+<section id="advanced-pyiron-automated-workflows-and-analysis-tools">
+<h2><strong>Advanced pyiron: Automated workflows and analysis tools</strong><a class="headerlink" href="#advanced-pyiron-automated-workflows-and-analysis-tools" title="Permalink to this headline">#</a></h2>
+<p>While we could in principle obtain thee E-V cureves by setting up and analyzing the calculations manually as done above, we could also use predefined workflows in pyiron which does this automatically</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_pot</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">pot_finder</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">inspect_emperical_potentials</span><span class="p">()</span>
+<span class="n">pot_list</span> <span class="o">=</span> <span class="n">pot_finder</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">to_list</span><span class="p">()[</span><span class="mi">20</span><span class="p">:</span><span class="mi">20</span><span class="o">+</span><span class="n">num_pot</span><span class="p">]</span>
+<span class="n">pot_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;2004--Mishin-Y--Ni-Al--LAMMPS--ipr2&#39;,
+ &#39;2004--Zhou-X-W--Al--LAMMPS--ipr2&#39;,
+ &#39;2005--Mendelev-M-I--Al-Fe--LAMMPS--ipr1&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_project_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Automated Murnaghan using pyiron tables</span>
+
+<span class="n">pr_murn</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s2">&quot;murn_auto&quot;</span><span class="p">)</span> 
+
+<span class="k">for</span> <span class="n">pot</span> <span class="ow">in</span> <span class="n">pot_list</span><span class="p">:</span>
+    
+    <span class="n">lammps_job</span> <span class="o">=</span> <span class="n">pr_murn</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Lammps</span><span class="p">(</span><span class="s2">&quot;lammps_ref&quot;</span><span class="p">)</span>
+    <span class="n">lammps_job</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">)</span>
+    <span class="n">lammps_job</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">pot</span>
+    <span class="n">lammps_job</span><span class="o">.</span><span class="n">calc_minimize</span><span class="p">()</span>
+    
+    <span class="c1"># Creating a Murnaghan workflow (char names not to exceed 50 chars)</span>
+    <span class="n">job_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;murn_ref_</span><span class="si">{</span><span class="n">clean_project_name</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">[:</span><span class="mi">40</span><span class="p">]</span>
+    
+    <span class="c1"># The job type &#39;Murnaghan&#39; sets up the appropriate workflow </span>
+    <span class="n">murn_job</span> <span class="o">=</span> <span class="n">lammps_job</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">pr</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">Murnaghan</span><span class="p">,</span> <span class="n">job_name</span><span class="p">)</span>
+    <span class="n">murn_job</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;num_points&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
+    <span class="n">murn_job</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job murn_ref_2004__Mishin_Y__Ni_Al__LAMMPS__ was saved and received the ID: 63
+The job murn_ref_2004__Mishin_Y__Ni_Al__LAMMPS___0_9 was saved and received the ID: 64
+The job murn_ref_2004__Mishin_Y__Ni_Al__LAMMPS___0_925 was saved and received the ID: 65
+The job murn_ref_2004__Mishin_Y__Ni_Al__LAMMPS___0_95 was saved and received the ID: 66
+The job murn_ref_2004__Mishin_Y__Ni_Al__LAMMPS___0_975 was saved and received the ID: 67
+The job murn_ref_2004__Mishin_Y__Ni_Al__LAMMPS___1_0 was saved and received the ID: 68
+The job murn_ref_2004__Mishin_Y__Ni_Al__LAMMPS___1_025 was saved and received the ID: 69
+The job murn_ref_2004__Mishin_Y__Ni_Al__LAMMPS___1_05 was saved and received the ID: 70
+The job murn_ref_2004__Mishin_Y__Ni_Al__LAMMPS___1_075 was saved and received the ID: 71
+The job murn_ref_2004__Mishin_Y__Ni_Al__LAMMPS___1_1 was saved and received the ID: 72
+The job murn_ref_2004__Zhou_X_W__Al__LAMMPS__ipr was saved and received the ID: 73
+The job murn_ref_2004__Zhou_X_W__Al__LAMMPS__ipr_0_9 was saved and received the ID: 74
+The job murn_ref_2004__Zhou_X_W__Al__LAMMPS__ipr_0_925 was saved and received the ID: 75
+The job murn_ref_2004__Zhou_X_W__Al__LAMMPS__ipr_0_95 was saved and received the ID: 76
+The job murn_ref_2004__Zhou_X_W__Al__LAMMPS__ipr_0_975 was saved and received the ID: 77
+The job murn_ref_2004__Zhou_X_W__Al__LAMMPS__ipr_1_0 was saved and received the ID: 78
+The job murn_ref_2004__Zhou_X_W__Al__LAMMPS__ipr_1_025 was saved and received the ID: 79
+The job murn_ref_2004__Zhou_X_W__Al__LAMMPS__ipr_1_05 was saved and received the ID: 80
+The job murn_ref_2004__Zhou_X_W__Al__LAMMPS__ipr_1_075 was saved and received the ID: 81
+The job murn_ref_2004__Zhou_X_W__Al__LAMMPS__ipr_1_1 was saved and received the ID: 82
+The job murn_ref_2005__Mendelev_M_I__Al_Fe__LAMM was saved and received the ID: 83
+The job murn_ref_2005__Mendelev_M_I__Al_Fe__LAMM_0_9 was saved and received the ID: 84
+The job murn_ref_2005__Mendelev_M_I__Al_Fe__LAMM_0_925 was saved and received the ID: 85
+The job murn_ref_2005__Mendelev_M_I__Al_Fe__LAMM_0_95 was saved and received the ID: 86
+The job murn_ref_2005__Mendelev_M_I__Al_Fe__LAMM_0_975 was saved and received the ID: 87
+The job murn_ref_2005__Mendelev_M_I__Al_Fe__LAMM_1_0 was saved and received the ID: 88
+The job murn_ref_2005__Mendelev_M_I__Al_Fe__LAMM_1_025 was saved and received the ID: 89
+The job murn_ref_2005__Mendelev_M_I__Al_Fe__LAMM_1_05 was saved and received the ID: 90
+The job murn_ref_2005__Mendelev_M_I__Al_Fe__LAMM_1_075 was saved and received the ID: 91
+The job murn_ref_2005__Mendelev_M_I__Al_Fe__LAMM_1_1 was saved and received the ID: 92
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">murn_job</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ex_01_introduction_to_pyiron_91_0.png" src="../_images/ex_01_introduction_to_pyiron_91_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Murnaghan: error: 1.1881350053920211e-07&#39;}, xlabel=&#39;Volume ($\\AA^3$)&#39;, ylabel=&#39;energy (eV)&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">murn_job</span><span class="p">[</span><span class="s2">&quot;output/equilibrium_volume&quot;</span><span class="p">],</span> <span class="n">murn_job</span><span class="p">[</span><span class="s2">&quot;output/equilibrium_bulk_modulus&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16.41961401289247, 85.21427045715596)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">murn_job</span><span class="p">[</span><span class="s2">&quot;output/structure/cell/cell&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.050000000000001
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now analyze the data using our in-built pyiron tables class</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A filter function that selects only Murnaghan jobs</span>
+<span class="k">def</span> <span class="nf">get_only_murn</span><span class="p">(</span><span class="n">job_table</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">job_table</span><span class="o">.</span><span class="n">hamilton</span> <span class="o">==</span> <span class="s2">&quot;Murnaghan&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">job_table</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;finished&quot;</span><span class="p">)</span>
+
+<span class="c1"># Functions to obtain output from Murnaghan jobs</span>
+<span class="k">def</span> <span class="nf">get_eq_vol</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;output/equilibrium_volume&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_eq_lp</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;output/structure/cell/cell&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_eq_bm</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;output/equilibrium_bulk_modulus&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_potential</span><span class="p">(</span><span class="n">job_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job_path</span><span class="p">[</span><span class="s2">&quot;lammps_ref/input/potential/Name&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a pyiron table and processing output</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pr_murn</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;table_murn&quot;</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">table</span><span class="o">.</span><span class="n">db_filter_function</span> <span class="o">=</span> <span class="n">get_only_murn</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;potential&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_potential</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_eq_lp</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;eq_vol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_eq_vol</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;eq_bm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_eq_bm</span>
+
+<span class="n">table</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">table</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job table_murn was saved and received the ID: 93
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "65692f89a19348eb891af80f79c85933", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "bbdcb641aaf946b4b1e09483b4428ffb", "version_major": 2, "version_minor": 0}
+</script><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>job_id</th>
+      <th>potential</th>
+      <th>a</th>
+      <th>eq_vol</th>
+      <th>eq_bm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>63</td>
+      <td>2004--Mishin-Y--Ni-Al--LAMMPS--ipr2</td>
+      <td>4.05</td>
+      <td>16.606859</td>
+      <td>80.886124</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>73</td>
+      <td>2004--Zhou-X-W--Al--LAMMPS--ipr2</td>
+      <td>4.05</td>
+      <td>16.611633</td>
+      <td>71.503293</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>83</td>
+      <td>2005--Mendelev-M-I--Al-Fe--LAMMPS--ipr1</td>
+      <td>4.05</td>
+      <td>16.419614</td>
+      <td>85.214270</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="extra-credits">
+<h2>Extra Credits<a class="headerlink" href="#extra-credits" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Check the E-V curves for different crystal structures of the same element with Murnaghan jobs (Hint: execute <code class="docutils literal notranslate"><span class="pre">pr.create.structure.bulk?</span></code> in a cell)</p></li>
+<li><p>Calculate the thermal expansion for an element and structure of your liking (Hint: run MD at different temperatures with the argument <code class="docutils literal notranslate"><span class="pre">pressure=0</span></code>)</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Day 1: Introduction to Pyiron</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ex_02_creating_structure_databases.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercise 2: Creating and working with structure databases</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

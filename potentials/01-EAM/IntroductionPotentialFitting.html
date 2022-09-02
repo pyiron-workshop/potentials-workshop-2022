@@ -1,0 +1,947 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Interatomic potentials &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Training data" href="HandsOnPotenitalFitting.html" />
+    <link rel="prev" title="Day 2: Fitting Potentials" href="../Intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/potentials_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Workshop: From Electrons to Phase Diagrams</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../introduction/Intro.html">
+   Day 1: Introduction to Pyiron
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/ex_01_introduction_to_pyiron.html">
+     Exercise 1: Introduction to atomistic simulations with pyiron
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/ex_02_creating_structure_databases.html">
+     Exercise 2: Creating and working with structure databases
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/ex_03_visualizing_training_data.html">
+     Exercise 3: Visualizing Training Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../Intro.html">
+   Day 2: Fitting Potentials
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Interatomic potentials
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="HandsOnPotenitalFitting.html">
+     Training data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-HDNNP/handson.html">
+     High-Dimensional Neural Network Potentials
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-ACE/pacemaker_example.html">
+     Import and load
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../validation/Intro.html">
+   Day 2: Validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../validation/validation_LiAl.html">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../validation/validation_NiAl.html">
+     <strong>
+      Workshop: From electrons to phase diagrams
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../phase_diagram/Intro.html">
+   Day 3: Phase Diagrams
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../phase_diagram/tutorial_1.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Phase diagrams and how to calculate them
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../phase_diagram/tutorial_2.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      AlLi phase diagram
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../phase_diagram/exercise_1.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 1
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../phase_diagram/exercise_2.html">
+     <font face="Helvetica" style="color:#B71C1C">
+      Exercise 2
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pyiron/potentials-workshop-2022/main?urlpath=tree/book/potentials/01-EAM/IntroductionPotentialFitting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/pyiron/potentials-workshop-2022"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/potentials/01-EAM/IntroductionPotentialFitting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Interatomic potentials
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting">
+   Fitting
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eam-potentials">
+   EAM potentials
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting-code">
+   Fitting code
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-training-data">
+     Get the training data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#have-a-look-at-the-training-data">
+     Have a look at the training data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-an-atomicrex-job">
+     Create an atomicrex job
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-data">
+     Training Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#short-test">
+     Short Test
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#improving-the-potential">
+     Improving the potential:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Interatomic potentials</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Interatomic potentials
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting">
+   Fitting
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eam-potentials">
+   EAM potentials
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting-code">
+   Fitting code
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-training-data">
+     Get the training data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#have-a-look-at-the-training-data">
+     Have a look at the training data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-an-atomicrex-job">
+     Create an atomicrex job
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-data">
+     Training Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#short-test">
+     Short Test
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#improving-the-potential">
+     Improving the potential:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="interatomic-potentials">
+<h1>Interatomic potentials<a class="headerlink" href="#interatomic-potentials" title="Permalink to this headline">#</a></h1>
+<p>In general interatomic potentials can be written as a sum of functional terms depending on the positions of the atoms in a structure. Then the energy <span class="math notranslate nohighlight">\(U\)</span> of the system is</p>
+<p><span class="math notranslate nohighlight">\(U = \sum_{i=1}^N U_1(\vec{r_i}) + \sum_{i,j=1}^N U_2(\vec{r_i}, \vec{r_j}) + \sum_{i,j,k=1}^N U_2(\vec{r_i}, \vec{r_j}, \vec{r_k}) +...\)</span></p>
+<p>The one body term only matter when the system is within an external field. Most classic interatomic potentials don’t use 4th and higher order body terms, pair potentials only use the 2 body term. As a general rule potentials that include higher order body terms can be more accurate but are slower.</p>
+<p>There are many different forms for <span class="math notranslate nohighlight">\(U_i\)</span>, which cover a wide range of different run time and accuracy necessities.</p>
+<p>Simple pair potentials (f.e Lennard-Jones, Morse, Buckingham) only contain very few parameters, typically less than 10. In many body potentials (f.e. EAM, MEAM, Tersoff) the typical number of parameters is 10-50 and for machine learning potentials the number of parameters can reach several thousands.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fitting">
+<h1>Fitting<a class="headerlink" href="#fitting" title="Permalink to this headline">#</a></h1>
+<p>In the fit process the parameters of the chosen functions for <span class="math notranslate nohighlight">\(U_i\)</span> are optimized. For this purpose an objective or cost function is defined and minimized. In general the objective function is defined as</p>
+<p><span class="math notranslate nohighlight">\(\chi^2 = \sum_i w_i r_i\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(w_i\)</span> is a weight and <span class="math notranslate nohighlight">\(r_i\)</span> is a residual that describes the difference to target values. This residual can be defined in different ways, so it is not possible to simply compare the residual for different fitting processes or codes. A more in depth explanation and some examples can be found on <a class="reference external" href="https://atomicrex.org/overview.html#objective-function">https://atomicrex.org/overview.html#objective-function</a>.</p>
+<p>The minimization can be done with local or global optimization algorithms.
+Generally local optimization algorithms should all be able to find the local minimum coming from some initial parameter set, so the “best” local algorithm is the one finding the minimum in the shortest time. Typically used local algorithms are f.e. (L)BFGS or Nelder-Mead.
+Examples for global algorithms are evolutionary algorithms or simulated annealing. For most problems it is impossible to tell a priori which global algorithm will give the best results, so using global algorithms typically involves testing many of them.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="eam-potentials">
+<h1>EAM potentials<a class="headerlink" href="#eam-potentials" title="Permalink to this headline">#</a></h1>
+<p>EAM potentials are pair functionals.
+In a generalised form they are equal to Finnis-Sinclair, effective medium theory or glue potentials. Their total energy can be written as</p>
+<p><span class="math notranslate nohighlight">\(E = \frac{1}{2}\sum_{ij}V(r_{ij}) + \sum_i F(\rho_i)\)</span></p>
+<p>with</p>
+<p><span class="math notranslate nohighlight">\(\rho_i = \sum_j \rho(r_{ij})\)</span></p>
+<p>The original functions for V, <span class="math notranslate nohighlight">\(\rho\)</span> and F were derived from different theories, but they can be chosen freely.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fitting-code">
+<h1>Fitting code<a class="headerlink" href="#fitting-code" title="Permalink to this headline">#</a></h1>
+<p>Fitting is done using the pyiron interface to the atomicrex code <a class="reference external" href="https://atomicrex.org">https://atomicrex.org</a>. It can be used to fit different types of classic interatomic potentials:</p>
+<ul class="simple">
+<li><p>pair potentials</p></li>
+<li><p>EAM</p></li>
+<li><p>MEAM</p></li>
+<li><p>Tersoff</p></li>
+<li><p>ABOP</p></li>
+<li><p>ADP (in development)</p></li>
+</ul>
+<p>It allows to fit different properties (energies, forces, lattice constants, elastic properties, etc.) and implements the LBFGS minimizer. Additionally it offers an interface to the nlopt library which implements several global and local optimization algorithms and the ability to apply arbitrary constraints to parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyiron</span> <span class="kn">import</span> <span class="n">Project</span><span class="p">,</span> <span class="n">ase_to_pyiron</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="get-the-training-data">
+<h2>Get the training data<a class="headerlink" href="#get-the-training-data" title="Permalink to this headline">#</a></h2>
+<p>Load a job that contains structures with energies and forces from DFT</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tc</span> <span class="o">=</span> <span class="n">pr</span><span class="p">[</span><span class="s1">&#39;../../introduction/training/Al_basic_atomicrex&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="have-a-look-at-the-training-data">
+<h2>Have a look at the training data<a class="headerlink" href="#have-a-look-at-the-training-data" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tc</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">energy_volume</span><span class="p">(</span><span class="n">crystal_systems</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">tc</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">cell</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-an-atomicrex-job">
+<h2>Create an atomicrex job<a class="headerlink" href="#create-an-atomicrex-job" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Atomicrex</span><span class="p">(</span><span class="s2">&quot;FitAl&quot;</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="training-data">
+<h2>Training Data<a class="headerlink" href="#training-data" title="Permalink to this headline">#</a></h2>
+<p>Set the training data. This can also be done structure by structure to set other fit properties and weights, but here we simply load the TrainingContainer</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">add_training_data</span><span class="p">(</span><span class="n">tc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set the potential type. In this case an EAM potential</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">factories</span><span class="o">.</span><span class="n">potentials</span><span class="o">.</span><span class="n">eam_potential</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
+<p>Reminder: <span class="math notranslate nohighlight">\(E = \sum_{ij}V(r_{ij}) + \sum_i F(\rho_i)\)</span> with <span class="math notranslate nohighlight">\(\rho_i = \sum_j \rho(r_{ij})\)</span></p>
+<p>It is necessary to define a pair potential, an electronic density function and an embedding function.
+For all of those it is possible to choose between different functional forms.
+Classic pair potentials are physically motivated and have a very limited number of paramaters that can often be derived from an experimentally measurable quantity.
+Splines or polynomials offer more flexibility, but can lead to unphysical oscillations or overfitting. Compared with the machine learning potentials shown later the number of parameters is very low no matter which functions you choose.</p>
+<p>In this case a generalized morse function is used for the pair interaction. It has the form</p>
+<p><span class="math notranslate nohighlight">\((\frac{D_0}{S-1}exp(-\beta \sqrt{2S}(r-r_0))-\frac{D_0S}{S-1}exp(-\beta\sqrt{2/S}(r-r_0)))+\delta \)</span></p>
+<p>The parameters in the morse potential can be derived from phyiscal quantities, here they are just educated guesses. For example <span class="math notranslate nohighlight">\(r_0\)</span> is the equilibrium distance of a dimer. The nearest neighbor distance in fcc Cu is about 2.8 <span class="math notranslate nohighlight">\(\mathring A\)</span> so it is taken as initial value.
+In the case of analytic functions the initial parameter choices should not matter too much, since the functional form is constrained.</p>
+<p>The electronic density will be a cubic spline. The embedding function will be <span class="math notranslate nohighlight">\(-A*sqrt(\rho)+B*rho\)</span>, which can be defined as a user function.</p>
+<p>The pair function and the electron denity and their first derivatives are required to smoothly approach 0 at the cutoff distance <span class="math notranslate nohighlight">\(r_{c}\)</span>
+For this purpose the pair function is screened by multiplying with the function:</p>
+<p><span class="math notranslate nohighlight">\(\Psi(\frac{r-rc}{h})\)</span> where <span class="math notranslate nohighlight">\(\Psi(x) = \frac{x^4}{1+x^4}\)</span> if <span class="math notranslate nohighlight">\(x&lt;0\)</span> else <span class="math notranslate nohighlight">\(\Psi(x)=0\)</span></p>
+<p>For the spline it is necessary to set a node point with y value 0 at the cutoff</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">morseB</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">factories</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">morse_B</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">,</span> <span class="n">D0</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">r0</span><span class="o">=</span><span class="mf">3.05</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="mf">4.1</span><span class="p">,</span> <span class="n">delta</span><span class="o">=-</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">morseB</span><span class="o">.</span><span class="n">screening</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">factories</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">x_pow_n_cutoff</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s2">&quot;V_screen&quot;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mf">7.6</span><span class="p">)</span>
+<span class="n">morseB</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">D0</span><span class="o">.</span><span class="n">min_val</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">morseB</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">D0</span><span class="o">.</span><span class="n">max_val</span> <span class="o">=</span> <span class="mf">1.55</span>
+
+<span class="n">morseB</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">r0</span><span class="o">.</span><span class="n">min_val</span> <span class="o">=</span> <span class="mf">2.6</span>
+<span class="n">morseB</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">r0</span><span class="o">.</span><span class="n">max_val</span> <span class="o">=</span> <span class="mf">3.1</span>
+
+<span class="n">morseB</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">S</span><span class="o">.</span><span class="n">min_val</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">morseB</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">S</span><span class="o">.</span><span class="n">max_val</span> <span class="o">=</span> <span class="mf">4.5</span>
+<span class="n">morseB</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">max_val</span> <span class="o">=</span> <span class="mf">0.005</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is also possible to plot most of the functions. This can help to judge if the initial parameters are reasonable</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">morseB</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">factories</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">spline</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s2">&quot;rho_AlAl&quot;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mf">7.6</span><span class="p">,</span> <span class="n">derivative_left</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">derivative_right</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1">## the spline requires node points and initial values</span>
+<span class="n">init_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">)</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">])</span>
+<span class="n">init_vals</span> <span class="o">=</span> <span class="n">init_func</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+<span class="n">rho</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">create_from_arrays</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">init_vals</span><span class="p">,</span> <span class="n">min_vals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)),</span> <span class="n">max_vals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)))</span>
+<span class="c1"># set node point at cutoff</span>
+<span class="n">rho</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">7.6</span><span class="p">,</span> <span class="n">start_val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">rho</span><span class="o">.</span><span class="n">derivative_left</span><span class="o">.</span><span class="n">max_val</span> <span class="o">=</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># User function for embedding term</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">factories</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">user_function</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">input_variable</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">F</span><span class="o">.</span><span class="n">expression</span> <span class="o">=</span> <span class="s2">&quot;-A*sqrt(r)+B*r&quot;</span>
+<span class="n">F</span><span class="o">.</span><span class="n">derivative</span> <span class="o">=</span> <span class="s2">&quot;-A/(2*sqrt(r))+B&quot;</span>
+<span class="n">F</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">start_val</span><span class="o">=</span><span class="mf">3.3</span><span class="p">,</span> <span class="n">min_val</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">F</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">start_val</span><span class="o">=</span><span class="mf">1.8</span><span class="p">,</span> <span class="n">min_val</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Assign functions</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">potential</span><span class="o">.</span><span class="n">pair_interactions</span><span class="p">[</span><span class="n">morseB</span><span class="o">.</span><span class="n">identifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">morseB</span>
+<span class="n">job</span><span class="o">.</span><span class="n">potential</span><span class="o">.</span><span class="n">electron_densities</span><span class="p">[</span><span class="n">rho</span><span class="o">.</span><span class="n">identifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">rho</span>
+<span class="n">job</span><span class="o">.</span><span class="n">potential</span><span class="o">.</span><span class="n">embedding_energies</span><span class="p">[</span><span class="n">F</span><span class="o">.</span><span class="n">identifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">F</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set a fit algorithm</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">fit_algorithm</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">factories</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">ar_lbfgs</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Have a look at some of the outputs</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">iterations</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">residual</span><span class="p">)</span>
+<span class="n">job</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">residual</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">potential</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">plot_final_potential</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Acces the plotting interface common to the different fitting codes usable via pyiron</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plots</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span> <span class="c1"># Increase the size a bit</span>
+<span class="n">plots</span><span class="o">.</span><span class="n">energy_scatter_histogram</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plots</span><span class="o">.</span><span class="n">force_scatter_histogram</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plots</span><span class="o">.</span><span class="n">force_scatter_histogram</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="short-test">
+<h2>Short Test<a class="headerlink" href="#short-test" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lmp</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Lammps</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lmp</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">ase</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lmp</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">lammps_potential</span>
+<span class="n">lmp</span><span class="o">.</span><span class="n">calc_minimize</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">lmp</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lmp</span><span class="o">.</span><span class="n">get_structure</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Lammps</span><span class="p">(</span><span class="s2">&quot;AlRef&quot;</span><span class="p">)</span>
+<span class="n">ref</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">lmp</span><span class="o">.</span><span class="n">get_structure</span><span class="p">()</span>
+<span class="n">ref</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">lammps_potential</span>
+
+<span class="n">murn</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Murnaghan</span><span class="p">(</span><span class="s2">&quot;AlMurn&quot;</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">murn</span><span class="o">.</span><span class="n">ref_job</span> <span class="o">=</span> <span class="n">ref</span>
+<span class="n">murn</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">murn</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">murn</span><span class="o">.</span><span class="n">fit_polynomial</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="improving-the-potential">
+<h2>Improving the potential:<a class="headerlink" href="#improving-the-potential" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>try with different starting parameters / global optimization</p></li>
+<li><p>change weights of structures and fit properties</p></li>
+<li><p>change functions used</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./potentials/01-EAM"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../Intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Day 2: Fitting Potentials</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="HandsOnPotenitalFitting.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Training data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
