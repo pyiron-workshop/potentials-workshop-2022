@@ -1,0 +1,13 @@
+# install environment 
+mamba env update --name notebook --file environment.yml
+
+#install tensorpot and python-ace
+git clone https://github.com/ICAMS/TensorPotential
+cd TensorPotential
+python setup.py install
+cd ..
+
+git clone https://github.com/ICAMS/python-ace
+cd python-ace
+python setup.py install
+cd ..
