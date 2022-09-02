@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Import and load &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    <title>Atomic cluster expansion (ACE) &#8212; Workshop: From Electrons to Phase Diagrams</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -174,7 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Import and load
+     Atomic cluster expansion (ACE)
     </a>
    </li>
    <li class="toctree-l2">
@@ -400,100 +400,100 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-and-load">
    Import and load
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-training-containers-select-smaller-training-subset-for-example">
    Loading training containers (select smaller training subset for example)
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-pacemakerjob">
-   Create PacemakerJob
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-pacemakerjob">
+     Create PacemakerJob
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pace-potential-fitting-setup">
      PACE potential fitting setup
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#overview-of-settings">
        Overview of settings
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#potential-interatomic-distance-cutoff">
        Potential interatomic distance cutoff
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#specification-of-ace-potential">
      Specification of ACE potential
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#embeddings">
        1. Embeddings
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#radial-functions">
        2. Radial functions
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#b-basis-functions">
        3. B-basis functions
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#fit-loss-specification">
      Fit/loss specification
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#weighting">
        Weighting
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#minimization-and-backend-specification">
      Minimization and backend specification
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#run-fit">
    Run fit
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analyse-fit">
    Analyse fit
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-actual-potential-file-looks-like">
    How actual potential file looks like ?
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-lammps-potential-and-try-some-calculations">
    Get LAMMPS potential and try some calculations
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-reading">
    Further reading
   </a>
@@ -507,7 +507,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Import and load</h1>
+                <h1>Atomic cluster expansion (ACE)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -517,100 +517,100 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-and-load">
    Import and load
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-training-containers-select-smaller-training-subset-for-example">
    Loading training containers (select smaller training subset for example)
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-pacemakerjob">
-   Create PacemakerJob
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-pacemakerjob">
+     Create PacemakerJob
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pace-potential-fitting-setup">
      PACE potential fitting setup
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#overview-of-settings">
        Overview of settings
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#potential-interatomic-distance-cutoff">
        Potential interatomic distance cutoff
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#specification-of-ace-potential">
      Specification of ACE potential
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#embeddings">
        1. Embeddings
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#radial-functions">
        2. Radial functions
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#b-basis-functions">
        3. B-basis functions
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#fit-loss-specification">
      Fit/loss specification
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#weighting">
        Weighting
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#minimization-and-backend-specification">
      Minimization and backend specification
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#run-fit">
    Run fit
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analyse-fit">
    Analyse fit
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-actual-potential-file-looks-like">
    How actual potential file looks like ?
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-lammps-potential-and-try-some-calculations">
    Get LAMMPS potential and try some calculations
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-reading">
    Further reading
   </a>
@@ -625,8 +625,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="import-and-load">
-<h1>Import and load<a class="headerlink" href="#import-and-load" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="atomic-cluster-expansion-ace">
+<h1>Atomic cluster expansion (ACE)<a class="headerlink" href="#atomic-cluster-expansion-ace" title="Permalink to this headline">#</a></h1>
+<p>Please read sources for more details:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pacemaker.readthedocs.io/en/latest/">Documentation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ICAMS/python-ace"><code class="docutils literal notranslate"><span class="pre">pacemaker</span></code> repository</a></p></li>
+<li><p><a class="reference external" href="https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.6.013804">Bochkarev, A., Lysogorskiy, Y., Menon, S., Qamar, M., Mrovec, M. and Drautz, R. Efficient parametrization of the atomic cluster expansion. Physical Review Materials 6(1) 013804 (2022)</a></p></li>
+<li><p><a class="reference external" href="https://www.nature.com/articles/s41524-021-00559-9">Lysogorskiy, Y., Oord, C. v. d., Bochkarev, A., Menon, S., Rinaldi, M., Hammerschmidt, T., Mrovec, M., Thompson, A., Csányi, G., Ortner, C. and  Drautz, R. Performant implementation of the atomic cluster expansion (PACE) and application to copper and silicon. npj Computational Materials 7(1), 1-12 (2021)</a></p></li>
+<li><p><a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.014104">Drautz, R. Atomic cluster expansion for accurate and transferable interatomic potentials. Physical Review B, 99(1), 014104 (2019)</a></p></li>
+</ul>
+<section id="import-and-load">
+<h2>Import and load<a class="headerlink" href="#import-and-load" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
@@ -683,8 +693,8 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="loading-training-containers-select-smaller-training-subset-for-example">
-<h1>Loading training containers (select smaller training subset for example)<a class="headerlink" href="#loading-training-containers-select-smaller-training-subset-for-example" title="Permalink to this headline">#</a></h1>
+<section id="loading-training-containers-select-smaller-training-subset-for-example">
+<h2>Loading training containers (select smaller training subset for example)<a class="headerlink" href="#loading-training-containers-select-smaller-training-subset-for-example" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_container</span> <span class="o">=</span> <span class="n">pr_data</span><span class="p">[</span><span class="s1">&#39;full&#39;</span><span class="p">]</span>
@@ -779,7 +789,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/pacemaker_example_20_0.png" src="../../_images/pacemaker_example_20_0.png" />
+<img alt="../../_images/pacemaker_example_22_0.png" src="../../_images/pacemaker_example_22_0.png" />
 </div>
 </div>
 <p>Select only sctructures smaller than <strong>40</strong> atoms per structures</p>
@@ -944,12 +954,11 @@ Populating the interactive namespace from numpy and matplotlib
   </tbody>
 </table>
 <p>100 rows × 4 columns</p>
-</div></div><img alt="../../_images/pacemaker_example_28_1.png" src="../../_images/pacemaker_example_28_1.png" />
+</div></div><img alt="../../_images/pacemaker_example_30_1.png" src="../../_images/pacemaker_example_30_1.png" />
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="create-pacemakerjob">
-<h1>Create PacemakerJob<a class="headerlink" href="#create-pacemakerjob" title="Permalink to this headline">#</a></h1>
+<section id="create-pacemakerjob">
+<h3>Create PacemakerJob<a class="headerlink" href="#create-pacemakerjob" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">PacemakerJob</span><span class="p">(</span><span class="s2">&quot;pacemaker_job&quot;</span><span class="p">)</span>
@@ -965,10 +974,11 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <p>Set maximum cutoff for the potential</p>
+</section>
 <section id="pace-potential-fitting-setup">
-<h2>PACE potential fitting setup<a class="headerlink" href="#pace-potential-fitting-setup" title="Permalink to this headline">#</a></h2>
+<h3>PACE potential fitting setup<a class="headerlink" href="#pace-potential-fitting-setup" title="Permalink to this headline">#</a></h3>
 <section id="overview-of-settings">
-<h3>Overview of settings<a class="headerlink" href="#overview-of-settings" title="Permalink to this headline">#</a></h3>
+<h4>Overview of settings<a class="headerlink" href="#overview-of-settings" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">input</span>
@@ -1042,7 +1052,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </section>
 <section id="potential-interatomic-distance-cutoff">
-<h3>Potential interatomic distance cutoff<a class="headerlink" href="#potential-interatomic-distance-cutoff" title="Permalink to this headline">#</a></h3>
+<h4>Potential interatomic distance cutoff<a class="headerlink" href="#potential-interatomic-distance-cutoff" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">cutoff</span><span class="o">=</span><span class="mf">7.0</span>
@@ -1053,10 +1063,10 @@ Populating the interactive namespace from numpy and matplotlib
 </section>
 </section>
 <section id="specification-of-ace-potential">
-<h2>Specification of ACE potential<a class="headerlink" href="#specification-of-ace-potential" title="Permalink to this headline">#</a></h2>
+<h3>Specification of ACE potential<a class="headerlink" href="#specification-of-ace-potential" title="Permalink to this headline">#</a></h3>
 <p>PACE potential specification consists of three parts:</p>
 <section id="embeddings">
-<h3>1. Embeddings<a class="headerlink" href="#embeddings" title="Permalink to this headline">#</a></h3>
+<h4>1. Embeddings<a class="headerlink" href="#embeddings" title="Permalink to this headline">#</a></h4>
 <p>i.e. how atomic energy <span class="math notranslate nohighlight">\(E_i\)</span> depends on ACE properties/densities <span class="math notranslate nohighlight">\(\varphi\)</span>. Linear expansion <span class="math notranslate nohighlight">\(E_i = \varphi\)</span> is the trivial. Non-linear expansion, i.e. those, containing square root, gives more flexiblity and accuracy of final potential</p>
 <p>Embeddings for <code class="docutils literal notranslate"><span class="pre">ALL</span></code> species (i.e. Al and Li):</p>
 <ul class="simple">
@@ -1081,7 +1091,7 @@ $<span class="math notranslate nohighlight">\(E_i = 1.0 * \varphi(1)^1 + 1.0 * \
 </div>
 </section>
 <section id="radial-functions">
-<h3>2. Radial functions<a class="headerlink" href="#radial-functions" title="Permalink to this headline">#</a></h3>
+<h4>2. Radial functions<a class="headerlink" href="#radial-functions" title="Permalink to this headline">#</a></h4>
 <p>Radial functions are orthogonal polynoms example:</p>
 <ul class="simple">
 <li><p>(a) Exponentially-scaled Chebyshev polynomials (λ = 5.25)</p></li>
@@ -1111,7 +1121,7 @@ $<span class="math notranslate nohighlight">\(E_i = 1.0 * \varphi(1)^1 + 1.0 * \
 </div>
 </section>
 <section id="b-basis-functions">
-<h3>3. B-basis functions<a class="headerlink" href="#b-basis-functions" title="Permalink to this headline">#</a></h3>
+<h4>3. B-basis functions<a class="headerlink" href="#b-basis-functions" title="Permalink to this headline">#</a></h4>
 <p>B-basis functions  for <code class="docutils literal notranslate"><span class="pre">ALL</span></code> species type interactions, i.e. Al-Al, Al-Li, Li-Al, Li-Li blocks:</p>
 <ul class="simple">
 <li><p>maximum order = 4, i.e. body-order 5 (1 central atom + 4 neighbour  densities)</p></li>
@@ -1141,7 +1151,7 @@ $<span class="math notranslate nohighlight">\(E_i = 1.0 * \varphi(1)^1 + 1.0 * \
 </section>
 </section>
 <section id="fit-loss-specification">
-<h2>Fit/loss specification<a class="headerlink" href="#fit-loss-specification" title="Permalink to this headline">#</a></h2>
+<h3>Fit/loss specification<a class="headerlink" href="#fit-loss-specification" title="Permalink to this headline">#</a></h3>
 <p>Loss function specification</p>
 <p><img alt="Loss function" src="../../_images/loss-func.png" /></p>
 <p><img alt="Loss regularization" src="../../_images/loss-reg.png" /></p>
@@ -1163,7 +1173,7 @@ $<span class="math notranslate nohighlight">\(E_i = 1.0 * \varphi(1)^1 + 1.0 * \
 </div>
 </div>
 <section id="weighting">
-<h3>Weighting<a class="headerlink" href="#weighting" title="Permalink to this headline">#</a></h3>
+<h4>Weighting<a class="headerlink" href="#weighting" title="Permalink to this headline">#</a></h4>
 <p>Energy-based weighting puts more “accent” onto the low energy-lying structures, close to convex hull</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1199,7 +1209,7 @@ $<span class="math notranslate nohighlight">\(E_i = 1.0 * \varphi(1)^1 + 1.0 * \
 </section>
 </section>
 <section id="minimization-and-backend-specification">
-<h2>Minimization and backend specification<a class="headerlink" href="#minimization-and-backend-specification" title="Permalink to this headline">#</a></h2>
+<h3>Minimization and backend specification<a class="headerlink" href="#minimization-and-backend-specification" title="Permalink to this headline">#</a></h3>
 <p><img alt="Loss function" src="../../_images/tensorpotential.png" /></p>
 <p>Type of optimizer: <code class="docutils literal notranslate"><span class="pre">SciPy.minimize.BFGS</span></code>. This optimizer is more efficient that typical optimizers for neural networks (i.e. ADAM, RMSprop, Adagrad, etc.), but it scales quadratically wrt. number of optimizable parameters.
 However number of trainable parameters for PACE potential is usually up to few thousands, so we gain a lot of accuracy during training with BFGS optimizer.</p>
@@ -1239,8 +1249,8 @@ However number of trainable parameters for PACE potential is usually up to few t
 <p>For more details about these and other settings please refer to <a class="reference external" href="https://pacemaker.readthedocs.io/en/latest/pacemaker/inputfile/">official documentation</a></p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="run-fit">
-<h1>Run fit<a class="headerlink" href="#run-fit" title="Permalink to this headline">#</a></h1>
+<section id="run-fit">
+<h2>Run fit<a class="headerlink" href="#run-fit" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -1651,8 +1661,8 @@ INFO:pyiron_log:update master: None 28 modal
 </div></div></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="analyse-fit">
-<h1>Analyse fit<a class="headerlink" href="#analyse-fit" title="Permalink to this headline">#</a></h1>
+<section id="analyse-fit">
+<h2>Analyse fit<a class="headerlink" href="#analyse-fit" title="Permalink to this headline">#</a></h2>
 <p>plot loss function</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1667,7 +1677,7 @@ INFO:pyiron_log:update master: None 28 modal
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
-<img alt="../../_images/pacemaker_example_75_1.png" src="../../_images/pacemaker_example_75_1.png" />
+<img alt="../../_images/pacemaker_example_77_1.png" src="../../_images/pacemaker_example_77_1.png" />
 </div>
 </div>
 <p>plot energy per atom RMSE</p>
@@ -1684,7 +1694,7 @@ INFO:pyiron_log:update master: None 28 modal
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
-<img alt="../../_images/pacemaker_example_77_1.png" src="../../_images/pacemaker_example_77_1.png" />
+<img alt="../../_images/pacemaker_example_79_1.png" src="../../_images/pacemaker_example_79_1.png" />
 </div>
 </div>
 <p>plot force component RMSE</p>
@@ -1701,7 +1711,7 @@ INFO:pyiron_log:update master: None 28 modal
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
-<img alt="../../_images/pacemaker_example_79_1.png" src="../../_images/pacemaker_example_79_1.png" />
+<img alt="../../_images/pacemaker_example_81_1.png" src="../../_images/pacemaker_example_81_1.png" />
 </div>
 </div>
 <p>load DataFrame with predictions</p>
@@ -1731,7 +1741,7 @@ INFO:pyiron_log:update master: None 28 modal
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;ACE E, eV/atom&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/pacemaker_example_84_1.png" src="../../_images/pacemaker_example_84_1.png" />
+<img alt="../../_images/pacemaker_example_86_1.png" src="../../_images/pacemaker_example_86_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1746,7 +1756,7 @@ INFO:pyiron_log:update master: None 28 modal
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;ACE F_i, eV/A&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/pacemaker_example_85_1.png" src="../../_images/pacemaker_example_85_1.png" />
+<img alt="../../_images/pacemaker_example_87_1.png" src="../../_images/pacemaker_example_87_1.png" />
 </div>
 </div>
 <p>Check more in <code class="docutils literal notranslate"><span class="pre">job.working_directory</span></code>/report folder</p>
@@ -1764,8 +1774,8 @@ train_E-dE-nn.png    train_F-dF-dist.png
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="how-actual-potential-file-looks-like">
-<h1>How actual potential file looks like ?<a class="headerlink" href="#how-actual-potential-file-looks-like" title="Permalink to this headline">#</a></h1>
+<section id="how-actual-potential-file-looks-like">
+<h2>How actual potential file looks like ?<a class="headerlink" href="#how-actual-potential-file-looks-like" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">output_potential.yaml</span></code>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>species:
     # Pure Al interaction block
@@ -1818,8 +1828,8 @@ train_E-dE-nn.png    train_F-dF-dist.png
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">output_potential.yaml</span></code> is in B-basis form. For efficient LAMMPS implementaion it should be converted to so-called <code class="docutils literal notranslate"><span class="pre">C-tilde</span></code> form.  This is already done by <code class="docutils literal notranslate"><span class="pre">pyiron</span></code>, but it could be also done manually by <code class="docutils literal notranslate"><span class="pre">pace_yaml2yace</span></code> utility. Check <a class="reference external" href="https://pacemaker.readthedocs.io/en/latest/pacemaker/quickstart/#lammps">here</a> for more details</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="get-lammps-potential-and-try-some-calculations">
-<h1>Get LAMMPS potential and try some calculations<a class="headerlink" href="#get-lammps-potential-and-try-some-calculations" title="Permalink to this headline">#</a></h1>
+<section id="get-lammps-potential-and-try-some-calculations">
+<h2>Get LAMMPS potential and try some calculations<a class="headerlink" href="#get-lammps-potential-and-try-some-calculations" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pace_lammps_potential</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">get_lammps_potential</span><span class="p">()</span>
@@ -1889,13 +1899,6 @@ train_E-dE-nn.png    train_F-dF-dist.png
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#lammps_job.structure.visualize.plot3d()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lammps_job</span><span class="o">.</span><span class="n">potential</span><span class="o">=</span><span class="n">pace_lammps_potential</span>
 </pre></div>
 </div>
@@ -1929,15 +1932,15 @@ train_E-dE-nn.png    train_F-dF-dist.png
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/pacemaker_example_103_0.png" src="../../_images/pacemaker_example_103_0.png" />
+<img alt="../../_images/pacemaker_example_104_0.png" src="../../_images/pacemaker_example_104_0.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Murnaghan: error: 8.23855112865347e-06&#39;}, xlabel=&#39;Volume ($\\AA^3$)&#39;, ylabel=&#39;energy (eV)&#39;&gt;
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="further-reading">
-<h1>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h1>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h2>
 <p>Please read sources for more details:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pacemaker.readthedocs.io/en/latest/">Documentation</a></p></li>
@@ -1946,6 +1949,7 @@ train_E-dE-nn.png    train_F-dF-dist.png
 <li><p><a class="reference external" href="https://www.nature.com/articles/s41524-021-00559-9">Lysogorskiy, Y., Oord, C. v. d., Bochkarev, A., Menon, S., Rinaldi, M., Hammerschmidt, T., Mrovec, M., Thompson, A., Csányi, G., Ortner, C. and  Drautz, R. Performant implementation of the atomic cluster expansion (PACE) and application to copper and silicon. npj Computational Materials 7(1), 1-12 (2021)</a></p></li>
 <li><p><a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.014104">Drautz, R. Atomic cluster expansion for accurate and transferable interatomic potentials. Physical Review B, 99(1), 014104 (2019)</a></p></li>
 </ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
