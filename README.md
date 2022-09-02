@@ -23,3 +23,13 @@ cd python-ace
 python setup.py install
 cd ..
 ```
+
+## Building the documentation
+
+To be build the documentation, from the main directory, run:
+
+```
+jb build .
+```
+
+You can view the documentation at [`_build/index.html`](_build/index.html).
