@@ -111,14 +111,16 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome to your Jupyter Book
+                    <font style="color:#B71C1C" face="Helvetica" > From Electrons to Phase Diagrams 2022 </font>
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../introduction/Intro.html">
-   Day 1: Introduction to Pyiron
+   <font face="Helvetica" style="color:#B71C1C">
+    Day 1: DFT database and workflow management with pyiron
+   </font>
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -145,7 +147,9 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../Intro.html">
-   Day 2: Fitting Potentials
+   <font face="Helvetica" style="color:#B71C1C">
+    Day 2: Creating and validating EAM, NN and ACE potentials
+   </font>
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -173,27 +177,8 @@ const thebe_selector_output = ".output, .cell_output"
      Import and load
     </a>
    </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../validation/Intro.html">
-   Day 2: Validation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../../validation/validation_LiAl.html">
-     <strong>
-      Workshop: From electrons to phase diagrams
-     </strong>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../validation/validation_NiAl.html">
      <strong>
       Workshop: From electrons to phase diagrams
      </strong>
@@ -203,10 +188,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../phase_diagram/Intro.html">
-   Day 3: Phase Diagrams
+   <font face="Helvetica" style="color:#B71C1C">
+    Day 3: Thermodynamic properties and phase diagrams
+   </font>
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -753,8 +740,8 @@ The most recent version of RuNNer is <a class="reference external" href="https:/
 <section id="architecture-of-an-hdnnp">
 <h3>Architecture of an HDNNP<a class="headerlink" href="#architecture-of-an-hdnnp" title="Permalink to this headline">#</a></h3>
 <p><strong>RuNNer</strong> is a stand-alone Fortran program for the construction of high-dimensional neural network potentials (HDNNPs), written mainly by Jörg Behler. The central assumption made in constructing a HDNNP is that the total energy of the system <span class="math notranslate nohighlight">\(E_{\mathrm{tot}}\)</span> <a class="reference external" href="https://www.doi.org/10.1103/PhysRevLett.98.146401">can be separated into atomic contributions <span class="math notranslate nohighlight">\(E_i\)</span></a>. HDNNP relates the local environment of the atoms to their atomic energies <span class="math notranslate nohighlight">\(E_i\)</span>, which contribute to the sum of all <span class="math notranslate nohighlight">\(N\)</span> atomic energies, resulting in the total energy of the system <span class="math notranslate nohighlight">\(E_\mathrm{tot}\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bd9c392b-e102-4af8-8b85-aae8144c5bc6">
-<span class="eqno">(1)<a class="headerlink" href="#equation-bd9c392b-e102-4af8-8b85-aae8144c5bc6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7e21a2f5-8075-4b0b-9022-160168a4475e">
+<span class="eqno">(1)<a class="headerlink" href="#equation-7e21a2f5-8075-4b0b-9022-160168a4475e" title="Permalink to this equation">#</a></span>\[\begin{align}
 E_\mathrm{tot} = \sum_{i}^{N}E_i\notag
 \end{align}\]</div>
 <p>Every atomic energy is described by an atomic neural network (NN), which is element-specific. The entirety of all atomic NNs composes a HDNNP, whose general architecture is shown below for a binary system.</p>
@@ -773,8 +760,8 @@ E_\mathrm{tot} = \sum_{i}^{N}E_i\notag
 <section id="cutoff-functions">
 <h4>Cutoff Functions<a class="headerlink" href="#cutoff-functions" title="Permalink to this headline">#</a></h4>
 <p>The cutoff function <span class="math notranslate nohighlight">\(f_{\mathrm{c}}\)</span> ensures that only the neighbors within one atomic environment counts towards the symmetry function values. The cutoff radius <span class="math notranslate nohighlight">\(R_\mathrm{c}\)</span> (usually <span class="math notranslate nohighlight">\(12\,\mathrm{bohr}\)</span>) defines how much of the local atomic environment is considered. All SFs and their derivatives will decrease to zero if the pairwise distance is larger than <span class="math notranslate nohighlight">\(R_\mathrm{c}\)</span>. There are several cutoff funtions defined in <strong>RuNNer</strong> and we will use here</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fe82f836-a384-4eef-87b0-fc11d930f297">
-<span class="eqno">(2)<a class="headerlink" href="#equation-fe82f836-a384-4eef-87b0-fc11d930f297" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-feff6eb0-bec4-4424-997d-44066a2a7c51">
+<span class="eqno">(2)<a class="headerlink" href="#equation-feff6eb0-bec4-4424-997d-44066a2a7c51" title="Permalink to this equation">#</a></span>\[\begin{align}
     f_{c}(R_{ij}) = 
     \begin{cases}
     0.5 \cdot [\cos(\pi x) + 1]&amp; ~ \text{for $R_{ij} \leq R_\mathrm{c}$},\\
@@ -788,8 +775,8 @@ E_\mathrm{tot} = \sum_{i}^{N}E_i\notag
 <section id="radial-symmetry-functions">
 <h4>Radial Symmetry Functions<a class="headerlink" href="#radial-symmetry-functions" title="Permalink to this headline">#</a></h4>
 <p>To define the parameters for the radial SFs, it is important to know the shortest bond distance for each element combination in your data set. Usually, 5-6 radial SF are used for any element pair, with different <span class="math notranslate nohighlight">\(\eta\)</span> values to increase the resolution for structure description. It is possible to shift the maximum of the radial SF <span class="math notranslate nohighlight">\(G^2\)</span> by <span class="math notranslate nohighlight">\(R_{s}\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3d78be56-ecda-4d9d-939e-3a56a5097d09">
-<span class="eqno">(3)<a class="headerlink" href="#equation-3d78be56-ecda-4d9d-939e-3a56a5097d09" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-96efc4af-3e1f-4d70-b696-bab46aa7f62b">
+<span class="eqno">(3)<a class="headerlink" href="#equation-96efc4af-3e1f-4d70-b696-bab46aa7f62b" title="Permalink to this equation">#</a></span>\[\begin{align}
     G_{i}^{2} = \sum_{j}^{}e^{-\eta (R_{ij} - R_{s})^2} \cdot f_{c}(R_{ij}).
 \end{align}\]</div>
 <p>In most applications, the Gaussian exponents <span class="math notranslate nohighlight">\(\eta\)</span> for the radial SFs are chosen such that the SF turning points are equally distributed between the cutoff radius and specific minimum pairwise distance in the training dataset (small eta <span class="math notranslate nohighlight">\(\eta\)</span> = max. contraction). In RuNNer, you can either define element pair specific SF or define global SF which are used for every element combination. It is also possible to define different cutoff radii for the SF, even though this is rarely helpful and therefore not recommended.</p>
@@ -799,8 +786,8 @@ E_\mathrm{tot} = \sum_{i}^{N}E_i\notag
 <section id="angular-symmetry-functions">
 <h4>Angular Symmetry Functions<a class="headerlink" href="#angular-symmetry-functions" title="Permalink to this headline">#</a></h4>
 <p>The same rules apply to the angular SFs. Here, however, three atomic positions are included in the calculation.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-35e3f1dc-39da-4e8d-b8c4-9f1126dd3417">
-<span class="eqno">(4)<a class="headerlink" href="#equation-35e3f1dc-39da-4e8d-b8c4-9f1126dd3417" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9d609580-7a08-42a0-8cc9-54a8510ecee8">
+<span class="eqno">(4)<a class="headerlink" href="#equation-9d609580-7a08-42a0-8cc9-54a8510ecee8" title="Permalink to this equation">#</a></span>\[\begin{align}
     G_{i}^{3} = 2^{\zeta - 1}\sum_{j}^{} \sum_{k}^{} \left[( 1 + \lambda \cdot cos \theta_{ijk})^{\zeta} \cdot e^{-\eta (R_{ij}^2 + R_{ik}^2 + R_{jk}^2)} \cdot f_{\mathrm{c}}(R_{ij}) \cdot f_{\mathrm{c}}(R_{ik}) \cdot f_{\mathrm{c}}(R_{jk}) \right]
 \end{align}\]</div>
 <p>The angle <span class="math notranslate nohighlight">\(\theta_{ijk} = \frac{\mathbf{R}_{ij} \cdot \mathbf{R}_{ik}}{R_{ij} \cdot R_{ik}}\)</span> is centered at atom <span class="math notranslate nohighlight">\(i\)</span>. For most system, we use permutations of <span class="math notranslate nohighlight">\(\zeta = \{1, 2, 4, 16\}\)</span>, <span class="math notranslate nohighlight">\(\eta = 0\)</span>, and <span class="math notranslate nohighlight">\(\lambda\)</span> = <span class="math notranslate nohighlight">\(\{+1, -1\}\)</span>. If many atoms of each element are present, angular SFs are usually not critical and a default set of SFs can be used.</p>
@@ -2077,8 +2064,8 @@ The job fit_mode1 was saved and received the ID: 238
 </tbody>
 </table>
 <p>During the fitting process of the NN, the error function <span class="math notranslate nohighlight">\(\Gamma\)</span> is minimized, which is defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d745877e-ac42-49a0-9cbe-78281037fdc5">
-<span class="eqno">(5)<a class="headerlink" href="#equation-d745877e-ac42-49a0-9cbe-78281037fdc5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d5246b9d-7ad9-484b-95b7-e4d23f3f4abd">
+<span class="eqno">(5)<a class="headerlink" href="#equation-d5246b9d-7ad9-484b-95b7-e4d23f3f4abd" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \Gamma = \mathrm{RMSE}(E)=\frac{1}{N_\mathrm{struct}} \sum_{i}^{N_\mathrm{\mathrm{struct}}} (E_{\mathrm{NN}}^{i} - E_{\mathrm{ref}}^{i})^2,
 \end{equation}\]</div>
 <p>if only energy fitting is used, which defines simultaneously the root-mean squared error of the energies <span class="math notranslate nohighlight">\(\mathrm{RMSE}(E)\)</span>. This defines the differences of the reference data and the NNP predictions.</p>

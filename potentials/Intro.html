@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Day 2: Fitting Potentials &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    <title>Day 2: Creating and validating EAM, NN and ACE potentials &#8212; Workshop: From Electrons to Phase Diagrams</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -109,14 +109,16 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome to your Jupyter Book
+                    <font style="color:#B71C1C" face="Helvetica" > From Electrons to Phase Diagrams 2022 </font>
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../introduction/Intro.html">
-   Day 1: Introduction to Pyiron
+   <font face="Helvetica" style="color:#B71C1C">
+    Day 1: DFT database and workflow management with pyiron
+   </font>
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -143,7 +145,9 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   Day 2: Fitting Potentials
+   <font face="Helvetica" style="color:#B71C1C">
+    Day 2: Creating and validating EAM, NN and ACE potentials
+   </font>
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -171,27 +175,8 @@ const thebe_selector_output = ".output, .cell_output"
      Import and load
     </a>
    </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../validation/Intro.html">
-   Day 2: Validation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../validation/validation_LiAl.html">
-     <strong>
-      Workshop: From electrons to phase diagrams
-     </strong>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../validation/validation_NiAl.html">
      <strong>
       Workshop: From electrons to phase diagrams
      </strong>
@@ -201,10 +186,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../phase_diagram/Intro.html">
-   Day 3: Phase Diagrams
+   <font face="Helvetica" style="color:#B71C1C">
+    Day 3: Thermodynamic properties and phase diagrams
+   </font>
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -362,23 +349,92 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-iii-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Tutorial III
+   </font>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-iv-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Tutorial IV
+   </font>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Hands-on
+   </font>
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Day 2: Fitting Potentials</h1>
+                <h1><font style="color:#B71C1C" face="Helvetica" > Day 2: Creating and validating EAM, NN and ACE potentials </font></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-iii-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Tutorial III
+   </font>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-iv-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Tutorial IV
+   </font>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-font">
+   <font face="Helvetica" style="color:#B71C1C">
+    Hands-on
+   </font>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -386,8 +442,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="day-2-fitting-potentials">
-<h1>Day 2: Fitting Potentials<a class="headerlink" href="#day-2-fitting-potentials" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="font-style-color-b71c1c-face-helvetica-day-2-creating-and-validating-eam-nn-and-ace-potentials-font">
+<h1><font style="color:#B71C1C" face="Helvetica" > Day 2: Creating and validating EAM, NN and ACE potentials </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-day-2-creating-and-validating-eam-nn-and-ace-potentials-font" title="Permalink to this headline">#</a></h1>
+<section id="font-style-color-b71c1c-face-helvetica-tutorial-iii-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Tutorial III </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-tutorial-iii-font" title="Permalink to this headline">#</a></h2>
+<p>Atomic interactions - from classical to machine learning potentials (background and motivation, short history of interatomic potentials), creating and validating interatomic potentials (application range, validation tests, active learning)</p>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-tutorial-iv-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Tutorial IV </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-tutorial-iv-font" title="Permalink to this headline">#</a></h2>
+<p>Three classes of interatomic potentials and their parameterization (EAM - atomicrex, NNP-runner and ACE-pacemaker)</p>
+</section>
+<section id="font-style-color-b71c1c-face-helvetica-hands-on-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Hands-on </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-hands-on-font" title="Permalink to this headline">#</a></h2>
+<p>Creating and validating EAM (atomicrex), NNP (runner) and ACE (pacemaker)</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
