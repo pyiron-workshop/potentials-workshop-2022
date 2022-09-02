@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Interatomic potentials &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    <title>EAM potentials &#8212; Workshop: From Electrons to Phase Diagrams</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -159,7 +159,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Interatomic potentials
+     EAM potentials
     </a>
    </li>
    <li class="toctree-l2">
@@ -400,57 +400,57 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interatomic-potentials">
    Interatomic potentials
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fitting">
    Fitting
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#eam-potentials">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
    EAM potentials
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fitting-code">
    Fitting code
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#get-the-training-data">
      Get the training data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#have-a-look-at-the-training-data">
      Have a look at the training data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#create-an-atomicrex-job">
      Create an atomicrex job
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#training-data">
      Training Data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#functions">
      Functions
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#short-test">
      Short Test
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#improving-the-potential">
      Improving the potential:
     </a>
@@ -466,7 +466,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Interatomic potentials</h1>
+                <h1>EAM potentials</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -476,57 +476,57 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interatomic-potentials">
    Interatomic potentials
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fitting">
    Fitting
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#eam-potentials">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
    EAM potentials
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fitting-code">
    Fitting code
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#get-the-training-data">
      Get the training data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#have-a-look-at-the-training-data">
      Have a look at the training data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#create-an-atomicrex-job">
      Create an atomicrex job
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#training-data">
      Training Data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#functions">
      Functions
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#short-test">
      Short Test
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#improving-the-potential">
      Improving the potential:
     </a>
@@ -543,16 +543,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="interatomic-potentials">
-<h1>Interatomic potentials<a class="headerlink" href="#interatomic-potentials" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="eam-potentials">
+<h1>EAM potentials<a class="headerlink" href="#eam-potentials" title="Permalink to this headline">#</a></h1>
+<section id="interatomic-potentials">
+<h2>Interatomic potentials<a class="headerlink" href="#interatomic-potentials" title="Permalink to this headline">#</a></h2>
 <p>In general interatomic potentials can be written as a sum of functional terms depending on the positions of the atoms in a structure. Then the energy <span class="math notranslate nohighlight">\(U\)</span> of the system is</p>
 <p><span class="math notranslate nohighlight">\(U = \sum_{i=1}^N U_1(\vec{r_i}) + \sum_{i,j=1}^N U_2(\vec{r_i}, \vec{r_j}) + \sum_{i,j,k=1}^N U_2(\vec{r_i}, \vec{r_j}, \vec{r_k}) +...\)</span></p>
 <p>The one body term only matter when the system is within an external field. Most classic interatomic potentials don’t use 4th and higher order body terms, pair potentials only use the 2 body term. As a general rule potentials that include higher order body terms can be more accurate but are slower.</p>
 <p>There are many different forms for <span class="math notranslate nohighlight">\(U_i\)</span>, which cover a wide range of different run time and accuracy necessities.</p>
 <p>Simple pair potentials (f.e Lennard-Jones, Morse, Buckingham) only contain very few parameters, typically less than 10. In many body potentials (f.e. EAM, MEAM, Tersoff) the typical number of parameters is 10-50 and for machine learning potentials the number of parameters can reach several thousands.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="fitting">
-<h1>Fitting<a class="headerlink" href="#fitting" title="Permalink to this headline">#</a></h1>
+<section id="fitting">
+<h2>Fitting<a class="headerlink" href="#fitting" title="Permalink to this headline">#</a></h2>
 <p>In the fit process the parameters of the chosen functions for <span class="math notranslate nohighlight">\(U_i\)</span> are optimized. For this purpose an objective or cost function is defined and minimized. In general the objective function is defined as</p>
 <p><span class="math notranslate nohighlight">\(\chi^2 = \sum_i w_i r_i\)</span></p>
 <p>where <span class="math notranslate nohighlight">\(w_i\)</span> is a weight and <span class="math notranslate nohighlight">\(r_i\)</span> is a residual that describes the difference to target values. This residual can be defined in different ways, so it is not possible to simply compare the residual for different fitting processes or codes. A more in depth explanation and some examples can be found on <a class="reference external" href="https://atomicrex.org/overview.html#objective-function">https://atomicrex.org/overview.html#objective-function</a>.</p>
@@ -560,8 +562,8 @@ title="Print to PDF"
 Generally local optimization algorithms should all be able to find the local minimum coming from some initial parameter set, so the “best” local algorithm is the one finding the minimum in the shortest time. Typically used local algorithms are f.e. (L)BFGS or Nelder-Mead.
 Examples for global algorithms are evolutionary algorithms or simulated annealing. For most problems it is impossible to tell a priori which global algorithm will give the best results, so using global algorithms typically involves testing many of them.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="eam-potentials">
-<h1>EAM potentials<a class="headerlink" href="#eam-potentials" title="Permalink to this headline">#</a></h1>
+<section id="id1">
+<h2>EAM potentials<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>EAM potentials are pair functionals.
 In a generalised form they are equal to Finnis-Sinclair, effective medium theory or glue potentials. Their total energy can be written as</p>
 <p><span class="math notranslate nohighlight">\(E = \frac{1}{2}\sum_{ij}V(r_{ij}) + \sum_i F(\rho_i)\)</span></p>
@@ -569,8 +571,8 @@ In a generalised form they are equal to Finnis-Sinclair, effective medium theory
 <p><span class="math notranslate nohighlight">\(\rho_i = \sum_j \rho(r_{ij})\)</span></p>
 <p>The original functions for V, <span class="math notranslate nohighlight">\(\rho\)</span> and F were derived from different theories, but they can be chosen freely.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="fitting-code">
-<h1>Fitting code<a class="headerlink" href="#fitting-code" title="Permalink to this headline">#</a></h1>
+<section id="fitting-code">
+<h2>Fitting code<a class="headerlink" href="#fitting-code" title="Permalink to this headline">#</a></h2>
 <p>Fitting is done using the pyiron interface to the atomicrex code <a class="reference external" href="https://atomicrex.org">https://atomicrex.org</a>. It can be used to fit different types of classic interatomic potentials:</p>
 <ul class="simple">
 <li><p>pair potentials</p></li>
@@ -587,6 +589,7 @@ In a generalised form they are equal to Finnis-Sinclair, effective medium theory
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -599,7 +602,7 @@ In a generalised form they are equal to Finnis-Sinclair, effective medium theory
 </div>
 </div>
 <section id="get-the-training-data">
-<h2>Get the training data<a class="headerlink" href="#get-the-training-data" title="Permalink to this headline">#</a></h2>
+<h3>Get the training data<a class="headerlink" href="#get-the-training-data" title="Permalink to this headline">#</a></h3>
 <p>Load a job that contains structures with energies and forces from DFT</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -610,12 +613,120 @@ In a generalised form they are equal to Finnis-Sinclair, effective medium theory
 </div>
 </section>
 <section id="have-a-look-at-the-training-data">
-<h2>Have a look at the training data<a class="headerlink" href="#have-a-look-at-the-training-data" title="Permalink to this headline">#</a></h2>
+<h3>Have a look at the training data<a class="headerlink" href="#have-a-look-at-the-training-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tc</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">energy_volume</span><span class="p">(</span><span class="n">crystal_systems</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>V</th>
+      <th>E</th>
+      <th>space_group</th>
+      <th>crystal_system</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.484415</td>
+      <td>-3.753374</td>
+      <td>225</td>
+      <td>cubic</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>14.835973</td>
+      <td>-3.704532</td>
+      <td>225</td>
+      <td>cubic</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>15.165661</td>
+      <td>-3.723358</td>
+      <td>225</td>
+      <td>cubic</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>15.495350</td>
+      <td>-3.737149</td>
+      <td>225</td>
+      <td>cubic</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>15.825038</td>
+      <td>-3.746438</td>
+      <td>225</td>
+      <td>cubic</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>303</th>
+      <td>28.793489</td>
+      <td>-3.016706</td>
+      <td>1</td>
+      <td>triclinic</td>
+    </tr>
+    <tr>
+      <th>304</th>
+      <td>29.358067</td>
+      <td>-2.979471</td>
+      <td>1</td>
+      <td>triclinic</td>
+    </tr>
+    <tr>
+      <th>305</th>
+      <td>29.922645</td>
+      <td>-2.942740</td>
+      <td>1</td>
+      <td>triclinic</td>
+    </tr>
+    <tr>
+      <th>306</th>
+      <td>30.487223</td>
+      <td>-2.906539</td>
+      <td>1</td>
+      <td>triclinic</td>
+    </tr>
+    <tr>
+      <th>307</th>
+      <td>31.051801</td>
+      <td>-2.870883</td>
+      <td>1</td>
+      <td>triclinic</td>
+    </tr>
+  </tbody>
+</table>
+<p>308 rows × 4 columns</p>
+</div></div><img alt="../../_images/IntroductionPotentialFitting_6_1.png" src="../../_images/IntroductionPotentialFitting_6_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -625,10 +736,166 @@ In a generalised form they are equal to Finnis-Sinclair, effective medium theory
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>alpha</th>
+      <th>beta</th>
+      <th>gamma</th>
+      <th>V</th>
+      <th>N</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.039967</td>
+      <td>4.039967</td>
+      <td>4.039967</td>
+      <td>90.000000</td>
+      <td>90.000000</td>
+      <td>90.000000</td>
+      <td>65.937658</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.900545</td>
+      <td>3.900545</td>
+      <td>3.900545</td>
+      <td>90.000000</td>
+      <td>90.000000</td>
+      <td>90.000000</td>
+      <td>59.343892</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.929227</td>
+      <td>3.929227</td>
+      <td>3.929227</td>
+      <td>90.000000</td>
+      <td>90.000000</td>
+      <td>90.000000</td>
+      <td>60.662645</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.957496</td>
+      <td>3.957496</td>
+      <td>3.957496</td>
+      <td>90.000000</td>
+      <td>90.000000</td>
+      <td>90.000000</td>
+      <td>61.981399</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.985366</td>
+      <td>3.985366</td>
+      <td>3.985366</td>
+      <td>90.000000</td>
+      <td>90.000000</td>
+      <td>90.000000</td>
+      <td>63.300152</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>303</th>
+      <td>7.008729</td>
+      <td>7.232998</td>
+      <td>10.690023</td>
+      <td>121.764941</td>
+      <td>89.204727</td>
+      <td>90.106498</td>
+      <td>460.695818</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>304</th>
+      <td>7.054241</td>
+      <td>7.279967</td>
+      <td>10.759441</td>
+      <td>121.764941</td>
+      <td>89.204727</td>
+      <td>90.106498</td>
+      <td>469.729069</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>305</th>
+      <td>7.099174</td>
+      <td>7.326338</td>
+      <td>10.827974</td>
+      <td>121.764941</td>
+      <td>89.204727</td>
+      <td>90.106498</td>
+      <td>478.762321</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>306</th>
+      <td>7.143545</td>
+      <td>7.372128</td>
+      <td>10.895651</td>
+      <td>121.764941</td>
+      <td>89.204727</td>
+      <td>90.106498</td>
+      <td>487.795572</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>307</th>
+      <td>7.187372</td>
+      <td>7.417357</td>
+      <td>10.962497</td>
+      <td>121.764941</td>
+      <td>89.204727</td>
+      <td>90.106498</td>
+      <td>496.828823</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+<p>308 rows × 8 columns</p>
+</div></div><img alt="../../_images/IntroductionPotentialFitting_7_1.png" src="../../_images/IntroductionPotentialFitting_7_1.png" />
+</div>
 </div>
 </section>
 <section id="create-an-atomicrex-job">
-<h2>Create an atomicrex job<a class="headerlink" href="#create-an-atomicrex-job" title="Permalink to this headline">#</a></h2>
+<h3>Create an atomicrex job<a class="headerlink" href="#create-an-atomicrex-job" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Atomicrex</span><span class="p">(</span><span class="s2">&quot;FitAl&quot;</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -638,7 +905,7 @@ In a generalised form they are equal to Finnis-Sinclair, effective medium theory
 </div>
 </section>
 <section id="training-data">
-<h2>Training Data<a class="headerlink" href="#training-data" title="Permalink to this headline">#</a></h2>
+<h3>Training Data<a class="headerlink" href="#training-data" title="Permalink to this headline">#</a></h3>
 <p>Set the training data. This can also be done structure by structure to set other fit properties and weights, but here we simply load the TrainingContainer</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -657,7 +924,7 @@ In a generalised form they are equal to Finnis-Sinclair, effective medium theory
 </div>
 </section>
 <section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h3>
 <p>Reminder: <span class="math notranslate nohighlight">\(E = \sum_{ij}V(r_{ij}) + \sum_i F(\rho_i)\)</span> with <span class="math notranslate nohighlight">\(\rho_i = \sum_j \rho(r_{ij})\)</span></p>
 <p>It is necessary to define a pair potential, an electronic density function and an embedding function.
 For all of those it is possible to choose between different functional forms.
@@ -695,6 +962,13 @@ For this purpose the pair function is screened by multiplying with the function:
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">morseB</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1000x700 with 1 Axes&gt;,
+ &lt;AxesSubplot:xlabel=&#39;r [$\\AA$]&#39;, ylabel=&#39;func(r)&#39;&gt;)
+</pre></div>
+</div>
+<img alt="../../_images/IntroductionPotentialFitting_17_1.png" src="../../_images/IntroductionPotentialFitting_17_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -748,6 +1022,11 @@ For this purpose the pair function is screened by multiplying with the function:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job FitAl was saved and received the ID: 768255
+</pre></div>
+</div>
+</div>
 </div>
 <p>Have a look at some of the outputs</p>
 <div class="cell docutils container">
@@ -757,6 +1036,12 @@ For this purpose the pair function is screened by multiplying with the function:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>534.253530602626
+</pre></div>
+</div>
+<img alt="../../_images/IntroductionPotentialFitting_26_1.png" src="../../_images/IntroductionPotentialFitting_26_1.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -764,12 +1049,285 @@ For this purpose the pair function is screened by multiplying with the function:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>EAMPotential({
+  "pair_interactions": {
+    "V": {
+      "species": "['*', '*']",
+      "parameters": {
+        "D0": {
+          "param": "'D0'",
+          "start_val": "0.15",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "0.05",
+          "max_val": "1.55",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "0.4158634463601261"
+        },
+        "r0": {
+          "param": "'r0'",
+          "start_val": "3.05",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "2.6",
+          "max_val": "3.1",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "2.639294060354738"
+        },
+        "beta": {
+          "param": "'beta'",
+          "start_val": "1.1",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "None",
+          "max_val": "None",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "1.689042056900673"
+        },
+        "S": {
+          "param": "'S'",
+          "start_val": "4.1",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "1.5",
+          "max_val": "4.5",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "4.117694387475836"
+        },
+        "delta": {
+          "param": "'delta'",
+          "start_val": "-0.01",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "None",
+          "max_val": "0.005",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "-0.009577154119786246"
+        }
+      },
+      "is_screening_function": "False",
+      "identifier": "'V'",
+      "screening": {
+        "species": "['*', '*']",
+        "parameters": {
+          "cutoff": {
+            "param": "'cutoff'",
+            "start_val": "7.6",
+            "enabled": "False",
+            "reset": "False",
+            "min_val": "None",
+            "max_val": "None",
+            "tag": "None",
+            "fitable": "False",
+            "final_value": "None"
+          },
+          "h": {
+            "param": "'h'",
+            "start_val": "1",
+            "enabled": "False",
+            "reset": "False",
+            "min_val": "None",
+            "max_val": "None",
+            "tag": "None",
+            "fitable": "True",
+            "final_value": "None"
+          },
+          "N": {
+            "param": "'N'",
+            "start_val": "4",
+            "enabled": "False",
+            "reset": "False",
+            "min_val": "None",
+            "max_val": "None",
+            "tag": "None",
+            "fitable": "True",
+            "final_value": "None"
+          }
+        },
+        "is_screening_function": "True",
+        "identifier": "'V_screen'"
+      }
+    }
+  },
+  "electron_densities": {
+    "rho_AlAl": {
+      "identifier": "'rho_AlAl'",
+      "cutoff": "7.6",
+      "derivative_left": {
+        "param": "'derivative-left'",
+        "start_val": "-0.2",
+        "enabled": "True",
+        "reset": "False",
+        "min_val": "None",
+        "max_val": "0.0",
+        "tag": "None",
+        "fitable": "True",
+        "final_value": "-0.1934128689911151"
+      },
+      "derivative_right": {
+        "param": "'derivative-right'",
+        "start_val": "0",
+        "enabled": "False",
+        "reset": "False",
+        "min_val": "None",
+        "max_val": "None",
+        "tag": "None",
+        "fitable": "True",
+        "final_value": "None"
+      },
+      "species": "['*', '*']",
+      "parameters": {
+        "node_1": {
+          "param": "'node'",
+          "start_val": "0.36787944117144233",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "0.0",
+          "max_val": "1.0",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "0.3841969068191089",
+          "x": "1.0"
+        },
+        "node_2.2": {
+          "param": "'node'",
+          "start_val": "0.11080315836233387",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "0.0",
+          "max_val": "1.0",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "0.4092981294674713",
+          "x": "2.2"
+        },
+        "node_2.7": {
+          "param": "'node'",
+          "start_val": "0.06720551273974976",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "0.0",
+          "max_val": "1.0",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "0.2327245594076393",
+          "x": "2.7"
+        },
+        "node_3.2": {
+          "param": "'node'",
+          "start_val": "0.04076220397836621",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "0.0",
+          "max_val": "1.0",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "0.119145089826732",
+          "x": "3.2"
+        },
+        "node_4": {
+          "param": "'node'",
+          "start_val": "0.01831563888873418",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "0.0",
+          "max_val": "1.0",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "0.03593935455098027",
+          "x": "4.0"
+        },
+        "node_5": {
+          "param": "'node'",
+          "start_val": "0.006737946999085467",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "0.0",
+          "max_val": "1.0",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "0.008491878480910296",
+          "x": "5.0"
+        },
+        "node_7.6": {
+          "param": "'node'",
+          "start_val": "0",
+          "enabled": "False",
+          "reset": "False",
+          "min_val": "None",
+          "max_val": "None",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "None",
+          "x": "7.6"
+        }
+      }
+    }
+  },
+  "embedding_energies": {
+    "F": {
+      "input_variable": "'r'",
+      "identifier": "'F'",
+      "species": "['*', '*']",
+      "parameters": {
+        "A": {
+          "param": "'A'",
+          "start_val": "3.3",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "0.0",
+          "max_val": "None",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "3.235973661774903"
+        },
+        "B": {
+          "param": "'B'",
+          "start_val": "1.8",
+          "enabled": "True",
+          "reset": "False",
+          "min_val": "0.0",
+          "max_val": "None",
+          "tag": "None",
+          "fitable": "True",
+          "final_value": "1.863639356009205"
+        }
+      },
+      "expression": "'-A*sqrt(r)+B*r'",
+      "derivative": "'-A/(2*sqrt(r))+B'",
+      "is_screening_function": "False",
+      "cutoff": "None",
+      "screening": "None"
+    }
+  },
+  "identifier": "'EAM'",
+  "export_file": "'output.eam.fs'",
+  "rho_range_factor": "2.0",
+  "resolution": "10000",
+  "species": "['*', '*']"
+})</pre></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">plot_final_potential</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x1800 with 3 Axes&gt;,
+ array([[&lt;AxesSubplot:title={&#39;center&#39;:&#39;Al F&#39;}, xlabel=&#39;$\\rho $ [a.u.]&#39;&gt;],
+        [&lt;AxesSubplot:title={&#39;center&#39;:&#39;Al rho_AlAl&#39;}, xlabel=&#39;r [$\\AA$]&#39;&gt;],
+        [&lt;AxesSubplot:title={&#39;center&#39;:&#39;Al V_AlAl&#39;}, xlabel=&#39;r [$\\AA$]&#39;&gt;]],
+       dtype=object))
+</pre></div>
+</div>
+<img alt="../../_images/IntroductionPotentialFitting_28_1.png" src="../../_images/IntroductionPotentialFitting_28_1.png" />
 </div>
 </div>
 <p>Acces the plotting interface common to the different fitting codes usable via pyiron</p>
@@ -787,6 +1345,9 @@ For this purpose the pair function is screened by multiplying with the function:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/IntroductionPotentialFitting_31_0.png" src="../../_images/IntroductionPotentialFitting_31_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -794,6 +1355,9 @@ For this purpose the pair function is screened by multiplying with the function:
 <span class="n">plots</span><span class="o">.</span><span class="n">force_scatter_histogram</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/IntroductionPotentialFitting_32_0.png" src="../../_images/IntroductionPotentialFitting_32_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -803,10 +1367,13 @@ For this purpose the pair function is screened by multiplying with the function:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/IntroductionPotentialFitting_33_0.png" src="../../_images/IntroductionPotentialFitting_33_0.png" />
+</div>
 </div>
 </section>
 <section id="short-test">
-<h2>Short Test<a class="headerlink" href="#short-test" title="Permalink to this headline">#</a></h2>
+<h3>Short Test<a class="headerlink" href="#short-test" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lmp</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Lammps</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -817,10 +1384,26 @@ For this purpose the pair function is screened by multiplying with the function:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job Al was saved and received the ID: 768256
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lmp</span><span class="o">.</span><span class="n">get_structure</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Al: [0. 0. 0.]
+Al: [0.         2.01161633 2.01161633]
+Al: [2.01161633e+00 1.23175975e-16 2.01161633e+00]
+Al: [2.01161633e+00 2.01161633e+00 2.46351949e-16]
+pbc: [ True  True  True]
+cell: 
+Cell([[4.023232650833882, 2.4635194940344173e-16, 2.4635194940344173e-16], [0.0, 4.023232650833882, 2.4635194940344173e-16], [0.0, 0.0, 4.023232650833882]])
 </pre></div>
 </div>
 </div>
@@ -837,10 +1420,32 @@ For this purpose the pair function is screened by multiplying with the function:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job AlMurn was saved and received the ID: 768257
+The job AlMurn_0_9 was saved and received the ID: 768258
+The job AlMurn_0_92 was saved and received the ID: 768259
+The job AlMurn_0_94 was saved and received the ID: 768260
+The job AlMurn_0_96 was saved and received the ID: 768261
+The job AlMurn_0_98 was saved and received the ID: 768262
+The job AlMurn_1_0 was saved and received the ID: 768263
+The job AlMurn_1_02 was saved and received the ID: 768264
+The job AlMurn_1_04 was saved and received the ID: 768265
+The job AlMurn_1_06 was saved and received the ID: 768266
+The job AlMurn_1_08 was saved and received the ID: 768267
+The job AlMurn_1_1 was saved and received the ID: 768268
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">murn</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/IntroductionPotentialFitting_38_0.png" src="../../_images/IntroductionPotentialFitting_38_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Murnaghan: error: 1.260923803785139e-07&#39;}, xlabel=&#39;Volume ($\\AA^3$)&#39;, ylabel=&#39;energy (eV)&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -851,15 +1456,28 @@ For this purpose the pair function is screened by multiplying with the function:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;poly_fit&#39;: array([-1.48488627e-04,  3.36681189e-02, -2.49593657e+00,  4.57553300e+01]),
+ &#39;fit_type&#39;: &#39;polynomial&#39;,
+ &#39;fit_order&#39;: 3,
+ &#39;volume_eq&#39;: 65.12534552940066,
+ &#39;energy_eq&#39;: -15.011507685536415,
+ &#39;bulkmodul_eq&#39;: 97.1844125298334,
+ &#39;b_prime_eq&#39;: 5.229573354867312,
+ &#39;least_square_error&#39;: 1.260923803785139e-07}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="improving-the-potential">
-<h2>Improving the potential:<a class="headerlink" href="#improving-the-potential" title="Permalink to this headline">#</a></h2>
+<h3>Improving the potential:<a class="headerlink" href="#improving-the-potential" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>try with different starting parameters / global optimization</p></li>
 <li><p>change weights of structures and fit properties</p></li>
 <li><p>change functions used</p></li>
 </ul>
+</section>
 </section>
 </section>
 

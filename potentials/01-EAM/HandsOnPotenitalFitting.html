@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="High-Dimensional Neural Network Potentials" href="../02-HDNNP/handson.html" />
-    <link rel="prev" title="Interatomic potentials" href="IntroductionPotentialFitting.html" />
+    <link rel="prev" title="EAM potentials" href="IntroductionPotentialFitting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -159,7 +159,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="IntroductionPotentialFitting.html">
-     Interatomic potentials
+     EAM potentials
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -404,26 +404,35 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#">
    Training data
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-training-data">
+     Add training data
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#add-training-data">
-   Add training data
+  <a class="reference internal nav-link" href="#fitting">
+   Fitting
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-the-potential-type">
-   Set the potential type
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-functions">
-   Define functions
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples-for-alternative-minimizers">
-   Examples for alternative minimizers
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-the-potential-type">
+     Set the potential type
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-functions">
+     Define functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-for-alternative-minimizers">
+     Examples for alternative minimizers
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#appendix">
@@ -453,26 +462,35 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#">
    Training data
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-training-data">
+     Add training data
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#add-training-data">
-   Add training data
+  <a class="reference internal nav-link" href="#fitting">
+   Fitting
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-the-potential-type">
-   Set the potential type
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-functions">
-   Define functions
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples-for-alternative-minimizers">
-   Examples for alternative minimizers
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-the-potential-type">
+     Set the potential type
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-functions">
+     Define functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-for-alternative-minimizers">
+     Examples for alternative minimizers
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#appendix">
@@ -495,6 +513,7 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -514,17 +533,67 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>status</th>
+      <th>chemicalformula</th>
+      <th>job</th>
+      <th>subjob</th>
+      <th>projectpath</th>
+      <th>project</th>
+      <th>timestart</th>
+      <th>timestop</th>
+      <th>totalcputime</th>
+      <th>computer</th>
+      <th>hamilton</th>
+      <th>hamversion</th>
+      <th>parentid</th>
+      <th>masterid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>768254</td>
+      <td>finished</td>
+      <td>None</td>
+      <td>AlEnergyBasedWeight</td>
+      <td>/AlEnergyBasedWeight</td>
+      <td>/nfshome/leimeroth/git_projects/potentials-workshop-2022/</td>
+      <td>potentials/01-EAM/</td>
+      <td>2022-09-02 08:38:42.271734</td>
+      <td>2022-09-02 08:43:45.499587</td>
+      <td>303.0</td>
+      <td>pyiron@mogli243#1</td>
+      <td>Atomicrex</td>
+      <td>0.4</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span><span class="o">.</span><span class="n">job_table</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="add-training-data">
-<h1>Add training data<a class="headerlink" href="#add-training-data" title="Permalink to this headline">#</a></h1>
+<h2>Add training data<a class="headerlink" href="#add-training-data" title="Permalink to this headline">#</a></h2>
 <p>Instead of simply loading the training data weights are assigned to the structures based on their energy this time. Additionally the structure with a very high atomic volume is filtered out.<br />
 Structures with low energy get a higher weight than structures with high energy.
 It can also help to increase the weights of special properties or important structures to put a focus on things that are important for the scope of the potential.
@@ -543,6 +612,12 @@ For a list of a all properties that can be fitted refer to the atomicrex website
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">E_S</span><span class="p">,</span> <span class="n">get_e_weight</span><span class="p">(</span><span class="n">E_S</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f1804f90130&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/HandsOnPotenitalFitting_6_1.png" src="../../_images/HandsOnPotenitalFitting_6_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -569,8 +644,11 @@ For a list of a all properties that can be fitted refer to the atomicrex website
 </div>
 </div>
 </section>
+</section>
+<section id="fitting">
+<h1>Fitting<a class="headerlink" href="#fitting" title="Permalink to this headline">#</a></h1>
 <section id="set-the-potential-type">
-<h1>Set the potential type<a class="headerlink" href="#set-the-potential-type" title="Permalink to this headline">#</a></h1>
+<h2>Set the potential type<a class="headerlink" href="#set-the-potential-type" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">factories</span><span class="o">.</span><span class="n">potentials</span><span class="o">.</span><span class="n">eam_potential</span><span class="p">()</span>
@@ -580,7 +658,7 @@ For a list of a all properties that can be fitted refer to the atomicrex website
 </div>
 </section>
 <section id="define-functions">
-<h1>Define functions<a class="headerlink" href="#define-functions" title="Permalink to this headline">#</a></h1>
+<h2>Define functions<a class="headerlink" href="#define-functions" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># morse A is the original rather simple morse potential</span>
@@ -595,6 +673,13 @@ For a list of a all properties that can be fitted refer to the atomicrex website
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">morseA</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1000x700 with 1 Axes&gt;,
+ &lt;AxesSubplot:xlabel=&#39;r [$\\AA$]&#39;, ylabel=&#39;func(r)&#39;&gt;)
+</pre></div>
+</div>
+<img alt="../../_images/HandsOnPotenitalFitting_14_1.png" src="../../_images/HandsOnPotenitalFitting_14_1.png" />
 </div>
 </div>
 <p>Electron density as used by Mishin in his Cu potential (<a class="reference external" href="https://doi.org/10.1103/PhysRevB.63.224106">https://doi.org/10.1103/PhysRevB.63.224106</a>, Gaussian + exp(-<span class="math notranslate nohighlight">\(\beta\)</span>r term)</p>
@@ -630,10 +715,15 @@ For a list of a all properties that can be fitted refer to the atomicrex website
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job AlEnergyBasedWeight was saved and received the ID: 768254
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="examples-for-alternative-minimizers">
-<h1>Examples for alternative minimizers<a class="headerlink" href="#examples-for-alternative-minimizers" title="Permalink to this headline">#</a></h1>
+<h2>Examples for alternative minimizers<a class="headerlink" href="#examples-for-alternative-minimizers" title="Permalink to this headline">#</a></h2>
 <p>Local:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">fit_algorithm</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">factories</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">ln_neldermead</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 </pre></div>
@@ -651,6 +741,16 @@ It is gradient free, so each iteration is much quicker, but more iterations are 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x1800 with 3 Axes&gt;,
+ array([[&lt;AxesSubplot:title={&#39;center&#39;:&#39;Al F&#39;}, xlabel=&#39;$\\rho $ [a.u.]&#39;&gt;],
+        [&lt;AxesSubplot:title={&#39;center&#39;:&#39;Al rho_AlAl&#39;}, xlabel=&#39;r [$\\AA$]&#39;&gt;],
+        [&lt;AxesSubplot:title={&#39;center&#39;:&#39;Al V_AlAl&#39;}, xlabel=&#39;r [$\\AA$]&#39;&gt;]],
+       dtype=object))
+</pre></div>
+</div>
+<img alt="../../_images/HandsOnPotenitalFitting_20_1.png" src="../../_images/HandsOnPotenitalFitting_20_1.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -658,6 +758,12 @@ It is gradient free, so each iteration is much quicker, but more iterations are 
 <span class="n">job</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">residual</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>509.4135409319779
+</pre></div>
+</div>
+<img alt="../../_images/HandsOnPotenitalFitting_21_1.png" src="../../_images/HandsOnPotenitalFitting_21_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -674,12 +780,18 @@ It is gradient free, so each iteration is much quicker, but more iterations are 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/HandsOnPotenitalFitting_23_0.png" src="../../_images/HandsOnPotenitalFitting_23_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plots</span><span class="o">.</span><span class="n">force_scatter_histogram</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/HandsOnPotenitalFitting_24_0.png" src="../../_images/HandsOnPotenitalFitting_24_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -688,12 +800,18 @@ It is gradient free, so each iteration is much quicker, but more iterations are 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/HandsOnPotenitalFitting_25_0.png" src="../../_images/HandsOnPotenitalFitting_25_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plots</span><span class="o">.</span><span class="n">force_scatter_histogram</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/HandsOnPotenitalFitting_26_0.png" src="../../_images/HandsOnPotenitalFitting_26_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -702,9 +820,13 @@ It is gradient free, so each iteration is much quicker, but more iterations are 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/HandsOnPotenitalFitting_27_0.png" src="../../_images/HandsOnPotenitalFitting_27_0.png" />
+</div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="appendix">
+</section>
+<section id="appendix">
 <h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">#</a></h1>
 <p>For the potential used in the validation and phase diagram calculations a different functional form was used.</p>
 <p>The Al potential followed the same formalism as used by Mishin in his Cu potential <a class="reference external" href="https://doi.org/10.1103/PhysRevB.63.224106">https://doi.org/10.1103/PhysRevB.63.224106</a>.
@@ -775,7 +897,7 @@ In the pyiron interface such constraints can be added using as follows:</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Interatomic potentials</p>
+            <p class="prev-next-title">EAM potentials</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../02-HDNNP/handson.html" title="next page">
