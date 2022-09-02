@@ -2,6 +2,7 @@ name: workshop
 channels:
 - conda-forge
 dependencies:
+- cmake
 - python =3.8
 - pyiron =0.4.6
 - pyiron_base =0.5.12
