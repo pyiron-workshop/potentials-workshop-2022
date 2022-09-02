@@ -15,10 +15,7 @@ chapters:
     - file: potentials/01-EAM/HandsOnPotenitalFitting.ipynb
     - file: potentials/02-HDNNP/handson.ipynb
     - file: potentials/03-ACE/pacemaker_example.ipynb
-  - file: validation/Intro.md
-    sections:
     - file: validation/validation_LiAl.ipynb
-    - file: validation/validation_NiAl.ipynb
   - file: phase_diagram/Intro.md
     sections:
     - file: phase_diagram/tutorial_1.ipynb
