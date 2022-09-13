@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Day 2: Creating and validating EAM, NN and ACE potentials &#8212; Workshop: From Electrons to Phase Diagrams</title>
+    <title>Day 1: DFT database and workflow management with pyiron &#8212; Workshop: From Electrons to Phase Diagrams</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="EAM potentials 1: Introduction" href="01-EAM/IntroductionPotentialFitting.html" />
-    <link rel="prev" title="Exercise 3: Visualizing Training Data" href="../introduction/ex_03_visualizing_training_data.html" />
+    <link rel="next" title="Exercise 1: Introduction to atomistic simulations with pyiron" href="ex_01_introduction_to_pyiron.html" />
+    <link rel="prev" title="From Electrons to Phase Diagrams 2022" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,64 +114,64 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../introduction/Intro.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    <font face="Helvetica" style="color:#B71C1C">
     Day 1: DFT database and workflow management with pyiron
    </font>
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../introduction/ex_01_introduction_to_pyiron.html">
+    <a class="reference internal" href="ex_01_introduction_to_pyiron.html">
      Exercise 1: Introduction to atomistic simulations with pyiron
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../introduction/ex_02_creating_structure_databases.html">
+    <a class="reference internal" href="ex_02_creating_structure_databases.html">
      Exercise 2: Creating and working with structure databases
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../introduction/ex_03_visualizing_training_data.html">
+    <a class="reference internal" href="ex_03_visualizing_training_data.html">
      Exercise 3: Visualizing Training Data
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../potentials/Intro.html">
    <font face="Helvetica" style="color:#B71C1C">
     Day 2: Creating and validating EAM, NN and ACE potentials
    </font>
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="01-EAM/IntroductionPotentialFitting.html">
+    <a class="reference internal" href="../potentials/01-EAM/IntroductionPotentialFitting.html">
      EAM potentials 1: Introduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01-EAM/HandsOnPotenitalFitting.html">
+    <a class="reference internal" href="../potentials/01-EAM/HandsOnPotenitalFitting.html">
      EAM potentials 2: Hands on
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="02-HDNNP/handson.html">
+    <a class="reference internal" href="../potentials/02-HDNNP/handson.html">
      High-Dimensional Neural Network Potentials
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03-ACE/pacemaker_example.html">
+    <a class="reference internal" href="../potentials/03-ACE/pacemaker_example.html">
      Atomic cluster expansion (ACE)
     </a>
    </li>
@@ -310,7 +310,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/potentials/Intro.md"
+        <a href="../_sources/introduction/Intro.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -370,30 +370,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-iii-font">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-i-font">
    <font face="Helvetica" style="color:#B71C1C">
-    Tutorial III
+    Tutorial I
    </font>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-iv-font">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-ii-font">
    <font face="Helvetica" style="color:#B71C1C">
-    Tutorial IV
+    Tutorial II
    </font>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-fitting-three-classes-of-interatomic-potentials-and-their-parameterization-font">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-font">
    <font face="Helvetica" style="color:#B71C1C">
-    Hands-on: Fitting three classes of interatomic potentials and their parameterization
-   </font>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-validation-of-interatomic-potentials-font">
-   <font face="Helvetica" style="color:#B71C1C">
-    Hands-on: Validation of interatomic potentials
+    Hands-on
    </font>
   </a>
  </li>
@@ -406,7 +399,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><font style="color:#B71C1C" face="Helvetica" > Day 2: Creating and validating EAM, NN and ACE potentials </font></h1>
+                <h1><font style="color:#B71C1C" face="Helvetica" > Day 1: DFT database and workflow management with pyiron </font></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -417,30 +410,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-iii-font">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-i-font">
    <font face="Helvetica" style="color:#B71C1C">
-    Tutorial III
+    Tutorial I
    </font>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-iv-font">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-tutorial-ii-font">
    <font face="Helvetica" style="color:#B71C1C">
-    Tutorial IV
+    Tutorial II
    </font>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-fitting-three-classes-of-interatomic-potentials-and-their-parameterization-font">
+  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-font">
    <font face="Helvetica" style="color:#B71C1C">
-    Hands-on: Fitting three classes of interatomic potentials and their parameterization
-   </font>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-style-color-b71c1c-face-helvetica-hands-on-validation-of-interatomic-potentials-font">
-   <font face="Helvetica" style="color:#B71C1C">
-    Hands-on: Validation of interatomic potentials
+    Hands-on
    </font>
   </a>
  </li>
@@ -454,26 +440,23 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="font-style-color-b71c1c-face-helvetica-day-2-creating-and-validating-eam-nn-and-ace-potentials-font">
-<h1><font style="color:#B71C1C" face="Helvetica" > Day 2: Creating and validating EAM, NN and ACE potentials </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-day-2-creating-and-validating-eam-nn-and-ace-potentials-font" title="Permalink to this headline">#</a></h1>
-<section id="font-style-color-b71c1c-face-helvetica-tutorial-iii-font">
-<h2><font style="color:#B71C1C" face="Helvetica" > Tutorial III </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-tutorial-iii-font" title="Permalink to this headline">#</a></h2>
-<p>Atomic interactions - from classical to machine learning potentials (background and motivation, short history of interatomic potentials), creating and validating interatomic potentials (application range, validation tests, active learning)<br />
-Ralf Drautz (RUB Bochum)</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="font-style-color-b71c1c-face-helvetica-day-1-dft-database-and-workflow-management-with-pyiron-font">
+<h1><font style="color:#B71C1C" face="Helvetica" > Day 1: DFT database and workflow management with pyiron </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-day-1-dft-database-and-workflow-management-with-pyiron-font" title="Permalink to this headline">#</a></h1>
+<section id="font-style-color-b71c1c-face-helvetica-tutorial-i-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Tutorial I </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-tutorial-i-font" title="Permalink to this headline">#</a></h2>
+<p>Density functional theory for computing properties of materials (background and intro to DFT, key parameters and popular codes, basic properties and computation principles: formation energies, defect energies, elastic moduli, phonons)<br />
+Jörg Neugebauer (MPIE Düsseldorf)</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/li7GL1KeaYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </section>
-<section id="font-style-color-b71c1c-face-helvetica-tutorial-iv-font">
-<h2><font style="color:#B71C1C" face="Helvetica" > Tutorial IV </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-tutorial-iv-font" title="Permalink to this headline">#</a></h2>
-<p>Three classes of interatomic potentials and their parameterization (EAM - atomicrex, NNP-runner and ACE-pacemaker)<br />
-Niklas Leimeroth (TU Darmstadt), Alexander Knoll (Georg-August-Universität Göttingen), Moritz Schäfer (Georg-August-Universität Göttingen), Yury Lysogorskiy (RUB Bochum)</p>
+<section id="font-style-color-b71c1c-face-helvetica-tutorial-ii-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Tutorial II </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-tutorial-ii-font" title="Permalink to this headline">#</a></h2>
+<p>Workflow management with pyiron (motivation, intro to workflows and pyiron, computation of the properties that were introduced in the first tutorial with pyiron)<br />
+Marvin Poul (MPIE Düsseldorf)</p>
 </section>
-<section id="font-style-color-b71c1c-face-helvetica-hands-on-fitting-three-classes-of-interatomic-potentials-and-their-parameterization-font">
-<h2><font style="color:#B71C1C" face="Helvetica" > Hands-on: Fitting three classes of interatomic potentials and their parameterization </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-hands-on-fitting-three-classes-of-interatomic-potentials-and-their-parameterization-font" title="Permalink to this headline">#</a></h2>
-<p>Creating and validating EAM (atomicrex), NNP (runner) and ACE (pacemaker)<br />
-Niklas Leimeroth (TU Darmstadt), Alexander Knoll (Georg-August-Universität Göttingen), Moritz Schäfer (Georg-August-Universität Göttingen), Yury Lysogorskiy (RUB Bochum)</p>
-</section>
-<section id="font-style-color-b71c1c-face-helvetica-hands-on-validation-of-interatomic-potentials-font">
-<h2><font style="color:#B71C1C" face="Helvetica" > Hands-on: Validation of interatomic potentials </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-hands-on-validation-of-interatomic-potentials-font" title="Permalink to this headline">#</a></h2>
-<p>Minaam Qamar (RUB Bochum)</p>
+<section id="font-style-color-b71c1c-face-helvetica-hands-on-font">
+<h2><font style="color:#B71C1C" face="Helvetica" > Hands-on </font><a class="headerlink" href="#font-style-color-b71c1c-face-helvetica-hands-on-font" title="Permalink to this headline">#</a></h2>
+<p>Setting up workflows and computing materials properties with pyiron<br />
+Marvin Poul (MPIE Düsseldorf)</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -492,7 +475,7 @@ Niklas Leimeroth (TU Darmstadt), Alexander Knoll (Georg-August-Universität Göt
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./potentials"
+            path: "./introduction"
         },
         predefinedOutput: true
     }
@@ -506,17 +489,17 @@ Niklas Leimeroth (TU Darmstadt), Alexander Knoll (Georg-August-Universität Göt
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../introduction/ex_03_visualizing_training_data.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Exercise 3: Visualizing Training Data</p>
+            <p class="prev-next-title"><font style="color:#B71C1C" face="Helvetica" > From Electrons to Phase Diagrams 2022 </font></p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="01-EAM/IntroductionPotentialFitting.html" title="next page">
+    <a class='right-next' id="next-link" href="ex_01_introduction_to_pyiron.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">EAM potentials 1: Introduction</p>
+        <p class="prev-next-title">Exercise 1: Introduction to atomistic simulations with pyiron</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
