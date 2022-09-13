@@ -29,6 +29,7 @@ dependencies:
 - ipykernel
 - runner
 - ipympl
+- ipywidgets
 - pip:
     - runnerase
     - tensorflow <=2.7
