@@ -6,5 +6,8 @@ Today the computation of large numbers of DFT data are becoming a routine task, 
 
 At the three-day workshop we will provide tutorials and hands-on classes that cover the complete chain from high-throughput electronic structure calculations to the computation of phase diagrams. Day 1 will focus on automated workflows for the generation of DFT data. On day 2 we will discuss the parameterization and validation of interatomic potentials from DFT reference data. Day 3 will then introduce the methods and tools for the computation of thermodynamic properties and phase diagrams.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8NP3DpUkg6U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ```{tableofcontents}
 ```
