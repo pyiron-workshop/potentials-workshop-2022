@@ -4,7 +4,7 @@
 format: jb-book
 root: intro
 chapters:
-  - file: introduction/Intro.md
+  - file: introduction/videos.ipynb
     sections:
     - file: introduction/ex_01_introduction_to_pyiron.ipynb
     - file: introduction/ex_02_creating_structure_databases.ipynb
